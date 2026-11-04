@@ -31,7 +31,7 @@ import argparse
 import concurrent.futures as cf
 import datetime as dt
 import hashlib
-import json
+import json, math
 import os
 import re
 import sys
@@ -57,6 +57,7 @@ CEILING = 0.95
 MARGIN = 0.10   # the course must beat each comparison by at least 10 points: a one-answer edge is noise
 EPS = 1e-9
 MIN_MODELS = 2
+SPARE = 1  # a pass must survive one flipped grade: at least one answer beyond the margin, against each comparison
 # The panel is fixed in advance: every course is examined on every model here, and passes on at least MIN_MODELS of them.
 # Models are never added or swapped because of a result. Change the panel only by a commit made before any run on it.
 PANEL = ["claude-haiku-5-5", "claude-sonnet-5-5", "gpt-5.5", "gpt-5.4-nano"]
@@ -93,7 +94,7 @@ def method_fingerprint() -> str:
     return sha(json.dumps({"method": METHOD, "agent": AGENT_SYSTEM, "loaded": LOADED, "user": USER, "grade_system": GRADE_SYSTEM,
                            "grade_user": GRADE_USER, "grader_pool": GRADER_POOL, "runs": RUNS, "rounds": ROUNDS,
                            "adherence_floor": ADHERENCE_FLOOR, "margin": MARGIN, "ceiling": CEILING,
-                           "min_models": MIN_MODELS, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "grader_tokens": GRADER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
+                           "min_models": MIN_MODELS, "spare": SPARE, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "grader_tokens": GRADER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
 
 
 def find_course(number: str) -> Path:
@@ -272,6 +273,11 @@ def _score(rows: list, ungraded_as: bool) -> dict:
     ungraded = sum(1 for r in rows if r.get("outcome") is None)
     cut_off = sum(1 for r in rows if r.get("cut_off"))
     e = effect
+
+    def short(a):  # the course clears the margin over way `a` with fewer than SPARE answers to spare
+        n = len(arm("course"))
+        hits = {x: sum(outcome(r) for r in arm(x)) for x in ("course", a)}
+        return hits["course"] - hits[a] < math.ceil(MARGIN * n - EPS) + SPARE
     if adherence is None or e["course"] is None:
         verdict, passed = "Not graded.", False
     elif adherence < ADHERENCE_FLOOR:
@@ -282,6 +288,9 @@ def _score(rows: list, ungraded_as: bool) -> dict:
         verdict, passed = f"Not enough gain over no course: {e['course']:.0%} with it, {e['none']:.0%} without (needs {round(MARGIN * 100)} points more). Rethink the course.", False
     elif e["course"] < e["control"] + MARGIN - EPS:
         verdict, passed = f"Not enough gain over the control: unrelated text of the same length was right {e['control']:.0%} of the time, against {e['course']:.0%} with the course (needs {round(MARGIN * 100)} points more).", False
+    elif short("none") or short("control"):
+        verdict, passed = (f"Too narrow: it clears the {round(MARGIN * 100)}-point margin with no answer to spare, so one "
+                           "flipped grade would undo it. A pass must survive that."), False
     else:
         verdict, passed = f"Two Scores hold: followed, and at least {round(MARGIN * 100)} points better than both no course and the control.", True
     per_case = {}

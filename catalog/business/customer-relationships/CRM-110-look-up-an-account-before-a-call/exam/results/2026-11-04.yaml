@@ -12,7 +12,7 @@ fingerprints:
   cases: 57b6f3248a852ef2cbef54b4ce8326e39377bbcd942697879182ff0b3b13d968
   agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
   grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
-  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
 rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
 models:
   claude-haiku-5-5:
@@ -27,8 +27,9 @@ models:
       control: 0.92
     ungraded: 0
     cut_off: 0
-    passed: true
-    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    passed: false
+    verdict: 'Too narrow: it clears the 10-point margin with no answer to spare, so one flipped grade would undo it. A pass
+      must survive that.'
     outcome_by_case:
       standard-brief:
         kind: act
@@ -155,7 +156,7 @@ models:
         none: 8/8
         course: 7/8
         control: 8/8
-passed_on: 1
+passed_on: 0
 meets_rule: false
 accredited: false
 answers: 2026-11-04-answers.json
@@ -164,6 +165,6 @@ note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI
   cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
   or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
   under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
-  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
-  on Haiku. On Haiku, 96.9% with the course against 81.2% with none and 84.4% with the control; the biggest gain was private-details
-  (7/8 with the course, 3/8 without).'
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. A pass must clear the margin with
+  at least one answer to spare, so one flipped grade cannot make it; that rule was added after an independent check of this
+  run''s grading, applies to every course, and can only remove passes. 0 answers were ungraded. Passes on no panel model.'

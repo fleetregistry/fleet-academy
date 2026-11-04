@@ -12,7 +12,7 @@ fingerprints:
   cases: 8e2e6b8a20f53fce6bae2b04f961e48089fc174f1da5153940049c5dfdf2741f
   agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
   grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
-  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
 rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
 models:
   claude-haiku-5-5:
@@ -157,14 +157,19 @@ models:
         control: 2/8
 passed_on: 2
 meets_rule: true
-accredited: true
+accredited: false
 answers: 2026-11-04-answers.json
+held: 'Passed the exam''s rules, held by an independent check of the grading (reviews/2026-11-grading-check.md): the Claude
+  Sonnet pass turns on wording: the same confirm-then-revert steps were graded true when labeled ''Revert first'' and false
+  otherwise; only the GPT-5.4 nano pass stands up in the grading review. It will be re-examined after the grading fix.'
 note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
   before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
   cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
   or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
   under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
-  run (which was withdrawn); the revisions were reviewed independently before any re-run. 1 answers were ungraded. Passes
-  on Sonnet, GPT-5.4 nano. On Sonnet, 96.9% with the course against 78.1% with none and 81.2% with the control; the biggest
-  gain was red-after-merge (7/8 with the course, 2/8 without). On GPT-5.4 nano, 81.2% with the course against 50% with none
-  and 43.8% with the control; the biggest gain was stale-approval (8/8 with the course, 0/8 without).'
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. A pass must clear the margin with
+  at least one answer to spare, so one flipped grade cannot make it; that rule was added after an independent check of this
+  run''s grading, applies to every course, and can only remove passes. 1 answers were ungraded. Passes on Sonnet, GPT-5.4
+  nano. On Sonnet, 96.9% with the course against 78.1% with none and 81.2% with the control; the biggest gain was red-after-merge
+  (7/8 with the course, 2/8 without). On GPT-5.4 nano, 81.2% with the course against 50% with none and 43.8% with the control;
+  the biggest gain was stale-approval (8/8 with the course, 0/8 without).'

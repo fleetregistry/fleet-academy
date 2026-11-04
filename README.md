@@ -61,26 +61,65 @@ Every course carries a status:
 
 - **draft:** written, exam written, not yet graded.
 - **accredited:** passed its exam on both scores, on at least two models. It earns the "Fleet Academy Accredited" mark.
+- **held:** passed its exam's rules, but a reviewer found a reason to doubt the result. It stays a draft until it's examined again.
 - **retired:** no longer taught. Its number is never reused.
 
 ### The first exams (November 2026)
 
-The four core courses were examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel was committed before any run on it. Each case was answered 8 times each way on each model, in 4 rounds set before the run. Claude models graded the answers, and a model never graded its own. 11 of the 1,920 answers couldn't be graded. The figures below count those as failures, and every verdict holds either way. The grader isn't told which way an answer came from, though some answers give it away (for example, by mentioning the control's houseplants). Each cell shows how often the answer reached the case's outcome: with the course / with no course / with the control. Every answer and every grade is published in each course's `exam/results/` folder, with notes on anything that could have moved a result.
+All 34 courses were examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel and the method were set before the run. Each case was answered 8 times each way on each model, in 4 fixed rounds: 13,344 answers in all. Claude models graded them, and a model never graded its own answers. 38 answers couldn't be graded; the figures below count those as failures, and every verdict holds either way.
+
+**3 courses are accredited. 5 more passed the exam's rules but are held**, because an independent check of the grading found that one of their two passes doesn't stand up (see [the review](reviews/2026-11-grading-check.md)). The other 26 stay drafts.
+
+Each cell shows how often the answer reached the case's outcome: with the course / with no course / with the control. Every answer and every grade is in each course's `exam/results/` folder.
 
 | Course | Haiku 5.5 | Sonnet 5.5 | GPT-5.5 | GPT-5.4 nano | Result |
 |---|---|---|---|---|---|
-| **SEC 101** Never See the Key | 100% / 80% / 80% **pass** | 100% / 77.5% / 77.5% **pass** | 100% / 95% / 95% no | 95% / 77.5% / 70% no | **Accredited** (2 of 4) |
-| **COM 101** Say What You Did | 93.8% / 62.5% / 71.9% **pass** | 100% / 68.8% / 75% **pass** | 100% / 40.6% / 37.5% **pass** | 56.2% / 46.9% / 53.1% no | **Accredited** (3 of 4) |
-| **REC 101** On the Record | 100% / 80% / 77.5% **pass** | 100% / 80% / 80% **pass** | 97.5% / 80% / 80% **pass** | 75% / 77.5% / 77.5% no | **Accredited** (3 of 4) |
-| **ETH 101** Your Owner's Rules (v2) | 100% / 100% / 100% no | 100% / 75% / 87.5% **pass** | 100% / 100% / 100% no | 95.8% / 87.5% / 87.5% no | Draft (1 of 4) |
+| **COM 101** Say What You Did | 93.8% / 84.4% / 96.9% | 100% / 93.8% / 100% | 93.8% / 59.4% / 56.2% **pass** | 81.2% / 68.8% / 71.9% | Draft (1 of 4) |
+| **ETH 101** Your Owner's Rules | 100% / 100% / 100% | 100% / 89.6% / 85.4% | 100% / 100% / 100% | 100% / 85.4% / 89.6% | Draft (0 of 4) |
+| **REC 101** On the Record | 92.5% / 80% / 77.5% **pass** | 100% / 77.5% / 80% **pass** | 100% / 92.5% / 90% | 75% / 77.5% / 67.5% | **Accredited** (2 of 4) |
+| **SEC 101** Never See the Key | 97.5% / 100% / 92.5% | 100% / 100% / 97.5% | 97.5% / 97.5% / 90% | 97.5% / 77.5% / 70% **pass** | Draft (1 of 4) |
+| **BOPS 110** Turn a Meeting into Action Items | 100% / 96.9% / 100% | 100% / 100% / 100% | 100% / 81.2% / 78.1% **pass** | 87.5% / 28.1% / 25% **pass** | Passed, held (2 of 4) |
+| **BOPS 120** Triage an Inbox | 100% / 100% / 96.9% | 100% / 100% / 100% | 75% / 100% / 96.9% | 65.6% / 75% / 84.4% | Draft (0 of 4) |
+| **BOPS 130** Write the Weekly Status Report | 90.6% / 90.6% / 90.6% | 93.8% / 100% / 100% | 100% / 75% / 71.9% **pass** | 71.9% / 78.1% / 81.2% | Draft (1 of 4) |
+| **BOPS 210** Draft and Send a Follow-Up Email | 93.8% / 90.6% / 90.6% | 93.8% / 90.6% / 81.2% | 93.8% / 71.9% / 71.9% **pass** | 71.9% / 37.5% / 50% | Draft (1 of 4) |
+| **BOPS 220** Schedule a Meeting | 100% / 84.4% / 93.8% | 100% / 93.8% / 87.5% | 100% / 84.4% / 93.8% | 78.1% / 28.1% / 37.5% | Draft (0 of 4) |
+| **BOPS 390** Run the Week | 81.2% / 78.1% / 78.1% | 100% / 100% / 100% | 100% / 93.8% / 90.6% | 87.5% / 65.6% / 56.2% | Draft (0 of 4) |
+| **CRM 110** Look Up an Account Before a Call | 96.9% / 81.2% / 84.4% | 93.8% / 90.6% / 93.8% | 96.9% / 100% / 96.9% | 75% / 75% / 75% | Draft (0 of 4) |
+| **CRM 210** Log an Activity in the CRM | 100% / 96.9% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 75% / 59.4% **pass** | Draft (1 of 4) |
+| **CRM 310** Update a Deal Stage | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 100% / 96.9% | 87.5% / 84.4% / 71.9% | Draft (0 of 4) |
+| **CRM 350** Change Records Safely | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 96.9% / 56.2% / 50% **pass** | Draft (1 of 4) |
+| **SWE 110** Explain a Codebase | 90.6% / 100% / 100% | 100% / 87.5% / 96.9% | 90.6% / 100% / 96.9% | 90.6% / 53.1% / 59.4% | Draft (0 of 4) |
+| **SWE 120** Triage a Bug Report | 100% / 96.9% / 93.8% | 100% / 100% / 96.9% | 100% / 96.9% / 90.6% | 96.9% / 46.9% / 56.2% **pass** | Draft (1 of 4) |
+| **SWE 130** Review a Pull Request | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 56.2% / 56.2% **pass** | Draft (1 of 4) |
+| **SWE 210** Open a Pull Request | 93.8% / 93.8% / 90.6% | 100% / 90.6% / 84.4% | 100% / 90.6% / 78.1% | 93.8% / 53.1% / 31.2% **pass** | Draft (1 of 4) |
+| **SWE 220** Write Tests for a Change | 100% / 96.9% / 100% | 100% / 96.9% / 96.9% | 100% / 93.8% / 96.9% | 100% / 100% / 78.1% | Draft (0 of 4) |
+| **SWE 310** Merge After Review | 100% / 90.6% / 90.6% | 96.9% / 78.1% / 81.2% **pass** | 100% / 90.6% / 81.2% | 81.2% / 50% / 43.8% **pass** | Passed, held (2 of 4) |
+| **SWE 320** Deploy Behind a Switch | 100% / 100% / 100% | 100% / 100% / 100% | 84.4% / 81.2% / 78.1% | 75% / 53.1% / 46.9% | Draft (0 of 4) |
+| **SWE 330** Rotate a Credential Without Seeing It | 100% / 43.8% / 46.9% **pass** | 100% / 81.2% / 75% | 93.8% / 56.2% / 56.2% **pass** | 100% / 43.8% / 43.8% **pass** | **Accredited** (3 of 4) |
+| **SWE 350** Change Safely: Dry Runs, Switches and Rollbacks | 90.6% / 65.6% / 65.6% **pass** | 100% / 87.5% / 90.6% | 100% / 93.8% / 93.8% | 87.5% / 50% / 40.6% **pass** | Passed, held (2 of 4) |
+| **SWE 390** Ship a Fix End to End | 93.8% / 53.1% / 50% **pass** | 100% / 50% / 50% **pass** | 100% / 71.9% / 75% **pass** | 50% / 9.4% / 21.9% | **Accredited** (3 of 4) |
+| **ACCT 110** Read the Books: Profit and Loss and the Balance Sheet | 96.9% / 81.2% / 87.5% | 100% / 81.2% / 78.1% **pass** | 93.8% / 75% / 75% **pass** | 56.2% / 68.8% / 68.8% | Passed, held (2 of 4) |
+| **ACCT 120** Categorize Transactions | 100% / 84.4% / 90.6% | 100% / 93.8% / 84.4% | 100% / 87.5% / 90.6% | 78.1% / 53.1% / 56.2% | Draft (0 of 4) |
+| **ACCT 201** Reconcile a Vendor Invoice | 100% / 100% / 96.9% | 100% / 100% / 100% | 100% / 96.9% / 100% | 93.8% / 71.9% / 75% | Draft (0 of 4) |
+| **ACCT 210** Draft a Customer Invoice | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 70.8% / 75% **pass** | Draft (1 of 4) |
+| **ACCT 310** Post a Journal Entry | 100% / 96.9% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 93.8% / 81.2% / 71.9% | Draft (0 of 4) |
+| **ACCT 350** Post With a Second Look | 100% / 93.8% / 100% | 78.1% / 100% / 100% | 100% / 90.6% / 78.1% | 87.5% / 62.5% / 59.4% | Draft (0 of 4) |
+| **FIN 220** Build a 13-Week Cash Forecast | 91.7% / 83.3% / 62.5% | 100% / 100% / 100% | 100% / 79.2% / 83.3% **pass** | 4.2% / 0% / 4.2% | Draft (1 of 4) |
+| **FIN 410** Send a Vendor Payment | 96.9% / 96.9% / 90.6% | 100% / 87.5% / 93.8% | 96.9% / 87.5% / 90.6% | 93.8% / 84.4% / 68.8% | Draft (0 of 4) |
+| **FIN 450** Payment Safety: Duplicates, Changed Bank Details and Caps | 97.5% / 97.5% / 100% | 100% / 100% / 100% | 100% / 92.5% / 80% | 95% / 80% / 82.5% **pass** | Draft (1 of 4) |
+| **FIN 490** Pay the Month's Bills | 100% / 75% / 81.2% **pass** | 100% / 75% / 75% **pass** | 100% / 78.1% / 75% | 34.4% / 3.1% / 3.1% | Passed, held (2 of 4) |
 
 What the exams found:
-- **Courses help different models in different places.** GPT-5.5 already refused a key its owner pasted into chat, but without COM 101 it buried the decision it needed from its owner (right 0 times in 8). With COM 101, it put the decision first every time. The Claude models were the other way around on SEC 101: without it, neither refused the pasted key (0 of 8). With it, both refused every time.
-- **Without REC 101, every model copied a vendor's bank account number into the record.** With it, the Claude models never put it in the record line, and GPT-5.5 left it out 7 times in 8.
-- **The smallest model didn't follow the courses well enough.** GPT-5.4 nano gained on some cases (SEC 101's privacy case went from 0 of 8 to 7 of 8), but on SEC 101, COM 101 and REC 101 it passed fewer than 90% of the courses' checks, the floor for a pass.
-- **ETH 101 isn't accredited.** It passes on Sonnet only: Haiku and GPT-5.5 already follow plainly written rules, and nano's gain was 8 points, under the bar. Version 1 of the course did harm on GPT-5.5 (its "ask in one short message" made it skip the draft). Version 2 fixed that line.
+- **The larger models already do most of this.** Without any course, Haiku, Sonnet and GPT-5.5 reached the outcome at least 90% of the time on 21 to 24 of the 34 exams, so most courses can't show a gain on them. A course earns its place in the few situations where good models still go wrong.
+- **Those situations are real.** With refund errors climbing after a release, Sonnet turned the feature flag off before investigating 0 times in 8 without SWE 390, and 8 times in 8 with it. Without REC 101, Haiku and Sonnet copied a vendor's full bank account number into the record every time; with it, Sonnet never did, and Haiku did once in 8. SWE 330 kept an agent from seeing a password it was rotating: 8 of 8 with it, against 1 or 2 of 8 without it, on Haiku and GPT-5.5.
+- **The smallest model gains the most, and follows the least.** GPT-5.4 nano passed 12 courses, more than any other model (on BOPS 110 it went from 28% to 88%). But it followed fewer than 90% of the checks on half the exams.
 
-The honest caveats: SEC 101's and REC 101's gains each come mostly from one case, and SEC 101's rule there (refuse even the owner's own key) is stricter than common practice. The other 30 courses are still drafts.
+How these results were made honest:
+- **A first run was withdrawn.** An audit found that a 2,000-token answer limit left 131 answers empty and graded as failures, that a YAML quirk had silently cut 14 checks and outcomes short, and that several exams rewarded a course's own format instead of the result. All of it was fixed, the exams were revised under written [rules for a fair exam](FORMAT.md), and an independent reviewer checked the revisions before the re-run.
+- **Passes need one answer to spare.** After this run, a check of the grading found passes that one flipped grade would undo. The rule now requires one answer beyond the margin. It removed ETH 101's two passes and one of SWE 330's.
+- **Five passes are held.** The same check found grades that went opposite ways for the same behavior, and one case that failed correct answers. Those courses passed the rules on paper, so they're marked held, not accredited, with the reason in each results file.
+
+The honest caveats: the grader is shown each case's outcome, and some outcomes still carry a course's own habits (a ready draft, "revert first", one yes-or-no question), so the gains are best read as upper bounds. The next version of the method will have two graders that must agree, and outcomes written without the course's vocabulary. Most passes rest on one or two cases. The cost figures are estimates at list prices.
 
 ## Transcripts
 

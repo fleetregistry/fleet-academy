@@ -12,7 +12,7 @@ fingerprints:
   cases: 4216db417a381df93bd96fa27c74cff84f39d9b6d104fa9b400798f77d32ba36
   agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
   grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
-  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
 rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
 models:
   claude-haiku-5-5:
@@ -164,7 +164,8 @@ note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI
   cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
   or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
   under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
-  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
-  on no panel model. This course''s first attempt in this run was cut short when the grader account ran out of credit (answers
-  came back as errors, not grades); those rows were set aside unscored and the course was run again in full, with the same
-  4 fixed rounds.'
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. A pass must clear the margin with
+  at least one answer to spare, so one flipped grade cannot make it; that rule was added after an independent check of this
+  run''s grading, applies to every course, and can only remove passes. 0 answers were ungraded. Passes on no panel model.
+  This course''s first attempt in this run was cut short when the grader account ran out of credit (answers came back as errors,
+  not grades); those rows were set aside unscored and the course was run again in full, with the same 4 fixed rounds.'

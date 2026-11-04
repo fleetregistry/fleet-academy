@@ -2,7 +2,7 @@
 number: SWE 350
 title: "Change Safely: Dry Runs, Switches and Rollbacks"
 version: 1
-status: accredited
+status: draft
 college: engineering
 department: SWE
 does: changes
