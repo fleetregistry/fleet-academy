@@ -2,7 +2,7 @@
 number: CRM 310
 title: Update a Deal Stage
 version: 1
-status: draft
+status: accredited
 college: business
 department: CRM
 does: changes

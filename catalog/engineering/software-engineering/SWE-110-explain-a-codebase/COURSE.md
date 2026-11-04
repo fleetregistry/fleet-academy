@@ -2,7 +2,7 @@
 number: SWE 110
 title: Explain a Codebase
 version: 1
-status: draft
+status: accredited
 college: engineering
 department: SWE
 does: reads

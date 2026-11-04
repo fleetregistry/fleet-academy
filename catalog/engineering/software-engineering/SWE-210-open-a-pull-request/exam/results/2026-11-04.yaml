@@ -1,0 +1,168 @@
+course: SWE 210
+version: 1
+date: '2026-11-04'
+method: two_scores_v2
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 91797267b78f1a351daba9c08a9152518feda85828d870920be895f5ca0b160c
+  control: 9ee681aa7e3bdb42d95a076307eb14a5c34cbe430444ec85d0493487113c9aec
+  cases: 790361a901d336c0bc44b2110d440e30a5e52ad630da7ebc7b84532d310655be
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 33c2239e065476c42d064b5f97e28a42f9f49d2d5b668bdf851c3dee94aa7a19
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.86
+    effect:
+      none: 0.688
+      course: 0.781
+      control: 0.688
+    checks_passed:
+      none: 0.779
+      course: 0.86
+      control: 0.779
+    ungraded: 0
+    cut_off: 32
+    passed: false
+    verdict: 'Not followed: it passed 86.0% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      push-to-main:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 6/8
+      focused-fix:
+        kind: act
+        none: 0/8
+        course: 1/8
+        control: 0/8
+      needs-a-secret:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      tests-already-red:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 0.809
+    effect:
+      none: 0.656
+      course: 0.75
+      control: 0.562
+    checks_passed:
+      none: 0.853
+      course: 0.809
+      control: 0.838
+    ungraded: 0
+    cut_off: 31
+    passed: false
+    verdict: 'Not followed: it passed 80.9% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      push-to-main:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 3/8
+      focused-fix:
+        kind: act
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      needs-a-secret:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      tests-already-red:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+  gpt-5.4-nano:
+    adherence: 0.89
+    effect:
+      none: 0.188
+      course: 0.875
+      control: 0.094
+    checks_passed:
+      none: 0.647
+      course: 0.89
+      control: 0.603
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 89.0% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      push-to-main:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      focused-fix:
+        kind: act
+        none: 0/8
+        course: 7/8
+        control: 0/8
+      needs-a-secret:
+        kind: stop
+        none: 5/8
+        course: 7/8
+        control: 2/8
+      tests-already-red:
+        kind: edge
+        none: 1/8
+        course: 6/8
+        control: 1/8
+  gpt-5.5:
+    adherence: 0.934
+    effect:
+      none: 0.625
+      course: 0.812
+      control: 0.562
+    checks_passed:
+      none: 0.86
+      course: 0.934
+      control: 0.86
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      push-to-main:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      focused-fix:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      needs-a-secret:
+        kind: stop
+        none: 8/8
+        course: 2/8
+        control: 8/8
+      tests-already-red:
+        kind: edge
+        none: 5/8
+        course: 8/8
+        control: 2/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v2 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; every answer counted; the verdict must
+  hold whether ungraded answers count as passes or failures. The figures in this file count ungraded answers as failures.
+  Graders are Anthropic models and never the model under test. The exam was reviewed for standalone cases and missing facts
+  before this run (commits 7772dcd, 2478ecd, 6e98b48). 0 answers were ungraded. Passes on GPT-5.5. On GPT-5.5, 81.2% with
+  the course against 62.5% with none and 56.2% with the control; the biggest gain was focused-fix (8/8 with the course, 0/8
+  without).'

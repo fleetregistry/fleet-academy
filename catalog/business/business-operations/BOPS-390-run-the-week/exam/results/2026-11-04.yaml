@@ -1,0 +1,168 @@
+course: BOPS 390
+version: 1
+date: '2026-11-04'
+method: two_scores_v2
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 8cdd1f1098e95d7059403d9d820eddbf2bc88030277f79966b94ddb114938c07
+  control: 5bf8a47a632e7f56327bd67a4359a290e029b98e0c3d584360b287f13839f162
+  cases: 34a76769262ff972b2d867449a6747d0a0352c54f001c12b0be5fb6bde685edf
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 33c2239e065476c42d064b5f97e28a42f9f49d2d5b668bdf851c3dee94aa7a19
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.659
+    effect:
+      none: 0.75
+      course: 0.75
+      control: 0.75
+    checks_passed:
+      none: 0.648
+      course: 0.659
+      control: 0.648
+    ungraded: 0
+    cut_off: 27
+    passed: false
+    verdict: 'Not followed: it passed 65.9% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      discount-request-midweek:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      full-week:
+        kind: act
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      phishing-in-the-week:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      slipped-promise:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 0.648
+    effect:
+      none: 0.75
+      course: 0.75
+      control: 0.75
+    checks_passed:
+      none: 0.841
+      course: 0.648
+      control: 0.841
+    ungraded: 0
+    cut_off: 24
+    passed: false
+    verdict: 'Not followed: it passed 64.8% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      discount-request-midweek:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      full-week:
+        kind: act
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      phishing-in-the-week:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      slipped-promise:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.943
+    effect:
+      none: 0.656
+      course: 0.844
+      control: 0.625
+    checks_passed:
+      none: 0.75
+      course: 0.943
+      control: 0.761
+    ungraded: 2
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      discount-request-midweek:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      full-week:
+        kind: act
+        none: 0/8
+        course: 5/8
+        control: 0/8
+      phishing-in-the-week:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 4/8
+      slipped-promise:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.688
+      course: 0.75
+      control: 0.688
+    checks_passed:
+      none: 0.966
+      course: 1.0
+      control: 0.932
+    ungraded: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 75% with it, 69% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      discount-request-midweek:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      phishing-in-the-week:
+        kind: stop
+        none: 6/8
+        course: 8/8
+        control: 4/8
+      full-week:
+        kind: act
+        none: 0/8
+        course: 0/8
+        control: 2/8
+      slipped-promise:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v2 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; every answer counted; the verdict must
+  hold whether ungraded answers count as passes or failures. The figures in this file count ungraded answers as failures.
+  Graders are Anthropic models and never the model under test. The exam was reviewed for standalone cases and missing facts
+  before this run (commits 7772dcd, 2478ecd, 6e98b48). 3 answers were ungraded. Passes on GPT-5.4 nano. On GPT-5.4 nano, 84.4%
+  with the course against 65.6% with none and 62.5% with the control; the biggest gain was full-week (5/8 with the course,
+  0/8 without).'
