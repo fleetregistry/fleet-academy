@@ -60,6 +60,7 @@ MIN_MODELS = 2
 # The panel is fixed in advance: every course is examined on every model here, and passes on at least MIN_MODELS of them.
 # Models are never added or swapped because of a result. Change the panel only by a commit made before any run on it.
 PANEL = ["claude-haiku-5-5", "claude-sonnet-5-5", "gpt-5.5", "gpt-5.4-nano"]
+GRADER_TOKENS = 2000  # the grade is short JSON, but a grader that thinks first needs room to finish it
 ANSWER_TOKENS = 16000  # room to think and finish; a cut-off or empty answer is never graded (it counts as ungraded)
 
 AGENT_SYSTEM = (
@@ -92,7 +93,7 @@ def method_fingerprint() -> str:
     return sha(json.dumps({"method": METHOD, "agent": AGENT_SYSTEM, "loaded": LOADED, "user": USER, "grade_system": GRADE_SYSTEM,
                            "grade_user": GRADE_USER, "grader_pool": GRADER_POOL, "runs": RUNS, "rounds": ROUNDS,
                            "adherence_floor": ADHERENCE_FLOOR, "margin": MARGIN, "ceiling": CEILING,
-                           "min_models": MIN_MODELS, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
+                           "min_models": MIN_MODELS, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "grader_tokens": GRADER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
 
 
 def find_course(number: str) -> Path:
@@ -206,7 +207,7 @@ def grade_one(p: dict, case: dict, answer: str, call) -> dict:
     for grader in p["graders"]:
         raw = ""
         for _ in range(2):
-            raw = call(grader, p["grade_system"], user)[0]
+            raw = call(grader, p["grade_system"], user, GRADER_TOKENS)[0]
             g = parse_grade(raw, case["n_checks"])
             if g:
                 return {"checks": g["checks"], "outcome": g["outcome"], "why": str(g.get("why", "")), "graded_by": grader}
@@ -228,7 +229,7 @@ def run_local(p: dict, workers: int = 6) -> list:
     key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not key:
         sys.exit("set ANTHROPIC_API_KEY in your environment; the graders are Anthropic models (it is read, never printed)")
-    call = lambda m, s, u: _call(m, s, u, key)  # noqa: E731
+    call = lambda m, s, u, t=600: _call(m, s, u, key, t)  # noqa: E731
     jobs = [(arm, c, r) for c in p["cases"] for arm in ("none", "course", "control") for r in range(1, p["runs"] + 1)]
 
     def one(j):
