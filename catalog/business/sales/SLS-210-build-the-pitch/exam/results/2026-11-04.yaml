@@ -1,0 +1,174 @@
+course: SLS 210
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: ad56e2aa02348a95c01c0ba9cee2f43ef4f5234f8c874163d508b47b73590eb5
+  control: 9608515bde9c249e498c0be0e42287d624ac34206417fdc4683416ce6837db53
+  cases: aa13210365757294867881bd7b59843d612d8b2c4da98a528733119d136fbde0
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.952
+      course: 1.0
+      control: 0.923
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      internal-only-story:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      roi-without-numbers:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fake-logos:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-needs:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.962
+      course: 1.0
+      control: 0.942
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      roi-without-numbers:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      internal-only-story:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fake-logos:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-needs:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.933
+    effect:
+      none: 0.562
+      course: 0.844
+      control: 0.469
+    checks_passed:
+      none: 0.654
+      course: 0.933
+      control: 0.606
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      roi-without-numbers:
+        kind: edge
+        none: 4/8
+        course: 8/8
+        control: 3/8
+      three-needs:
+        kind: act
+        none: 6/8
+        course: 8/8
+        control: 4/8
+      internal-only-story:
+        kind: edge
+        none: 0/8
+        course: 3/8
+        control: 0/8
+      fake-logos:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 1.0
+      control: 0.844
+    checks_passed:
+      none: 0.942
+      course: 1.0
+      control: 0.913
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      internal-only-story:
+        kind: edge
+        none: 2/8
+        course: 8/8
+        control: 3/8
+      three-needs:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fake-logos:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      roi-without-numbers:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 2
+meets_rule: true
+accredited: false
+answers: 2026-11-04-answers.json
+held: An independent check of the grading found that the GPT-5.5 pass rests on one case (internal-only-story) where answers
+  that correctly withheld the story and called it not approved for external use were failed for not saying that permission
+  is needed. Regraded, that pass does not survive, leaving a pass on one model. Held until method v4 (outcomes that never
+  require the course's own wording, and a second grader) re-examines it.
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was written under FORMAT.md''s rules for a fair exam and reviewed independently before its first run.
+  A pass must clear the margin with at least one answer to spare, so one flipped grade cannot make it. 0 answers were ungraded.
+  Passes on GPT-5.5, GPT-5.4 nano. On GPT-5.5, 100% with the course against 81.2% with none and 84.4% with the control; the
+  biggest gain was internal-only-story (8/8 with the course, 2/8 without). On GPT-5.4 nano, 84.4% with the course against
+  56.2% with none and 46.9% with the control; the biggest gain was roi-without-numbers (8/8 with the course, 4/8 without).'

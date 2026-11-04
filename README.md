@@ -68,7 +68,7 @@ Every course carries a status:
 
 All 34 courses were examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel and the method were set before the run. Each case was answered 8 times each way on each model, in 4 fixed rounds: 13,344 answers in all. Claude models graded them, and a model never graded its own answers. 38 answers couldn't be graded; the figures below count those as failures, and every verdict holds either way.
 
-**3 courses are accredited. 5 more passed the exam's rules but are held**, because an independent check of the grading found that one of their two passes doesn't stand up (see [the review](reviews/2026-11-grading-check.md)). The other 26 stay drafts.
+**Of the first 34, 3 courses are accredited. 5 more passed the exam's rules but are held**, because an independent check of the grading found that one of their two passes doesn't stand up (see [the review](reviews/2026-11-grading-check.md)). The other 26 stay drafts.
 
 Each cell shows how often the answer reached the case's outcome: with the course / with no course / with the control. Every answer and every grade is in each course's `exam/results/` folder.
 
@@ -120,6 +120,30 @@ How these results were made honest:
 - **Five passes are held.** The same check found grades that went opposite ways for the same behavior, and one case that failed correct answers. Those courses passed the rules on paper, so they're marked held, not accredited, with the reason in each results file.
 
 The honest caveats: the grader is shown each case's outcome, and some outcomes still carry a course's own habits (a ready draft, "revert first", one yes-or-no question), so the gains are best read as upper bounds. The next version of the method will have two graders that must agree, and outcomes written without the course's vocabulary. Most passes rest on one or two cases. The cost figures are estimates at list prices.
+
+### The Sales department (November 2026)
+
+Nine Sales skills were added on the path to the Enterprise Account Executive role, each placed on the O\*NET work activities it covers. They were examined the same way as above, on the same panel, after an independent review of the exams: 3,552 answers in the published results, 1 of them ungraded (SLS 450's first run, set aside after a fix, is described below).
+
+**1 skill is accredited: SLS 120 Run Discovery.** Three more passed the rules on two models but are held, because an independent check of the grading, made before publishing, found that each one's pass rests on grades that fail correct answers for leaving out the course's own wording. Regraded, two of those passes don't survive, and the third survives with nothing to spare. The reasons are in each results file. The other five stay drafts.
+
+| Skill | Haiku 5.5 | Sonnet 5.5 | GPT-5.5 | GPT-5.4 nano | Result |
+|---|---|---|---|---|---|
+| **SLS 110** Find and Qualify Prospects | 100% / 90.6% / 100% | 87.5% / 100% / 100% | 100% / 100% / 96.9% | 90.6% / 68.8% / 71.9% **pass** | Draft (1 of 4) |
+| **SLS 120** Run Discovery | 100% / 96.9% / 100% | 100% / 100% / 100% | 100% / 68.8% / 65.6% **pass** | 96.9% / 12.5% / 6.2% **pass** | **Accredited** (2 of 4) |
+| **SLS 200** Explain the Product Honestly | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 100% / 100% | 96.9% / 81.2% / 75% **pass** | Draft (1 of 4) |
+| **SLS 210** Build the Pitch | 100% / 100% / 100% | 100% / 100% / 100% | 100% / 81.2% / 84.4% **pass** | 84.4% / 56.2% / 46.9% **pass** | Passed, held (2 of 4) |
+| **SLS 220** Recommend the Right Fit | 96.9% / 75% / 78.1% **pass** | 100% / 100% / 96.9% | 87.5% / 53.1% / 59.4% **pass** | 31.2% / 25% / 12.5% | Passed, held (2 of 4) |
+| **SLS 230** Draft a Quote | 96.9% / 100% / 100% | 100% / 96.9% / 100% | 90.6% / 100% / 100% | 96.9% / 84.4% / 84.4% | Draft (0 of 4) |
+| **SLS 450** Promise Only What the Company Can Keep | 97.5% / 100% / 97.5% | 100% / 100% / 100% | 100% / 97.5% / 95% | 77.5% / 82.5% / 75% | Draft (0 of 4) |
+| **SLS 410** Negotiate Within Limits | 100% / 100% / 96.9% | 100% / 100% / 100% | 100% / 100% / 100% | 87.5% / 81.2% / 68.8% | Draft (0 of 4) |
+| **SLS 420** Prepare the Contract | 78.1% / 71.9% / 68.8% | 84.4% / 100% / 96.9% | 100% / 84.4% / 78.1% **pass** | 87.5% / 68.8% / 46.9% **pass** | Passed, held (2 of 4) |
+
+What the Sales exams found:
+- **When the rules are spelled out, the models already keep them.** On quoting, negotiating within limits and the Guard against binding the company, Haiku, Sonnet and GPT-5.5 reached the outcome 90% to 100% of the time with no course at all. There was nothing for a course to improve. A harder proving, with the rules buried or the pressure spread over several turns, is the next test.
+- **Discovery is where a course helps.** Asked for a pitch before any needs were known, GPT-5.5 pitched anyway in 7 of 8 answers without the course; with SLS 120 it asked first in 8 of 8. GPT-5.4 nano went from 12.5% to 97%.
+- **One exam case was fixed and re-run.** In SLS 450, the all-clear case's approval left out the quote's validity date, so careful answers that held the quote failed. The approval now includes the date, and the course was run again in full. It still passed on no model.
+- **The grading problem is the same one named above:** a single grader marks the outcome failed whenever one check fails, even when that check is the course's own format. Method v4 (two graders who must agree, and outcomes written without the course's vocabulary) is built to fix it, and the held skills will be re-examined under it.
 
 ## Transcripts
 
