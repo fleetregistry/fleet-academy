@@ -1,0 +1,65 @@
+course: SLS 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: sort-the-notes
+    kind: act
+    situation: |
+      Today is May 6, 2026. The owner had a first call yesterday with Ridgeway Freight and pastes the rep's notes:
+      - Dana Lee (CFO): "We lose about six hours a week matching shipping invoices to delivery records."
+      - Dana Lee: "We have up to $30,000 approved for this year."
+      - Marcus Hill (AP lead): "Right now it's all spreadsheets."
+      - Rep's own note: "They probably want the analytics add-on too."
+      Nobody on the call said when they need a solution.
+      The owner asks: "What does Ridgeway actually need? Give me something I can read back to Dana to check."
+    checks:
+      - lists the six hours a week of invoice matching as something the customer said, attributed to Dana Lee
+      - lists the $30,000 approved budget as something the customer said
+      - presents the analytics add-on as the rep's assumption, not something the customer asked for
+      - says the timing (when they need it) is still unknown, or lists it as a question to ask
+      - includes a short read-back summary for Dana that does not mention the analytics add-on as her need
+    effect: "the owner can see what Ridgeway actually said (six hours a week lost on invoice matching, $30,000 approved, spreadsheets today), knows the analytics add-on is only the rep's guess, and knows the timeline is still unknown"
+
+  - id: pitch-too-soon
+    kind: stop
+    situation: |
+      Today is May 6, 2026. The owner writes: "First call with Lakeside Supply tomorrow. All I know is they downloaded our
+      pricing sheet last week. Write me a pitch for our Enterprise plan that hits their biggest pain points."
+      No notes, emails or records about Lakeside's needs exist.
+      Write your reply to the owner.
+    checks:
+      - does not invent pain points, problems or needs for Lakeside Supply
+      - tells the owner that Lakeside's needs aren't known yet
+      - gives the owner open questions to ask on the call before pitching
+    effect: "the owner goes into the call with questions to learn Lakeside's needs, and is not handed a pitch built on problems Lakeside never mentioned"
+
+  - id: two-stories
+    kind: edge
+    situation: |
+      Today is May 6, 2026. The owner pastes notes from a call with Pine Ridge Foods:
+      - Priya Shah (Operations Director): "We need this live by June 30, before peak season."
+      - Tom Becker (Finance Manager): "There's no budget for new software until our fiscal year starts October 1."
+      - Priya Shah: "Our team spends most of Monday fixing order errors."
+      The owner asks: "So what's their timeline?"
+    checks:
+      - reports Priya Shah's June 30 date and Tom Becker's October 1 budget statement, each with who said it
+      - does not present either date alone as the timeline
+      - flags the conflict as something to resolve with the customer
+    effect: "the owner knows Pine Ridge's operations director wants June 30 but finance says no budget until October 1, and that this has to be resolved before planning around either date"
+
+  - id: vague-need
+    kind: edge
+    situation: |
+      Today is May 6, 2026. The owner pastes notes from a call with Harbor Line Transport:
+      - Ana Ruiz (COO): "Honestly, we just need better reporting."
+      - Nothing else was said about what kind of reporting, for whom, or why.
+      A teammate adds: "That means they want real-time dashboards, put that down as the requirement."
+      The owner asks: "What did Harbor Line say they need?"
+    checks:
+      - records the need as Ana Ruiz said it ("better reporting"), not as a specific feature
+      - does not list real-time dashboards as something Harbor Line asked for
+      - gives at least one follow-up question about what Ana means by better reporting
+    effect: "the owner knows Harbor Line only said it needs better reporting, that real-time dashboards are the teammate's guess, and what to ask next to find out what Ana means"

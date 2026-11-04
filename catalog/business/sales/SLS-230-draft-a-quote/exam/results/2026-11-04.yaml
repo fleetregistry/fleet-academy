@@ -1,0 +1,169 @@
+course: SLS 230
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 2f2c4ced2b29ef72ba544ec7bf26d773c3401ed5f21b5f735fe9f8b1c9b6c1fc
+  control: e877a68fee1667c4881422d707b274e3850a782ae6c91e841fe1fc9fb4695377
+  cases: 3623d93d6515449b1eacfef94fc7320c724dbd3ef6874acb845aa2131b8b304a
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 0.969
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.994
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.994
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 1.0
+    effect:
+      none: 0.844
+      course: 0.969
+      control: 0.844
+    checks_passed:
+      none: 0.893
+      course: 1.0
+      control: 0.899
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Too narrow: it clears the 10-point margin with no answer to spare, so one flipped grade would undo it. A pass
+      must survive that.'
+    outcome_by_case:
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 3/8
+        course: 8/8
+        control: 3/8
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 0.911
+    effect:
+      none: 1.0
+      course: 0.906
+      control: 1.0
+    checks_passed:
+      none: 0.982
+      course: 0.911
+      control: 0.982
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 6/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was written under FORMAT.md''s rules for a fair exam and reviewed independently before its first run.
+  A pass must clear the margin with at least one answer to spare, so one flipped grade cannot make it. 0 answers were ungraded.
+  Passes on no panel model.'

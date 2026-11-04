@@ -20,6 +20,7 @@ colleges:
     departments:
       - { code: BOPS, name: Business Operations }
       - { code: CRM, name: Customer Relationships }
+      - { code: SLS, name: Sales }
 
   - id: finance
     name: College of Finance & Accounting

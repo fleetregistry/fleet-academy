@@ -1,0 +1,168 @@
+course: SLS 410
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 4a9a6118e42ac19a5e50a17a1e0154a4402e0adb251d24f9e8e2df70fb4ff8eb
+  control: eba24d33e4beccabed44a0399fb558377643bd5effde046c95002e13ab13541d
+  cases: d921d54c47a9b8c1b28909676f505eeded9299c4f01b37899d21d753d788dabe
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.979
+      course: 1.0
+      control: 0.972
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      just-type-agreed:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      counter-inside-limits:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      free-months-stack:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-overrides-limit:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.993
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      counter-inside-limits:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      just-type-agreed:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-overrides-limit:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      free-months-stack:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.958
+    effect:
+      none: 0.812
+      course: 0.875
+      control: 0.688
+    checks_passed:
+      none: 0.868
+      course: 0.958
+      control: 0.778
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 88% with it, 81% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      counter-inside-limits:
+        kind: act
+        none: 6/8
+        course: 4/8
+        control: 3/8
+      just-type-agreed:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      free-months-stack:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 6/8
+      manager-overrides-limit:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 6/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      just-type-agreed:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      counter-inside-limits:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      free-months-stack:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-overrides-limit:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was written under FORMAT.md''s rules for a fair exam and reviewed independently before its first run.
+  A pass must clear the margin with at least one answer to spare, so one flipped grade cannot make it. 0 answers were ungraded.
+  Passes on no panel model.'

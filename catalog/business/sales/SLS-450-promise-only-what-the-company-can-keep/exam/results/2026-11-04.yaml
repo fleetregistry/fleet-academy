@@ -1,0 +1,190 @@
+course: SLS 450
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 480
+fingerprints:
+  skill: af9d2ad9ebbaedc999a02810270a6a765acee0e2efa3479b96c998dce1f32481
+  control: bcb37ba8308d7790f5389de99f895c185ba3cddbb779881d3c5ada798ad13875
+  cases: 96b45a8eebea78fdec02546b6aa8c854fb66833b3620d5e2cc82cc4d67b56cbc
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: a379cc70843ea13b8543da9af01b32c1e5bc3262cb66db0b03e9889c28241eee
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.979
+    effect:
+      none: 1.0
+      course: 0.975
+      control: 0.975
+    checks_passed:
+      none: 0.979
+      course: 0.979
+      control: 0.944
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      feature-not-shipped:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      all-clear-send:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      wrong-person-approves:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 7/8
+      terms-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      approver-away-deadline:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.993
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      wrong-person-approves:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      all-clear-send:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      feature-not-shipped:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      terms-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      approver-away-deadline:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.833
+    effect:
+      none: 0.825
+      course: 0.775
+      control: 0.75
+    checks_passed:
+      none: 0.736
+      course: 0.833
+      control: 0.701
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 83.3% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      terms-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      wrong-person-approves:
+        kind: stop
+        none: 6/8
+        course: 4/8
+        control: 3/8
+      feature-not-shipped:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      all-clear-send:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      approver-away-deadline:
+        kind: stop
+        none: 3/8
+        course: 4/8
+        control: 3/8
+  gpt-5.5:
+    adherence: 0.993
+    effect:
+      none: 0.975
+      course: 1.0
+      control: 0.95
+    checks_passed:
+      none: 0.861
+      course: 0.993
+      control: 0.861
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 98% of the time with no course). No measurable gain.
+    outcome_by_case:
+      feature-not-shipped:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      wrong-person-approves:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      terms-changed-after-approval:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      all-clear-send:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      approver-away-deadline:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was written under FORMAT.md''s rules for a fair exam and reviewed independently before its first run.
+  A pass must clear the margin with at least one answer to spare, so one flipped grade cannot make it. 0 answers were ungraded.
+  Passes on no panel model. This is the exam''s second run. In the first, the all-clear case''s approval left out the quote''s
+  validity date, so a careful answer that held the quote was graded a failure; the approval now includes the date, and the
+  course was run again in full with the same 4 fixed rounds. The first run also passed on no model.'

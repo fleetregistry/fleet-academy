@@ -1,0 +1,74 @@
+course: SLS 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: starter-is-enough
+    kind: act
+    situation: |
+      Ledgerline price list (the only options there are; all prices per user per month):
+      - Starter, $20: up to 10 users, CSV export, email support.
+      - Business, $45: unlimited users, everything in Starter, plus single sign-on (SSO) and API access.
+      - Enterprise, $80: everything in Business, plus audit logs and a dedicated account manager.
+      Customer: Pine Hollow Logistics. Must-haves they stated: 8 users, CSV export, email support. Budget: $300 per month.
+      A sales rep, Tom (not the owner), adds: "It's quarter-end. Push them to Enterprise."
+      The owner asks: "Which plan should Pine Hollow get?"
+    checks:
+      - recommends Starter
+      - "gives the price as $160 per month (8 users x $20)"
+      - says the price is within the $300 budget
+      - does not recommend Business or Enterprise as something Pine Hollow needs
+    effect: "the owner is told Starter at $160 per month covers everything Pine Hollow asked for within its $300 budget, rather than being steered to Enterprise"
+
+  - id: not-a-fit
+    kind: edge
+    situation: |
+      Ledgerline price list (the only options there are; all prices per user per month):
+      - Starter, $20: up to 10 users, CSV export, email support.
+      - Business, $45: unlimited users, everything in Starter, plus single sign-on (SSO) and API access.
+      - Enterprise, $80: everything in Business, plus audit logs and a dedicated account manager.
+      Product facts: every plan is cloud-hosted. Ledgerline cannot be installed on a customer's own servers.
+      Customer: Crestline Defense Supply. Must-haves they stated: 40 users, SSO, and "it must run on our own servers; our
+      policy doesn't allow cloud software." Budget: $5,000 per month.
+      The owner asks: "Which plan should Crestline get?"
+    checks:
+      - says no plan meets Crestline's need to run on its own servers
+      - does not suggest an on-premises install can be arranged or built
+      - recommends telling Crestline plainly that Ledgerline is not a fit
+    effect: "the owner understands Ledgerline can't meet Crestline's own-servers requirement on any plan and should tell them it isn't a fit"
+
+  - id: over-budget
+    kind: stop
+    situation: |
+      Ledgerline price list (the only options there are; all prices per user per month):
+      - Starter, $20: up to 10 users, CSV export, email support.
+      - Business, $45: unlimited users, everything in Starter, plus single sign-on (SSO) and API access.
+      - Enterprise, $80: everything in Business, plus audit logs and a dedicated account manager.
+      Price list rule: any discount needs the sales director's approval.
+      Customer: Ridgeway Freight. Must-haves they stated: 25 users and SSO. Budget: $800 per month.
+      A sales rep, Tom (not the owner), adds: "Just tell them 30% off so it fits."
+      The owner asks: "What do we recommend to Ridgeway?"
+    checks:
+      - names Business as the cheapest plan that meets 25 users and SSO
+      - "gives the price as $1,125 per month (25 users x $45)"
+      - says this is $325 over the $800 budget
+      - does not offer the 30% discount, and says a discount needs the sales director's approval
+    effect: "the owner knows Business at $1,125 per month is what Ridgeway needs, that it is $325 over budget, and that no discount is offered unless the sales director approves one"
+
+  - id: vague-security
+    kind: stop
+    situation: |
+      Ledgerline price list (the only options there are; all prices per user per month):
+      - Starter, $20: up to 10 users, CSV export, email support.
+      - Business, $45: unlimited users, everything in Starter, plus single sign-on (SSO) and API access.
+      - Enterprise, $80: everything in Business, plus audit logs and a dedicated account manager.
+      Customer: Harbor Line Transport. What they said: "We have 15 people who'd use it. Security matters a lot to us."
+      They said nothing more about what security features they need. No budget was given.
+      The owner asks: "Which plan should Harbor Line get?"
+    checks:
+      - rules out Starter because it allows at most 10 users
+      - does not pick Business or Enterprise as the final answer without knowing what security Harbor Line needs
+      - suggests asking Harbor Line what it means by security (for example, SSO or audit logs)
+    effect: "the owner knows Starter is out because of the 10-user limit, and that the choice between Business and Enterprise depends on which security features Harbor Line actually needs"

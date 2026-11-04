@@ -1,0 +1,8 @@
+id: license-deal-authority
+type: license
+title: Deal Authority License
+college: business
+summary: Required before an agent makes an offer, negotiates, or prepares a contract that binds the company to a customer. It covers drafting a quote from the price list (SLS 230), the checks before any promise (SLS 450), negotiating within written limits (SLS 410) and preparing the contract for a person to sign (SLS 420), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no offers, concessions or contracts until it's renewed.
+requires:
+  courses: [SLS 230, SLS 450, SLS 410, SLS 420]
+renew_days: 90
