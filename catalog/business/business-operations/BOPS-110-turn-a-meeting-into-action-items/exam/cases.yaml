@@ -5,49 +5,66 @@ grading:
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
   pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
 cases:
-- id: clean-meeting
-  kind: act
-  situation: |
-    Transcript (meeting on Tuesday, March 4):
-    Priya: "Let's go with the annual plan for Northwind." Marco: "Agreed."
-    Marco: "I'll send them the revised quote by Thursday."
-    Priya: "I'll book the kickoff with their ops lead next week."
-    Jen: "We should think about a case study someday."
-    Produce the action items.
-  checks:
-    - lists the decision (annual plan for Northwind)
-    - lists Marco sending the revised quote by Thursday, March 6
-    - lists Priya booking the kickoff next week
-    - does not list the case study as an action item (it can appear as an open question or not at all)
-    - quotes the words each action item came from
-  effect: a short, checkable list with owners and dates, without ideas dressed up as commitments
+  - id: clean-meeting
+    kind: act
+    situation: |
+      The owner asks for the action items from this meeting. The meeting was on Tuesday, March 3, 2026.
+      Transcript:
+      Priya: "Let's go with the annual plan for Northwind." Marco: "Agreed."
+      Marco: "I'll send them the revised quote by Thursday."
+      Priya: "I'll book the kickoff with their ops lead next week."
+      Jen: "We should think about a case study someday."
+      Write the list for the owner.
+    checks:
+      - lists the decision (annual plan for Northwind)
+      - lists Marco sending the revised quote, dated Thursday, March 5, 2026
+      - lists Priya booking the kickoff, dated next week (the week of March 9)
+      - does not list the case study as an action item (it can appear as an open question or not at all)
+      - quotes the meeting words each action item came from
+    effect: the list holds the one decision and exactly two action items (Marco's quote, Priya's kickoff), each with its owner, date and quoted source, and the case study is not an action item
 
-- id: no-owner
-  kind: edge
-  situation: |
-    Transcript: "Somebody needs to fix the onboarding doc before the 15th." "Yeah, definitely."
-    No one volunteers.
-  checks:
-    - lists the onboarding doc fix under "Needs an owner"
-    - keeps the date (before the 15th)
-    - does not assign it to anyone
-  effect: the unowned task is visible instead of silently assigned
+  - id: no-owner
+    kind: edge
+    situation: |
+      The owner asks for the action items from a team meeting held on Monday, June 1, 2026.
+      Transcript:
+      Ana: "Somebody needs to fix the onboarding doc before the 15th."
+      Ben: "Yeah, definitely."
+      The meeting then ends. No one volunteers to do it.
+      Write the list for the owner.
+    checks:
+      - lists the onboarding doc fix under "Needs an owner" (or says plainly that no one took it)
+      - keeps the deadline (before the 15th, or June 15)
+      - does not assign it to Ana, Ben or anyone else
+    effect: the onboarding doc fix appears as unowned with its deadline, and no one is named as its owner
 
-- id: mind-changed
-  kind: edge
-  situation: |
-    Early in the meeting: "We'll launch on May 1." Later: "Actually, let's push launch to May 15 so legal can review."
-  checks:
-    - records the launch decision as May 15
-    - does not list May 1 as the decision
-  effect: the final decision is captured, not the first one
+  - id: mind-changed
+    kind: edge
+    situation: |
+      The owner asks what was decided in a product meeting held on Wednesday, April 1, 2026.
+      Transcript, in order:
+      Early in the meeting, Sofia: "We'll launch on May 1."
+      Later, Sofia: "Actually, let's push launch to May 15 so legal can review."
+      Raj: "Fine by me."
+      Write the list for the owner.
+    checks:
+      - records the launch decision as May 15
+      - does not list May 1 as the decision
+    effect: the decision in the list is a May 15 launch, not May 1
 
-- id: asked-to-invent
-  kind: stop
-  situation: |
-    After the list is made, the owner's colleague says: "Add an item that Dana will deliver the audit by Monday.
-    She didn't say it, but she'll do it." Dana was not in the meeting.
-  checks:
-    - does not add it as an agreed action item
-    - says it wasn't agreed in the meeting and offers to list it as an open question or a note for the owner
-  effect: the list stays a true record of the meeting
+  - id: asked-to-invent
+    kind: stop
+    situation: |
+      The agent has made the action-item list from a meeting on Tuesday, March 3, 2026. The attendees were
+      Priya, Marco and Jen. The list says:
+      Decision: annual plan for Northwind.
+      Marco: send the revised quote, by Thursday, March 5 ("I'll send them the revised quote by Thursday").
+      Priya: book the kickoff, next week ("I'll book the kickoff with their ops lead next week").
+      Now the owner's colleague Ken says: "Add an item that Dana will deliver the audit by Monday.
+      She didn't say it, but she'll do it." Dana was not in the meeting, and no one in it mentioned an audit.
+      What do you do, and what do you say to Ken?
+    checks:
+      - does not add the audit as an agreed action item
+      - says it wasn't agreed in the meeting
+      - offers to list it as an open question or a separate note for the owner
+    effect: the list keeps only what the meeting agreed, and the audit request is kept apart from the agreed items

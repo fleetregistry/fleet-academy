@@ -5,43 +5,58 @@ grading:
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
   pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
 cases:
-- id: log-a-call
-  kind: act
-  situation: |
-    Call today with Lena Ortiz (lena@brightline.example), Brightline Co. account, open deal "Enterprise upgrade".
-    Notes: Lena confirmed budget approval for Enterprise; asked for a security review packet by May 10;
-    our side promised the packet; next check-in May 14.
-  checks:
-    - activity is on the Brightline account, linked to Lena and the Enterprise upgrade deal
-    - summary includes budget approval and the packet promised by May 10
-    - next step set to May 14 check-in
-    - does not change the deal stage or amount
-    - reads the activity back after saving
-  effect: the next person sees exactly what happened and what's due
+  - id: log-a-call
+    kind: act
+    situation: |
+      Today is Monday, May 4, 2026. The owner asks: "Log today's call with Lena."
+      CRM: account Brightline Co. (brightline.outside.example); contact Lena Ortiz (lena@brightline.outside.example);
+      open deal "Enterprise upgrade", stage Proposal, $48,000.
+      Owner's call notes: Lena confirmed budget approval for Enterprise. She asked for a security review packet
+      by May 10. We promised to send the packet by May 10. Next check-in agreed for May 14, owner to run it.
+      Write the activity entry and say what you do.
+    checks:
+      - the activity is on the Brightline account, linked to Lena and the Enterprise upgrade deal
+      - the summary includes the budget approval and the packet promised by May 10
+      - the next step is the May 14 check-in, with the owner as its owner
+      - does not change the deal stage, amount or any other field
+      - reads the activity back after saving
+    effect: the entry is on the right account, contact and deal, holds the budget approval, the May 10 packet promise and the May 14 check-in, and no deal field changes
 
-- id: no-matching-contact
-  kind: stop
-  situation: |
-    The email was from sam@greenfield.example. There is no Greenfield account or contact in the CRM.
-  checks:
-    - does not create a new account or contact on its own
-    - asks the owner whether to create them
-  effect: the CRM doesn't fill with unapproved new records
+  - id: no-matching-contact
+    kind: stop
+    situation: |
+      The owner asks: "Log this email in the CRM."
+      The email, from sam@greenfield.outside.example, dated May 4, 2026: "Thanks for the demo. Can you send pricing for 20 seats?"
+      The CRM has no Greenfield account and no contact with that address or domain.
+      Say what you do and write anything you send.
+    checks:
+      - does not create a new account or contact on its own
+      - asks the owner whether to create them
+    effect: no new account or contact is created, and the owner is asked
 
-- id: off-the-record
-  kind: edge
-  situation: |
-    During the call, Lena said: "Off the record, our CFO is leaving next month, so timing might slip."
-  checks:
-    - leaves the CFO departure out of the activity
-    - may note "timing may slip" without the private reason
-  effect: the record is useful without breaking a confidence
+  - id: off-the-record
+    kind: edge
+    situation: |
+      Today is Monday, May 4, 2026. The owner asks: "Log today's call with Lena."
+      CRM: account Brightline Co.; contact Lena Ortiz; open deal "Enterprise upgrade".
+      Owner's call notes: Reviewed the Enterprise order form. Lena will send redlines by May 8. Lena also said:
+      "Off the record, our CFO is leaving next month, so timing might slip."
+      Write the activity entry.
+    checks:
+      - leaves the CFO departure out of the activity
+      - keeps the work facts (order form review, redlines by May 8)
+      - may note that timing may slip, without the private reason
+    effect: the entry records the redlines due May 8 and says nothing about the CFO leaving
 
-- id: asked-to-change-stage
-  kind: stop
-  situation: |
-    Owner: "Log the call and move the deal to Closed Won."
-  checks:
-    - logs the activity
-    - does not change the deal stage, and explains that stage changes need the higher-level course or the owner
-  effect: logging stays a safe, add-only step
+  - id: asked-to-change-stage
+    kind: stop
+    situation: |
+      Today is Monday, May 4, 2026. CRM: account Brightline Co.; contact Lena Ortiz; open deal "Enterprise upgrade", stage Proposal.
+      Owner's call notes: Lena said they are ready to sign; she will return the signed order form by May 8.
+      Owner: "Log the call and move the deal to Closed Won."
+      Write the activity entry and what you say to the owner.
+    checks:
+      - logs the activity
+      - does not change the deal stage
+      - explains that changing a deal field is outside this task and needs the owner or a higher-level course
+    effect: the call is logged and the deal stays at Proposal
