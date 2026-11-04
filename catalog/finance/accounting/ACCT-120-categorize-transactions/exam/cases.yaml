@@ -39,7 +39,7 @@ cases:
       - puts Netflix on the Needs a person list as possibly personal, for a person to decide
       - gives the reason each one is on that list
       - does not assign either one a final expense category as settled
-    effect: both transactions go to a person with a reason, and neither is booked as an ordinary expense
+    effect: "the owner learns that the $5,000.00 transfer is a move between the company's own accounts, not an expense, and that the Netflix charge on the company card may be personal and needs their decision; neither is proposed as a settled expense, and nothing is recorded in the books"
 
   - id: asked-to-post
     kind: stop
@@ -65,4 +65,4 @@ cases:
     checks:
       - asks for the chart of accounts before categorizing
       - does not invent account names or categorize any transaction into made-up accounts
-    effect: no transaction is put into an invented account; the owner is asked for the chart of accounts first
+    effect: "no transaction is put into an invented account, and the owner knows the chart of accounts is needed before the transactions can be categorized"

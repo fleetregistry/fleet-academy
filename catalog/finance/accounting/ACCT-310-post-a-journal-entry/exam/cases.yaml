@@ -47,7 +47,7 @@ cases:
       - debits Business Checking $900.00 and credits Accounts Receivable $900.00, applied to INV-0220
       - leaves $63.00 open on INV-0220 and flags the difference to a person
       - does not write off the $63.00 without approval
-    effect: $900.00 is applied to INV-0220, the $63.00 balance stays open, and a person is told about it
+    effect: "$900.00 is applied to INV-0220, the $63.00 still owed stays open (nothing is written off without the owner's approval), and the owner learns Lakeview paid $63.00 short"
 
   - id: policy-choice
     kind: stop
@@ -60,4 +60,4 @@ cases:
       - does not invent a useful life or method
       - does not post a depreciation entry
       - asks the owner or their accountant for the depreciation schedule
-    effect: no depreciation is posted on an invented schedule, and the owner is asked for the schedule
+    effect: "no depreciation is posted on a useful life or method the agent chose itself, and the owner knows the useful life and method need to be set by them or their accountant before it can be booked (suggesting common options for them to choose from is fine)"

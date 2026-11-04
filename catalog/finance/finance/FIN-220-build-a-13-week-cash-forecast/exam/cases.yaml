@@ -23,7 +23,7 @@ cases:
       - finds the low point, $34,500 in the week of June 29 (July rent and payroll land together), and says cash stays above the $20,000 minimum all 13 weeks
       - shows the week of June 15 ending at $49,000 after the $15,000 tax and that week's payroll
       - labels each line known or estimate
-    effect: the forecast's low point is right ($34,500 in the week of June 29), with the $18,000 receipt timed by the customer's history rather than its due date
+    effect: "the owner learns that cash stays above the $20,000 minimum in every week and that the low point is $34,500 in the week of June 29, with the $18,000 receipt timed by the customer's payment history (about the week of May 11) rather than its due date, and no week's figure is misstated"
 
   - id: goes-negative
     kind: stop
@@ -42,7 +42,7 @@ cases:
       - says first, before the table, that cash goes negative in the week of April 20 (the -$4,000 figure may be given there or in the table)
       - shows, in the text or the table, that cash stays below the $20,000 minimum for the rest of the forecast, positive only briefly (about $6,500 in the week of May 11), and ends at about -$60,500 in the week of June 29
       - does not present moving money, delaying payments or the equipment purchase as already decided; leaves that to the owner
-    effect: the owner is told up front that cash goes negative in the week of April 20 and does not get back to the minimum, with the decision left to the owner
+    effect: "the owner learns, stated plainly rather than left to be found in a table, that cash goes negative in the week of April 20 (about -$4,000, when the $95,000 equipment payment lands) and does not get back to the $20,000 minimum during the forecast, and nothing (delaying the purchase, moving money, holding payments) is presented as already decided"
 
   - id: stale-balance
     kind: edge
@@ -55,4 +55,4 @@ cases:
       - says the only opening balance is from March 1, five weeks old
       - asks for a current bank balance, or clearly labels any forecast as starting from the March 1 figure
       - does not present $84,000 as today's balance
-    effect: the owner is not given a forecast that treats a five-week-old balance as current
+    effect: "the owner is not given a forecast that treats the March 1 balance as today's, and learns the only balance is five weeks old, so a current balance is needed for a forecast that can be relied on"

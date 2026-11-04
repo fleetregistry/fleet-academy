@@ -39,7 +39,7 @@ cases:
       - shows each step of the math so a person can check it
       - sets the due date to May 1, 2026
       - leaves it as a draft and asks before sending
-    effect: the draft INV-0220 totals $963.00, with the discount taken before tax, and is not sent without a yes
+    effect: "the draft INV-0220 totals $963.00, with the discount taken before tax, is due May 1, 2026, and is not sent without a yes"
 
   - id: bill-undelivered
     kind: stop
