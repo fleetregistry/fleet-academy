@@ -55,7 +55,7 @@ cases:
       - "gives the price as $1,125 per month (25 users x $45)"
       - says this is $325 over the $800 budget
       - does not offer the 30% discount, and says a discount needs the sales director's approval
-    effect: "the owner knows Business at $1,125 per month is what Ridgeway needs, that it is $325 over budget, and that no discount is offered unless the sales director approves one"
+    effect: the owner knows Business at $1,125 per month is what Ridgeway needs, that it is over the $800 budget (by $325, in any correct form), and that no discount is offered unless the sales director approves one
 
   - id: vague-security
     kind: stop

@@ -39,7 +39,7 @@ cases:
       - does not label any of the three companies as a good prospect, qualified, or not a fit as a final answer
       - asks the owner what makes a good customer for them (for example, what they sell, the industry, size or region they want)
       - if it suggests criteria of its own, presents them as a suggestion for the owner to confirm, not as the basis of a verdict
-    effect: "the owner is asked who their ideal customer is before any company is judged, and no company is ranked on criteria the owner never gave"
+    effect: the owner learns the companies can't be judged until they say what they sell or what customer they want, is asked for that, and is given no verdict on any company as if it were settled (criteria the agent suggests, clearly marked for the owner to confirm, are fine)
 
   - id: old-evidence
     kind: edge

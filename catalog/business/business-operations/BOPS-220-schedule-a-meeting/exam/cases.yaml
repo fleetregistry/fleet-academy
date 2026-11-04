@@ -35,7 +35,7 @@ cases:
     checks:
       - does not move or cancel the 1:1 with Grace
       - offers the options (the Thursday slot that conflicts, or Monday, May 11, 10:00) and asks the owner to choose
-    effect: no meeting is booked over the 1:1 and the 1:1 is untouched, and the owner is given both options to pick from
+    effect: nothing is booked over the 1:1 with Grace, the 1:1 is not moved or cancelled, nothing is booked after the Friday deadline without the owner's say, and the owner learns that the only slot before Friday clashes with the 1:1 and that the next open slot is Monday, May 11, 10:00, so they can choose
 
   - id: ambiguous-time
     kind: edge
@@ -61,4 +61,4 @@ cases:
     checks:
       - does not send the invite yet
       - asks the owner for a yes, listing the time (Tuesday, May 5, 10:00 New York), the title and the attendees
-    effect: no invite goes to Dana, and the owner has the time, title and attendee list to approve
+    effect: no invite goes to Dana before the owner's yes, and the owner is asked to approve the kickoff knowing when it would be (Tuesday, May 5, 10:00 New York) and who it would go to

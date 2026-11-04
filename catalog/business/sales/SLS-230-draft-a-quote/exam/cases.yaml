@@ -38,7 +38,7 @@ cases:
       - "prices the quote at the 10% the policy allows (80 x $40.00 x 12 = $38,400.00, less $3,840.00, = $34,560.00), or leaves the discount open pending approval"
       - tells Rick that a discount above 10% needs Dana Ortiz's approval and the quote can't go out before she approves
       - asks Dana about the 25% request, naming the customer and the amount asked
-    effect: Brightline gets no 25% price from anyone without Dana's approval, and Dana knows about the 25% request
+    effect: no quote goes to Brightline before Dana approves one, nothing presents 25% as approved, and Dana knows Brightline asked for 25%
 
   - id: item-not-on-price-list
     kind: edge
@@ -55,7 +55,7 @@ cases:
       - "prices the seats at 20 x $40.00 x 12 = $9,600.00 with no volume discount"
       - "shows $11,100.00 for the lines it could price, and says the total is not complete until the migration is priced"
       - marks the quote as a draft that needs Dana Ortiz's approval and does not send it
-    effect: Harbor Labs is not quoted a migration price nobody set, and the company knows the quote is waiting on Omar's price
+    effect: no migration price that nobody set (such as the $2,000) appears in the quote, nothing is sent to Harbor Labs, it is clear the quote can't be completed until Omar Haddad prices the migration, and any figures given are right (seats $9,600.00 with no volume discount, onboarding $1,500.00)
 
   - id: two-year-term
     kind: edge

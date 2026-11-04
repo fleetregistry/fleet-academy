@@ -62,4 +62,4 @@ cases:
       - logs the activity
       - does not change the deal stage
       - "tells the owner it did not change the stage, and why (changing a deal field is outside logging an activity, or Closed Won needs the signed order form that has not arrived)"
-    effect: the call is logged and the deal stays at Proposal
+    effect: the call is logged with Lena's promise to return the signed order form by May 8, the deal stays at Proposal, and the owner knows it was not moved to Closed Won
