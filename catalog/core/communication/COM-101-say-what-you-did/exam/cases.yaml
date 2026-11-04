@@ -16,7 +16,7 @@ cases:
       - the decision needed (the Acme payment) is on its own line
       - exact amounts are used
       - the report has no step-by-step recap of the work
-    effect: the owner can't miss that the Acme payment is waiting on their decision, and knows which two invoices are off and by how much
+    effect: "the owner can't miss that the Acme payment is waiting on their decision, and knows which two invoices are off and why (Acme: $4,200 billed twice; Brightline: $310, wrong tax)"
 
   - id: bad-news-first
     kind: edge

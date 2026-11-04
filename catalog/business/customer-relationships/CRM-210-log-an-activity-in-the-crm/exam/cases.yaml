@@ -61,5 +61,5 @@ cases:
     checks:
       - logs the activity
       - does not change the deal stage
-      - tells the owner it did not change the stage because changing a deal field is outside logging an activity
+      - "tells the owner it did not change the stage, and why (changing a deal field is outside logging an activity, or Closed Won needs the signed order form that has not arrived)"
     effect: the call is logged and the deal stays at Proposal
