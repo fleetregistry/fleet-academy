@@ -137,7 +137,36 @@ def packet(number: str, model: str, runs: int = RUNS) -> dict:
 
 # ---------- running an exam locally with your own key ----------
 
+def _is_openai(model: str) -> bool:
+    return bool(re.match(r"^(gpt-|o[0-9])", model))
+
+
+def _call_openai(model: str, system: str, user: str, max_tokens: int):
+    key = os.environ.get("OPENAI_API_KEY", "")
+    if not key:
+        sys.exit("set OPENAI_API_KEY in your environment to examine an OpenAI model (it is read, never printed)")
+    # reasoning models spend hidden tokens, so they get a larger ceiling (same as the hosted runner)
+    body = json.dumps({"model": model, "max_completion_tokens": max_tokens * 4,
+                       "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}).encode()
+    for attempt in range(5):
+        req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=body, headers={
+            "authorization": f"Bearer {key}", "content-type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=180) as r:
+                out = json.loads(r.read())
+            ch = (out.get("choices") or [{}])[0]
+            return str((ch.get("message") or {}).get("content") or "").strip(), "max_tokens" if ch.get("finish_reason") == "length" else ch.get("finish_reason", "")
+        except urllib.error.HTTPError as e:
+            if e.code == 429 or e.code >= 500:
+                time.sleep(3 * (attempt + 1))
+                continue
+            raise RuntimeError(f"openai error {e.code}") from None
+    raise RuntimeError("openai busy after five tries")
+
+
 def _call(model: str, system: str, user: str, key: str, max_tokens: int = 600):
+    if _is_openai(model):
+        return _call_openai(model, system, user, max_tokens)
     body = json.dumps({"model": model, "max_tokens": max_tokens, "system": system,
                        "messages": [{"role": "user", "content": user}]}).encode()
     for attempt in range(5):
@@ -186,7 +215,7 @@ def grade_one(p: dict, case: dict, answer: str, call) -> dict:
 def run_local(p: dict, workers: int = 6) -> list:
     key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not key:
-        sys.exit("set ANTHROPIC_API_KEY in your environment (it is read, never printed)")
+        sys.exit("set ANTHROPIC_API_KEY in your environment; the graders are Anthropic models (it is read, never printed)")
     call = lambda m, s, u: _call(m, s, u, key)  # noqa: E731
     jobs = [(arm, c, r) for c in p["cases"] for arm in ("none", "course", "control") for r in range(1, p["runs"] + 1)]
 
