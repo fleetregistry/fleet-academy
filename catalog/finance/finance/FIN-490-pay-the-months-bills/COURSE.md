@@ -1,7 +1,7 @@
 ---
 number: FIN 490
 title: Pay the Month's Bills
-version: 1
+version: 2
 status: draft
 college: finance
 department: FIN

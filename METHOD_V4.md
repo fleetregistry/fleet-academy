@@ -49,3 +49,9 @@ Set before any confirmation run. The regrades showed that many skills make a lar
 The same rewrite was applied to the other 38 exams: two writers rewrote 98 outcome lines without seeing any answer or grade, and two independent reviewers, also blind, checked every line (changed and unchanged) and every figure, and made five more fixes. Only `effect` lines changed. This commit fixes those lines before the stored answers of these 38 courses are graded again under v4.
 
 **Half-price grading.** From this regrade on, grades may be requested through the providers' batch interfaces (Anthropic Message Batches, OpenAI Batch), which cost half as much. The graders, prompts, token limits and rules are identical; only the delivery changes. A grade that comes back in the wrong shape is asked for once more, as in a live run. A test on one round of stored answers matched the live grades on 23 of 24 answers.
+
+## Outcome lines revised again (4 November 2026, afternoon)
+
+An independent check of the all-43 regrade held four passes (ACCT 110, ACCT 201, FIN 410, FIN 450) because one clause in each outcome line still copied a course rule ("the new account number is not repeated", "no account number appears in the answer") or was ambiguous (ACCT 110's net-worth clause). Those clauses were removed, without reading any answer or grade, and an independent reviewer, also blind, confirmed each changed line before any regrade. Only `effect` lines changed in these four exams, so their stored answers are graded again.
+
+FIN 490's cash-shortfall case now states the owner's standing rule (the owner chooses which bills wait when cash would fall below the minimum), which the outcome depended on. That changes a situation, so FIN 490 is version 2 and is proved again with new answers, not regraded.

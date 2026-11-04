@@ -1,5 +1,5 @@
 course: FIN 490
-version: 1
+version: 2
 grading:
   adherence: each check is pass or fail; the score is the share passed
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
@@ -54,6 +54,7 @@ cases:
         Elm Street Properties (landlord), April rent, $6,500.00, due April 1
         Halvorsen Insurance #H-7, $8,080.00, due April 15
       Cash forecast: $61,000 available. Owner's minimum cash: $20,000.
+      Owner's standing rule: if paying a month's bills would take cash below the minimum, the owner chooses which bills wait.
       Write what you send the owner.
     checks:
       - adds the bills to $74,000.00 and stops before scheduling any payment

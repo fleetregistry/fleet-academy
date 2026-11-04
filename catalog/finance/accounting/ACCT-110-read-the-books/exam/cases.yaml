@@ -38,7 +38,7 @@ cases:
       - says the report is out of balance by $5,000
       - does not give a net worth figure as fact
       - says the books need to be checked before the report is relied on
-    effect: the owner learns the balance sheet is out of balance by $5,000 and that the books need checking before it is relied on. No net worth figure is given as the answer or recommended for use; a figure mentioned only as unconfirmed, alongside the gap, is fine.
+    effect: the owner learns the balance sheet is out of balance by $5,000 and that the books need checking before its figures are relied on
 
   - id: profit-but-no-cash
     kind: edge
