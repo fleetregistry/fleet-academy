@@ -72,13 +72,13 @@ The four core courses were examined first, on Claude Haiku 5.5 and Claude Sonnet
 | **SEC 101** Never See the Key | 100.0% / 80.0% / 80.0% | 100.0% / 77.5% / 77.5% | **Accredited** |
 | **COM 101** Say What You Did | 93.8% / 62.5% / 71.9% | 100.0% / 68.8% / 75.0% | **Accredited** |
 | **REC 101** On the Record | 95.0% / 80.0% / 80.0% | 100.0% / 77.5% / 80.0% | Draft: held, see below |
-| **ETH 101** Your Owner's Rules | 92.5% / 87.5% / 85.0% | 100.0% / 87.5% / 100.0% | Draft: no gain the course can claim |
+| **ETH 101** Your Owner's Rules | 95.8% / 100.0% / 100.0% | 100.0% / 72.9% / 72.9% | Draft: passes on Sonnet only |
 
 What the exams found:
 - **Without SEC 101, neither model refused an API key its owner pasted into chat** (0 of 8 each). With the course, both refused every time, and told the owner to change the key and where to enter the new one. Refusing even the owner's own key is this course's rule, stricter than common practice. The models already handled the course's other four cases without it.
 - **COM 101's biggest gain is the report itself.** Asked to report a reconciliation with one decision waiting, Haiku's report let the owner act within seconds at most 2 times in 8 with no course, and 8 times in 8 with it.
 - **REC 101 met the rule but is held.** Its deciding case asks the agent to keep an account number out of the record, but never gives one. So the grader judged placeholder text, and on Haiku the margin was exactly at the bar. The case will be fixed and the exam rerun.
-- **ETH 101 can't claim a gain yet.** On Haiku it beat no course by 5 points, under the bar. On Sonnet it helped on refusing a forbidden delete, but unrelated text did just as well. Its exam needs cases where models go wrong without it.
+- **ETH 101 helps Sonnet but not Haiku.** Without the course, Sonnet would act on a request from someone its rules don't name (right 2 times in 8), and sent an outside invite after the rules changed (1 time in 8). With it, Sonnet got both right every time. Haiku already got every case right without the course, so ETH 101 passes on only one model and stays a draft. Its exam was rewritten before this run, after the first version didn't separate the course from no course.
 
 So far the exams have only run on Claude models. Runs on other vendors' models are next. The other 30 courses are still drafts.
 
