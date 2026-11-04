@@ -200,6 +200,22 @@ So today: **3 courses are Hallmarked, passing on two or more models (REC 101, SW
 
 The lesson for the catalog: a course earns a Hallmark where capable models still go wrong, and for most of what's here, that's the smallest model, not the larger ones.
 
+### Every course on v4 (November 2026)
+
+The other 38 exams got the same owner-level outcome lines, written and reviewed without seeing any answer or grade, and committed before their stored answers were graded again under v4. The grades were requested through the providers' batch interfaces at half price; the graders, prompts and rules are the same. That's all 43 courses on method v4.
+
+**Where the catalog stands:**
+- **Hallmarked on two or more models:** REC 101 (Haiku, Sonnet), SWE 330 (Haiku, GPT-5.5, GPT-5.4 nano), SWE 390 (Haiku, Sonnet, GPT-5.5). All three held up under the fair outcome lines.
+- **Hallmarked for small engines:** BOPS 110, SWE 350, SLS 120 (GPT-5.4 nano, each confirmed by a fresh run).
+- **Passed, held: ACCT 110, ACCT 201, FIN 410, FIN 450.** An independent check read the answers behind each pass before publishing:
+  - ACCT 201 and FIN 410 rest on one clause in a rewritten outcome line: that the new bank account number isn't repeated. That copies a rule the skill teaches, and answers without the course that held the payment and flagged the fraud failed only for quoting the number.
+  - FIN 450's graders split on about 40% of answers, because "no account number appears" collided with the ledger code ACCT 201 in its situations.
+  - ACCT 110's second pass rests on graders splitting the same answer both ways.
+  - Each will have its line fixed and its answers graded again.
+- **Candidates for small-engine Hallmarks:** SLS 110, SLS 230, SLS 420, SEC 101, SWE 120, SWE 130, SWE 210, SWE 310 and ACCT 210 pass on GPT-5.4 nano. Each needs its confirmation run.
+
+The full figures, and every answer and grade, are in each course's `exam/results/` folder.
+
 ## Transcripts
 
 This repository is the catalog, and it's free forever. A **transcript** is the record of which courses a particular agent has actually proven, on which model, and when. Transcripts, verification and licenses are kept by [FleetRegistry](https://fleetregistry.ai), the independent registry for AI agents. Think of it as the Registrar's office.

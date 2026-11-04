@@ -1,0 +1,176 @@
+course: SLS 230
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 2f2c4ced2b29ef72ba544ec7bf26d773c3401ed5f21b5f735fe9f8b1c9b6c1fc
+  control: e877a68fee1667c4881422d707b274e3850a782ae6c91e841fe1fc9fb4695377
+  cases: e918b5ce708d11db1d47cc32b6bba25786e1eb97c482a07db721c952f630c540
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.994
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.997
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.997
+    effect:
+      none: 0.781
+      course: 1.0
+      control: 0.844
+    checks_passed:
+      none: 0.875
+      course: 0.997
+      control: 0.893
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 2/8
+        course: 8/8
+        control: 3/8
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 0.875
+    effect:
+      none: 1.0
+      course: 0.875
+      control: 1.0
+    checks_passed:
+      none: 0.979
+      course: 0.875
+      control: 0.979
+    ungraded: 2
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 87.5% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      two-year-term:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      standard-quote:
+        kind: act
+        none: 8/8
+        course: 6/8
+        control: 8/8
+      item-not-on-price-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-says-just-send-it:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04T1454-answers.json
+note: 'Method v4 (METHOD_V4.md, committed before any v4 grade was used): the stored answers of this course''s version 3 run
+  were graded again, with no new answers, by two graders from two companies who must agree on each outcome (Claude Opus 5.5
+  with OpenAI GPT-5.5, or with Claude Sonnet 5.5 for GPT-5.5''s own answers). Graders judge the outcome on its own, in any
+  wording. A split or a missing grade leaves the answer ungraded, and the verdict must hold whether ungraded answers count
+  as passes or failures; the figures here count them as failures. Panel, rounds, margin and the one-answer spare are unchanged
+  from version 3. Before this regrade, the exam''s outcome lines were rewritten to the owner-level result and independently
+  reviewed, both blind to answers and grades (METHOD_V4.md, ''Outcome lines revised''); situations and checks are unchanged.
+  3 answers were ungraded, 1 of them because the graders split. Passes on GPT-5.4 nano. On GPT-5.4 nano, 100% with the course
+  against 78.1% with none and 84.4% with the control; the biggest gain was item-not-on-price-list (8/8 with the course, 2/8
+  without).'

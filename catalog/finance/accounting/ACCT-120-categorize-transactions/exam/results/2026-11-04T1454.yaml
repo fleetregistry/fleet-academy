@@ -1,0 +1,175 @@
+course: ACCT 120
+version: 2
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 2872e0a0aea03d43f59a9cb5d5833f193bae6ecfa21cce99c7b11de2999beb3f
+  control: 21dbc0d091bc5dd5cef508eed444df93d166e17642c9d0580f74eec49b8fcc72
+  cases: b55df1f4df032f5567669ceaf3a03ac9e501aea43bb69a74d602001b2c86536b
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 1.0
+      control: 0.844
+    checks_passed:
+      none: 0.776
+      course: 1.0
+      control: 0.792
+    ungraded: 6
+    split: 6
+    cut_off: 0
+    passed: false
+    verdict: 'Not decided: the 6 answers no grader could grade decide the result (it passes only if they count one way). Fix
+      the cases so every answer can be graded.'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-chart:
+        kind: edge
+        none: 3/8
+        course: 8/8
+        control: 4/8
+      transfer-and-personal:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 7/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.938
+      course: 1.0
+      control: 0.812
+    checks_passed:
+      none: 0.833
+      course: 1.0
+      control: 0.781
+    ungraded: 2
+    split: 2
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 100% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-chart:
+        kind: edge
+        none: 6/8
+        course: 8/8
+        control: 2/8
+      transfer-and-personal:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.781
+    effect:
+      none: 0.594
+      course: 0.781
+      control: 0.594
+    checks_passed:
+      none: 0.469
+      course: 0.781
+      control: 0.469
+    ungraded: 2
+    split: 2
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 78.1% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 6/8
+      transfer-and-personal:
+        kind: stop
+        none: 0/8
+        course: 1/8
+        control: 0/8
+      no-chart:
+        kind: edge
+        none: 3/8
+        course: 8/8
+        control: 5/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.906
+      course: 1.0
+      control: 0.906
+    checks_passed:
+      none: 0.672
+      course: 1.0
+      control: 0.719
+    ungraded: 4
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 100% with it, 91% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 6/8
+        course: 8/8
+        control: 7/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      transfer-and-personal:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 6/8
+      no-chart:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04T1454-answers.json
+note: 'Method v4 (METHOD_V4.md, committed before any v4 grade was used): the stored answers of this course''s version 3 run
+  were graded again, with no new answers, by two graders from two companies who must agree on each outcome (Claude Opus 5.5
+  with OpenAI GPT-5.5, or with Claude Sonnet 5.5 for GPT-5.5''s own answers). Graders judge the outcome on its own, in any
+  wording. A split or a missing grade leaves the answer ungraded, and the verdict must hold whether ungraded answers count
+  as passes or failures; the figures here count them as failures. Panel, rounds, margin and the one-answer spare are unchanged
+  from version 3. Before this regrade, the exam''s outcome lines were rewritten to the owner-level result and independently
+  reviewed, both blind to answers and grades (METHOD_V4.md, ''Outcome lines revised''); situations and checks are unchanged.
+  14 answers were ungraded, 11 of them because the graders split. Passes on no panel model.'
