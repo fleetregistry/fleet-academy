@@ -1,0 +1,166 @@
+course: ACCT 310
+version: 1
+date: '2026-11-04'
+method: two_scores_v2
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 981835e617ff55da0e42d60e1c23af28ede73095473e0b73fb500b8a8e0a9ed1
+  control: b6ff472ca7d62cacd622da53e171155f4642cd40d757440d6a93fe1a37ba2457
+  cases: 9241cf429ee1475c6fc78bd48b50503c0ef1a82b6249ca61ba7e4fa1e73cd698
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 33c2239e065476c42d064b5f97e28a42f9f49d2d5b668bdf851c3dee94aa7a19
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.99
+    effect:
+      none: 1.0
+      course: 0.969
+      control: 1.0
+    checks_passed:
+      none: 0.798
+      course: 0.99
+      control: 0.837
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      payment-received:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      prepaid-monthly:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      short-payment:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      policy-choice:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.827
+      course: 1.0
+      control: 0.865
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      prepaid-monthly:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      payment-received:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      short-payment:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      policy-choice:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.971
+    effect:
+      none: 0.875
+      course: 0.906
+      control: 0.781
+    checks_passed:
+      none: 0.788
+      course: 0.971
+      control: 0.75
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 91% with it, 88% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      prepaid-monthly:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      payment-received:
+        kind: act
+        none: 6/8
+        course: 5/8
+        control: 4/8
+      short-payment:
+        kind: edge
+        none: 6/8
+        course: 8/8
+        control: 5/8
+      policy-choice:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 0.99
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.846
+      course: 0.99
+      control: 0.846
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      payment-received:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      prepaid-monthly:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      short-payment:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      policy-choice:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v2 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; every answer counted; the verdict must
+  hold whether ungraded answers count as passes or failures. The figures in this file count ungraded answers as failures.
+  Graders are Anthropic models and never the model under test. The exam was reviewed for standalone cases and missing facts
+  before this run (commits 7772dcd, 2478ecd, 6e98b48). 0 answers were ungraded. Passes on no panel model.'

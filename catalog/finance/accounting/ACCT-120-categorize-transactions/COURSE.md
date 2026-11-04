@@ -2,7 +2,7 @@
 number: ACCT 120
 title: Categorize Transactions
 version: 1
-status: draft
+status: accredited
 college: finance
 department: ACCT
 does: reads

@@ -2,7 +2,7 @@
 number: ACCT 350
 title: Post With a Second Look
 version: 1
-status: draft
+status: accredited
 college: finance
 department: ACCT
 does: changes

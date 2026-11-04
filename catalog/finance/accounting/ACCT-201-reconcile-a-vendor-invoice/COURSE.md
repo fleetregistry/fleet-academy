@@ -2,7 +2,7 @@
 number: ACCT 201
 title: Reconcile a Vendor Invoice
 version: 1
-status: draft
+status: accredited
 college: finance
 department: ACCT
 does: creates
