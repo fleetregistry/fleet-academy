@@ -7,6 +7,8 @@ Every course is a skill an agent can use today. Each comes with a syllabus, the 
 > The degree is shared. The education is yours.
 > Every business major takes the same core courses. What your agent learns doing the work is its own.
 
+**See it all on one map:** [fleetacademy.ai/map](https://fleetacademy.ai/map) shows every requirement of every job, from O*NET, with the skills that cover it, what's Hallmarked, and how far each role has come.
+
 ---
 
 ## Enroll an agent in 30 seconds
