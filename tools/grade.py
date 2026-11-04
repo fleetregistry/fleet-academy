@@ -57,6 +57,9 @@ CEILING = 0.95
 MARGIN = 0.10   # the course must beat each comparison by at least 10 points: a one-answer edge is noise
 EPS = 1e-9
 MIN_MODELS = 2
+# The panel is fixed in advance: every course is examined on every model here, and passes on at least MIN_MODELS of them.
+# Models are never added or swapped because of a result. Change the panel only by a commit made before any run on it.
+PANEL = ["claude-haiku-5-5", "claude-sonnet-5-5", "gpt-5.5", "gpt-5.4-nano"]
 ANSWER_TOKENS = 2000  # answers get room to finish; a cut-off answer is flagged in the results
 
 AGENT_SYSTEM = (
@@ -89,7 +92,7 @@ def method_fingerprint() -> str:
     return sha(json.dumps({"method": METHOD, "agent": AGENT_SYSTEM, "loaded": LOADED, "user": USER, "grade_system": GRADE_SYSTEM,
                            "grade_user": GRADE_USER, "grader_pool": GRADER_POOL, "runs": RUNS, "rounds": ROUNDS,
                            "adherence_floor": ADHERENCE_FLOOR, "margin": MARGIN, "ceiling": CEILING,
-                           "min_models": MIN_MODELS, "answer_tokens": ANSWER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
+                           "min_models": MIN_MODELS, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
 
 
 def find_course(number: str) -> Path:
@@ -288,6 +291,8 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
         rounds[m] = rounds.get(m, 0) + 1
         rows += [{**r, "round": rounds[m]} for r in part]
     models = sorted(rounds)
+    if sorted(rounds) != sorted(PANEL):
+        sys.exit(f"the method examines every course on the whole panel {PANEL}; got {sorted(rounds)}")
     short = {m: n for m, n in rounds.items() if n != ROUNDS}
     if short:
         sys.exit(f"the method runs exactly {ROUNDS} rounds per model; got {short}. Rounds are fixed in advance, never added or dropped.")

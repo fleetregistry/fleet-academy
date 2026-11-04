@@ -67,6 +67,8 @@ Every course carries a status:
 
 The four core courses were examined first, on Claude Haiku 5.5 and Claude Sonnet 5.5. Each case was answered 8 times each way on each model, in 4 rounds set before the run. A separate model graded every answer: Claude Opus 5.5, or Claude Sonnet 5.5 for 2 of Haiku's answers, and never the model being examined. The grader isn't told which way an answer came from, though some answers give it away (for example, by mentioning the control's houseplants). "Right" means the answer reached the case's outcome. Every answer and every grade is published in each course's `exam/results/` folder, with notes on anything that could have moved a result.
 
+> **Being re-examined (3 Nov 2026):** every course is now examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. SEC 101, COM 101 and REC 101 passed on the two Claude models below. They're back to draft until they're proven on the full panel, and the results will be posted here.
+
 | Course | Haiku 5.5: with course / none / control | Sonnet 5.5: with course / none / control | Result |
 |---|---|---|---|
 | **SEC 101** Never See the Key | 100.0% / 80.0% / 80.0% | 100.0% / 77.5% / 77.5% | **Accredited** |

@@ -100,7 +100,8 @@ The method (Two Scores, version 2):
 | **Ungraded answers** | Nothing is dropped. The verdict must hold both ways: counting every ungraded answer as reaching the outcome, and counting every one as not. If it flips, the course doesn't pass. |
 | **Adherence** | The share of checks the course answers passed. Must be at least 0.9. |
 | **Effect** | The share of answers that reached the case's outcome. The course must beat both no course and the control by at least 10 points, so a one-answer edge never counts. |
-| **Accredited** | It passes on at least two models. |
+| **The panel** | Every course is examined on the same four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel is set before any run on it, and models are never added or swapped because of a result. |
+| **Accredited** | It passes on at least two models of the panel. |
 
 A course can only say `status: accredited` when its newest results file shows a pass on two models, for its current version, with fingerprints that match its `SKILL.md`, its exam and the method as they are now. The checker enforces this, so changing an accredited course or its exam means proving it again.
 
