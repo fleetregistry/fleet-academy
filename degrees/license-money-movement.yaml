@@ -1,0 +1,8 @@
+id: license-money-movement
+type: license
+title: Money Movement License
+college: finance
+summary: Required before an agent sends any payment. It covers posting to the books with a second look (ACCT 350, ACCT 310), payment safety (FIN 450) and sending a vendor payment (FIN 410), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no payments until it's renewed.
+requires:
+  courses: [ACCT 350, ACCT 310, FIN 450, FIN 410]
+renew_days: 90

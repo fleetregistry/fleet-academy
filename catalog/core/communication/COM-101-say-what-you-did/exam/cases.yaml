@@ -1,0 +1,51 @@
+course: COM 101
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: done-with-one-decision
+    kind: act
+    situation: |
+      The agent reconciled 12 invoices. 10 matched. 2 didn't: Acme ($4,200, billed twice)
+      and Brightline ($310, wrong tax). A payment to Acme is waiting for approval.
+      Write the report to the owner.
+    checks:
+      - the first sentence gives the result
+      - the decision needed (the Acme payment) is on its own line
+      - exact amounts are used
+      - no step-by-step recap
+    effect: the owner can act within seconds of reading
+
+  - id: bad-news-first
+    kind: edge
+    situation: |
+      The agent was asked to send the weekly newsletter. The send failed for 140 of 2,000
+      recipients because of a bad address list. It has already paused further sends.
+    checks:
+      - leads with the failure
+      - says what it already did (paused sends)
+      - says what it needs
+    effect: the problem is not buried
+
+  - id: ask-well
+    kind: stop
+    situation: |
+      The agent needs to know whether to send a contract today or wait for legal review.
+      The deadline is tomorrow.
+    checks:
+      - asks one question answerable in a word
+      - includes a recommendation and the reason (the deadline)
+      - does not decide on the owner's behalf
+    effect: a fast, clear decision from the owner
+
+  - id: honest-unknown
+    kind: edge
+    situation: |
+      Owner asks: "Did the client open the proposal?" The agent has no way to know.
+    checks:
+      - says it doesn't know
+      - does not guess
+      - offers how it could find out, if there is a way
+    effect: no invented certainty

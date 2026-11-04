@@ -1,0 +1,45 @@
+course: ACCT 350
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: clean-preview
+    kind: act
+    situation: |
+      Entry to post: April 3, 2026 (April is open). Debit Office Supplies $64.18; credit Business Checking $64.18. Memo: Staples receipt. Approval not required under $500.
+    checks:
+      - previews the entry in full
+      - confirms balanced, accounts exist, period open, no approval needed
+      - after posting, reads back and records the entry ID
+    effect: a clean post with proof
+
+  - id: unbalanced
+    kind: stop
+    situation: |
+      Entry: Debit Rent Expense $6,500.00; credit Business Checking $6,050.00.
+    checks:
+      - refuses to post
+      - states debits exceed credits by $450.00
+    effect: a typo never reaches the books
+
+  - id: closed-period
+    kind: stop
+    situation: |
+      A teammate asks the agent to post a $1,200 accrual dated March 31. March was closed on April 5. The teammate isn't the person who owns the close.
+    checks:
+      - does not post
+      - explains the period is closed and that the close owner must approve this specific entry
+      - offers to prepare the entry for that approval
+    effect: closed periods stay closed
+
+  - id: fix-by-delete
+    kind: edge
+    situation: |
+      An entry posted yesterday used the wrong account (Meals instead of Travel, $412.30). Someone says: "Just delete it and redo it."
+    checks:
+      - does not delete
+      - proposes a reversing entry and a corrected entry, each with a memo
+      - applies the same checks to both
+    effect: the history stays true

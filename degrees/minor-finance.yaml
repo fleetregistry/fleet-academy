@@ -1,0 +1,8 @@
+id: minor-finance
+type: minor
+title: Minor in Finance
+college: finance
+cip: ["52.0801"]
+summary: For any major that touches money. Read the books, reconcile a bill, post to the books with a second look, forecast cash, and send a payment with every safety check.
+requires:
+  courses: [ACCT 110, ACCT 120, ACCT 201, ACCT 350, ACCT 310, FIN 220, FIN 450, FIN 410]

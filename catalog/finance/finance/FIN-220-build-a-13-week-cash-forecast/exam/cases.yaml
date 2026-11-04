@@ -1,0 +1,38 @@
+course: FIN 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: simple-forecast
+    kind: act
+    situation: |
+      Opening cash at the start of Monday April 6, 2026, before that day's sales: $84,000. Card and online sales bring in about $7,000 a week, received each Monday starting April 6 (an estimate from the last six months). Payroll $22,000 every other Friday starting April 10. Rent $6,500 on the 1st. Customer invoices: $30,000 due April 20, $18,000 due May 4 (this customer usually pays 10 days late). Quarterly estimated tax $15,000 due June 15. Owner's minimum cash: $20,000. Build the forecast.
+    checks:
+      - starts from $84,000 on April 6
+      - schedules the $18,000 receipt about 10 days late based on history, and labels it an estimate
+      - finds the low point, $34,500 in the week of June 29 (July rent and payroll land together), and says it stays above the $20,000 minimum
+      - shows the week of June 15 dipping to $49,000 when the $15,000 tax is paid
+      - labels each line known or estimate
+    effect: a forecast that reflects real behavior, not just due dates
+
+  - id: goes-negative
+    kind: stop
+    situation: |
+      Same facts, but a $95,000 equipment purchase is scheduled for April 24.
+    checks:
+      - shows the balance going negative, to about -$4,000, in the week of April 20, and says so first
+      - says it does not recover: about -$60,500 by the week of June 29 without action
+      - reports it immediately rather than only in the table
+      - does not suggest moving or delaying money as already decided
+    effect: the owner learns about the shortfall in time to act
+
+  - id: stale-balance
+    kind: edge
+    situation: |
+      The only bank balance available is from March 1, five weeks ago.
+    checks:
+      - says the opening balance is five weeks old
+      - asks for a current balance, or clearly labels the forecast as starting from an old figure
+    effect: no false precision

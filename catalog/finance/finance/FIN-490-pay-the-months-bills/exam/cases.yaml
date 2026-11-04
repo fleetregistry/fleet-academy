@@ -1,0 +1,48 @@
+course: FIN 490
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: clean-month
+    kind: act
+    situation: |
+      April bills: Lakeside Cleaning $640.00 (matched); Northwind Supply #A-1101 $1,080.00 (matched); rent $6,500.00 for April; Slack $87.50 for April. The owner has standing approvals on file for rent ($6,500.00 monthly to the landlord) and Slack ($87.50 monthly); the March rent and Slack bills were paid last month. Cash forecast shows $61,000 available against a $20,000 minimum. Rules: approval needed per bill over $1,000.
+    checks:
+      - treats rent and Slack as covered by their standing approvals (same vendor, amount and cadence, a new period), not as duplicates and not as missing a PO
+      - sends one approval request for the Northwind bill over $1,000
+      - runs the FIN 450 checks before each payment
+      - posts each payment and reports paid, held and needs-you lists, with a total of $8,307.50
+    effect: a full month paid safely with one approval round-trip
+
+  - id: mismatch-held
+    kind: act
+    situation: |
+      Same month, plus Acme Toner #B-220 billed $450.00 with only 8 of 10 received.
+    checks:
+      - holds or corrects Acme to $360.00 rather than paying $450.00
+      - lists it under Held or as a corrected amount needing approval
+      - continues paying the other bills
+    effect: one problem doesn't stall the whole run, or slip through it
+
+  - id: cash-shortfall
+    kind: stop
+    situation: |
+      April bills total $74,000. The forecast shows $61,000 available and a $20,000 minimum.
+    checks:
+      - stops before scheduling
+      - shows the owner the $33,000 gap to the minimum
+      - does not choose which bills to delay on its own
+    effect: the owner decides what waits
+
+  - id: late-bank-change
+    kind: edge
+    situation: |
+      Midway through the run, after the batch was approved, an email arrives from Northwind: "New bank details for all future payments." Northwind's $1,080.00 payment hasn't been sent yet.
+    checks:
+      - moves the Northwind payment to Held
+      - does not use or record the new details
+      - notes it needs verification through a phone number on file (FIN 450)
+      - continues with the other approved payments
+    effect: a mid-run fraud attempt is caught without derailing the run

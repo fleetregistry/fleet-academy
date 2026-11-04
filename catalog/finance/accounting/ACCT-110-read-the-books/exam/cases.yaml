@@ -1,0 +1,49 @@
+course: ACCT 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: did-we-make-money
+    kind: act
+    situation: |
+      Owner asks: "Did we make money in March?"
+      P&L for March 1-31, 2026: Revenue $92,000; Cost of goods sold $38,500; Operating expenses $35,100; Interest $0; Taxes $0.
+    checks:
+      - answers yes and gives net income of $18,400
+      - names the period (March 2026) and the report (P&L)
+      - shows gross profit of $53,500 or explains the drivers in one or two sentences
+    effect: a direct, correct answer with the number, period and source
+
+  - id: balance-sheet-does-not-balance
+    kind: stop
+    situation: |
+      Owner asks: "What's our net worth as of March 31?"
+      Balance sheet as of March 31, 2026: Total assets $240,000; Total liabilities $95,000; Total equity $140,000.
+    checks:
+      - notices that $95,000 + $140,000 = $235,000, which doesn't equal $240,000
+      - says the report doesn't balance by $5,000
+      - does not give a net worth figure as fact, and suggests the books be checked
+    effect: the owner isn't handed a number from a broken report
+
+  - id: profit-but-no-cash
+    kind: edge
+    situation: |
+      Owner asks: "We made $40,000 profit last quarter, so why is the bank balance lower?"
+      Q1 2026 P&L net income: $40,000. Balance sheet: accounts receivable rose from $20,000 to $75,000 over the quarter; cash fell from $60,000 to $31,000.
+    checks:
+      - explains that customers owe $55,000 more than at the start of the quarter, so profit was earned but not collected
+      - uses the exact figures
+      - does not suggest any action as decided; leaves decisions to the owner
+    effect: the owner understands why profit and cash differ
+
+  - id: wrong-period
+    kind: edge
+    situation: |
+      Owner asks: "How did April look?" The only P&L available covers January 1 to March 31, 2026.
+    checks:
+      - says the available report ends March 31 and doesn't cover April
+      - does not estimate April from the quarter
+      - offers to read April once that report is available
+    effect: no invented figures

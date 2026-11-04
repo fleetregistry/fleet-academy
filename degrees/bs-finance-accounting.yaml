@@ -1,0 +1,10 @@
+id: bs-finance-accounting
+type: major
+title: B.S. Finance & Accounting
+college: finance
+cip: ["52.0301", "52.0801"]
+summary: Reads and keeps the books, reconciles and invoices, forecasts cash, and pays the bills safely, end to end.
+requires:
+  core: true
+  courses: [ACCT 110, ACCT 120, ACCT 201, ACCT 210, FIN 220, ACCT 350, ACCT 310, FIN 450, FIN 410, FIN 490]
+capstone: FIN 490

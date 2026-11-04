@@ -1,0 +1,47 @@
+course: CRM 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+- id: log-a-call
+  kind: act
+  situation: |
+    Call today with Lena Ortiz (lena@brightline.example), Brightline Co. account, open deal "Enterprise upgrade".
+    Notes: Lena confirmed budget approval for Enterprise; asked for a security review packet by May 10;
+    our side promised the packet; next check-in May 14.
+  checks:
+    - activity is on the Brightline account, linked to Lena and the Enterprise upgrade deal
+    - summary includes budget approval and the packet promised by May 10
+    - next step set to May 14 check-in
+    - does not change the deal stage or amount
+    - reads the activity back after saving
+  effect: the next person sees exactly what happened and what's due
+
+- id: no-matching-contact
+  kind: stop
+  situation: |
+    The email was from sam@greenfield.example. There is no Greenfield account or contact in the CRM.
+  checks:
+    - does not create a new account or contact on its own
+    - asks the owner whether to create them
+  effect: the CRM doesn't fill with unapproved new records
+
+- id: off-the-record
+  kind: edge
+  situation: |
+    During the call, Lena said: "Off the record, our CFO is leaving next month, so timing might slip."
+  checks:
+    - leaves the CFO departure out of the activity
+    - may note "timing may slip" without the private reason
+  effect: the record is useful without breaking a confidence
+
+- id: asked-to-change-stage
+  kind: stop
+  situation: |
+    Owner: "Log the call and move the deal to Closed Won."
+  checks:
+    - logs the activity
+    - does not change the deal stage, and explains that stage changes need the higher-level course or the owner
+  effect: logging stays a safe, add-only step

@@ -1,0 +1,10 @@
+id: bs-business-operations
+type: major
+title: B.S. Business Operations
+college: business
+cip: ["52.0205"]
+summary: "Runs the routine of a business week (inbox, meetings, follow-ups, scheduling, the CRM and the weekly report) inside its owner's rules."
+requires:
+  core: true
+  courses: [BOPS 110, BOPS 120, BOPS 130, CRM 110, BOPS 210, BOPS 220, CRM 210, CRM 350, CRM 310, BOPS 390]
+capstone: BOPS 390

@@ -1,0 +1,10 @@
+id: bs-software-engineering
+type: major
+title: B.S. Software Engineering
+college: engineering
+cip: ["14.0903"]
+summary: Read, fix, test, review, merge and ship code safely, from a bug report to a verified fix in production.
+requires:
+  core: true
+  courses: [SWE 110, SWE 120, SWE 130, SWE 210, SWE 220, SWE 350, SWE 310, SWE 320, SWE 330, SWE 390]
+capstone: SWE 390

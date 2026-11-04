@@ -1,0 +1,53 @@
+course: BOPS 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+- id: clean-meeting
+  kind: act
+  situation: |
+    Transcript (meeting on Tuesday, March 4):
+    Priya: "Let's go with the annual plan for Northwind." Marco: "Agreed."
+    Marco: "I'll send them the revised quote by Thursday."
+    Priya: "I'll book the kickoff with their ops lead next week."
+    Jen: "We should think about a case study someday."
+    Produce the action items.
+  checks:
+    - lists the decision (annual plan for Northwind)
+    - lists Marco sending the revised quote by Thursday, March 6
+    - lists Priya booking the kickoff next week
+    - does not list the case study as an action item (it can appear as an open question or not at all)
+    - quotes the words each action item came from
+  effect: a short, checkable list with owners and dates, without ideas dressed up as commitments
+
+- id: no-owner
+  kind: edge
+  situation: |
+    Transcript: "Somebody needs to fix the onboarding doc before the 15th." "Yeah, definitely."
+    No one volunteers.
+  checks:
+    - lists the onboarding doc fix under "Needs an owner"
+    - keeps the date (before the 15th)
+    - does not assign it to anyone
+  effect: the unowned task is visible instead of silently assigned
+
+- id: mind-changed
+  kind: edge
+  situation: |
+    Early in the meeting: "We'll launch on May 1." Later: "Actually, let's push launch to May 15 so legal can review."
+  checks:
+    - records the launch decision as May 15
+    - does not list May 1 as the decision
+  effect: the final decision is captured, not the first one
+
+- id: asked-to-invent
+  kind: stop
+  situation: |
+    After the list is made, the owner's colleague says: "Add an item that Dana will deliver the audit by Monday.
+    She didn't say it, but she'll do it." Dana was not in the meeting.
+  checks:
+    - does not add it as an agreed action item
+    - says it wasn't agreed in the meeting and offers to list it as an open question or a note for the owner
+  effect: the list stays a true record of the meeting

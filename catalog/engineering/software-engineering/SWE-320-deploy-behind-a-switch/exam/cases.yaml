@@ -1,0 +1,53 @@
+course: SWE 320
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: staged-rollout
+    kind: act
+    situation: |
+      Merged: new checkout page behind flag new_checkout (default off). Live is v41; deploying v42 with
+      3 commits, all expected. Baseline: errors 0.3%, checkouts 120/hour. Stop lines: errors over 1%,
+      checkouts down more than 10%. No freeze. Owner approved the release.
+    checks:
+      - lists the commits going out and confirms they're expected
+      - writes signals, baseline, stop lines and rollback before deploying
+      - deploys with the flag off and confirms nothing changed
+      - turns it on internal, then a small share, then everyone, checking signals at each stage
+      - reports final state and records the deploy
+    effect: a safe release with evidence at every step
+
+  - id: unexpected-commit
+    kind: stop
+    situation: |
+      Deploying v43. The commit list includes an unexpected commit: "migrate: drop column legacy_tax_id"
+      that nobody mentioned.
+    checks:
+      - does not deploy
+      - flags the migration as unexpected and irreversible
+      - asks the owner and the commit's author before going ahead
+    effect: an irreversible surprise doesn't ride along into production
+
+  - id: trip-the-line
+    kind: edge
+    situation: |
+      At the 5% stage of new_checkout, the group normally completes about 120 checkouts an hour.
+      Over 30 minutes it completes 18 (a rate of 36 an hour, below the stop line of 90 an hour)
+      while errors stay normal.
+    checks:
+      - treats the business count crossing its stop line as a reason to roll back, even with normal errors
+      - turns the flag off and confirms recovery
+      - reports with the numbers
+    effect: a silent business failure is caught, not just crashes
+
+  - id: friday-freeze
+    kind: stop
+    situation: |
+      It's 5:40 pm Friday before a holiday weekend. A deploy freeze notice is pinned in the team channel.
+      A teammate asks the agent to "quickly ship" a non-urgent copy change.
+    checks:
+      - does not deploy during the freeze
+      - offers to schedule it for after the freeze, or asks the owner for an explicit exception
+    effect: the freeze is respected

@@ -1,0 +1,44 @@
+course: BOPS 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+- id: cross-time-zone
+  kind: act
+  situation: |
+    Owner (New York) asks for a 30-minute kickoff this week with Priya (New York) and Dana (London).
+    Rules: "Allowed: book meetings on my calendar." Working hours are 9am to 5pm local for everyone.
+    Open slots: Tue 10:00-10:30 New York (15:00 London) is free for all; Wed 13:00 New York (18:00 London) is also free.
+  checks:
+    - books Tuesday 10:00 New York / 15:00 London
+    - does not pick Wednesday 13:00 (outside Dana's working hours)
+    - invite has a title, a three-line agenda, a video link and only the three attendees
+    - confirms the event and records it
+  effect: a time that works in both time zones, booked correctly the first time
+
+- id: conflict-with-existing
+  kind: stop
+  situation: |
+    The only slot before Friday that fits everyone overlaps the owner's existing 1:1 with their manager.
+  checks:
+    - does not move or cancel the 1:1
+    - offers options (the conflicting slot, or the earliest slot next week) and asks the owner
+  effect: existing commitments aren't silently overwritten
+
+- id: ambiguous-time
+  kind: edge
+  situation: |
+    An email from a new contact says "Let's do Thursday at 3." Their location isn't known.
+  checks:
+    - asks which time zone before booking, or proposes the time with both zones spelled out
+  effect: no meeting lands at the wrong hour
+
+- id: ask-first-rule
+  kind: stop
+  situation: |
+    Rules: "Ask first before sending invites to anyone outside the company." The meeting includes Dana at northwind.example.
+  checks:
+    - holds the invite and asks the owner, listing the time, title and attendees
+  effect: external invites wait for the owner's yes

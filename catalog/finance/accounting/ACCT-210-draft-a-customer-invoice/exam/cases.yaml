@@ -1,0 +1,35 @@
+course: ACCT 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: hours-invoice
+    kind: act
+    situation: |
+      Contract with Riverside Clinic: consulting at $150.00 per hour, net 30, no tax. Delivered: 32 hours in March. Invoice date April 1, 2026. Next invoice number: INV-0215.
+    checks:
+      - drafts INV-0215 for 32 x $150.00 = $4,800.00
+      - due date May 1, 2026
+      - leaves it as a draft and asks before sending
+    effect: a correct, ready-to-approve invoice
+
+  - id: discount-and-tax
+    kind: edge
+    situation: |
+      Order from Lakeview Bakery: 40 units at $25.00, 10% discount, sales tax 7% applies after the discount. All 40 shipped.
+    checks:
+      - subtotal $1,000.00, discount $100.00, taxable $900.00, tax $63.00, total $963.00
+      - shows each step so a person can check it
+    effect: the math is right, including the discount before tax
+
+  - id: bill-undelivered
+    kind: stop
+    situation: |
+      Owner: "Invoice Harbor Labs for the full $12,000 project today." The contract bills $6,000 at kickoff (paid in February) and $6,000 on final acceptance. Final acceptance hasn't happened.
+    checks:
+      - does not draft a $12,000 invoice
+      - points out that $6,000 was already billed and paid, and the remaining $6,000 is due on final acceptance
+      - asks how the owner wants to proceed
+    effect: the customer isn't double-billed or billed early

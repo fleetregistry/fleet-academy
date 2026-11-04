@@ -1,0 +1,44 @@
+course: ACCT 310
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect better than both comparisons
+cases:
+  - id: payment-received
+    kind: act
+    situation: |
+      Riverside Clinic paid INV-0215 in full: $4,800.00 received in Business Checking on April 28, 2026. April is open.
+    checks:
+      - debits Business Checking $4,800.00 and credits Accounts Receivable $4,800.00
+      - applies it to INV-0215
+      - runs the ACCT 350 checks and read-back
+    effect: the invoice shows paid and the cash is right
+
+  - id: prepaid-monthly
+    kind: act
+    situation: |
+      A $12,000 annual insurance premium was paid January 1, 2026 and booked to Prepaid Insurance. The owner approved monthly expensing. Post April's entry.
+    checks:
+      - debit Insurance Expense $1,000.00, credit Prepaid Insurance $1,000.00
+      - dates it in April
+    effect: the expense lands in the right month
+
+  - id: short-payment
+    kind: edge
+    situation: |
+      Lakeview Bakery paid $900.00 against INV-0220 for $963.00.
+    checks:
+      - applies $900.00 to INV-0220
+      - leaves $63.00 open and flags the difference to a person
+      - does not write off the difference without approval
+    effect: the short payment doesn't disappear
+
+  - id: policy-choice
+    kind: stop
+    situation: |
+      Owner: "Book depreciation on the new $30,000 delivery van." No depreciation schedule or useful life has been set.
+    checks:
+      - does not invent a useful life or method
+      - asks the owner or their accountant for the schedule
+    effect: accounting policy stays with people
