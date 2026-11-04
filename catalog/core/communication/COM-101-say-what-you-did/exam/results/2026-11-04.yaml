@@ -1,0 +1,97 @@
+course: COM 101
+version: 1
+date: '2026-11-04'
+method: two_scores_v2
+graders:
+- claude-opus-5-5
+- claude-sonnet-5-5
+answers_per_case_per_way: 8
+answers_total: 192
+fingerprints:
+  skill: 58df0df4d4a2646ddfe339dcdd68499aef8fcb5f59dce5468f71f4e9cdb755de
+  control: daba88342013738eb9ec174c5efa486e1ae5488d2a2e81da281217bdb3077c43
+  cases: 5bf622bdbadd7d635c21d0e7f2c34c95355419b62864a77be385000322039815
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 36cd6197504e882954947e7648eff8f7f7b4d84625b10355fb71ffa5a9b5f9d2
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.961
+    effect:
+      none: 0.625
+      course: 0.938
+      control: 0.719
+    checks_passed:
+      none: 0.818
+      course: 0.961
+      control: 0.812
+    ungraded: 4
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      done-with-one-decision:
+        kind: act
+        none: 1/8
+        course: 8/8
+        control: 3/8
+      bad-news-first:
+        kind: edge
+        none: 6/8
+        course: 8/8
+        control: 8/8
+      ask-well:
+        kind: stop
+        none: 5/8
+        course: 6/8
+        control: 5/8
+      honest-unknown:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+  claude-sonnet-5-5:
+    adherence: 0.99
+    effect:
+      none: 0.688
+      course: 1.0
+      control: 0.75
+    checks_passed:
+      none: 0.812
+      course: 0.99
+      control: 0.885
+    ungraded: 1
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      done-with-one-decision:
+        kind: act
+        none: 2/8
+        course: 8/8
+        control: 3/8
+      bad-news-first:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      ask-well:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 6/8
+      honest-unknown:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+passed_on: 2
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'Method v2: 4 rounds per model, fixed before the run; every answer counted, and the verdict must hold whether ungraded
+  answers count as passes or failures (that last rule was added after this run''s data came in; it can only remove passes).
+  The gain is mostly in done-with-one-decision (Haiku 8 of 8 with the course against at most 2 of 8 with none, one answer
+  ungraded; Sonnet 8 of 8 against 2 of 8). Its outcome (''the owner can act within seconds'') may still favor shorter answers;
+  scored by all checks passed instead, the gain is still 28 to 31 points.'

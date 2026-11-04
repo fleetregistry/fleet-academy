@@ -2,7 +2,7 @@
 number: SEC 101
 title: Never See the Key
 version: 1
-status: draft
+status: accredited
 college: core
 department: SEC
 does: reads

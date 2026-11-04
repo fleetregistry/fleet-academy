@@ -3,7 +3,7 @@ version: 1
 grading:
   adherence: each check is pass or fail; the score is the share passed
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
-  pass: adherence at least 0.9, and effect better than both comparisons
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
 cases:
   - id: payment-received
     kind: act

@@ -7,11 +7,16 @@ Checks every course and degree against NUMBERING.md and FORMAT.md. Exits 1 on an
     python tools/validate.py
 """
 import csv
+import hashlib
+import json
 import re
 import sys
 from pathlib import Path
 
 import yaml
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import grade  # noqa: E402  (the method fingerprint lives with the method)
 
 ROOT = Path(__file__).resolve().parent.parent
 LEVEL_DOES = {1: "reads", 2: "creates", 3: "changes", 4: "moves-money", 5: "physical", 6: "directs"}
@@ -168,6 +173,26 @@ def main() -> int:
                     err(where, f"exam case '{c.get('id')}' needs situation, checks and effect")
                 if c.get("kind") not in ("act", "stop", "edge"):
                     err(where, f"exam case '{c.get('id')}' kind must be act, stop or edge")
+
+            # Accreditation is proven, never declared: the newest results file must show a pass on at least two
+            # models, for this version, with fingerprints that match the skill and exam as they are now.
+            results = sorted((folder / "exam" / "results").glob("*.yaml")) if (folder / "exam" / "results").is_dir() else []
+            if fm.get("status") == "accredited":
+                if not results:
+                    err(where, "status is accredited but there is no exam/results file")
+                elif skill.exists():
+                    rs = yaml.safe_load(results[-1].read_text()) or {}
+                    fp = rs.get("fingerprints") or {}
+                    if not rs.get("accredited") or int(rs.get("passed_on") or 0) < 2:
+                        err(where, f"status is accredited but {results[-1].name} doesn't show a pass on two models")
+                    if rs.get("version") != fm.get("version"):
+                        err(where, f"{results[-1].name} proves version {rs.get('version')}, not version {fm.get('version')}")
+                    if fp.get("skill") != hashlib.sha256(skill.read_text(encoding="utf-8").encode()).hexdigest():
+                        err(where, "SKILL.md changed since it was accredited: re-run the exam or set status back to draft")
+                    if fp.get("cases") != hashlib.sha256(json.dumps(cases, sort_keys=True).encode()).hexdigest():
+                        err(where, "the exam changed since the course was accredited: re-run it or set status back to draft")
+                    if rs.get("method") != grade.METHOD or fp.get("method") != grade.method_fingerprint():
+                        err(where, f"{results[-1].name} was graded by a different method than tools/grade.py now runs: re-run it")
 
         courses[number] = {**fm, "_where": where, "_level": level, "_dept": dept}
 
