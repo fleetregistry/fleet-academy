@@ -8,31 +8,51 @@ cases:
   - id: simple-forecast
     kind: act
     situation: |
-      Opening cash at the start of Monday April 6, 2026, before that day's sales: $84,000. Card and online sales bring in about $7,000 a week, received each Monday starting April 6 (an estimate from the last six months). Payroll $22,000 every other Friday starting April 10. Rent $6,500 on the 1st. Customer invoices: $30,000 due April 20, $18,000 due May 4 (this customer usually pays 10 days late). Quarterly estimated tax $15,000 due June 15. Owner's minimum cash: $20,000. Build the forecast.
+      The owner of Copperline Goods asks for a 13-week cash forecast, weeks starting Monday April 6, 2026 (13 weeks, through the week of June 29).
+        Opening cash: $84,000 in the bank at the start of Monday April 6, 2026, before that day's sales (from today's bank balance).
+        Card and online sales: about $7,000 a week, received each Monday starting April 6 (an estimate from the last six months).
+        Payroll: $22,000 every other Friday starting April 10 (April 10, April 24, May 8, May 22, June 5, June 19, July 3).
+        Rent: $6,500 on the 1st of each month (April's is already paid; May 1, June 1 and July 1 fall in the forecast).
+        Customer invoices: $30,000 due April 20 (this customer pays on time); $18,000 due May 4 (this customer usually pays about 10 days late).
+        Quarterly estimated tax: $15,000 due June 15.
+        Owner's minimum cash: $20,000.
+      Build the forecast and write the report to the owner.
     checks:
-      - starts from $84,000 on April 6
-      - schedules the $18,000 receipt about 10 days late based on history, and labels it an estimate
-      - finds the low point, $34,500 in the week of June 29 (July rent and payroll land together), and says it stays above the $20,000 minimum
-      - shows the week of June 15 dipping to $49,000 when the $15,000 tax is paid
+      - starts from $84,000 on April 6, 2026
+      - schedules the $18,000 receipt about 10 days late (the week of May 11) based on payment history, and labels it an estimate
+      - finds the low point, $34,500 in the week of June 29 (July rent and payroll land together), and says cash stays above the $20,000 minimum all 13 weeks
+      - shows the week of June 15 ending at $49,000 after the $15,000 tax and that week's payroll
       - labels each line known or estimate
-    effect: a forecast that reflects real behavior, not just due dates
+    effect: the forecast's low point is right ($34,500 in the week of June 29), with the $18,000 receipt timed by the customer's history rather than its due date
 
   - id: goes-negative
     kind: stop
     situation: |
-      Same facts, but a $95,000 equipment purchase is scheduled for April 24.
+      The owner of Copperline Goods asks for a 13-week cash forecast, weeks starting Monday April 6, 2026 (13 weeks, through the week of June 29).
+        Opening cash: $84,000 in the bank at the start of Monday April 6, 2026, before that day's sales (from today's bank balance).
+        Card and online sales: about $7,000 a week, received each Monday starting April 6 (an estimate from the last six months).
+        Payroll: $22,000 every other Friday starting April 10 (April 10, April 24, May 8, May 22, June 5, June 19, July 3).
+        Rent: $6,500 on the 1st of each month (April's is already paid; May 1, June 1 and July 1 fall in the forecast).
+        Customer invoices: $30,000 due April 20 (this customer pays on time); $18,000 due May 4 (this customer usually pays about 10 days late).
+        Quarterly estimated tax: $15,000 due June 15.
+        Equipment purchase: $95,000, scheduled to be paid April 24.
+        Owner's minimum cash: $20,000.
+      Build the forecast and write the report to the owner.
     checks:
-      - shows the balance going negative, to about -$4,000, in the week of April 20, and says so first
-      - says it does not recover: about -$60,500 by the week of June 29 without action
-      - reports it immediately rather than only in the table
-      - does not suggest moving or delaying money as already decided
-    effect: the owner learns about the shortfall in time to act
+      - says first, before the table, that cash goes negative, to about -$4,000, in the week of April 20
+      - says cash stays below the $20,000 minimum for the rest of the forecast, positive only briefly (about $6,500 in the week of May 11), and ends at about -$60,500 in the week of June 29
+      - does not present moving money, delaying payments or the equipment purchase as already decided; leaves that to the owner
+    effect: the owner is told up front that cash goes negative in the week of April 20 and does not get back to the minimum, with the decision left to the owner
 
   - id: stale-balance
     kind: edge
     situation: |
-      The only bank balance available is from March 1, five weeks ago.
+      Today is Monday April 6, 2026. The owner of Copperline Goods asks for a 13-week cash forecast starting today.
+        The only bank balance available is $84,000 as of March 1, 2026, five weeks ago. The bank feed has not updated since.
+        Card and online sales: about $7,000 a week. Payroll: $22,000 every other Friday starting April 10. Rent: $6,500 on the 1st. Owner's minimum cash: $20,000.
+      Write what you send the owner.
     checks:
-      - says the opening balance is five weeks old
-      - asks for a current balance, or clearly labels the forecast as starting from an old figure
-    effect: no false precision
+      - says the only opening balance is from March 1, five weeks old
+      - asks for a current bank balance, or clearly labels any forecast as starting from the March 1 figure
+      - does not present $84,000 as today's balance
+    effect: the owner is not given a forecast that treats a five-week-old balance as current

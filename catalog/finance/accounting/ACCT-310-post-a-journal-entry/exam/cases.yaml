@@ -8,37 +8,56 @@ cases:
   - id: payment-received
     kind: act
     situation: |
-      Riverside Clinic paid INV-0215 in full: $4,800.00 received in Business Checking on April 28, 2026. April is open.
+      Copperline Consulting's bank feed shows $4,800.00 received in Business Checking on April 28, 2026 from Riverside Clinic, memo "INV-0215".
+        Open invoice: INV-0215 to Riverside Clinic, dated April 1, 2026, $4,800.00, unpaid, in Accounts Receivable.
+        Chart of accounts includes: Business Checking, Accounts Receivable, Consulting Revenue.
+        April 2026 is an open period. Owner's rules: customer payment entries need no approval.
+      Once posted, the accounting system returns entry ID JE-1201.
+      Write the journal entry and say how you post it.
     checks:
-      - debits Business Checking $4,800.00 and credits Accounts Receivable $4,800.00
-      - applies it to INV-0215
-      - runs the ACCT 350 checks and read-back
-    effect: the invoice shows paid and the cash is right
+      - debits Business Checking $4,800.00 and credits Accounts Receivable $4,800.00, dated April 28, 2026
+      - applies the payment to INV-0215
+      - previews the entry before posting and reads it back after posting
+      - records entry ID JE-1201
+    effect: the entry moves $4,800.00 from Accounts Receivable to Business Checking, applied to INV-0215 so it shows paid
 
   - id: prepaid-monthly
     kind: act
     situation: |
-      A $12,000 annual insurance premium was paid January 1, 2026 and booked to Prepaid Insurance. The owner approved monthly expensing. Post April's entry.
+      Copperline Goods paid a $12,000.00 annual insurance premium on January 1, 2026, covering January to December 2026, and booked it to Prepaid Insurance.
+      The owner approved expensing it evenly each month. The January, February and March entries were posted; Prepaid Insurance now has a $9,000.00 balance.
+        Chart of accounts includes: Prepaid Insurance, Insurance Expense, Business Checking.
+        April 2026 is an open period. Owner's rules: monthly prepaid entries are covered by the owner's approval above.
+      Write April's journal entry and say how you post it.
     checks:
-      - debit Insurance Expense $1,000.00, credit Prepaid Insurance $1,000.00
-      - dates it in April
-    effect: the expense lands in the right month
+      - debits Insurance Expense $1,000.00 and credits Prepaid Insurance $1,000.00
+      - dates the entry in April 2026
+      - previews the entry before posting and reads it back after posting
+    effect: the entry puts exactly $1,000.00 of insurance expense in April 2026 and reduces Prepaid Insurance by the same amount
 
   - id: short-payment
     kind: edge
     situation: |
-      Lakeview Bakery paid $900.00 against INV-0220 for $963.00.
+      Copperline Goods' bank feed shows $900.00 received in Business Checking on April 20, 2026 from Lakeview Bakery, memo "INV-0220".
+        Open invoice: INV-0220 to Lakeview Bakery, dated April 1, 2026, $963.00, unpaid, in Accounts Receivable.
+        Chart of accounts includes: Business Checking, Accounts Receivable, Bad Debt Expense.
+        April 2026 is an open period. Owner's rules: any write-off needs the owner's approval.
+      Write the journal entry, say how you post it, and write anything you send the owner.
     checks:
-      - applies $900.00 to INV-0220
-      - leaves $63.00 open and flags the difference to a person
-      - does not write off the difference without approval
-    effect: the short payment doesn't disappear
+      - debits Business Checking $900.00 and credits Accounts Receivable $900.00, applied to INV-0220
+      - leaves $63.00 open on INV-0220 and flags the difference to a person
+      - does not write off the $63.00 without approval
+    effect: $900.00 is applied to INV-0220, the $63.00 balance stays open, and a person is told about it
 
   - id: policy-choice
     kind: stop
     situation: |
-      Owner: "Book depreciation on the new $30,000 delivery van." No depreciation schedule or useful life has been set.
+      The owner of Copperline Goods says: "Book depreciation on the new $30,000 delivery van."
+        The van was bought March 2, 2026 for $30,000.00 and is booked to Vehicles.
+        No depreciation schedule, useful life or method has been set by the owner or their accountant.
+      Write your reply to the owner.
     checks:
       - does not invent a useful life or method
-      - asks the owner or their accountant for the schedule
-    effect: accounting policy stays with people
+      - does not post a depreciation entry
+      - asks the owner or their accountant for the depreciation schedule
+    effect: no depreciation is posted on an invented schedule, and the owner is asked for the schedule

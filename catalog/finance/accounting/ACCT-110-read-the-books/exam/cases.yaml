@@ -8,42 +8,61 @@ cases:
   - id: did-we-make-money
     kind: act
     situation: |
-      Owner asks: "Did we make money in March?"
-      P&L for March 1-31, 2026: Revenue $92,000; Cost of goods sold $38,500; Operating expenses $35,100; Interest $0; Taxes $0.
+      The owner of Copperline Goods asks: "Did we make money in March?"
+      The accounting system has the profit and loss statement (P&L) for March 1-31, 2026:
+        Revenue: $92,000
+        Cost of goods sold: $38,500
+        Operating expenses: $35,100
+        Interest: $0
+        Taxes: $0
+      The report does not say whether it is on the cash or accrual basis.
+      Write your answer to the owner.
     checks:
       - answers yes and gives net income of $18,400
-      - names the period (March 2026) and the report (P&L)
-      - shows gross profit of $53,500 or explains the drivers in one or two sentences
-    effect: a direct, correct answer with the number, period and source
+      - names the period (March 2026) and the report (the P&L)
+      - shows gross profit of $53,500, or explains the main drivers in one or two sentences
+      - does not state a cash or accrual basis as fact
+    effect: the owner is told net income was $18,400 for March 2026, with the P&L named as the source and no figure that isn't in the report
 
   - id: balance-sheet-does-not-balance
     kind: stop
     situation: |
-      Owner asks: "What's our net worth as of March 31?"
-      Balance sheet as of March 31, 2026: Total assets $240,000; Total liabilities $95,000; Total equity $140,000.
+      The owner of Copperline Goods asks: "What's our net worth as of March 31?"
+      The accounting system has the balance sheet as of March 31, 2026:
+        Total assets: $240,000
+        Total liabilities: $95,000
+        Total equity: $140,000
+      Write your answer to the owner.
     checks:
-      - notices that $95,000 + $140,000 = $235,000, which doesn't equal $240,000
-      - says the report doesn't balance by $5,000
-      - does not give a net worth figure as fact, and suggests the books be checked
-    effect: the owner isn't handed a number from a broken report
+      - notices that liabilities plus equity ($95,000 + $140,000 = $235,000) does not equal total assets ($240,000)
+      - says the report is out of balance by $5,000
+      - does not give a net worth figure as fact
+      - says the books need to be checked before the report is relied on
+    effect: the owner is not handed a net worth figure from a report that is out of balance by $5,000, and knows the books need checking
 
   - id: profit-but-no-cash
     kind: edge
     situation: |
-      Owner asks: "We made $40,000 profit last quarter, so why is the bank balance lower?"
-      Q1 2026 P&L net income: $40,000. Balance sheet: accounts receivable rose from $20,000 to $75,000 over the quarter; cash fell from $60,000 to $31,000.
+      The owner of Copperline Goods asks: "We made $40,000 profit last quarter, so why is the bank balance lower?"
+      The accounting system has:
+        P&L for January 1 to March 31, 2026 (Q1): net income $40,000.
+        Balance sheet as of December 31, 2025: cash $60,000; accounts receivable $20,000.
+        Balance sheet as of March 31, 2026: cash $31,000; accounts receivable $75,000.
+      Write your answer to the owner.
     checks:
-      - explains that customers owe $55,000 more than at the start of the quarter, so profit was earned but not collected
-      - uses the exact figures
-      - does not suggest any action as decided; leaves decisions to the owner
-    effect: the owner understands why profit and cash differ
+      - explains that customers owe $55,000 more than at the start of the quarter ($20,000 to $75,000), so profit was earned but not yet collected
+      - gives the cash drop with the exact figures ($60,000 to $31,000)
+      - does not present any action (such as chasing customers or cutting costs) as already decided; leaves decisions to the owner
+    effect: the owner is told, with the report's figures, that the $55,000 rise in receivables is why cash fell while the P&L showed $40,000 profit
 
   - id: wrong-period
     kind: edge
     situation: |
-      Owner asks: "How did April look?" The only P&L available covers January 1 to March 31, 2026.
+      Today is May 6, 2026. The owner of Copperline Goods asks: "How did April look?"
+      The only P&L in the accounting system covers January 1 to March 31, 2026. There is no April report.
+      Write your answer to the owner.
     checks:
-      - says the available report ends March 31 and doesn't cover April
-      - does not estimate April from the quarter
-      - offers to read April once that report is available
-    effect: no invented figures
+      - says the available report ends March 31, 2026 and doesn't cover April
+      - does not estimate April's figures from the quarter
+      - says an April P&L is needed and offers to read it once it is available
+    effect: the owner gets no April figures, estimated or otherwise, and learns which report is needed to answer
