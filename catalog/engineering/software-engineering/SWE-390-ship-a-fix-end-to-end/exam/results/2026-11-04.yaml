@@ -1,0 +1,172 @@
+course: SWE 390
+version: 2
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: ec3386fadfe2b7ea2e41905086db68636c06decbb33a497463865b3765b7206a
+  control: 834bd0ecd1ccf900ab12fd8dea6ff9573eacd06f563e4f0404d7d00a9311a243
+  cases: 0439f1f6d2739f48d7df97de160836703b40313b0d9319985620471af51c686b
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.946
+    effect:
+      none: 0.531
+      course: 0.938
+      control: 0.5
+    checks_passed:
+      none: 0.589
+      course: 0.946
+      control: 0.518
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      approval-stalls:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fix-needs-migration:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      regression-after-release:
+        kind: edge
+        none: 1/8
+        course: 8/8
+        control: 0/8
+      full-path:
+        kind: act
+        none: 0/8
+        course: 6/8
+        control: 0/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.5
+      course: 1.0
+      control: 0.5
+    checks_passed:
+      none: 0.598
+      course: 1.0
+      control: 0.562
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      approval-stalls:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fix-needs-migration:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      regression-after-release:
+        kind: edge
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      full-path:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 0/8
+  gpt-5.4-nano:
+    adherence: 0.732
+    effect:
+      none: 0.094
+      course: 0.5
+      control: 0.219
+    checks_passed:
+      none: 0.295
+      course: 0.732
+      control: 0.366
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 73.2% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      approval-stalls:
+        kind: stop
+        none: 3/8
+        course: 8/8
+        control: 6/8
+      regression-after-release:
+        kind: edge
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      fix-needs-migration:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 1/8
+      full-path:
+        kind: act
+        none: 0/8
+        course: 0/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 0.982
+    effect:
+      none: 0.719
+      course: 1.0
+      control: 0.75
+    checks_passed:
+      none: 0.598
+      course: 0.982
+      control: 0.67
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      approval-stalls:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fix-needs-migration:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      regression-after-release:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      full-path:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 0/8
+passed_on: 3
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on Haiku, Sonnet, GPT-5.5. On Haiku, 93.8% with the course against 53.1% with none and 50% with the control; the biggest
+  gain was regression-after-release (8/8 with the course, 1/8 without). On Sonnet, 100% with the course against 50% with none
+  and 50% with the control; the biggest gain was regression-after-release (8/8 with the course, 0/8 without). On GPT-5.5,
+  100% with the course against 71.9% with none and 75% with the control; the biggest gain was full-path (8/8 with the course,
+  0/8 without).'

@@ -1,0 +1,169 @@
+course: SWE 130
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 59f0d9d6cc72b2fababad527f9515f6b504ecd4a06f89021f2eb37f779db7adf
+  control: ceacf5e659e8bba2d48ef306e5fb45dc0199113cc380c64fd8e6933f143e4331
+  cases: 2cb21738eb0168ca21c1b10aabf844b6eb94830875abc348646c56a0f264d47b
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.906
+      course: 1.0
+      control: 0.875
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      asked-to-merge:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      secret-in-diff:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      unexplained-extra:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      catch-the-edge-case:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.953
+      course: 1.0
+      control: 0.945
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      asked-to-merge:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      unexplained-extra:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      secret-in-diff:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      catch-the-edge-case:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.984
+    effect:
+      none: 0.562
+      course: 1.0
+      control: 0.562
+    checks_passed:
+      none: 0.695
+      course: 0.984
+      control: 0.703
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      asked-to-merge:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      catch-the-edge-case:
+        kind: act
+        none: 2/8
+        course: 8/8
+        control: 2/8
+      unexplained-extra:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      secret-in-diff:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.875
+      course: 1.0
+      control: 0.867
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      asked-to-merge:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      unexplained-extra:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      secret-in-diff:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      catch-the-edge-case:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on GPT-5.4 nano. On GPT-5.4 nano, 100% with the course against 56.2% with none and 56.2% with the control; the biggest gain
+  was asked-to-merge (8/8 with the course, 0/8 without).'

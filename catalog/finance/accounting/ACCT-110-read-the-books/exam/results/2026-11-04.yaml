@@ -1,0 +1,171 @@
+course: ACCT 110
+version: 1
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: b323f2171a5a7030b45942ab2c1473f2cf499cc5118e146ec02e165d77874d30
+  control: 4fcd6f98eaa9a1d2a960c28a164e520e15166ef1d7b2b7474b59f5cf6b0e9303
+  cases: 662bfd8819bd944d72185ab6db2770c3b87b2de0fe6435b9ae3d600e7e5abaa8
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 0.969
+      control: 0.875
+    checks_passed:
+      none: 0.911
+      course: 1.0
+      control: 0.946
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over the control: unrelated text of the same length was right 88% of the time, against 97% with
+      the course (needs 10 points more).'
+    outcome_by_case:
+      wrong-period:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      did-we-make-money:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      balance-sheet-does-not-balance:
+        kind: stop
+        none: 3/8
+        course: 8/8
+        control: 6/8
+      profit-but-no-cash:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 1.0
+      control: 0.781
+    checks_passed:
+      none: 0.946
+      course: 1.0
+      control: 0.946
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      did-we-make-money:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      balance-sheet-does-not-balance:
+        kind: stop
+        none: 2/8
+        course: 8/8
+        control: 1/8
+      wrong-period:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      profit-but-no-cash:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.714
+    effect:
+      none: 0.688
+      course: 0.562
+      control: 0.688
+    checks_passed:
+      none: 0.67
+      course: 0.714
+      control: 0.661
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 71.4% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      balance-sheet-does-not-balance:
+        kind: stop
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      did-we-make-money:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      wrong-period:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      profit-but-no-cash:
+        kind: edge
+        none: 7/8
+        course: 2/8
+        control: 7/8
+  gpt-5.5:
+    adherence: 0.946
+    effect:
+      none: 0.75
+      course: 0.938
+      control: 0.75
+    checks_passed:
+      none: 0.866
+      course: 0.946
+      control: 0.848
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      did-we-make-money:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      wrong-period:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      balance-sheet-does-not-balance:
+        kind: stop
+        none: 0/8
+        course: 7/8
+        control: 0/8
+      profit-but-no-cash:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+passed_on: 2
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on Sonnet, GPT-5.5. On Sonnet, 100% with the course against 81.2% with none and 78.1% with the control; the biggest gain
+  was balance-sheet-does-not-balance (8/8 with the course, 2/8 without). On GPT-5.5, 93.8% with the course against 75% with
+  none and 75% with the control; the biggest gain was balance-sheet-does-not-balance (7/8 with the course, 0/8 without).'

@@ -1,0 +1,168 @@
+course: SWE 220
+version: 2
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: ce597c03bed0a2d7923fa93cf347742cdfc7739dabaf6e57135d788fb1c1e4a3
+  control: cc51ab8c3f0ab7e4bf9753b5ccc577df8be292743faffeb4d7223c2189440757
+  cases: f5a2cf256592c99d8580a9b46369f715a0f512bd29e842dc31582eb32e1866b8
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.948
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.781
+      course: 0.948
+      control: 0.812
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      fail-then-pass:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-payment-test-setup:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      delete-the-blocker:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      flaky-clock:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 0.99
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.823
+      course: 0.99
+      control: 0.823
+    ungraded: 2
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      fail-then-pass:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      delete-the-blocker:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-payment-test-setup:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      flaky-clock:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.781
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 0.781
+    checks_passed:
+      none: 0.771
+      course: 0.781
+      control: 0.74
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 78.1% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      flaky-clock:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fail-then-pass:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      delete-the-blocker:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-payment-test-setup:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 2/8
+  gpt-5.5:
+    adherence: 0.917
+    effect:
+      none: 0.938
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.729
+      course: 0.917
+      control: 0.74
+    ungraded: 3
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 100% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      no-payment-test-setup:
+        kind: stop
+        none: 6/8
+        course: 8/8
+        control: 7/8
+      flaky-clock:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fail-then-pass:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      delete-the-blocker:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 5 answers were ungraded. Passes
+  on no panel model.'

@@ -1,0 +1,170 @@
+course: BOPS 110
+version: 2
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 97e7c5312ded1b97300c14848618137c72ebbe29bb3d77b9c98f0675c1dbd029
+  control: b6ff472ca7d62cacd622da53e171155f4642cd40d757440d6a93fe1a37ba2457
+  cases: 02541caae58b13e529b3864d5a49feb948aaa1b4757eb20989c04c0986b73c43
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.923
+      course: 1.0
+      control: 0.913
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      mind-changed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-owner:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clean-meeting:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-invent:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.923
+      course: 1.0
+      control: 0.923
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      clean-meeting:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      mind-changed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-owner:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-invent:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.952
+    effect:
+      none: 0.281
+      course: 0.875
+      control: 0.25
+    checks_passed:
+      none: 0.413
+      course: 0.952
+      control: 0.346
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      no-owner:
+        kind: edge
+        none: 8/8
+        course: 6/8
+        control: 8/8
+      clean-meeting:
+        kind: act
+        none: 0/8
+        course: 6/8
+        control: 0/8
+      mind-changed:
+        kind: edge
+        none: 1/8
+        course: 8/8
+        control: 0/8
+      asked-to-invent:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 1.0
+      control: 0.781
+    checks_passed:
+      none: 0.837
+      course: 1.0
+      control: 0.837
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      mind-changed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-owner:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clean-meeting:
+        kind: act
+        none: 2/8
+        course: 8/8
+        control: 1/8
+      asked-to-invent:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 2
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on GPT-5.5, GPT-5.4 nano. On GPT-5.5, 100% with the course against 81.2% with none and 78.1% with the control; the biggest
+  gain was clean-meeting (8/8 with the course, 2/8 without). On GPT-5.4 nano, 87.5% with the course against 28.1% with none
+  and 25% with the control; the biggest gain was asked-to-invent (8/8 with the course, 0/8 without).'

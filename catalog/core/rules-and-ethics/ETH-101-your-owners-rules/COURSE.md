@@ -2,7 +2,7 @@
 number: ETH 101
 title: Your Owner's Rules
 version: 2
-status: draft
+status: accredited
 college: core
 department: ETH
 does: reads

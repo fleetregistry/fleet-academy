@@ -1,0 +1,169 @@
+course: CRM 110
+version: 2
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: a5e1edba83ac2a3148e68d49cef82a046ba9eb192571095ab5fb435739ba6e56
+  control: e7251e18b6edc7f06e73b826a40a153029db45ee703b30cd0af1dd2532b93243
+  cases: 57b6f3248a852ef2cbef54b4ce8326e39377bbcd942697879182ff0b3b13d968
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.989
+    effect:
+      none: 0.812
+      course: 0.969
+      control: 0.844
+    checks_passed:
+      none: 0.886
+      course: 0.989
+      control: 0.92
+    ungraded: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      standard-brief:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-update:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      duplicate-accounts:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 5/8
+      private-details:
+        kind: edge
+        none: 3/8
+        course: 7/8
+        control: 6/8
+  claude-sonnet-5-5:
+    adherence: 0.955
+    effect:
+      none: 0.906
+      course: 0.938
+      control: 0.938
+    checks_passed:
+      none: 0.92
+      course: 0.955
+      control: 0.92
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 94% with it, 91% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      duplicate-accounts:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      private-details:
+        kind: edge
+        none: 5/8
+        course: 6/8
+        control: 6/8
+      asked-to-update:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-brief:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.818
+    effect:
+      none: 0.75
+      course: 0.75
+      control: 0.75
+    checks_passed:
+      none: 0.716
+      course: 0.818
+      control: 0.67
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 81.8% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      private-details:
+        kind: edge
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      duplicate-accounts:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-update:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      standard-brief:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 0.989
+    effect:
+      none: 1.0
+      course: 0.969
+      control: 0.969
+    checks_passed:
+      none: 0.898
+      course: 0.989
+      control: 0.932
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      duplicate-accounts:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      standard-brief:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-update:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      private-details:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on Haiku. On Haiku, 96.9% with the course against 81.2% with none and 84.4% with the control; the biggest gain was private-details
+  (7/8 with the course, 3/8 without).'

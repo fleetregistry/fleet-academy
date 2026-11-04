@@ -1,0 +1,170 @@
+course: ACCT 120
+version: 2
+date: '2026-11-04'
+method: two_scores_v3
+graders:
+- claude-opus-5-5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 2872e0a0aea03d43f59a9cb5d5833f193bae6ecfa21cce99c7b11de2999beb3f
+  control: 21dbc0d091bc5dd5cef508eed444df93d166e17642c9d0580f74eec49b8fcc72
+  cases: 0a4bc1223190d53ff21caa34d555025210d58daf81e82593933d80d7fa3d1acf
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 306c463d2750ff11e134d01126a3c1247bfea7b0511518ad36c8aebd599cb0e8
+  method: 24f3d0ea14bd9593d03106e619e21a91c1bf30db495019417331fd358743c7ff
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.844
+      course: 1.0
+      control: 0.906
+    checks_passed:
+      none: 0.75
+      course: 1.0
+      control: 0.771
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over the control: unrelated text of the same length was right 91% of the time, against 100%
+      with the course (needs 10 points more).'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-chart:
+        kind: edge
+        none: 5/8
+        course: 8/8
+        control: 7/8
+      transfer-and-personal:
+        kind: stop
+        none: 6/8
+        course: 8/8
+        control: 6/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.938
+      course: 1.0
+      control: 0.844
+    checks_passed:
+      none: 0.875
+      course: 1.0
+      control: 0.792
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 100% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      no-chart:
+        kind: edge
+        none: 6/8
+        course: 8/8
+        control: 3/8
+      transfer-and-personal:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.812
+    effect:
+      none: 0.531
+      course: 0.781
+      control: 0.562
+    checks_passed:
+      none: 0.458
+      course: 0.812
+      control: 0.5
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 81.2% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      asked-to-post:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 4/8
+      transfer-and-personal:
+        kind: stop
+        none: 0/8
+        course: 1/8
+        control: 0/8
+      no-chart:
+        kind: edge
+        none: 2/8
+        course: 8/8
+        control: 6/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.875
+      course: 1.0
+      control: 0.906
+    checks_passed:
+      none: 0.75
+      course: 1.0
+      control: 0.854
+    ungraded: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over the control: unrelated text of the same length was right 91% of the time, against 100%
+      with the course (needs 10 points more).'
+    outcome_by_case:
+      asked-to-post:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      clear-batch:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      transfer-and-personal:
+        kind: stop
+        none: 4/8
+        course: 8/8
+        control: 5/8
+      no-chart:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'Method v3 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
+  before any run on it, commit ecd0f9a): 4 rounds per model, fixed before the run; answers get up to 16,000 tokens, and a
+  cut-off or empty answer is never graded; every answer counted; the verdict must hold whether ungraded answers count as passes
+  or failures. The figures in this file count ungraded answers as failures. Graders are Anthropic models and never the model
+  under test. This exam was revised before this run under FORMAT.md''s rules for a fair exam, after an audit of the earlier
+  run (which was withdrawn); the revisions were reviewed independently before any re-run. 0 answers were ungraded. Passes
+  on no panel model.'

@@ -2,7 +2,7 @@
 number: SWE 390
 title: Ship a Fix End to End
 version: 2
-status: draft
+status: accredited
 college: engineering
 department: SWE
 does: changes
