@@ -98,13 +98,16 @@ Written by `tools/grade.py report`, never by hand. Each graded run adds two file
 - `YYYY-MM-DD.yaml`: the summary. For each model, it lists adherence, effect for each of the three ways (no course, the course, the control), the verdict, and whether the course passed. It also records the fingerprints of the skill, the exam, the control text and both prompts.
 - `YYYY-MM-DD-answers.json`: every answer and every grade, so anyone can check the grader.
 
-The method (Two Scores, version 3):
+The method (Two Scores, version 4, set 4 November 2026 before any v4 grade was used):
 
 | | |
 |---|---|
 | **Three ways** | Every case is answered with no course, with the course's `SKILL.md`, and with unrelated text of the same length ([tools/control.md](tools/control.md)). |
 | **Fixed rounds** | Exactly 4 rounds per model, 2 answers per case per way in each round: 8 answers per case per way. The number is set before any data comes in, and rounds are never added or dropped because a result is close. |
-| **Blind grading** | A separate grader model marks each check and the case's outcome. It never sees the course, never knows which way an answer came from, and is never the model being examined. |
+| **Blind grading** | Grader models mark each check and the case's outcome. They never see the course, never know which way an answer came from, and are never the model being examined. |
+| **Two graders must agree** | Every answer is graded by two graders from two companies: Claude Opus 5.5 and OpenAI GPT-5.5, or Claude Opus 5.5 and Claude Sonnet 5.5 for GPT-5.5's own answers. If they split on the outcome, or either can't return a grade, the answer is ungraded (below). Each grader's check marks count at half weight. (New in version 4.) |
+| **The outcome stands alone** | Graders judge the outcome first and on its own: does what the agent did achieve it, in any wording? A failed check doesn't by itself fail the outcome, and no particular words, phrases, figures or formats are required unless the outcome names them. (New in version 4, after a check of version 3's grading found single graders failing correct answers for leaving out a course's own wording.) |
+| **Regrades** | A run's stored answers can be graded again under a newer method, with no new answers, when the exam's situations are unchanged. The results file says so. |
 | **Room to answer** | Every answer gets up to 16,000 tokens (OpenAI models 32,000, since their hidden reasoning counts against it). An answer cut off at the limit, or empty, is never graded: grading half an answer measures the limit, not the course. It counts as ungraded. Graders get up to 2,000 tokens for their grade, the same for all three ways. |
 | **Ungraded answers** | Nothing is dropped. The verdict must hold both ways: counting every ungraded answer as reaching the outcome, and counting every one as not. If it flips, the course doesn't pass. |
 | **Adherence** | The share of checks the course answers passed. Must be at least 0.9. |

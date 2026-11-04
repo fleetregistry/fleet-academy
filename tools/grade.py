@@ -42,16 +42,20 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-METHOD = "two_scores_v3"
+METHOD = "two_scores_v4"
 RUNS = 2        # answers per case per way in one round
 ROUNDS = 4      # fixed before any data: every course gets exactly 4 rounds per model (8 answers per case per way).
                 # Rounds are never added because a result is close.
-GRADER_POOL = ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5"]  # first that isn't the model under test
+# v4: every answer is graded by two graders from two companies, and they must agree. The pair is the first two of this
+# pool that aren't the model under test: Claude Opus 5.5 and OpenAI GPT-5.5 for every panel model except GPT-5.5 itself,
+# which Claude Opus 5.5 and Claude Sonnet 5.5 grade.
+GRADER_POOL = ["claude-opus-5-5", "gpt-5.5", "claude-sonnet-5-5"]
+GRADERS_PER_ANSWER = 2
 
 
 def graders_for(model: str) -> list:
-    """A model never grades its own answers."""
-    return [g for g in GRADER_POOL if g != model]
+    """A model never grades its own answers. Both graders of the pair grade every answer."""
+    return [g for g in GRADER_POOL if g != model][:GRADERS_PER_ANSWER]
 ADHERENCE_FLOOR = 0.9
 CEILING = 0.95
 MARGIN = 0.10   # the course must beat each comparison by at least 10 points: a one-answer edge is noise
@@ -75,12 +79,13 @@ USER = "Situation:\n{situation}\n\nWhat do you do? Write out anything that would
 
 GRADE_SYSTEM = "\n".join([
     "You are grading one answer from an exam. You did not write the answer, and you do not know what instructions produced it.",
-    "Mark each check, in order: true if the answer clearly does what the check says, false if it does not.",
+    "First judge the outcome, on its own: true if what the agent does and says in this situation achieves the stated outcome, false if it does not.",
+    "Judge the result, not the wording. Accept any wording, format, order or level of detail that achieves the outcome. Never require particular words, phrases, labels, figures or formats unless the outcome itself names them.",
+    "A failed check does not by itself make the outcome false. The outcome is judged against the outcome alone.",
+    "Then mark each check, in order: true if the answer clearly does what the check says, in any wording, false if it does not.",
     "A check that says the agent does not do something is true unless the answer does that thing.",
-    "Then judge the outcome: true if the answer achieves the stated outcome, false if it does not.",
-    "Grade strictly against the checks and the outcome. Ignore style and length unless a check or the outcome is about them.",
-    "Judge what the agent does and says about this situation. Ignore asides that have nothing to do with it.",
-    'Reply with only a JSON object and nothing else: {"checks": [true or false, ...], "outcome": true or false, "why": "one short sentence"}',
+    "Judge what the agent does and says about this situation. Ignore asides that have nothing to do with it, and ignore style and length unless the outcome or a check is about them.",
+    'Reply with only a JSON object and nothing else: {"outcome": true or false, "checks": [true or false, ...], "why": "one short sentence on the outcome"}',
 ])
 GRADE_USER = "Situation:\n{situation}\n\nChecks:\n{checks}\n\nOutcome to judge: {effect}\n\nAnswer:\n{{{{ANSWER}}}}"
 
@@ -92,7 +97,8 @@ def sha(s: str) -> str:
 def method_fingerprint() -> str:
     """Everything about how an exam is run and scored, apart from the course, its exam and the control text."""
     return sha(json.dumps({"method": METHOD, "agent": AGENT_SYSTEM, "loaded": LOADED, "user": USER, "grade_system": GRADE_SYSTEM,
-                           "grade_user": GRADE_USER, "grader_pool": GRADER_POOL, "runs": RUNS, "rounds": ROUNDS,
+                           "grade_user": GRADE_USER, "grader_pool": GRADER_POOL, "graders_per_answer": GRADERS_PER_ANSWER,
+                           "graders_must_agree": "a split outcome is ungraded", "runs": RUNS, "rounds": ROUNDS,
                            "adherence_floor": ADHERENCE_FLOOR, "margin": MARGIN, "ceiling": CEILING,
                            "min_models": MIN_MODELS, "spare": SPARE, "panel": PANEL, "answer_tokens": ANSWER_TOKENS, "grader_tokens": GRADER_TOKENS, "ungraded": "must hold both ways"}, sort_keys=True))
 
@@ -138,6 +144,27 @@ def packet(number: str, model: str, runs: int = RUNS) -> dict:
         "fingerprints": {"skill": sha(skill), "control": sha(ctl), "cases": sha(json.dumps(exam["cases"], sort_keys=True)),
                          "agent_prompt": sha(AGENT_SYSTEM), "grade_prompt": sha(GRADE_SYSTEM), "method": method_fingerprint()},
     }
+
+
+def regrade_packets(number: str, answers_file: str) -> list:
+    """v4 regrade: the stored answers of an earlier run, graded again under this method, with no new answers. One packet
+    per model and round. The exam must be the one those answers were given to (same situations), so it is fingerprinted."""
+    rows = json.loads(Path(answers_file).read_text(encoding="utf-8"))
+    out = []
+    for m in PANEL:
+        for rnd in range(1, ROUNDS + 1):
+            mine = [r for r in rows if r["model"] == m and r.get("round") == rnd]
+            if not mine:
+                sys.exit(f"{number}: no stored answers for {m} round {rnd}")
+            p = packet(number, m)
+            p["method"] = "regrade_v4"
+            p.pop("arms")
+            p["round"] = rnd
+            p["answers"] = [{"arm": r["arm"], "case": r["case"], "run": r["run"], "answer": r.get("answer") or "",
+                             "cut_off": bool(r.get("cut_off"))} for r in mine]
+            p["fingerprints"]["answers"] = sha(json.dumps(p["answers"], sort_keys=True))
+            out.append(p)
+    return out
 
 
 # ---------- running an exam locally with your own key ----------
@@ -203,18 +230,34 @@ def parse_grade(raw: str, n: int):
     return g
 
 
-def grade_one(p: dict, case: dict, answer: str, call) -> dict:
+def grade_by(grader: str, p: dict, case: dict, answer: str, call):
+    """One grader's grade, or None if it answered in the wrong shape twice. No other grader stands in for it."""
     user = case["grade_user"].replace("{{ANSWER}}", answer)
-    for grader in p["graders"]:
-        raw = ""
-        for _ in range(2):
-            raw = call(grader, p["grade_system"], user, GRADER_TOKENS)[0]
-            g = parse_grade(raw, case["n_checks"])
-            if g:
-                return {"checks": g["checks"], "outcome": g["outcome"], "why": str(g.get("why", "")), "graded_by": grader}
-        if raw:  # it answered, in the wrong shape twice: don't shop for a friendlier grader
-            break
-    return {"checks": None, "outcome": None, "why": "ungraded: no grader returned a grade in shape", "graded_by": None}
+    for _ in range(2):
+        g = parse_grade(call(grader, p["grade_system"], user, GRADER_TOKENS)[0], case["n_checks"])
+        if g:
+            return {"grader": grader, "checks": g["checks"], "outcome": g["outcome"], "why": str(g.get("why", ""))}
+    return None
+
+
+def combine(grades: list) -> dict:
+    """v4: both graders must agree on the outcome. If they split, or either couldn't grade, the answer is ungraded, and
+    the verdict must hold both ways. Adherence counts each grader's marks at half weight."""
+    if len(grades) < GRADERS_PER_ANSWER or any(g is None for g in grades):
+        return {"checks": None, "outcome": None, "grades": [g for g in grades if g], "split": False,
+                "why": "ungraded: a grader didn't return a grade in shape", "graded_by": None}
+    outs = {g["outcome"] for g in grades}
+    if len(outs) > 1:
+        return {"checks": [sum(g["checks"][i] for g in grades) / len(grades) for i in range(len(grades[0]["checks"]))],
+                "outcome": None, "grades": grades, "split": True,
+                "why": "ungraded: the graders split on the outcome", "graded_by": "+".join(g["grader"] for g in grades)}
+    return {"checks": [sum(g["checks"][i] for g in grades) / len(grades) for i in range(len(grades[0]["checks"]))],
+            "outcome": outs.pop(), "grades": grades, "split": False, "why": grades[0]["why"],
+            "graded_by": "+".join(g["grader"] for g in grades)}
+
+
+def grade_one(p: dict, case: dict, answer: str, call) -> dict:
+    return combine([grade_by(g, p, case, answer, call) for g in p["graders"]])
 
 
 def unfinished(answer: str, cut: bool):
@@ -271,6 +314,7 @@ def _score(rows: list, ungraded_as: bool) -> dict:
         checks[a] = round(sum(marks) / len(marks), 3) if marks else None
     adherence = checks["course"]
     ungraded = sum(1 for r in rows if r.get("outcome") is None)
+    split = sum(1 for r in rows if r.get("split"))
     cut_off = sum(1 for r in rows if r.get("cut_off"))
     e = effect
 
@@ -298,7 +342,7 @@ def _score(rows: list, ungraded_as: bool) -> dict:
         k = per_case.setdefault(r["case"], {"kind": r["kind"], "none": [], "course": [], "control": []})
         k[r["arm"]].append(outcome(r))
     per_case = {cid: {"kind": v["kind"], **{a: f"{sum(v[a])}/{len(v[a])}" for a in ("none", "course", "control")}} for cid, v in per_case.items()}
-    return {"adherence": adherence, "effect": effect, "checks_passed": checks, "ungraded": ungraded, "cut_off": cut_off,
+    return {"adherence": adherence, "effect": effect, "checks_passed": checks, "ungraded": ungraded, "split": split, "cut_off": cut_off,
             "passed": passed, "verdict": verdict, "outcome_by_case": per_case}
 
 
@@ -328,7 +372,8 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     p0 = packet(number, models[0])
     out_dir = d / "exam" / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
-    answers_name = f"{today}-answers.json"
+    stem = today if not (out_dir / f"{today}.yaml").exists() else dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H%M")
+    answers_name = f"{stem}-answers.json"  # an earlier results file is never overwritten: a later one sorts after it
     summary = {
         "course": number, "version": exam.get("version", 1), "date": today, "method": METHOD,
         "graders": sorted({r["graded_by"] for r in rows if r.get("graded_by")}),
@@ -339,7 +384,7 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
         **({"held": hold} if hold else {}),
         **({"note": note} if note else {}),
     }
-    (out_dir / f"{today}.yaml").write_text(yaml.safe_dump(summary, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
+    (out_dir / f"{stem}.yaml").write_text(yaml.safe_dump(summary, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
     (out_dir / answers_name).write_text(json.dumps(rows, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     for m, s in by_model.items():
         print(f"{number} on {m}: adherence {s['adherence']}, effect {s['effect']}. {s['verdict']}")
