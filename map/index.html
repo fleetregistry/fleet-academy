@@ -70,11 +70,14 @@ canvas.drag { cursor: grabbing; }
 .legend svg { width: 16px; height: 16px; flex: none; }
 .src { font-size: 12px; color: var(--ink-faint); }
 .src a { color: var(--ink-muted); }
+.home { display: inline-block; margin-bottom: 6px; font: 600 13px/1.4 var(--sans); color: var(--green-hi); text-decoration: none; letter-spacing: .02em; }
+.home:hover, .home:focus-visible { text-decoration: underline; }
 @media (max-width: 980px) { .main { grid-template-columns: minmax(0, 1fr); } .mapbox { height: 68vh; } }
 </style>
 <div class="wrap">
   <header>
     <div>
+      <a class="home" href="/">Fleet Academy</a>
       <h1>Every Job on the Map</h1>
       <p>Every requirement of every job, from the US Department of Labor's O*NET database, as one map. A node lights up when a builder's skill for it passes its proving. Roles sit on the rim. Pick one to light its path, and see how much of that job agents can be trusted with today.</p>
     </div>
