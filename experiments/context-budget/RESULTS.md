@@ -1,6 +1,6 @@
 # The Context Budget experiment: results (4 Nov 2026)
 
-Run to the plan in [PLAN.md](PLAN.md), which was committed before any data came in. The analysis is [analyze.py](analyze.py), also committed before the results. Every answer and grade is summarized in [results.json](results.json).
+Run to the plan in [PLAN.md](PLAN.md), which was committed before any data came in. The analysis is [analyze.py](analyze.py), also committed before the results. The summary tables are in [results.json](results.json), and every answer with its grade is in [answers.json](answers.json).
 
 **The answer:** with up to 33 other skills loaded, about 19,000 tokens, **no model clearly lost ground** by the plan's rule (a drop of 10 points or more against the target alone, with the 95% intervals not overlapping). That held for both ways of loading: descriptions only, and full text.
 
