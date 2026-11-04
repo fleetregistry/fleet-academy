@@ -2,7 +2,7 @@
 number: FIN 450
 title: "Payment Safety: Duplicates, Changed Bank Details and Caps"
 version: 1
-status: draft
+status: accredited
 college: finance
 department: FIN
 does: moves-money
