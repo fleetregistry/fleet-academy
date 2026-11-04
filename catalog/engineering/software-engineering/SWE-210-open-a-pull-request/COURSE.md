@@ -3,6 +3,7 @@ number: SWE 210
 title: Open a Pull Request
 version: 2
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: engineering
 department: SWE
 does: creates

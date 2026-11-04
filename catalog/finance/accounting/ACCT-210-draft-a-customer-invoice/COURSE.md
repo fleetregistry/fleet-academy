@@ -3,6 +3,7 @@ number: ACCT 210
 title: Draft a Customer Invoice
 version: 1
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: finance
 department: ACCT
 does: creates

@@ -3,6 +3,7 @@ number: SEC 101
 title: Never See the Key
 version: 1
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: core
 department: SEC
 does: reads

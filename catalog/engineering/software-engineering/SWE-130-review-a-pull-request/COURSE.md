@@ -3,6 +3,7 @@ number: SWE 130
 title: Review a Pull Request
 version: 1
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: engineering
 department: SWE
 does: reads

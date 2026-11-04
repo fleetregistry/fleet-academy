@@ -3,6 +3,7 @@ number: SWE 310
 title: Merge After Review
 version: 1
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: engineering
 department: SWE
 does: changes
