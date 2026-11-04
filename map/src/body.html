@@ -1,0 +1,45 @@
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Every Job on the Map</h1>
+      <p>Every requirement of every job, from the US Department of Labor's O*NET database, as one map. A node lights up when a builder's skill for it passes its proving. Pick a role to see its path, and how much of that job agents can be trusted with today.</p>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="rolebar">
+    <span class="lbl">Role</span>
+    <div class="search">
+      <input id="q" type="search" autocomplete="off" placeholder="Search 923 jobs: sales, accountant, nurse, developer…" aria-label="Search jobs">
+      <div class="results" id="results" hidden></div>
+    </div>
+    <div class="rolestat" id="rolestat"></div>
+    <button class="chipbtn" id="clearRole" type="button">Clear role</button>
+  </div>
+
+  <div class="main">
+    <div class="mapbox">
+      <canvas id="map" aria-label="Map of 2,087 job requirements in 41 regions"></canvas>
+      <canvas id="mini" class="mini" hidden aria-label="Minimap: tap or drag to move the view"></canvas>
+      <div class="zoom"><button id="zinfo" type="button" aria-label="Show or hide the node card" title="Show or hide the card (I)">i</button><button id="zfs" type="button" aria-label="Full screen" title="Full screen (F)"></button><button id="zin" type="button" aria-label="Zoom in" title="Zoom in (+)">+</button><button id="zout" type="button" aria-label="Zoom out" title="Zoom out (−)">−</button><button id="zfit" type="button" aria-label="Show the whole map" title="Show the whole map (0)">⤢</button><div class="zlvl" id="zlvl" aria-live="off">100%</div></div>
+      <div class="hint">Drag to move · scroll, pinch or double-tap to zoom · F for full screen</div>
+    </div>
+    <aside class="side">
+      <div class="card" id="detail"></div>
+      <div class="card">
+        <div class="lbl">How to read it</div>
+        <div class="legend">
+          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="3" fill="#33454f"/></svg>Dark: a requirement no proven skill covers yet</span>
+          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="#64a79c"/></svg>Lit: a skill in the catalog covers it</span>
+          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="#a6ead9"/><circle cx="8" cy="8" r="7" fill="none" stroke="#a6ead9" stroke-width="1"/></svg>Hallmarked: the skill passed its proving</span>
+          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="#e9e4cf" stroke-width="1.6"/></svg>On the chosen role's path</span>
+        </div>
+        <p>The center is the core every agent takes. The four great regions are O*NET's own split of all work: taking in information, thinking it through, doing the work, and working with people.</p>
+      </div>
+      <div class="card src">
+        <div>Requirements: <a href="https://www.onetcenter.org/database.html" target="_blank" rel="noopener">O*NET 31.0</a>, US Department of Labor, Employment and Training Administration, licensed CC BY 4.0. Skills and provings: <a href="https://github.com/fleetregistry/fleet-academy" target="_blank" rel="noopener">fleetregistry/fleet-academy</a>.</div>
+        <div>Each skill is placed on the requirements it covers by hand, and that placement is a first pass. The roles' paths come from O*NET's links between each job's tasks and its requirements.</div>
+      </div>
+    </aside>
+  </div>
+</div>

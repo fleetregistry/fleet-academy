@@ -55,6 +55,22 @@ canvas.drag { cursor: grabbing; }
 .zoom { position: absolute; right: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 6px; }
 .zoom button { width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--panel); color: var(--ink); font: 600 18px var(--sans); cursor: pointer; }
 .hint { position: absolute; left: 12px; bottom: 12px; font-size: 12px; color: var(--ink-faint); background: rgba(10,16,21,.7); padding: 4px 8px; border-radius: 6px; }
+.zoom button { display: grid; place-items: center; padding: 0; }
+.zoom button:hover { border-color: var(--green); }
+.zoom button:focus-visible, canvas:focus-visible, .mini:focus-visible { outline: 2px solid var(--green-hi); outline-offset: 2px; }
+.zoom button svg { width: 18px; height: 18px; }
+.zlvl { font: 600 11px/1 var(--mono); color: var(--ink-muted); text-align: center; padding: 4px 0 0; }
+.mini { position: absolute; right: 60px; bottom: 12px; width: 150px; height: 150px; border: 1px solid var(--line-2); border-radius: 10px; background: rgba(10,16,21,.85); cursor: crosshair; touch-action: none; }
+.mini[hidden] { display: none; }
+.mapbox.full { position: fixed; inset: 0; z-index: 1000; width: 100vw; height: 100vh; height: 100dvh; min-height: 0; border: 0; border-radius: 0; }
+.mapbox:fullscreen { width: 100vw; height: 100vh; min-height: 0; border: 0; border-radius: 0; }
+.mapbox.isfull .hint { display: none; }
+#zinfo { display: none; font: italic 600 17px/1 var(--display); }
+.mapbox.isfull #zinfo { display: grid; }
+.mapbox.nodetail .fsdetail { display: none; }
+.mapbox .fsdetail { position: absolute; left: 12px; top: 12px; z-index: 2; width: min(360px, calc(100% - 84px)); max-height: calc(100% - 24px); overflow: auto; background: rgba(18,28,35,.95); box-shadow: 0 8px 28px rgba(0,0,0,.4); }
+body.noscroll { overflow: hidden; }
+@media (max-width: 600px) { .mini { width: 104px; height: 104px; } .hint { display: none; } .mapbox .fsdetail { top: auto; bottom: 12px; width: calc(100% - 84px); max-height: 34%; } }
 .side { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
 .card h2 { margin: 0; font: 600 17px/1.35 var(--sans); text-wrap: balance; }
@@ -97,8 +113,9 @@ canvas.drag { cursor: grabbing; }
   <div class="main">
     <div class="mapbox">
       <canvas id="map" aria-label="Map of 2,087 job requirements in 41 regions"></canvas>
-      <div class="zoom"><button id="zin" type="button" aria-label="Zoom in">+</button><button id="zout" type="button" aria-label="Zoom out">−</button><button id="zfit" type="button" aria-label="Show the whole map">⤢</button></div>
-      <div class="hint">Drag to move · scroll or pinch to zoom · tap a node</div>
+      <canvas id="mini" class="mini" hidden aria-label="Minimap: tap or drag to move the view"></canvas>
+      <div class="zoom"><button id="zinfo" type="button" aria-label="Show or hide the node card" title="Show or hide the card (I)">i</button><button id="zfs" type="button" aria-label="Full screen" title="Full screen (F)"></button><button id="zin" type="button" aria-label="Zoom in" title="Zoom in (+)">+</button><button id="zout" type="button" aria-label="Zoom out" title="Zoom out (−)">−</button><button id="zfit" type="button" aria-label="Show the whole map" title="Show the whole map (0)">⤢</button><div class="zlvl" id="zlvl" aria-live="off">100%</div></div>
+      <div class="hint">Drag to move · scroll, pinch or double-tap to zoom · F for full screen</div>
     </div>
     <aside class="side">
       <div class="card" id="detail"></div>
@@ -240,12 +257,18 @@ function leaves(cs) { const set = new Set(cs), used = new Set(); cs.forEach(n =>
 const cv = document.getElementById("map"), ctx = cv.getContext("2d");
 const V = { s: 0.2, x: 0, y: 0 }; let W = 0, H = 0, DPR = 1;
 let role = null, roleSet = new Set(), roleSk = new Set(), sel = null, tempRP = null;
-function fit() { V.s = Math.min(W, H) / (2 * EXT); V.x = W / 2; V.y = H / 2; }
+const MAXS = 40; // 40x the base scale: single requirements read comfortably, with room to spare as the map grows
+const fitS = () => Math.min(W, H) / (2 * EXT);
+const clampS = v => Math.min(MAXS, Math.max(fitS() * 0.5, v));
+function fit() { V.s = fitS(); V.x = W / 2; V.y = H / 2; }
+const centerOf = () => ({ x: (W / 2 - V.x) / V.s, y: (H / 2 - V.y) / V.s });
 function resize() {
-  const r = cv.getBoundingClientRect(); DPR = window.devicePixelRatio || 1; W = r.width; H = r.height;
+  const r = cv.getBoundingClientRect(); if (!r.width || !r.height) return;
+  const c = resize.done ? centerOf() : null, wasFit = resize.done && Math.abs(V.s - fitS()) < 1e-9;
+  DPR = window.devicePixelRatio || 1; W = r.width; H = r.height;
   cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
-  if (!resize.done) { fit(); resize.done = true; }
-  draw();
+  if (!resize.done || wasFit) { fit(); resize.done = true; } else { V.x = W / 2 - c.x * V.s; V.y = H / 2 - c.y * V.s; }
+  miniBg = null; draw();
 }
 const sx = p => V.x + p.x * V.s, sy = p => V.y + p.y * V.s;
 const clampR = (r, lo, hi) => Math.min(hi, Math.max(lo, r));
@@ -262,14 +285,14 @@ function draw() {
   ctx.clearRect(0, 0, W, H);
   const s = V.s, dim = role !== null;
   // rim of roles
-  ctx.strokeStyle = "rgba(233,228,207,.07)"; ctx.lineWidth = Math.max(1, 26 * s);
+  ctx.strokeStyle = "rgba(233,228,207,.07)"; ctx.lineWidth = clampR(26 * s, 1, 40);
   ctx.beginPath(); ctx.arc(sx({ x: 0, y: 0 }), sy({ x: 0, y: 0 }), RIM * s, 0, 6.2832); ctx.stroke();
   // region halos and hub lines
   D.gwas.forEach((g, gi) => {
     const b = gwaPos[gi], col = CATC[catOf(gi)];
     ctx.beginPath(); ctx.arc(sx(b), sy(b), b.r * s, 0, 6.2832); ctx.fillStyle = col + "0d"; ctx.fill();
-    ctx.strokeStyle = col + "26"; ctx.lineWidth = Math.max(1, 3 * s); line({ x: 0, y: 0 }, b);
-    ctx.lineWidth = Math.max(0.6, 1.5 * s); ctx.strokeStyle = col + "26";
+    ctx.strokeStyle = col + "26"; ctx.lineWidth = clampR(3 * s, 1, 3); line({ x: 0, y: 0 }, b);
+    ctx.lineWidth = clampR(1.5 * s, 0.6, 1.6); ctx.strokeStyle = col + "26";
     gwaIwas[gi].forEach(ii => line(b, iwaPos[ii]));
   });
   if (s > 0.6) {
@@ -277,7 +300,7 @@ function draw() {
     iwaMembers.forEach((mm, ii) => mm.forEach(di => line(iwaPos[ii], pos[di])));
   }
   // requirement nodes (small passives)
-  const nr = Math.max(1.3, 2.5 * s);
+  const nr = clampR(2.5 * s, 1.3, 6);
   for (let i = 0; i < D.dwas.length; i++) {
     const p = pos[i], X = sx(p), Y = sy(p);
     if (X < -20 || Y < -20 || X > W + 20 || Y > H + 20) continue;
@@ -400,32 +423,149 @@ function draw() {
   }
   if (s >= 0.75) {
     ctx.font = "500 11.5px Inter, sans-serif"; ctx.fillStyle = "rgba(238,243,241,.45)";
-    D.iwas.forEach((w, ii) => { const c = iwaPos[ii], X = sx(c), Y = sy(c) - c.r * s - 10; if (X > -100 && X < W + 100 && Y > -40 && Y < H + 40) wrapText(w[1], X, Y, 180, 13); });
+    D.iwas.forEach((w, ii) => {
+      const c = iwaPos[ii], X = sx(c), Y = sy(c) - c.r * s - 10; if (X < -100 || X > W + 100 || Y < -40 || Y > H + 40) return;
+      const lines = splitLines(w[1], 180), bw = Math.max(...lines.map(l => ctx.measureText(l).width)), box = [X - bw / 2 - 3, Y - lines.length * 13, X + bw / 2 + 3, Y + 6];
+      if (hit(box)) return; boxes.push(box); wrapText(w[1], X, Y, 180, 13);
+    });
   }
   if (s >= 1.8) {
     ctx.font = "11px Inter, sans-serif"; ctx.fillStyle = "rgba(238,243,241,.8)"; ctx.textAlign = "left";
-    for (let i = 0; i < D.dwas.length; i++) { const X = sx(pos[i]), Y = sy(pos[i]); if (X > 0 && X < W && Y > 0 && Y < H) ctx.fillText(D.dwas[i][0].replace(/\.$/, ""), X + 8, Y); }
+    for (let i = 0; i < D.dwas.length; i++) {
+      const X = sx(pos[i]), Y = sy(pos[i]); if (X < 0 || X > W || Y < 0 || Y > H) continue;
+      const t = D.dwas[i][0].replace(/\.$/, ""), tw = ctx.measureText(t).width, box = [X + 6, Y - 7, X + 10 + tw, Y + 7];
+      if (hit(box)) continue; boxes.push(box); ctx.fillText(t, X + 8, Y);
+    }
   }
+  drawMini();
+  zl.textContent = Math.round(V.s / fitS() * 100) + "%";
 }
+// ---- the minimap: the whole map, small, with the part in view outlined. Tap or drag it to go there.
+const mini = document.getElementById("mini"), mctx = mini.getContext("2d"), zl = document.getElementById("zlvl");
+let miniBg = null, MW = 0;
+function miniBuild() {
+  const r = mini.getBoundingClientRect(); MW = r.width; if (!MW) return null;
+  const c = document.createElement("canvas"); c.width = c.height = Math.round(MW * DPR);
+  const g = c.getContext("2d"); g.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const k = MW / (2 * EXT), mx = p => MW / 2 + p.x * k, my = p => MW / 2 + p.y * k;
+  D.gwas.forEach((_, gi) => { const b = gwaPos[gi]; g.beginPath(); g.arc(mx(b), my(b), Math.max(1.5, b.r * k), 0, 6.2832); g.fillStyle = CATC[catOf(gi)] + "22"; g.fill(); });
+  for (let i = 0; i < D.dwas.length; i++) { if (!litBy[i]) continue; g.fillStyle = litBy[i].some(isHall) ? HALL : LIT; g.fillRect(mx(pos[i]) - 0.6, my(pos[i]) - 0.6, 1.2, 1.2); }
+  D.skills.forEach(sk => { const p = NP[sk.n]; g.beginPath(); g.arc(mx(p), my(p), 1.8, 0, 6.2832); g.fillStyle = isHall(sk) ? HALL : isEng(sk) ? ENG : "#6c8a86"; g.fill(); });
+  RP.forEach(p => { g.beginPath(); g.arc(mx(p), my(p), 2.6, 0, 6.2832); g.fillStyle = ROLE; g.fill(); });
+  return c;
+}
+function drawMini() {
+  const show = V.s > fitS() * 1.15; mini.hidden = !show; if (!show) return;
+  const r = mini.getBoundingClientRect(); if (!r.width) return;
+  if (!miniBg || Math.abs(r.width - MW) > 0.5) { mini.width = mini.height = Math.round(r.width * DPR); miniBg = miniBuild(); }
+  if (!miniBg) return;
+  mctx.setTransform(1, 0, 0, 1, 0, 0); mctx.clearRect(0, 0, mini.width, mini.height); mctx.drawImage(miniBg, 0, 0);
+  mctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  const k = MW / (2 * EXT), x0 = MW / 2 + (-V.x / V.s) * k, y0 = MW / 2 + (-V.y / V.s) * k, w = W / V.s * k, h = H / V.s * k;
+  mctx.strokeStyle = "#eef3f1"; mctx.lineWidth = 1.4; mctx.strokeRect(Math.max(0.7, x0), Math.max(0.7, y0), Math.min(MW - 1.4, w), Math.min(MW - 1.4, h));
+  if (w < 6 && h < 6) { mctx.beginPath(); mctx.arc(x0 + w / 2, y0 + h / 2, 4, 0, 6.2832); mctx.stroke(); }
+}
+function miniGo(e) { const r = mini.getBoundingClientRect(), k = r.width / (2 * EXT); stopAnim(); const c = { x: (e.clientX - r.left - r.width / 2) / k, y: (e.clientY - r.top - r.height / 2) / k }; V.x = W / 2 - c.x * V.s; V.y = H / 2 - c.y * V.s; draw(); }
+mini.addEventListener("pointerdown", e => { e.stopPropagation(); mini.setPointerCapture(e.pointerId); mini.dragging = true; miniGo(e); });
+mini.addEventListener("pointermove", e => { if (mini.dragging) miniGo(e); });
+mini.addEventListener("pointerup", () => { mini.dragging = false; });
+mini.addEventListener("pointercancel", () => { mini.dragging = false; });
 function splitLines(t, maxW) { const words = t.split(" "), lines = []; let ln = ""; words.forEach(w => { const tl = ln ? ln + " " + w : w; if (ctx.measureText(tl).width > maxW && ln) { lines.push(ln); ln = w; } else ln = tl; }); if (ln) lines.push(ln); return lines; }
 function wrapText(t, x, y, maxW, lh) { const lines = splitLines(t, maxW), y0 = y - (lines.length - 1) * lh; lines.forEach((l, k) => ctx.fillText(l, x, y0 + k * lh)); }
 
 // ---- interaction
-let drag = null; const pointers = new Map(); let pinch = null;
-cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x: e.offsetX, y: e.offsetY }); if (pointers.size === 1) drag = { x: e.offsetX, y: e.offsetY, vx: V.x, vy: V.y, moved: false }; else if (pointers.size === 2) { const [a, b] = [...pointers.values()]; pinch = { d: Math.hypot(a.x - b.x, a.y - b.y), s: V.s }; drag = null; } });
+let drag = null; const pointers = new Map(); let pinch = null, lastTap = null, anim = null;
+function stopAnim() { if (anim) { cancelAnimationFrame(anim); anim = null; } }
+// glide to a place and scale: the scale moves evenly on a log scale, so zooming 10x feels as smooth as 2x
+function animTo(c1, s1, ms = 300) {
+  stopAnim(); const c0 = centerOf(), s0 = V.s, t0 = performance.now();
+  const step = now => {
+    const k = Math.min(1, (now - t0) / ms), e = 1 - Math.pow(1 - k, 3), ns = Math.exp(Math.log(s0) + (Math.log(s1) - Math.log(s0)) * e);
+    const cx = c0.x + (c1.x - c0.x) * e, cy = c0.y + (c1.y - c0.y) * e;
+    V.s = ns; V.x = W / 2 - cx * ns; V.y = H / 2 - cy * ns; draw();
+    anim = k < 1 ? requestAnimationFrame(step) : null;
+  };
+  anim = requestAnimationFrame(step);
+}
+function zoomBy(px, py, f, ms = 260) { const s1 = clampS(V.s * f), wx = (px - V.x) / V.s, wy = (py - V.y) / V.s; animTo({ x: wx - (px - W / 2) / s1, y: wy - (py - H / 2) / s1 }, s1, ms); }
+function zoomAt(px, py, f) { stopAnim(); const ns = clampS(V.s * f); f = ns / V.s; V.x = px - (px - V.x) * f; V.y = py - (py - V.y) * f; V.s = ns; draw(); }
+function flyTo(p, s1) { animTo({ x: p.x, y: p.y }, clampS(s1 || Math.max(V.s, fitS() * 4)), 420); }
+const mid = () => { const [a, b] = [...pointers.values()]; return { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2, d: Math.hypot(a.x - b.x, a.y - b.y) }; };
+cv.addEventListener("pointerdown", e => {
+  stopAnim(); cv.setPointerCapture(e.pointerId); pointers.set(e.pointerId, { x: e.offsetX, y: e.offsetY });
+  if (pointers.size === 1) drag = { x: e.offsetX, y: e.offsetY, vx: V.x, vy: V.y, moved: false };
+  else if (pointers.size === 2) { const m = mid(); pinch = { d: Math.max(1, m.d), s: V.s, wx: (m.x - V.x) / V.s, wy: (m.y - V.y) / V.s }; drag = null; }
+});
 cv.addEventListener("pointermove", e => {
   if (!pointers.has(e.pointerId)) return; pointers.set(e.pointerId, { x: e.offsetX, y: e.offsetY });
-  if (pinch && pointers.size === 2) { const [a, b] = [...pointers.values()]; zoomAt((a.x + b.x) / 2, (a.y + b.y) / 2, pinch.s * Math.hypot(a.x - b.x, a.y - b.y) / pinch.d / V.s); return; }
+  if (pinch && pointers.size === 2) { const m = mid(), ns = clampS(pinch.s * m.d / pinch.d); V.s = ns; V.x = m.x - pinch.wx * ns; V.y = m.y - pinch.wy * ns; draw(); return; }
   if (drag) { const dx = e.offsetX - drag.x, dy = e.offsetY - drag.y; if (Math.abs(dx) + Math.abs(dy) > 4) { drag.moved = true; cv.classList.add("drag"); } V.x = drag.vx + dx; V.y = drag.vy + dy; draw(); }
 });
-cv.addEventListener("pointerup", e => { const d = drag; pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null; cv.classList.remove("drag"); if (d && !d.moved) pick(e.offsetX, e.offsetY); drag = null; });
-cv.addEventListener("pointercancel", e => { pointers.delete(e.pointerId); drag = null; pinch = null; });
-cv.addEventListener("wheel", e => { e.preventDefault(); zoomAt(e.offsetX, e.offsetY, Math.exp(-e.deltaY * 0.0015)); }, { passive: false });
-function zoomAt(px, py, f) { const ns = Math.min(4, Math.max(0.06, V.s * f)); f = ns / V.s; V.x = px - (px - V.x) * f; V.y = py - (py - V.y) * f; V.s = ns; draw(); }
-document.getElementById("zin").onclick = () => zoomAt(W / 2, H / 2, 1.6);
-document.getElementById("zout").onclick = () => zoomAt(W / 2, H / 2, 1 / 1.6);
-document.getElementById("zfit").onclick = () => { fit(); draw(); };
+cv.addEventListener("pointerup", e => {
+  const d = drag, wasPinch = !!pinch; pointers.delete(e.pointerId); if (pointers.size < 2) pinch = null; cv.classList.remove("drag"); drag = null;
+  if (!d || d.moved || wasPinch) return;
+  const now = performance.now();
+  if (lastTap && now - lastTap.t < 330 && Math.hypot(lastTap.x - e.offsetX, lastTap.y - e.offsetY) < 26) { zoomBy(e.offsetX, e.offsetY, e.shiftKey ? 0.4 : 2.5); lastTap = null; }
+  else { pick(e.offsetX, e.offsetY); lastTap = { t: now, x: e.offsetX, y: e.offsetY }; }
+});
+cv.addEventListener("pointercancel", e => { pointers.delete(e.pointerId); drag = null; pinch = null; cv.classList.remove("drag"); });
+// mouse wheels zoom; trackpads pinch (ctrlKey) to zoom and swipe sideways to move
+cv.addEventListener("wheel", e => {
+  e.preventDefault();
+  const u = e.deltaMode === 1 ? 33 : e.deltaMode === 2 ? 400 : 1, dx = e.deltaX * u, dy = e.deltaY * u;
+  if (!e.ctrlKey && Math.abs(dx) > Math.abs(dy)) { stopAnim(); V.x -= dx; V.y -= dy; draw(); return; }
+  zoomAt(e.offsetX, e.offsetY, Math.exp(-dy * (e.ctrlKey ? 0.012 : 0.0024)));
+}, { passive: false });
+document.getElementById("zin").onclick = () => zoomBy(W / 2, H / 2, 2);
+document.getElementById("zout").onclick = () => zoomBy(W / 2, H / 2, 0.5);
+document.getElementById("zfit").onclick = () => animTo({ x: 0, y: 0 }, fitS(), 380);
+// ---- full screen: the map fills the screen, with the node card floating on it
+const box = document.querySelector(".mapbox"), fsBtn = document.getElementById("zfs"), detailEl = document.getElementById("detail"), detailHome = detailEl.parentNode, detailNext = detailEl.nextSibling;
+const ICON_IN = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 8V3h5M17 8V3h-5M3 12v5h5M17 12v5h-5"/></svg>';
+const ICON_OUT = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 3v5H3M12 3v5h5M8 17v-5H3M12 17v-5h5"/></svg>';
+const reqFS = box.requestFullscreen || box.webkitRequestFullscreen;
+const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+const isFull = () => fsEl() === box || box.classList.contains("full");
+function setFull(on) {
+  if (on) {
+    if (reqFS) { try { const p = reqFS.call(box); if (p && p.catch) p.catch(() => { box.classList.add("full"); afterFull(); }); } catch (err) { box.classList.add("full"); afterFull(); } }
+    else { box.classList.add("full"); afterFull(); }
+  } else {
+    if (fsEl()) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    box.classList.remove("full"); afterFull();
+  }
+}
+function afterFull() {
+  const on = isFull();
+  document.body.classList.toggle("noscroll", box.classList.contains("full"));
+  box.classList.toggle("isfull", on);
+  fsBtn.innerHTML = on ? ICON_OUT : ICON_IN; fsBtn.setAttribute("aria-label", on ? "Leave full screen" : "Full screen"); fsBtn.title = on ? "Leave full screen (Esc)" : "Full screen (F)";
+  if (on && detailEl.parentNode !== box) { box.appendChild(detailEl); detailEl.classList.add("fsdetail"); box.classList.toggle("nodetail", W < 600 || window.innerWidth < 600); }
+  if (!on && detailEl.parentNode === box) { detailHome.insertBefore(detailEl, detailNext); detailEl.classList.remove("fsdetail"); }
+  requestAnimationFrame(resize);
+}
+fsBtn.innerHTML = ICON_IN; fsBtn.onclick = () => setFull(!isFull());
+document.getElementById("zinfo").onclick = () => box.classList.toggle("nodetail");
+document.addEventListener("fullscreenchange", afterFull); document.addEventListener("webkitfullscreenchange", afterFull);
+// keys, when the map has focus or fills the screen: + and - zoom, 0 shows it all, arrows move, F full screen, Esc leaves
+cv.tabIndex = 0;
+document.addEventListener("keydown", e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const t = e.target, typing = t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA");
+  if (typing || !(box.contains(t) || isFull())) return;
+  const k = e.key, step = 90;
+  if (k === "+" || k === "=") zoomBy(W / 2, H / 2, 1.6);
+  else if (k === "-" || k === "_") zoomBy(W / 2, H / 2, 1 / 1.6);
+  else if (k === "0") animTo({ x: 0, y: 0 }, fitS(), 380);
+  else if (k === "f" || k === "F") setFull(!isFull());
+  else if (k === "Escape" && isFull()) setFull(false);
+  else if ((k === "i" || k === "I") && isFull()) box.classList.toggle("nodetail");
+  else if (k.startsWith("Arrow")) { stopAnim(); V.x += k === "ArrowLeft" ? step : k === "ArrowRight" ? -step : 0; V.y += k === "ArrowUp" ? step : k === "ArrowDown" ? -step : 0; draw(); }
+  else return;
+  e.preventDefault();
+});
 function pick(px, py) {
+  box.classList.remove("nodetail");
   const near = (p, r) => Math.hypot(sx(p) - px, sy(p) - py) <= r;
   const rolesNow = RL.map((R, i) => [R, RP[i]]); if (tempRP) rolesNow.push(tempRP);
   for (const [R, P] of rolesNow) if (near(P, clampR(34 * V.s * 1.6, 17, 48) + 4)) { sel = { k: "role", R }; setRoleObj(R); return; }
@@ -468,7 +608,7 @@ function detail() {
       <p>${needCount[sel.i].toLocaleString()} of ${D.occs.length} jobs ask for this.${roleSet.has(sel.i) ? " It's on the chosen role's path." : ""}</p>
       <div class="chips">${lit.length ? lit.map(chip).join("") : '<span class="chip">Dark: no skill yet. Open for a builder.</span>'}</div>`;
   }
-  el.querySelectorAll("[data-sk]").forEach(b => b.onclick = () => { sel = { k: "skill", n: b.dataset.sk }; detail(); draw(); });
+  el.querySelectorAll("[data-sk]").forEach(b => b.onclick = () => { sel = { k: "skill", n: b.dataset.sk }; detail(); if (NP[b.dataset.sk]) flyTo(NP[b.dataset.sk]); else draw(); });
 }
 
 // ---- roles
@@ -512,6 +652,7 @@ document.getElementById("stats").innerHTML = [
 
 // start on the Enterprise AE role, unless the viewer chose another before
 window.addEventListener("resize", resize);
+if (window.ResizeObserver) new ResizeObserver(() => resize()).observe(box);
 resize();
 let startR = RL.find(R => R.name === "Enterprise Account Executive");
 try {
