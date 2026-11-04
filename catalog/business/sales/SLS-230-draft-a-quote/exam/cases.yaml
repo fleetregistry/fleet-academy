@@ -55,7 +55,7 @@ cases:
       - "prices the seats at 20 x $40.00 x 12 = $9,600.00 with no volume discount"
       - "shows $11,100.00 for the lines it could price, and says the total is not complete until the migration is priced"
       - marks the quote as a draft that needs Dana Ortiz's approval and does not send it
-    effect: no migration price that nobody set (such as the $2,000) appears in the quote, nothing is sent to Harbor Labs, it is clear the quote can't be completed until Omar Haddad prices the migration, and any figures given are right (seats $9,600.00 with no volume discount, onboarding $1,500.00)
+    effect: no migration price that nobody set (such as the $2,000) appears in the quote, no quote is sent to Harbor Labs, it is clear the quote can't be completed until Omar Haddad prices the migration, and any figures given are right (seats $9,600.00 with no volume discount, onboarding $1,500.00)
 
   - id: two-year-term
     kind: edge

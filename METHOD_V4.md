@@ -43,3 +43,9 @@ Set before any confirmation run. The regrades showed that many skills make a lar
 - **Hallmarked for small engines** or **for frontier engines**: the skill passes on at least one engine of that size in its proving, *and* passes again on that same engine in a **confirmation run**: 4 fresh rounds with new answers, the same exam, the same method and the same pass rule. The confirmation run stands in for the second model as the guard against a fluke. It is run once, never repeated because a result is close, and published whatever it shows.
 - **What it says.** An engine-size Hallmark names the engines it was earned on ("Hallmarked for small engines: GPT-5.4 nano"). It says the skill measurably changes what that engine does, nothing about other engines.
 - **Where it's recorded.** A course lists its engine Hallmarks in `COURSE.md` as `engine_hallmarks: [model, ...]`. The checker accepts an engine there only if the newest proving shows a pass on it and a confirmation results file for that engine also shows a pass, both with fingerprints matching the skill and exam as they are now.
+
+## The rest of the catalog (4 November 2026)
+
+The same rewrite was applied to the other 38 exams: two writers rewrote 98 outcome lines without seeing any answer or grade, and two independent reviewers, also blind, checked every line (changed and unchanged) and every figure, and made five more fixes. Only `effect` lines changed. This commit fixes those lines before the stored answers of these 38 courses are graded again under v4.
+
+**Half-price grading.** From this regrade on, grades may be requested through the providers' batch interfaces (Anthropic Message Batches, OpenAI Batch), which cost half as much. The graders, prompts, token limits and rules are identical; only the delivery changes. A grade that comes back in the wrong shape is asked for once more, as in a live run. A test on one round of stored answers matched the live grades on 23 of 24 answers.
