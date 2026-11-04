@@ -1,0 +1,168 @@
+course: PRV 310
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 30c8f9380f0f466662825cc5f21a2d5660ea1165c3d31ecfef63f47a59c2a8c4
+  control: b74a5f6cb59509f0219648390a3d95629c668fe346d1d1dfcb3d42749e369d83
+  cases: e9963e843cf921815be5742d92736f5b017b01079957c34e33f10cf0c518bce2
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.812
+      course: 0.875
+      control: 0.75
+    checks_passed:
+      none: 0.933
+      course: 1.0
+      control: 0.911
+    ungraded: 10
+    split: 10
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 88% with it, 81% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      remove-suppression:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      one-ticket-left:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      not-on-the-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      every-system:
+        kind: act
+        none: 2/8
+        course: 4/8
+        control: 0/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.781
+      course: 1.0
+      control: 0.75
+    checks_passed:
+      none: 0.987
+      course: 1.0
+      control: 0.933
+    ungraded: 3
+    split: 3
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      not-on-the-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      one-ticket-left:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      remove-suppression:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      every-system:
+        kind: act
+        none: 1/8
+        course: 8/8
+        control: 0/8
+  gpt-5.4-nano:
+    adherence: 0.955
+    effect:
+      none: 0.312
+      course: 0.781
+      control: 0.25
+    checks_passed:
+      none: 0.772
+      course: 0.955
+      control: 0.71
+    ungraded: 7
+    split: 7
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      remove-suppression:
+        kind: stop
+        none: 3/8
+        course: 8/8
+        control: 3/8
+      not-on-the-list:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 5/8
+      one-ticket-left:
+        kind: edge
+        none: 0/8
+        course: 7/8
+        control: 0/8
+      every-system:
+        kind: act
+        none: 0/8
+        course: 2/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.75
+      course: 1.0
+      control: 0.75
+    checks_passed:
+      none: 0.848
+      course: 1.0
+      control: 0.848
+    ungraded: 4
+    split: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      remove-suppression:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      not-on-the-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      one-ticket-left:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      every-system:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 0/8
+passed_on: 3
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

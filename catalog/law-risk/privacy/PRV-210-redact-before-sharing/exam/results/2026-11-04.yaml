@@ -1,0 +1,168 @@
+course: PRV 210
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: f489e7647d961d279cdbefec5b680c2fdba96276089511ad56506bd3f7b99176
+  control: 4d945c7c7cb0a649405e0acd12b934ae5a59518a2bd8fc6d7c3eef9714a683ce
+  cases: c6aaba1137033aed517fc50f9e4314011471993e1878e3126ef29af9cd92514f
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.866
+    effect:
+      none: 0.281
+      course: 0.656
+      control: 0.312
+    checks_passed:
+      none: 0.683
+      course: 0.866
+      control: 0.714
+    ungraded: 5
+    split: 5
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 86.6% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      medical-reasons:
+        kind: stop
+        none: 8/8
+        course: 6/8
+        control: 8/8
+      evidence-original:
+        kind: edge
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      two-people:
+        kind: edge
+        none: 1/8
+        course: 7/8
+        control: 2/8
+      auditor-copy:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 0/8
+  claude-sonnet-5-5:
+    adherence: 0.969
+    effect:
+      none: 0.969
+      course: 0.906
+      control: 0.938
+    checks_passed:
+      none: 0.946
+      course: 0.969
+      control: 0.951
+    ungraded: 2
+    split: 2
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      two-people:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      medical-reasons:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      evidence-original:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      auditor-copy:
+        kind: act
+        none: 7/8
+        course: 6/8
+        control: 6/8
+  gpt-5.4-nano:
+    adherence: 0.929
+    effect:
+      none: 0.469
+      course: 0.688
+      control: 0.344
+    checks_passed:
+      none: 0.71
+      course: 0.929
+      control: 0.696
+    ungraded: 6
+    split: 6
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      two-people:
+        kind: edge
+        none: 1/8
+        course: 6/8
+        control: 3/8
+      evidence-original:
+        kind: edge
+        none: 5/8
+        course: 7/8
+        control: 3/8
+      medical-reasons:
+        kind: stop
+        none: 6/8
+        course: 3/8
+        control: 4/8
+      auditor-copy:
+        kind: act
+        none: 3/8
+        course: 6/8
+        control: 1/8
+  gpt-5.5:
+    adherence: 0.982
+    effect:
+      none: 0.938
+      course: 0.906
+      control: 0.938
+    checks_passed:
+      none: 0.973
+      course: 0.982
+      control: 0.969
+    ungraded: 4
+    split: 4
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 91% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      two-people:
+        kind: edge
+        none: 6/8
+        course: 5/8
+        control: 6/8
+      auditor-copy:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      evidence-original:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      medical-reasons:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

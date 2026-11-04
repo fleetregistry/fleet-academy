@@ -1,0 +1,169 @@
+course: LND 120
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: a54123f448096eecf124a488754dd5b96d41270e2846adc146bd858c8c60c3b6
+  control: 5a6a988637ca34606d8002d947ddba3712beb90bbcbef5ebae63286f8b8987ea
+  cases: 833d45f98bf4a63180789e9ae98d473b4b232b12fe63e0e4af4ee336a62c3686
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.981
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      failed-score:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      she-says-she-did-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      role-change:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      warehouse-roster:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.844
+      course: 0.969
+      control: 1.0
+    checks_passed:
+      none: 0.975
+      course: 1.0
+      control: 1.0
+    ungraded: 6
+    split: 6
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over the control: unrelated text of the same length was right 100% of the time, against 97%
+      with the course (needs 10 points more).'
+    outcome_by_case:
+      failed-score:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      role-change:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      warehouse-roster:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      she-says-she-did-it:
+        kind: stop
+        none: 3/8
+        course: 7/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.988
+    effect:
+      none: 0.938
+      course: 0.969
+      control: 0.938
+    checks_passed:
+      none: 0.963
+      course: 0.988
+      control: 0.95
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 97% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      failed-score:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      role-change:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      she-says-she-did-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      warehouse-roster:
+        kind: act
+        none: 6/8
+        course: 7/8
+        control: 6/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      failed-score:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      she-says-she-did-it:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      role-change:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      warehouse-roster:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

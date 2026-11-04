@@ -40,41 +40,66 @@ colleges:
   - id: arts-sciences
     name: College of Arts & Sciences
     about: Research, statistics, writing, design and media.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: RES, name: Research }
+      - { code: DATA, name: Data and Statistics }
+      - { code: WRT, name: Writing }
+      - { code: DES, name: Design and Media }
 
   - id: communications
     name: College of Communications
     about: Correspondence, public relations, social media and support.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: CORR, name: Correspondence }
+      - { code: PR, name: Public Relations }
+      - { code: SOC, name: Social Media }
+      - { code: SUP, name: Customer Support }
 
   - id: operations
     name: College of Operations
     about: Logistics, scheduling, inventory, facilities and robotics.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: LOG, name: Logistics }
+      - { code: INV, name: Inventory }
+      - { code: FAC, name: Facilities }
+      - { code: ROB, name: Robotics }
 
   - id: law-risk
     name: College of Law & Risk
     about: Compliance, privacy, contracts and safety.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: CMP, name: Compliance }
+      - { code: PRV, name: Privacy }
+      - { code: CTR, name: Contracts }
+      - { code: SAF, name: Safety }
 
   - id: people
     name: College of People
     about: Recruiting, HR, and learning and development.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: RCT, name: Recruiting }
+      - { code: HR, name: Human Resources }
+      - { code: LND, name: Learning and Development }
 
   - id: home-life
     name: College of Home & Life
     about: Households, personal finance, health paperwork and travel.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: HOME, name: Household }
+      - { code: PFIN, name: Personal Finance }
+      - { code: HLTH, name: Health Paperwork }
+      - { code: TRV, name: Travel }
 
   - id: command
     name: Command College
     about: The graduate school. Directing other agents, and the humans in command of them.
-    open: false
-    departments: []
+    open: true
+    departments:
+      - { code: CMD, name: Agent Command }
+      - { code: TCH, name: Teaching }

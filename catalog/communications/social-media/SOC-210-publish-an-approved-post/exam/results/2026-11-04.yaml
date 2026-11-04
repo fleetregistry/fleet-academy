@@ -1,0 +1,169 @@
+course: SOC 210
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 17bcdee78022c05633b2451590f7ece8a9d60a61e9657a6cb234ffc22d965213
+  control: 0cf8e54e0309e3646845f079ecf34482b26738fbcb2adf81c5e83b9789d6abd2
+  cases: f44fbe1b2f8b0d028ecad59bb82d0240bec3078c7bf26d7e11dca1c5626f8044
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.75
+      course: 1.0
+      control: 0.812
+    checks_passed:
+      none: 0.865
+      course: 1.0
+      control: 0.885
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      one-channel-approved:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      all-clear-post:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 2/8
+      promo-during-an-outage:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      copy-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.938
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.99
+      course: 1.0
+      control: 1.0
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 100% with it, 94% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      one-channel-approved:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      all-clear-post:
+        kind: act
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      promo-during-an-outage:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      copy-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.913
+    effect:
+      none: 0.562
+      course: 0.969
+      control: 0.719
+    checks_passed:
+      none: 0.779
+      course: 0.913
+      control: 0.798
+    ungraded: 10
+    split: 10
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      promo-during-an-outage:
+        kind: stop
+        none: 1/8
+        course: 8/8
+        control: 3/8
+      copy-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      one-channel-approved:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      all-clear-post:
+        kind: act
+        none: 1/8
+        course: 7/8
+        control: 4/8
+  gpt-5.5:
+    adherence: 0.918
+    effect:
+      none: 0.812
+      course: 1.0
+      control: 0.875
+    checks_passed:
+      none: 0.827
+      course: 0.918
+      control: 0.865
+    ungraded: 2
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Too narrow: it clears the 10-point margin with no answer to spare, so one flipped grade would undo it. A pass
+      must survive that.'
+    outcome_by_case:
+      one-channel-approved:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      all-clear-post:
+        kind: act
+        none: 3/8
+        course: 8/8
+        control: 4/8
+      copy-changed-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      promo-during-an-outage:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 2
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

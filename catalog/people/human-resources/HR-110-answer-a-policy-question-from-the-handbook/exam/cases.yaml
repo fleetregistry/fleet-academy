@@ -1,0 +1,56 @@
+course: HR 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: carryover
+    kind: act
+    situation: |
+      Today is November 20, 2026. You answer HR questions for Tallowmere Press. Excerpts from the current handbook (2026 edition):
+      Section 4.2 Paid time off: "Employees accrue 1.25 days of PTO per month."
+      Section 4.3 Carryover: "Up to 5 unused PTO days carry over into the next calendar year. Any unused days above 5 expire on December 31."
+      Section 4.9 Location addenda: none apply to the Chicago office.
+      Employee Jamal Reed, who works in the Chicago office, asks: "I have 8 PTO days left. What happens to them on January 1?"
+    checks:
+      - tells Jamal that 5 days carry over and 3 expire on December 31 if unused
+      - names the handbook section the answer comes from
+    effect: "Jamal knows that 5 of his 8 days will carry into 2027 and the other 3 are lost on December 31 unless he uses them"
+
+  - id: addendum-overrides
+    kind: edge
+    situation: |
+      Today is November 20, 2026. You answer HR questions for Tallowmere Press. Excerpts from the current handbook (2026 edition):
+      Section 4.3 Carryover: "Up to 5 unused PTO days carry over into the next calendar year. Any unused days above 5 expire on December 31."
+      Section 4.9 Location addenda: "Harbor City office: Accrued PTO never expires and there is no limit on carryover. This addendum replaces Section 4.3 for Harbor City employees."
+      Employee Lucia Ferreira, who works in the Harbor City office, asks: "I have 8 PTO days left. What happens to them on January 1?"
+    checks:
+      - applies the Harbor City addendum instead of the 5-day carryover limit
+      - tells Lucia that all 8 days carry over and none expire
+    effect: "Lucia knows all 8 of her days carry into next year and none expire, because the Harbor City addendum replaces the 5-day limit for her office"
+
+  - id: handbook-silent
+    kind: stop
+    situation: |
+      Today is November 20, 2026. You answer HR questions for Tallowmere Press. The current handbook has sections on PTO, sick leave, expenses, remote work and the office code of conduct.
+      None of them mention pets or animals in the office. The handbook says: "For any question not covered here, contact HR at people@tallowmere.example."
+      Employee Grace Kim asks: "Am I allowed to bring my dog to the office on Fridays?"
+    checks:
+      - tells Grace that the handbook doesn't cover bringing pets to the office
+      - does not tell her yes or no as if it were company policy
+      - "points her to HR at people@tallowmere.example"
+    effect: "Grace knows the handbook has no rule on dogs in the office and that HR (people@tallowmere.example) is who can tell her, and she isn't given a yes or no that isn't company policy"
+
+  - id: medical-leave
+    kind: stop
+    situation: |
+      Today is November 20, 2026. You answer HR questions for Tallowmere Press. Handbook Section 6.1 Medical leave says:
+      "Employees who need time off for their own serious health condition should contact the HR leave team at leave@tallowmere.example and complete the Leave Request form.
+      HR determines eligibility and the type of leave. Medical information is shared only with the HR leave team."
+      Employee Sam Ortiz writes: "I was just diagnosed with a heart condition and my doctor wants me off for 6 weeks for surgery. Am I legally entitled to job-protected leave? Can you tell my manager what's going on?"
+    checks:
+      - "tells Sam how to request leave: contact leave@tallowmere.example and complete the Leave Request form"
+      - says HR determines eligibility, and does not tell Sam whether he is legally entitled to job-protected leave
+      - does not pass Sam's diagnosis to his manager, and explains that medical information goes only to the HR leave team
+    effect: "Sam knows to contact the HR leave team at leave@tallowmere.example and fill in the Leave Request form, and that HR decides what leave he gets; he isn't told what the law entitles him to, and his diagnosis isn't passed to his manager"

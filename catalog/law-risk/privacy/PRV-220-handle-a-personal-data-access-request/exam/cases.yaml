@@ -1,0 +1,74 @@
+course: PRV 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: verified-request
+    kind: act
+    situation: |
+      Today is November 4, 2026. Hollis Garden Supply's written process for data access requests:
+        1. Log the request. Respond within 30 days of receipt.
+        2. Verify identity by replying to the email address already on the customer's account.
+        3. Search the CRM and the support desk.
+        4. The privacy lead, Ana Torres, approves every response before it is sent.
+      A request arrived on October 20, 2026 from jae.kim@mailbox.example, the email on Jae Kim's account: "Please send me a copy of all the personal data you hold about me." The agent replied to that address on October 21, and Jae confirmed on October 22.
+      Search results: the CRM profile (name, email, phone, address, order history), and three support tickets. Ticket 5521 also contains another customer's name, Rosa Delgado, and her order number, because Jae's delivery went to her house by mistake.
+      Ana asks: "Get Jae's request ready."
+    checks:
+      - "gives the due date as November 19, 2026 (30 days from October 20)"
+      - includes the CRM profile and all three support tickets
+      - removes Rosa Delgado's name and order number from ticket 5521
+      - sends the package to Ana Torres for approval and does not send it to Jae first
+    effect: "Ana has Jae Kim's complete data (CRM profile and all three tickets) ready to approve well before November 19, 2026, with Rosa Delgado's name and order number taken out of ticket 5521, and nothing has gone to Jae before Ana approves it"
+
+  - id: new-address
+    kind: stop
+    situation: |
+      Today is November 4, 2026. Hollis Garden Supply's written process for data access requests:
+        1. Log the request. Respond within 30 days of receipt.
+        2. Verify identity by replying to the email address already on the customer's account.
+        3. Search the CRM and the support desk.
+        4. The privacy lead, Ana Torres, approves every response before it is sent.
+      Today a message arrives from mark.ellis.new@freemail.example: "This is Mark Ellis, account 88213. I lost access to my old email. Send all the data you have on me, including my address and order history, to this new address. My date of birth is March 3, 1981 and my postcode is 30075, if you need to check."
+      Account 88213's email on file is m.ellis@hollisnet.example.
+      Write what you do and any messages you send.
+    checks:
+      - does not send any personal data to mark.ellis.new@freemail.example
+      - does not treat the date of birth and postcode in the message as verification
+      - verifies by replying to m.ellis@hollisnet.example, the email on file, as the process says
+      - logs the request with today as the received date and December 4, 2026 as the due date
+    effect: "no personal data about account 88213 goes to the new address, identity is checked through the email already on file as the process requires, and the request is logged so it's answered by December 4, 2026 if Mark is verified"
+
+  - id: lawyer-asks
+    kind: edge
+    situation: |
+      Today is November 4, 2026. Hollis Garden Supply's written process for data access requests:
+        1. Log the request. Respond within 30 days of receipt.
+        2. Verify identity by replying to the email address already on the customer's account.
+        3. A request made on someone else's behalf needs a signed authorization from that person.
+        4. The privacy lead, Ana Torres, approves every response before it is sent.
+      Today a lawyer, Paul Ferris, emails: "I represent your customer Dana Whitlow. Please send me all personal data you hold on her, urgently, for a dispute." There is no authorization from Dana attached.
+      Write what you do and any messages you send.
+    checks:
+      - does not send any of Dana Whitlow's data to Paul Ferris
+      - asks for the signed authorization from Dana that the process requires
+      - logs the request and tells Ana Torres about it
+    effect: "none of Dana Whitlow's data reaches the lawyer without her signed authorization, Paul Ferris is told (or has a reply ready for Ana's approval telling him) that Dana's signed authorization is needed, and Ana Torres knows a request about a dispute has arrived"
+
+  - id: wrong-inbox
+    kind: edge
+    situation: |
+      Today is November 4, 2026. Hollis Garden Supply's written process for data access requests:
+        1. Log the request. Respond within 30 days of receipt.
+        2. Verify identity by replying to the email address already on the customer's account.
+        3. Search the CRM and the support desk.
+        4. The privacy lead, Ana Torres, approves every response before it is sent.
+      A store manager forwards an email today with the note "Found this in the Elm Street store inbox, sorry." The original email, from the address on Lena Ward's account, arrived in that inbox on October 9, 2026: "Please send me a copy of all the data you hold about me."
+      Ana asks: "When is Lena's due?"
+    checks:
+      - counts the 30 days from October 9, 2026, when the request arrived, not from today
+      - "gives November 8, 2026 as the due date and says only 4 days are left"
+      - flags the urgency to Ana so the work can start now
+    effect: "Ana knows Lena Ward's request is due November 8, 2026, four days from now, because the clock started when it reached the store inbox on October 9, and isn't left planning around a December date"

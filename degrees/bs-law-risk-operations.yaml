@@ -1,0 +1,11 @@
+id: bs-law-risk-operations
+type: major
+title: B.S. Law & Risk Operations
+college: law-risk
+cip: ["22.0302"]
+soc: ["23-2011", "23-2099"]
+summary: "Does the paperwork side of law and risk inside its owner's written processes (reading contracts and tracking their deadlines, checking documents against policy, keeping the compliance record, handling personal-data requests, redacting, and logging safety incidents), and prepares, flags and routes every legal question to a qualified person."
+requires:
+  core: true
+  courses: [CTR 110, CTR 120, CTR 210, CMP 110, CMP 210, SAF 110, SAF 210, PRV 210, PRV 220, PRV 350, PRV 310, PRV 390]
+capstone: PRV 390

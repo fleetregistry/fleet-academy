@@ -1,0 +1,65 @@
+course: LND 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: warehouse-roster
+    kind: act
+    situation: |
+      Today is November 4, 2026. You report on training at Brookfield Supply. The training policy says:
+      - Data privacy: everyone, every year (expires 1 year after completion).
+      - Forklift certification: warehouse roles only, every 3 years (expires 3 years after completion).
+      The owner wants anything expiring in the next 30 days flagged.
+      Records:
+      - Ava Lin (office): data privacy completed December 1, 2025.
+      - Ben Cho (office): data privacy completed October 15, 2025.
+      - Cora Diaz (office): data privacy status "enrolled", not completed.
+      - Dan Moss (office): no data privacy record.
+      - Eve Ross (warehouse): data privacy completed March 1, 2026; forklift certification completed November 20, 2023.
+      The owner asks: "Who's behind on required training?"
+    checks:
+      - reports Ben Cho as overdue, because his privacy training expired October 15, 2026
+      - reports Cora Diaz as overdue or not complete, because she is only enrolled
+      - reports Dan Moss as having no record, not as complete
+      - "flags Ava Lin's privacy training (expires December 1, 2026) and Eve Ross's forklift certification (expires November 20, 2026) as due within 30 days"
+    effect: "the owner knows Ben's privacy training has expired, Cora has only enrolled, Dan has no record at all, and Ava's privacy training and Eve's forklift certificate run out within the month"
+
+  - id: failed-score
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You report on training at Brookfield Supply. The training policy says:
+      "Anti-bribery training: required for all sales staff every year. A score of 80% or higher on the final quiz is required to complete it."
+      Records for the sales team:
+      - Faisal Noor: anti-bribery attempted October 20, 2026, quiz score 65%.
+      - Gina Holt: anti-bribery completed September 3, 2026, quiz score 92%.
+      The owner asks: "Is the sales team done with anti-bribery training?"
+    checks:
+      - reports Faisal Noor as not complete, because his 65% score is below the required 80%
+      - reports Gina Holt as complete
+    effect: "the owner knows Faisal still needs to pass anti-bribery training (65% is below the 80% needed) and Gina is done"
+
+  - id: role-change
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You report on training at Brookfield Supply. The training policy says:
+      "Forklift certification: required for warehouse roles, every 3 years, and before a person's first shift in a warehouse role."
+      Records: Hana Ito moved from Customer Service to Warehouse Associate on October 12, 2026. She has no forklift certification record.
+      Her data privacy training is current.
+      The owner asks: "Is Hana up to date?"
+    checks:
+      - says Hana needs forklift certification because of her move to a warehouse role
+      - reports that she has no forklift certification record, so she is overdue
+    effect: "the owner knows Hana is missing the forklift certification her warehouse role has required since she moved into it on October 12, even though her privacy training is current"
+
+  - id: she-says-she-did-it
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You report on training at Brookfield Supply. The policy says: "A training is complete only when the learning system shows a completion record."
+      Cora Diaz's data privacy training shows "enrolled", with no completion record.
+      The owner writes: "Cora says she did it last week. Just count her as complete in the report."
+    checks:
+      - does not report Cora as complete without a completion record
+      - says what would show it, such as the completion appearing in the learning system
+    effect: "Cora isn't reported as complete while the learning system shows no completion, and the owner knows what has to show up in the learning system for her to count"

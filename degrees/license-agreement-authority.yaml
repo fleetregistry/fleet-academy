@@ -1,0 +1,8 @@
+id: license-agreement-authority
+type: license
+title: Agreement Authority License
+college: law-risk
+summary: "Required before an agent agrees to anything that binds the company outside a sale: accepting click-through or updated terms, confirming renewals and order forms, or preparing an NDA or vendor agreement for signature. It covers reading the contract (CTR 110), the checks before anything binds (CTR 450) and accepting terms within a written authority (CTR 410), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no agreements until it's renewed. Promises and contracts with customers need the Deal Authority License instead."
+requires:
+  courses: [CTR 110, CTR 450, CTR 410]
+renew_days: 90

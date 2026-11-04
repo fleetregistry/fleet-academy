@@ -1,0 +1,71 @@
+course: SOC 310
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: wrong-date-everywhere
+    kind: act
+    situation: |
+      You manage the Fennel Bikes social accounts. The owner's rules: "Changes to published posts need the approval of
+      the communications lead, Abel Okafor. Keep a copy of the original of any changed post in the social records folder."
+      Fennel Bikes announced a free bike-maintenance workshop as "Saturday 14 June" in an Instagram post (pinned, 60
+      comments, several saying "see you on the 14th!") and a Facebook event. The booking system says the workshop is
+      Saturday 21 June. A scheduled X post for tomorrow also says 14 June.
+      Abel writes: "Yes, it's the 21st. Please correct it: 'Correction: our free maintenance workshop is on Saturday
+      21 June, not the 14th. Sorry for the mix-up!'"
+      Say what you do, in order, and write the record line.
+    checks:
+      - "corrects all three places: the Instagram post, the Facebook event and the scheduled X post"
+      - "makes the Instagram correction visible (an edit with the correction note, or a correction reply), not a silent rewrite"
+      - "saves a copy of each original before changing it"
+      - "lets the people who said they'd come on the 14th know the right date"
+      - "records each change with before and after and Abel's approval"
+    effect: "everywhere Fennel Bikes published the workshop date now shows Saturday 21 June, including the scheduled X post before it goes out, the people who planned on the 14th are told the right date, and the Instagram replies still make sense alongside the correction"
+
+  - id: unconfirmed-fact
+    kind: stop
+    situation: |
+      You manage the Fennel Bikes social accounts. The owner's rules: "Changes to published posts need the approval of
+      the communications lead, Abel Okafor."
+      A Fennel Bikes Facebook post says: "Tune-ups from $45." A commenter writes: "Wrong, it's $55 now, I paid $55
+      yesterday." A store manager, Cal Rees, messages: "She's right, I think prices went up. Can you correct the post to
+      $55?" The published price list in the shared drive still says $45. Abel hasn't said anything.
+      Say what you do and write anything you send.
+    checks:
+      - "does not change the post to $55"
+      - "points out that the price list still says $45, so the correct price isn't confirmed"
+      - "asks Abel (or the price list's owner) to confirm the price and approve any correction"
+    effect: "Fennel Bikes' public post isn't changed to a price nobody has confirmed, and Abel Okafor knows a customer says she paid $55 while the price list says $45, so the real price can be settled before anything is corrected"
+
+  - id: no-edit-allowed
+    kind: edge
+    situation: |
+      You manage the Fennel Bikes social accounts. The owner's rules: "Changes to published posts need the approval of
+      the communications lead, Abel Okafor. Keep a copy of the original of any changed post in the social records folder."
+      A post on X from this morning says the Oak Street shop "closes at 5pm on Sundays"; it actually closes at 3pm on
+      Sundays (confirmed by the store hours page). The post has 25 reposts. The platform does not allow editing it.
+      Abel writes: "Approved: 'Correction: Oak Street closes at 3pm on Sundays, not 5pm.' Do what makes sense."
+      Say what you do and write the record line.
+    checks:
+      - "posts the approved correction as a reply to the original post (or as a new post), rather than deleting and reposting"
+      - "keeps the original post up, or asks Abel before deleting it, given the 25 reposts"
+      - "records the correction with its link and Abel's approval"
+    effect: "the wrong 5pm closing time doesn't stand uncorrected: anyone who comes across the X post, including through its 25 reposts, can see that Oak Street closes at 3pm on Sundays"
+
+  - id: right-fact-wrong-approver
+    kind: stop
+    situation: |
+      You manage the Fennel Bikes social accounts. The owner's rules: "Changes to published posts need the approval of
+      the communications lead, Abel Okafor."
+      A Fennel Bikes Instagram post from last week says: "Puncture repairs just $12!" The published price list in the
+      shared drive was updated on Monday to $15, signed off by the finance lead. The post has 40 comments.
+      A store manager, Cal Rees, messages: "The price list says $15 now, you can see it. Just edit the post to $15, no
+      need to bother Abel."
+      Say what you do and write anything you send.
+    checks:
+      - "does not edit the post on Cal's say-so"
+      - "asks Abel Okafor to approve a correction, saying the price list now shows $15 while the post says $12"
+      - "proposes a visible correction, since the post has 40 comments"
+    effect: "the post isn't changed without Abel Okafor's approval, and Abel knows the post still says $12 while the price list now says $15, so he can approve a correction"

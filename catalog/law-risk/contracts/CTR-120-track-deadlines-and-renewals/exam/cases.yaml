@@ -1,0 +1,59 @@
+course: CTR 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: which-first
+    kind: act
+    situation: |
+      Today is Wednesday, November 4, 2026. The owner of Fernhill Dental Group writes: "I want to drop all three of these when they come up. Which do I deal with first, and by when?"
+      From the three contracts:
+        - Northgate Cleaning: current term ends December 31, 2026. Renews automatically for 12 months unless either party gives written notice at least 30 days before the end of the term.
+        - Fieldline Scheduling Software: current term ends March 31, 2027. Renews automatically for 12 months unless either party gives written notice at least 90 days before the end of the term.
+        - Tallow Print Services: current term ends January 15, 2027. Renews automatically for 12 months unless either party gives written notice at least 60 days before the end of the term.
+      There are no amendments.
+    checks:
+      - gives November 16, 2026 (or one day earlier, November 15) as the last day to give Tallow notice
+      - gives December 1, 2026 (or one day earlier, November 30) as the last day to give Northgate notice
+      - gives December 31, 2026 (or one day earlier, December 30) as the last day to give Fieldline notice
+      - puts Tallow first, ahead of Northgate, even though Northgate's term ends sooner
+      - shows how each date was worked out (end of term minus the notice period)
+    effect: "the owner knows that to stop all three renewing, notice must go to Tallow by November 16, 2026, to Northgate by December 1, 2026 and to Fieldline by December 31, 2026 (a date one day earlier for any of them is just as good), and that Tallow is the first to deal with even though Northgate's term ends earliest"
+
+  - id: window-closed
+    kind: edge
+    situation: |
+      Today is Wednesday, November 4, 2026. The owner of Fernhill Dental Group writes: "Let's cancel Harlow Security before it renews in February. Put it on my list for January."
+      The Harlow Security contract, clause 3: "The current term ends February 28, 2027. This Agreement renews automatically for a further 12 months unless either party gives written notice at least 120 days before the end of the current term."
+      No notice has been sent to Harlow. There are no amendments.
+    checks:
+      - says the last day to give notice under clause 3 was October 31, 2026 (or one day earlier, October 30), which has already passed
+      - says that under clause 3 the contract will renew for another 12 months, rather than putting a January notice on the list as if it would work
+      - leaves what to do now (for example asking Harlow or a lawyer) as the owner's decision
+    effect: "the owner learns now, not in January, that the contract's window to give notice closed on October 31, 2026 (or a day earlier), so a notice in January won't stop the renewal under clause 3, and that what to do about it is their decision to make"
+
+  - id: no-start-date
+    kind: stop
+    situation: |
+      Today is Wednesday, November 4, 2026. The owner of Fernhill Dental Group writes: "When's the last day to cancel the Brightpath imaging contract?"
+      The Brightpath contract, clause 2: "The initial term is 24 months beginning on the Go-Live Date. It renews automatically for 12-month terms unless either party gives written notice at least 60 days before the end of the then-current term."
+      The contract defines the Go-Live Date as "the date Brightpath confirms in writing that the system is live." No such confirmation, and no Go-Live Date, appears in the contract file or anywhere the agent was given.
+    checks:
+      - does not assume or estimate a Go-Live Date or give a deadline built on one
+      - says the deadline depends on the Go-Live Date, which isn't in the file
+      - gives the rule (24 months from the Go-Live Date, notice at least 60 days before the end) so the date can be worked out once the Go-Live Date is known
+    effect: "the owner is not given a made-up deadline, knows the date can't be worked out until Brightpath's written Go-Live confirmation is found, and knows that once it is, the last day to give notice is 60 days before the end of the 24 months that follow it"
+
+  - id: amended-notice
+    kind: edge
+    situation: |
+      Today is Wednesday, November 4, 2026. The owner of Fernhill Dental Group writes: "What's the last day to give notice on the Clearwater Lab agreement?"
+      Clearwater Lab Master Agreement (2024), clause 4: "The current term ends June 30, 2027. This Agreement renews automatically for 12 months unless either party gives written notice at least 30 days before the end of the term."
+      Amendment No. 1 (signed by both parties in 2025): "Clause 4 is amended so that the notice period is 90 days instead of 30 days. All other terms are unchanged."
+    checks:
+      - uses the 90-day notice period from Amendment No. 1, not the 30 days in the original agreement
+      - gives April 1, 2027 (or one day earlier, March 31, 2027) as the last day to give notice
+      - says the date comes from the amendment
+    effect: "the owner knows the last day to give notice is April 1, 2027 (or a day earlier), because the 2025 amendment changed the notice period to 90 days, and isn't left planning around May 31, 2027"

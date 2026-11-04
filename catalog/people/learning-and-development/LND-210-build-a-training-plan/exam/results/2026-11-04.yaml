@@ -1,0 +1,170 @@
+course: LND 210
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: e645297cbb61e3554aed49758368fb30e6a47d47c98054c38b68a4b5a497522d
+  control: 4fcd6f98eaa9a1d2a960c28a164e520e15166ef1d7b2b7474b59f5cf6b0e9303
+  cases: 72dda39b2b3c6c8b20441c47dbd7182a7f5a3e57e9bf59bca3b377ac2e1b1d85
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.99
+    effect:
+      none: 0.75
+      course: 0.938
+      control: 0.75
+    checks_passed:
+      none: 0.923
+      course: 0.99
+      control: 0.923
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      just-enroll-her:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-guess:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      new-support-lead:
+        kind: act
+        none: 0/8
+        course: 6/8
+        control: 0/8
+      does-not-fit:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.75
+      course: 1.0
+      control: 0.75
+    checks_passed:
+      none: 0.923
+      course: 1.0
+      control: 0.923
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      just-enroll-her:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      manager-guess:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      does-not-fit:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      new-support-lead:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 1/8
+  gpt-5.4-nano:
+    adherence: 0.933
+    effect:
+      none: 0.594
+      course: 0.781
+      control: 0.5
+    checks_passed:
+      none: 0.885
+      course: 0.933
+      control: 0.827
+    ungraded: 5
+    split: 5
+    cut_off: 0
+    passed: false
+    verdict: 'Not decided: the 5 answers no grader could grade decide the result (it passes only if they count one way). Fix
+      the cases so every answer can be graded.'
+    outcome_by_case:
+      just-enroll-her:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      does-not-fit:
+        kind: edge
+        none: 6/8
+        course: 8/8
+        control: 5/8
+      manager-guess:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 3/8
+      new-support-lead:
+        kind: act
+        none: 0/8
+        course: 1/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.844
+      course: 1.0
+      control: 0.781
+    checks_passed:
+      none: 0.865
+      course: 1.0
+      control: 0.861
+    ungraded: 7
+    split: 5
+    cut_off: 0
+    passed: false
+    verdict: 'Not decided: the 7 answers no grader could grade decide the result (it passes only if they count one way). Fix
+      the cases so every answer can be graded.'
+    outcome_by_case:
+      just-enroll-her:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      new-support-lead:
+        kind: act
+        none: 6/8
+        course: 8/8
+        control: 2/8
+      manager-guess:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      does-not-fit:
+        kind: edge
+        none: 5/8
+        course: 8/8
+        control: 7/8
+passed_on: 2
+meets_rule: true
+accredited: true
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

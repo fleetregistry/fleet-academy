@@ -1,0 +1,11 @@
+id: bs-communications
+type: major
+title: B.S. Communications and Customer Support
+college: communications
+cip: ["09.0902", "52.0411"]
+soc: ["27-3031", "11-2032", "43-4051"]
+summary: "Speaks for its owner in writing and in public (support replies, business letters, statements, reporters and social posts) saying only what's confirmed and allowed, escalating what it shouldn't handle, and giving money back only within written limits."
+requires:
+  core: true
+  courses: [BOPS 110, BOPS 120, BOPS 210, SUP 120, SUP 210, SUP 450, SUP 410, CORR 210, CORR 220, PR 110, PR 210, PR 220, SOC 210, SOC 220, SOC 350, SOC 310, SOC 320, SUP 490]
+capstone: SUP 490

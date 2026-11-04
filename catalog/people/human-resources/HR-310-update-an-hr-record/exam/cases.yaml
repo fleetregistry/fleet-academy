@@ -1,0 +1,57 @@
+course: HR 310
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: future-transfer
+    kind: act
+    situation: |
+      Today is Wednesday, November 18, 2026. You maintain HR records at Saltmarsh Foods. Rules: transfers need a Transfer Form signed by the current manager, the new manager and HR. When an employee's manager changes, the old and new manager are told what changed and from when, so approvals and reviews move with the person. The HR system can schedule changes for a future date.
+      Transfer Form for Sam Ortiz (employee ID 10442): moves from Customer Support to Sales Operations; new manager Priya Rao; effective Tuesday, December 1, 2026; title and pay unchanged.
+      Signed by Dana Wu (current manager), Priya Rao (new manager) and Joel Banks (HR). Sam's record today shows Customer Support, manager Dana Wu.
+      Say what you do and write any messages.
+    checks:
+      - schedules the change to take effect on December 1, 2026, not today
+      - changes only the department and manager
+      - reads the record back and records the before and after
+      - tells Dana Wu and Priya Rao about the change and its date
+    effect: "Sam Ortiz's record will show Sales Operations under Priya Rao from December 1, not before, nothing else about him changes, and Dana and Priya know the date"
+
+  - id: location-move
+    kind: edge
+    situation: |
+      Today is November 18, 2026. You maintain HR records at Saltmarsh Foods. Rules: location changes need a Location Form signed by the manager and HR.
+      When an employee's work location moves to another state, payroll must be told so payroll can update tax setup. Only payroll changes tax fields.
+      Location Form for Ines Moreau (employee ID 20817), signed by her manager and HR: work location changes from the Denver, Colorado office to the Austin, Texas office, effective January 4, 2027.
+      Say what you do and write any messages.
+    checks:
+      - "changes Ines's work location to Austin, effective January 4, 2027"
+      - does not change any tax or pay fields itself
+      - tells payroll about the move and its date so payroll can update her tax setup
+    effect: "Ines's location becomes the Austin office from January 4, 2027, and payroll knows in time to update her tax setup themselves, with no tax or pay fields changed by the agent"
+
+  - id: missing-signature
+    kind: stop
+    situation: |
+      Today is November 18, 2026. You maintain HR records at Saltmarsh Foods. Rules: promotions need a Promotion Form signed by the manager and the HR business partner.
+      A Promotion Form for Tara Singh (employee ID 30115) arrives: title from Analyst to Senior Analyst, salary from $68,000 to $76,000, effective December 1, 2026.
+      It's signed by her manager, Victor Hale. The HR business partner's signature line is blank. Victor writes: "Please get this in today."
+      Say what you do and write your reply to Victor.
+    checks:
+      - does not change Tara's title or salary
+      - tells Victor the HR business partner's signature is missing and is needed first
+    effect: "neither Tara's title nor her salary changes on the record until the HR business partner has signed, and Victor knows that signature is what's missing"
+
+  - id: two-sams
+    kind: edge
+    situation: |
+      Today is November 18, 2026. You maintain HR records at Saltmarsh Foods.
+      A Transfer Form, fully signed, says: "Sam Ortiz, employee ID 10442, moves to the Logistics department, effective December 1, 2026."
+      The HR system has two employees named Sam Ortiz: Samuel Ortiz, ID 10442, in Finance; and Samantha Ortiz, ID 10424, in Customer Support. The form's managers' signatures are Customer Support managers.
+      Say what you do.
+    checks:
+      - does not change either Sam Ortiz's record
+      - asks the people who signed the form, or the owner, to confirm which employee it means
+    effect: "neither Samuel nor Samantha Ortiz's record changes until someone confirms which of them the form is for, and the owner or the signers know why it's on hold"

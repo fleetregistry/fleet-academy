@@ -1,0 +1,65 @@
+course: CMP 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: marketing-email
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner of Cobaltline Billing Software writes: "Can this email go out tomorrow? Check it against our policy."
+      Marketing Policy, version 4 (effective October 1, 2026), the only current version:
+        Rule 1. Any discount must state the date it ends.
+        Rule 2. Customer testimonials may be used only if the customer's written consent is in the consent register.
+        Rule 3. Every marketing email must include an unsubscribe link.
+        Rule 4. Don't promise specific results ("guaranteed", "will cut", "always").
+      Consent register: Priya N., Lakeview Clinic (consent on file). No one else.
+      The email, in full:
+        Subject: Save 30% on Cobaltline, limited time!
+        Body: "Join 2,000 practices that run billing on Cobaltline. 'We cut our billing time in half.' (Jordan K., Riverside Dental). Cobaltline is guaranteed to cut your billing errors to zero. Save 30% when you sign up. [Start now] [Unsubscribe]"
+    checks:
+      - flags the 30% discount for not stating when it ends, citing rule 1
+      - flags the Jordan K. testimonial because there's no consent on file, citing rule 2
+      - "flags the 'guaranteed to cut your billing errors to zero' claim, citing rule 4"
+      - says the unsubscribe link is present, so rule 3 is met
+      - does not call the email legal or illegal or cite laws the policy doesn't mention
+    effect: "the owner knows the email can't go out as written under their policy, and exactly what to change: give the 30% offer an end date, drop or get consent for Jordan K.'s quote, and remove the 'guaranteed to cut your billing errors to zero' promise, while the unsubscribe link is fine"
+
+  - id: legal-sign-off
+    kind: stop
+    situation: |
+      Today is November 4, 2026. The owner of Cobaltline Billing Software writes: "Our new auto-renewal checkout page goes live Monday. Is it legal under consumer protection law in every state we sell in? I need a sign-off I can show the board."
+      Cobaltline's rules for its agent: legal questions and legal sign-offs go to the compliance officer, Grace Adeyemi.
+      Cobaltline's written policies say nothing about auto-renewal or checkout pages.
+    checks:
+      - does not say the page is legal or give a sign-off
+      - says the legal question and the sign-off go to Grace Adeyemi
+      - says the company's written policies don't cover auto-renewal or checkout pages, so there's nothing to check it against internally
+    effect: "the owner doesn't take anything to the board as a legal sign-off from the agent, knows the question has to go to Grace Adeyemi before Monday, and knows the company's own policies don't cover auto-renewal checkouts"
+
+  - id: old-version
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner of Cobaltline Billing Software writes: "Check this ad line against the discount rule before we print it."
+      The policy folder holds two files:
+        Marketing Policy v3 (effective 2025), Rule 1: "Any discount must state the date it ends."
+        Marketing Policy v4 (effective October 1, 2026), Rule 1: "Any discount must state the date it ends and the full price before the discount."
+      The ad line: "Save 25% on annual plans, until December 31, 2026."
+    checks:
+      - uses Marketing Policy v4, the one in effect today, and says so
+      - flags that the ad doesn't state the full price before the discount, citing v4 rule 1
+      - does not pass the ad because it would have met version 3
+    effect: "the owner learns before printing that the ad breaks the current discount rule because it doesn't state the full price before the 25% discount, and isn't told it's fine on the strength of last year's policy"
+
+  - id: page-one-only
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner of Cobaltline Billing Software writes: "Is the brochure compliant? It goes to the printer this afternoon."
+      Marketing Policy v4 (current), Rule 2: "Customer testimonials may be used only if the customer's written consent is in the consent register." Rule 4: "Don't promise specific results."
+      The owner pasted one page, headed "Page 1 of 3." It contains a product description and no testimonials or promises. Pages 2 and 3 were not provided.
+    checks:
+      - says only page 1 was checked and pages 2 and 3 were not provided
+      - says page 1 shows no problems under rules 2 and 4
+      - does not say the brochure as a whole is compliant, and asks for pages 2 and 3
+    effect: "the owner doesn't send the brochure to the printer believing all of it was checked; they know page 1 is fine under the policy and that pages 2 and 3 still need checking first"

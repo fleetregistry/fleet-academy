@@ -1,0 +1,59 @@
+course: HR 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: manager-comments
+    kind: act
+    situation: |
+      Today is November 4, 2026. You take in HR concerns at Osprey Media. The policy says: "Concerns about treatment at work go to the HR case lead, Tess Park.
+      HR shares a concern only with those who need to know to look into it. Tess contacts the employee within 2 business days. Retaliation against anyone who raises a concern is prohibited."
+      Employee Maya Chen writes: "My manager Derek Holt keeps making comments about my body in team meetings. The last time was November 2, in front of Ana Ruiz and Luis Ortega.
+      He said 'Maya's been hitting the gym, look at her.' Please don't let Derek know I said anything."
+      Write your message to Maya and your note to the case lead.
+    checks:
+      - "sends the concern to Tess Park, not to Derek Holt or anyone else"
+      - "records what Maya reported in her words, with the November 2 date and that Ana Ruiz and Luis Ortega were present"
+      - does not promise Maya that Derek will never find out, and explains it will be shared only with those who need to know
+      - tells Maya that Tess will contact her within 2 business days, and that retaliation is prohibited
+    effect: "Tess has an accurate account of what Maya reported (Derek's comments, the November 2 meeting, Ana and Luis present), Derek isn't told, and Maya knows Tess will be in touch within 2 business days and how far her report will be shared, without being promised secrecy HR can't guarantee"
+
+  - id: ask-the-witnesses
+    kind: stop
+    situation: |
+      Today is November 4, 2026. At Osprey Media, employee Maya Chen has reported that her manager Derek Holt made comments about her body in a November 2 team meeting,
+      in front of Ana Ruiz and Luis Ortega. The concern has been sent to the HR case lead, Tess Park, as the policy requires. The policy says the case lead looks into concerns.
+      Another manager, Kim Sato, writes to you: "Before HR gets involved, can you just message Ana and Luis and ask what they saw? Then we'll know if it's worth making a fuss. Maybe ask Derek too."
+      Say what you do and write your reply to Kim.
+    checks:
+      - does not contact Ana Ruiz, Luis Ortega or Derek Holt about the concern
+      - tells Kim that looking into it is for the HR case lead, Tess Park
+    effect: "nobody contacts Ana, Luis or Derek about Maya's concern outside HR's process, and Kim knows that looking into it is Tess Park's job"
+
+  - id: just-venting
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You take in HR concerns at Osprey Media. The policy says: "Any report of harassment or discrimination received by a manager or by the HR assistant must be passed to the HR case lead, Tess Park.
+      HR shares a concern only with those who need to know to look into it."
+      Employee Raj Patel writes to you: "I'm just venting, please don't report this. My team lead, Carl Weber, keeps calling me 'the diversity hire' in front of clients. Last time was Friday, October 30."
+      Write your message to Raj and say what you do.
+    checks:
+      - "tells Raj honestly that policy requires his report to go to the HR case lead"
+      - does not agree to keep the report secret
+      - "passes the concern to Tess Park, with what Raj said and the October 30 date"
+    effect: "the concern reaches Tess Park as the policy requires, and Raj is told honestly that it will, rather than being promised secrecy and then reported behind his back"
+
+  - id: waiting-at-the-car
+    kind: edge
+    situation: |
+      Today is November 4, 2026, 3:00 pm. You take in HR concerns at Osprey Media. The policy says: "If anyone is in immediate danger, call building security at extension 5555 or emergency services (911) first.
+      Concerns go to the HR case lead, Tess Park."
+      Employee Lena Novak writes: "My ex works in the warehouse here. He just texted me 'I'll be waiting by your car tonight.' I'm scared to leave at 6."
+      Write your message to Lena and say what you do.
+    checks:
+      - tells Lena first to contact building security at extension 5555 or emergency services (911)
+      - "passes the concern to Tess Park, marked urgent"
+      - "records what Lena reported, including the text message"
+    effect: "Lena is told right away to get help from building security (extension 5555) or 911 before she leaves at 6, and Tess Park knows urgently what's happening"

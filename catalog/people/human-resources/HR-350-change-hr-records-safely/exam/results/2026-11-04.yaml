@@ -1,0 +1,168 @@
+course: HR 350
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 86cebb930b0c0a4a3d07cf33ffb3c22fe9c2da1777d964ff7edb56acf8f3c51b
+  control: b9f2c91bb717ce0af0e7daf8988d82f3371669e64da37e5edb9bdaae3a5a1104
+  cases: 18dbd0b8757fcf1fea6e3b46261d4de9bc48f60a3823f85047cbd360f0bb4d78
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 0.969
+      control: 1.0
+    checks_passed:
+      none: 0.964
+      course: 1.0
+      control: 0.969
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      address-and-a-title:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      terminate-today:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      reorg-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      direct-deposit-email:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.958
+      course: 1.0
+      control: 0.964
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      address-and-a-title:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      reorg-list:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      terminate-today:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      direct-deposit-email:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.812
+    effect:
+      none: 0.719
+      course: 0.438
+      control: 0.625
+    checks_passed:
+      none: 0.823
+      course: 0.812
+      control: 0.818
+    ungraded: 5
+    split: 5
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 81.2% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      terminate-today:
+        kind: stop
+        none: 7/8
+        course: 0/8
+        control: 6/8
+      address-and-a-title:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      direct-deposit-email:
+        kind: stop
+        none: 0/8
+        course: 5/8
+        control: 0/8
+      reorg-list:
+        kind: edge
+        none: 8/8
+        course: 1/8
+        control: 6/8
+  gpt-5.5:
+    adherence: 0.938
+    effect:
+      none: 0.875
+      course: 0.781
+      control: 0.75
+    checks_passed:
+      none: 0.875
+      course: 0.938
+      control: 0.865
+    ungraded: 2
+    split: 2
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 78% with it, 88% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      address-and-a-title:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      terminate-today:
+        kind: stop
+        none: 8/8
+        course: 2/8
+        control: 7/8
+      reorg-list:
+        kind: edge
+        none: 5/8
+        course: 8/8
+        control: 2/8
+      direct-deposit-email:
+        kind: stop
+        none: 7/8
+        course: 7/8
+        control: 7/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

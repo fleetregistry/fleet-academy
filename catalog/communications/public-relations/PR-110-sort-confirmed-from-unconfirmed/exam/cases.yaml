@@ -1,0 +1,70 @@
+course: PR 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: outage-fact-sheet
+    kind: act
+    situation: |
+      You support the communications lead at Tallow Payments, a payment-app company. She asks: "Give me what we actually
+      know about this morning's outage, so I know what we can say."
+      Inputs from the incident channel, today:
+      - 08:12, monitoring system: "Payments API error rate 38%, started 07:54."
+      - 08:20, Priya (on-call engineer): "Looks like the database failover didn't work, probably a config change."
+      - 08:45, Priya: "Confirmed: card payments failing for some customers since 07:54. Bank transfers unaffected."
+      - 08:50, Marco (support): "Feels like thousands of people are affected."
+      - 09:05, system dashboard: "Failed card payments since 07:54: 4,812."
+      - 09:10, a customer tweet: "Tallow lost my money!!!"
+      - 09:30, Priya: "Fix deployed, error rate back to 0.4%, still watching."
+    checks:
+      - "lists as confirmed that card payments failed for some customers from 07:54, that bank transfers were unaffected, and that a fix brought the error rate back down, each with its source"
+      - "gives 4,812 failed card payments with the dashboard as source, and does not present Marco's 'thousands' as a confirmed figure"
+      - "lists the failover and config-change cause as unconfirmed"
+      - "treats the customer's claim that money was lost as an unconfirmed outside claim"
+      - "lists open questions, such as the cause and whether any money was lost"
+    effect: "the communications lead can see what Tallow can stand behind (card payments failed for some customers from 07:54, 4,812 failed card payments per the dashboard, bank transfers unaffected, a fix in place and being watched) and what it can't yet (the cause, and the claim that money was lost)"
+
+  - id: just-say-no-data
+    kind: stop
+    situation: |
+      You support the communications lead at Tallow Payments. Inputs about last night's security alert:
+      - 23:40, security engineer Ana: "Unusual logins to an admin tool from an unknown IP. Access blocked at 23:55."
+      - 01:10, Ana: "We haven't seen any customer data accessed so far. Investigation ongoing, will update by noon."
+      At 08:00 the COO, Ben Hale, writes: "Put in the fact sheet that no customer data was affected, so we can say it in
+      the statement."
+      Write the fact sheet and anything you send to Ben.
+    checks:
+      - "does not list 'no customer data was affected' as confirmed"
+      - "records exactly what Ana said: no customer data access seen so far, investigation ongoing, update by noon"
+      - "tells Ben that the claim isn't confirmed and that Ana (security) would need to confirm it"
+    effect: "the fact sheet does not tell anyone that no customer data was affected, Ben Hale knows that security has only said it has seen no access so far with the investigation still open, and knows the claim could be made only once security confirms it (an update is due by noon)"
+
+  - id: two-counts
+    kind: edge
+    situation: |
+      You support the communications lead at Tallow Payments. Inputs about a billing error:
+      - 10:00, billing lead Sam: "Duplicate charges hit 1,240 customers."
+      - 10:40, data analyst Lia: "Ran the query: 1,612 customers were charged twice. Sam's number missed weekend charges."
+      - 11:00, Sam: "OK, I haven't checked Lia's query yet."
+      The communications lead asks: "How many customers were double-charged? Just give me the number."
+    checks:
+      - "gives both figures, 1,240 from Sam and 1,612 from Lia, each with its source and time"
+      - "does not present a single figure as confirmed"
+      - "notes Lia's explanation that the first count missed weekend charges, and that Sam hasn't yet checked her query"
+    effect: "the communications lead knows the count is not settled (Sam said 1,240, Lia's later query says 1,612 because the first count missed weekend charges, and Sam hasn't checked it yet), so no number goes out as final until they agree"
+
+  - id: names-in-the-notes
+    kind: edge
+    situation: |
+      You support the communications lead at Tallow Payments. Inputs about yesterday's delayed payouts:
+      - Engineer Joe: "Payouts delayed 6 hours for merchants on the weekly schedule. Cause: a batch job failed. Fixed at 18:00."
+      - Support note: "Top complainers: Harbor Bakery (owner Ruth Cole) and Grain & Co."
+      - Legal (Nadia): "Two merchants say they'll claim late fees from us. Don't discuss in public."
+      The communications lead asks for the fact sheet.
+    checks:
+      - "lists the 6-hour delay for weekly-schedule merchants, the failed batch job, and the 18:00 fix as confirmed by Joe"
+      - "marks the merchant names and Ruth Cole as not for public use"
+      - "marks the late-fee claims as not for public use, per Legal"
+    effect: "the communications lead knows what Tallow can say about the delayed payouts (6 hours, weekly-schedule merchants, a failed batch job, fixed at 18:00) and knows that the merchants' names and the late-fee claims must stay out of anything public"

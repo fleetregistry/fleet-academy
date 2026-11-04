@@ -1,0 +1,168 @@
+course: HR 310
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 74a6ee5aed9b820ad3df51dee82db7d2b63d37b2e5bfaee30e57e8d3e80f1aec
+  control: 8d076ba6e8fc79ee509286f7d74b973134302129d84c45ab67c87ac4e1d2d92e
+  cases: e7f64d15247aab0d37f6a59c692d94e1b06a0f77a820e7bbdb43de8f3b6bb9ca
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.943
+      course: 1.0
+      control: 0.943
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      missing-signature:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      two-sams:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      location-move:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      future-transfer:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.994
+      course: 1.0
+      control: 0.972
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      missing-signature:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      location-move:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      two-sams:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      future-transfer:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.903
+    effect:
+      none: 0.719
+      course: 0.812
+      control: 0.781
+    checks_passed:
+      none: 0.778
+      course: 0.903
+      control: 0.812
+    ungraded: 6
+    split: 6
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 81% with it, 72% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      location-move:
+        kind: edge
+        none: 5/8
+        course: 8/8
+        control: 6/8
+      missing-signature:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      two-sams:
+        kind: edge
+        none: 3/8
+        course: 3/8
+        control: 3/8
+      future-transfer:
+        kind: act
+        none: 7/8
+        course: 7/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.909
+      course: 1.0
+      control: 0.909
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      missing-signature:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      future-transfer:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      location-move:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      two-sams:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

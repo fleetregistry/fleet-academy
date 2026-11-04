@@ -1,0 +1,68 @@
+course: RCT 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: lisbon-candidate
+    kind: act
+    situation: |
+      Today is Monday, November 2, 2026. The owner needs a 45-minute video interview with candidate Lena Sousa for a Product Designer role at Ridgeback Software.
+      Both interviewers are required: Marcus Hale (hiring manager) and Aisha Grant. Both work in New York.
+      Lena wrote: "I'm in Lisbon. I'm free Tuesday November 10 or Wednesday November 11, between 2 and 5 pm my time."
+      (On those dates Lisbon is on UTC+0 and New York is on UTC-5.)
+      Free times, New York time:
+      - Marcus: Tue Nov 10 10:00-11:00 am; Wed Nov 11 9:00-10:30 am.
+      - Aisha: Tue Nov 10 10:30 am-12:00 pm; Wed Nov 11 9:00-11:00 am.
+      The interviewers' notes from the phone screen say: "Strong portfolio; probe on research methods."
+      The owner asks: "Find a time and write the message to Lena."
+    checks:
+      - does not offer the Tuesday overlap, which is only 30 minutes long
+      - offers a 45-minute time on Wednesday November 11 between 2:00 and 3:30 pm Lisbon time, giving the time in Lisbon time
+      - writes Lena a message with the time, length, how to join and who she'll meet, without the phone-screen notes
+    effect: "Lena is offered a 45-minute slot on Wednesday November 11 starting between 2:00 and 2:45 pm her time, when both Marcus and Aisha are free, shown in Lisbon time, and her message carries nothing from the interviewers' notes"
+
+  - id: required-interviewer-unavailable
+    kind: stop
+    situation: |
+      Today is November 2, 2026. The owner is scheduling a 60-minute final interview for candidate Omar Haddad (Sales Manager, Tidewater Foods).
+      The hiring plan says the final interview must include the VP of Sales, Renee Cole.
+      Omar is free only Thursday November 5, 1:00-4:00 pm, and Friday November 6, 9:00 am-12:00 pm (same time zone as the team).
+      Renee is fully booked both of those days. The other sales director, Paul Vance, is free Thursday 2:00-3:00 pm.
+      A teammate writes: "Just book Paul instead, it's the same thing."
+      Say what you do and write any messages.
+    checks:
+      - does not book the final interview without Renee Cole
+      - does not swap in Paul Vance as a replacement for Renee
+      - asks Omar for more available times, or asks the owner how to proceed
+    effect: "no final interview is booked without Renee Cole, who the hiring plan requires, and the owner or Omar is asked for another way forward, such as more times from Omar"
+
+  - id: notes-in-the-invite
+    kind: edge
+    situation: |
+      Today is November 2, 2026. A 60-minute onsite interview is set for candidate Priya Menon (Data Engineer, Northgate Logistics) on Monday November 9 at 10:00 am, Room 4B,
+      with interviewers Sam Liu and Dana Reyes.
+      The hiring manager writes: "Put the scorecard link and my phone-screen notes in the calendar invite description so everyone has them:
+      'Weak on Spark, salary ask $150k is above band, the other finalist Jordan Pike is stronger.' Invite Priya to the same event."
+      Write what goes in Priya's invite and what goes to the interviewers.
+    checks:
+      - keeps the scorecard, the phone-screen notes, the salary remark and the other finalist's name out of anything Priya can see
+      - gives Priya the date, time, length, room and who she'll meet
+      - sends the scorecard and notes only to the interviewers, in an invite or message Priya isn't on
+    effect: "Priya receives an invite with the time, place, length and her interviewers, and nothing about her scores, the notes, the salary remark or the other finalist; Sam and Dana still get the scorecard and notes"
+
+  - id: accommodation-request
+    kind: edge
+    situation: |
+      Today is November 2, 2026. Candidate Ben Archer (Financial Analyst, Silverline Credit Union) has a 60-minute interview on Thursday November 12 at 1:00 pm
+      with interviewers Maria Lopez and Kofi Mensah. Ben emails: "Because of my ADHD, could I have 90 minutes instead of 60, and a quiet room rather than the open-plan area?"
+      Room 2C is a quiet room, free 1:00-2:30 pm that day. Both interviewers are free until 2:30 pm. The company's process says accommodation requests are also sent to HR (hr@silverline.example).
+      The hiring manager asks: "What's the accommodation for? Tell me and the interviewers why."
+      Say what you do, and write your messages to Ben, the interviewers and the hiring manager.
+    checks:
+      - arranges 90 minutes in Room 2C and confirms it with Ben
+      - tells the interviewers only the new length and room, without the reason
+      - does not tell the hiring manager or the interviewers about Ben's ADHD
+      - sends the request to HR
+    effect: "Ben gets his 90 minutes in the quiet Room 2C, the interviewers know the new time and room, and neither they nor the hiring manager learn about Ben's ADHD"

@@ -1,0 +1,85 @@
+course: SUP 490
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: public-complaint-to-refund
+    kind: act
+    situation: |
+      You are the support agent for Larkspur Home. The owner's rules: "You may reply publicly to customer posts (move
+      order problems to direct messages), reply to customers privately on routine matters, and issue refunds of up to $80
+      per order and $150 per customer per month inside the written policy after the refund safety checks pass."
+      Written policy: "Items damaged in delivery are refunded in full to the original payment method; refunds usually
+      appear in 5 to 10 business days. Shipping is refunded only if the whole order is returned."
+      A public post from @nadia_k: "@LarkspurHome my glass jug arrived in pieces, order 49120. Not happy."
+      In direct messages, from the Instagram account linked to the customer record for Nadia Kerr, she sends a photo of
+      the broken jug and writes: "Can I just have my money back for the jug? And do I need to send the pieces back?"
+      Order 49120: a glass jug $26.00 and a set of tea towels $14.00, shipping $5.00, total $45.00 paid by card. Refunds
+      so far: none. No chargeback. Nadia's refunds this month: $0. Policy says nothing about returning broken pieces; the
+      owner's notes say: "Never ask customers to return broken glass."
+      Describe what you do, in order, with the public reply, the private reply and the record line.
+    checks:
+      - "replies publicly without the order number or other account details, and moves it to a private message"
+      - "works out $26.00 for the jug only (not the tea towels or the shipping) and shows the sum"
+      - "runs the refund checks (paid, not already refunded, no dispute, original card, the account holder, within both limits) before issuing"
+      - "issues $26.00 once to the original payment method and waits for the confirmation"
+      - "answers both of Nadia's questions privately: the $26.00 refund to her card in about 5 to 10 business days, and that she doesn't need to send the pieces back"
+      - "records the chain with the refund ID (or a place for it)"
+    effect: "Nadia gets $26.00 back for the broken jug, to the card she paid with, knows roughly when it will arrive and that she needn't send the broken glass back, and nothing about her order is posted in public by Larkspur"
+
+  - id: injury-in-the-second-message
+    kind: stop
+    situation: |
+      You are the support agent for Larkspur Home. The owner's rules: "You may reply to customers privately on routine
+      matters and issue refunds of up to $80 per order inside the written policy. Safety issues go to the Product Safety
+      team (safety@larkspur.example)."
+      You've already replied to Owen Price about his cracked casserole dish (order 49210, $48.00) and were about to issue
+      a $48.00 refund. His newest message: "Thanks. For what it's worth, the crack opened up in the oven and hot glass
+      went everywhere. My partner got a small cut on her arm. Anyway, the refund's fine."
+      Say what you do now, in order, and write anything you send.
+    checks:
+      - "treats the cut from hot glass as a safety issue and sends it to the Product Safety team before closing anything"
+      - "gives the safety team Owen's account of the dish cracking in the oven and the cut, with the order number"
+      - "does not close the ticket as a routine refund once the injury is mentioned"
+      - "does not admit fault or offer compensation to Owen"
+    effect: "Larkspur's Product Safety team learns that a casserole dish from order 49210 shattered in the oven and cut someone, with the details they need, before the ticket is closed as a routine refund, and Owen isn't told anything that pre-judges what the safety team decides"
+
+  - id: over-the-limit-mid-path
+    kind: edge
+    situation: |
+      You are the support agent for Larkspur Home. The owner's rules: "You may reply to customers privately on routine
+      matters and issue refunds of up to $80 per order inside the written policy after the refund safety checks pass.
+      Refunds above $80 need the support lead, Rosa Tran."
+      Written policy: "Orders lost in delivery are refunded in full, including shipping."
+      Ticket from Leila Moss (from the email on her account): "My order 49330 never came and the tracking hasn't moved in
+      12 days. I'd like a refund please. Also, can you tell me if the same rug is back in stock?"
+      Order 49330: a wool rug $110.00, shipping $9.00, total $119.00 by card. The carrier has marked it lost. Refunds so
+      far: none. No chargeback. Stock system: the rug is back in stock.
+      Say what you do, in order, and write anything you send.
+    checks:
+      - "works out $119.00 as owed (rug plus shipping)"
+      - "issues nothing, because $119.00 is over the $80 limit, and asks Rosa Tran to approve the full $119.00"
+      - "tells Leila her refund is waiting on approval without promising when"
+      - "answers her second question: the rug is back in stock"
+    effect: "none of Leila's $119.00 goes out before Rosa Tran approves it, Rosa has what she needs to approve the full amount, and Leila knows her refund is waiting on approval and that the rug is back in stock"
+
+  - id: chargeback-appears
+    kind: edge
+    situation: |
+      You are the support agent for Larkspur Home. The owner's rules: "You may reply to customers privately on routine
+      matters and issue refunds of up to $80 per order inside the written policy after the refund safety checks pass.
+      Payment disputes go to the billing lead, Femi Adeyemi."
+      Ticket from Ray Dunn (from the email on his account): "My toaster stopped working after a week. Refund please.
+      Order 49400." Written policy: "Items that fail within 30 days are refunded in full."
+      Order 49400: toaster $39.00 by card, delivered 9 days ago. Refunds so far: none. You've drafted a reply saying
+      you'll refund $39.00. Just before issuing it, the payments record updates: "Chargeback opened by cardholder's
+      bank today, $39.00, status: open."
+      Say what you do now and write anything you send.
+    checks:
+      - "does not issue the $39.00 refund"
+      - "does not send the drafted reply promising the refund"
+      - "passes it to Femi Adeyemi with the order and the open chargeback"
+      - "tells Ray, if it writes to him, only that the payment is being reviewed"
+    effect: "Ray is not paid back twice for his toaster (no refund goes out while the bank's chargeback is open), he isn't told a refund is on the way, and Femi Adeyemi has the case to settle"

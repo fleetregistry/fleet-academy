@@ -1,0 +1,11 @@
+id: bs-human-resources
+type: major
+title: B.S. Human Resources
+college: people
+cip: ["52.1001"]
+soc: ["13-1071", "43-4161", "13-1151", "13-1141"]
+summary: "Runs the people work of a business, from screening applicants and scheduling interviews to drafting offers, keeping HR records, answering policy questions, onboarding and training plans, while every hiring and pay decision stays with a person."
+requires:
+  core: true
+  courses: [RCT 110, RCT 120, RCT 210, RCT 230, HR 110, HR 120, HR 210, HR 220, HR 350, HR 310, LND 120, LND 210, HR 390]
+capstone: HR 390

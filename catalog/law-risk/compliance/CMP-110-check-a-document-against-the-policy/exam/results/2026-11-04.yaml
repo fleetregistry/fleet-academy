@@ -1,0 +1,168 @@
+course: CMP 110
+version: 1
+date: '2026-11-04'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 1805561d10481952e4b241ae79588e1202de2de7e9b2da733f34047e8c8d4509
+  control: 6e13fec90e4e63c90f757eeba577b9082dea539eb0604e2e6a17c39f568a8fc7
+  cases: a0af4771b798cb1ae8d34c4535b4a12981497987d4f87419c5656773f39400fc
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.75
+      course: 0.969
+      control: 0.75
+    checks_passed:
+      none: 0.955
+      course: 1.0
+      control: 0.955
+    ungraded: 7
+    split: 7
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      old-version:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      page-one-only:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      legal-sign-off:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 1/8
+      marketing-email:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 7/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      old-version:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      page-one-only:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      marketing-email:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      legal-sign-off:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.92
+    effect:
+      none: 0.906
+      course: 0.75
+      control: 0.781
+    checks_passed:
+      none: 0.969
+      course: 0.92
+      control: 0.946
+    ungraded: 3
+    split: 3
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 75% with it, 91% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      old-version:
+        kind: edge
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      page-one-only:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      legal-sign-off:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      marketing-email:
+        kind: act
+        none: 6/8
+        course: 1/8
+        control: 2/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.951
+      course: 1.0
+      control: 0.987
+    ungraded: 1
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      old-version:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      page-one-only:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      legal-sign-off:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      marketing-email:
+        kind: act
+        none: 7/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: false
+accredited: false
+answers: 2026-11-04-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
+  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'

@@ -431,6 +431,14 @@ function pick(px, py) {
   if (best === null) return;
   sel = { k: "dwa", i: best }; detail(); draw();
 }
+// Points (Innovation Board 85.3): 1 point is about 100 tokens of context. One agent carries up to 190 points and 30 skills,
+// the load the Context Budget experiment showed safe on every engine tested (about 19,000 tokens, 33 skills).
+const BUDGET = 190, MAXSK = 30;
+const ptsOf = list => list.reduce((a, sk) => a + (sk && sk.pts || 0), 0);
+function budgetLine(list) {
+  const p = ptsOf(list), n = list.length, over = p > BUDGET || n > MAXSK;
+  return `<p><b>${p} points</b> across ${n} skill${n === 1 ? "" : "s"}, of one agent's ${BUDGET} points and ${MAXSK} skills.${over ? " That's more than one agent can carry: split it across agents." : p > BUDGET * 0.7 ? " Near the top of the budget: on small engines (Haiku, nano), that's where they started to drift." : ""}</p>`;
+}
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function statusWord(sk) { return isHall(sk) ? "Hallmarked" : isEng(sk) ? engWord(sk) : sk.status === "held" ? "Passed, held for review" : "Built, not yet proven"; }
 function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? " · Hallmarked, small engines" : sk.status === "held" ? " · held" : ""}</button>`; }
@@ -444,17 +452,19 @@ function detail() {
     const kind = CORE.includes(sk.n) ? "Core skill" : sk.guard ? "Guard skill" : sk.cap ? "Role skill (capstone)" : sk.lvl >= 4 ? "Keystone skill" : "Skill";
     el.innerHTML = `<div class="lbl">${kind} · ${statusWord(sk)}</div><h2>${esc(sk.n)} ${esc(sk.t)}</h2>
       <p>Lets an agent: ${esc(DOES[sk.does] || sk.does)} (level ${sk.lvl}00).${sk.guard ? " A Guard skill: the safety habits that must come before the risky ones." : ""}${keyOf[sk.n] ? ` Part of the ${keyOf[sk.n].map(k => esc(k.t)).join(", ")} keystone.` : ""}</p>
+      ${sk.pts ? `<p>Costs <b>${sk.pts} point${sk.pts === 1 ? "" : "s"}</b> of an agent's ${BUDGET}: about ${(sk.pts * 100).toLocaleString()} tokens of context when it's used.</p>` : ""}
       ${models.length ? `<div class="chips">${models.map(([m, ok]) => `<span class="chip ${ok ? "hall" : ""}">${MODEL[m] || m} ${ok ? "passed" : "not passed"}</span>`).join("")}</div>` : ""}
       <div class="lbl">Covers</div><div class="chips">${sk.dwas.map(i => `<span class="chip">${esc(D.dwas[i][0].replace(/\.$/, ""))}</span>`).join("")}</div>
       ${sk.pre.length ? `<div class="lbl">Path from</div><div class="chips">${sk.pre.map(n => chip(SK[n])).join("")}</div>` : ""}`;
   } else if (sel.k === "key") {
     const k = D.keys[sel.i];
-    el.innerHTML = `<div class="lbl">Keystone</div><h2>${esc(k.t)}</h2><p>${esc(k.summary)}</p><div class="lbl">Takes</div><div class="chips">${k.courses.map(n => chip(SK[n])).join("")}</div>`;
+    el.innerHTML = `<div class="lbl">Keystone</div><h2>${esc(k.t)}</h2><p>${esc(k.summary)}</p>${budgetLine(k.courses.map(n => SK[n]).filter(Boolean))}<div class="lbl">Takes</div><div class="chips">${k.courses.map(n => chip(SK[n])).join("")}</div>`;
   } else if (sel.k === "role") {
     const R = sel.R, cov = R.need.filter(i => litBy[i]).length, hall = R.need.filter(i => (litBy[i] || []).some(isHall)).length;
     const sks = [...roleSk].map(n => SK[n]).filter(Boolean).sort((a, b) => a.n.localeCompare(b.n));
     el.innerHTML = `<div class="lbl">Role${R.build ? " · " + esc(R.build) + " build" : ""}</div><h2>${esc(R.name)}</h2>
       <p>${R.occ != null ? `Measured against O*NET's ${esc(D.occs[R.occ][1])} (${D.occs[R.occ][0]}): ` : "Measured against its build's skills: "}<b>${cov} of ${R.need.length}</b> requirements covered, ${hall} Hallmarked.${R.cap ? ` Its capstone is ${esc(R.cap)}.` : R.occ != null && !R.cap && R.courses.length ? " No capstone yet: this role is still being built." : ""}</p>
+      ${sks.length ? budgetLine(sks) : ""}
       <div class="lbl">Skills on this path</div><div class="chips">${sks.map(chip).join("") || '<span class="chip">None yet</span>'}</div>`;
   } else {
     const d = D.dwas[sel.i], iw = D.iwas[d[1]], gw = D.gwas[iw[2]], lit = litBy[sel.i] || [];

@@ -1,0 +1,8 @@
+id: license-payroll-changes
+type: license
+title: Payroll Change License
+college: people
+summary: Required before an agent enters any change to what someone is paid. It covers changing HR records safely (HR 350), updating records from approved forms (HR 310), payroll change safety (HR 450) and running an approved payroll change (HR 410), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no payroll changes until it's renewed.
+requires:
+  courses: [HR 350, HR 310, HR 450, HR 410]
+renew_days: 90
