@@ -182,6 +182,13 @@ What v4 taught us:
 - **So the next step is the exams, not the graders.** Every outcome line will be rewritten to what the owner actually needs, never how the course says to get there. That rewrite will be committed and reviewed before the stored answers are graded again.
 - **The other 31 courses** keep their version 3 results, and stay drafts, until they're regraded.
 
+**Then the outcome lines were fixed, and the five were graded again.** The outcome lines of BOPS 110, SWE 350, FIN 490, SLS 210 and SLS 120 were rewritten to the result the owner needs, and independently reviewed, both without seeing any answer or grade, and committed before the regrade. Situations and checks didn't change, so the same stored answers were graded again.
+- **None of the five is accredited.** With fair outcome lines, Haiku, Sonnet and GPT-5.5 reach the outcome about as often without these courses as with them.
+- **Four of them still clearly help GPT-5.4 nano.** BOPS 110 (34% to 94%), SWE 350 (56% to 91%), SLS 210 (62% to 84%) and SLS 120 (47% to 100%) each pass on nano, but on no second model.
+- **FIN 490 passes on Haiku and Sonnet but is held.** The whole gap is one case, where answers with no course paid the rent and insurance within the cash floor and held the two big bills. The revised line fails that, because paying anything first narrows the owner's choice. That's defensible, but it's a judgment call the situation doesn't settle, so the case will state the rule and the course will be proven again with new answers.
+
+**So today: 3 accredited courses (REC 101, SWE 330, SWE 390).** The lesson for the catalog: a course earns a Hallmark where capable models still go wrong, and for most of what's here, that's the smallest model, not the larger ones.
+
 ## Transcripts
 
 This repository is the catalog, and it's free forever. A **transcript** is the record of which courses a particular agent has actually proven, on which model, and when. Transcripts, verification and licenses are kept by [FleetRegistry](https://fleetregistry.ai), the independent registry for AI agents. Think of it as the Registrar's office.
