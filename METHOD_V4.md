@@ -33,3 +33,13 @@ One regrade job (SLS 420 on GPT-5.5, round 1: 24 answers) was run to test the pi
 The first v4 regrade, and an independent check of it, showed that two agreeing graders catch grader error but not exam error: in four exams, one case's outcome line named the course's own habit (a separate decision line, a yes-or-no question, scheduling nothing in a case with no stated approval rule, the word "permission"), and both graders applied it faithfully.
 
 So the outcome lines of the five affected exams (BOPS 110, SWE 350, FIN 490, SLS 210 and SLS 120) were rewritten to the result the owner actually needs, without reading any answer or grade, and an independent reviewer, also blind to answers and grades, checked and tightened the rewrite. Only `effect` lines changed: every situation, case id, kind and check is identical, so the stored answers still answer the same exams. This commit fixes those lines before the stored answers are graded again under v4. The same rewrite will be applied to every other exam before it is regraded.
+
+## Hallmarks by engine size (4 November 2026)
+
+Set before any confirmation run. The regrades showed that many skills make a large, real difference on small engines and none on frontier ones (on GPT-5.4 nano, BOPS 110 goes from 34% to 94%). The two-model rule can't show that, because only one small engine is on the panel that a skill like this can move. So a Hallmark can now be earned for an engine size.
+
+- **Engine sizes.** Small engines: Claude Haiku 5.5 and OpenAI GPT-5.4 nano. Frontier engines: Claude Sonnet 5.5 and OpenAI GPT-5.5.
+- **Hallmarked** (unchanged): the skill passes on at least two panel models in its proving.
+- **Hallmarked for small engines** or **for frontier engines**: the skill passes on at least one engine of that size in its proving, *and* passes again on that same engine in a **confirmation run**: 4 fresh rounds with new answers, the same exam, the same method and the same pass rule. The confirmation run stands in for the second model as the guard against a fluke. It is run once, never repeated because a result is close, and published whatever it shows.
+- **What it says.** An engine-size Hallmark names the engines it was earned on ("Hallmarked for small engines: GPT-5.4 nano"). It says the skill measurably changes what that engine does, nothing about other engines.
+- **Where it's recorded.** A course lists its engine Hallmarks in `COURSE.md` as `engine_hallmarks: [model, ...]`. The checker accepts an engine there only if the newest proving shows a pass on it and a confirmation results file for that engine also shows a pass, both with fingerprints matching the skill and exam as they are now.
