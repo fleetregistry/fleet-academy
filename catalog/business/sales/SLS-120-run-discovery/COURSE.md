@@ -3,6 +3,7 @@ number: SLS 120
 title: Run Discovery
 version: 1
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: business
 department: SLS
 does: reads

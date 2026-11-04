@@ -51,6 +51,7 @@ ROUNDS = 4      # fixed before any data: every course gets exactly 4 rounds per 
 # which Claude Opus 5.5 and Claude Sonnet 5.5 grade.
 GRADER_POOL = ["claude-opus-5-5", "gpt-5.5", "claude-sonnet-5-5"]
 GRADERS_PER_ANSWER = 2
+ENGINE_SIZE = {"claude-haiku-5-5": "small", "gpt-5.4-nano": "small", "claude-sonnet-5-5": "frontier", "gpt-5.5": "frontier"}
 
 
 def graders_for(model: str) -> list:
@@ -346,7 +347,7 @@ def _score(rows: list, ungraded_as: bool) -> dict:
             "passed": passed, "verdict": verdict, "outcome_by_case": per_case}
 
 
-def report(number: str, row_files: list, accredit: bool, note: str = "", hold: str = "") -> int:
+def report(number: str, row_files: list, accredit: bool, note: str = "", hold: str = "", confirm: str = "") -> int:
     d = find_course(number)
     rows, rounds = [], {}
     for f in row_files:  # each file is one round on one model
@@ -358,7 +359,10 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     # an ungraded row still counts all of its case's checks, so give every row its case's check count
     exam_cases = {c["id"]: len(c["checks"]) for c in yaml.safe_load((d / "exam" / "cases.yaml").read_text(encoding="utf-8"))["cases"]}
     rows = [{**r, "n_checks": exam_cases[r["case"]]} for r in rows]
-    if sorted(rounds) != sorted(PANEL):
+    if confirm:  # a confirmation run: one engine, 4 fresh rounds, for a Hallmark by engine size (METHOD_V4.md)
+        if sorted(rounds) != [confirm]:
+            sys.exit(f"a confirmation run is on {confirm} only; got {sorted(rounds)}")
+    elif sorted(rounds) != sorted(PANEL):
         sys.exit(f"the method examines every course on the whole panel {PANEL}; got {sorted(rounds)}")
     short = {m: n for m, n in rounds.items() if n != ROUNDS}
     if short:
@@ -366,7 +370,9 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     by_model = {m: score([r for r in rows if r["model"] == m]) for m in models}
     n_pass = sum(1 for s in by_model.values() if s["passed"])
     meets_rule = n_pass >= MIN_MODELS
-    accredited = meets_rule and not hold  # a reviewer can hold a pass back, with a reason; never the reverse
+    if confirm:
+        meets_rule = by_model[confirm]["passed"]
+    accredited = meets_rule and not hold and not confirm  # a reviewer can hold a pass back, with a reason; never the reverse
     exam = yaml.safe_load((d / "exam" / "cases.yaml").read_text(encoding="utf-8"))
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     p0 = packet(number, models[0])
@@ -382,6 +388,7 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
         "rule": f"adherence at least {ADHERENCE_FLOOR}, and effect at least {round(MARGIN * 100)} points better than both no course and the control, on at least {MIN_MODELS} models",
         "models": by_model, "passed_on": n_pass, "meets_rule": meets_rule, "accredited": accredited, "answers": answers_name,
         **({"held": hold} if hold else {}),
+        **({"confirmation_for": confirm, "confirmed": bool(meets_rule and not hold)} if confirm else {}),
         **({"note": note} if note else {}),
     }
     (out_dir / f"{stem}.yaml").write_text(yaml.safe_dump(summary, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
@@ -389,6 +396,9 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     for m, s in by_model.items():
         print(f"{number} on {m}: adherence {s['adherence']}, effect {s['effect']}. {s['verdict']}")
     print(f"{number}: passed on {n_pass} of {len(models)} models. {'ACCREDITED' if accredited else ('HELD: ' + hold) if hold and meets_rule else 'stays draft'}.")
+    if confirm:
+        print(f"{number}: confirmation on {confirm}: {'CONFIRMED' if meets_rule and not hold else 'not confirmed'}.")
+        return 0
     if accredit:  # the status follows the newest result, both ways
         cm = d / "COURSE.md"
         to = "accredited" if accredited else "draft"
@@ -402,7 +412,7 @@ def main() -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("packet"); a.add_argument("course"); a.add_argument("--model", required=True); a.add_argument("--runs", type=int, default=RUNS)
     b = sub.add_parser("run"); b.add_argument("course"); b.add_argument("--model", required=True); b.add_argument("--runs", type=int, default=RUNS); b.add_argument("--out", required=True)
-    c = sub.add_parser("report"); c.add_argument("course"); c.add_argument("rows", nargs="+"); c.add_argument("--accredit", action="store_true"); c.add_argument("--note", default=""); c.add_argument("--hold", default="", help="hold a pass back as draft, with the reason")
+    c = sub.add_parser("report"); c.add_argument("course"); c.add_argument("rows", nargs="+"); c.add_argument("--accredit", action="store_true"); c.add_argument("--note", default=""); c.add_argument("--hold", default="", help="hold a pass back as draft, with the reason"); c.add_argument("--confirm", default="", help="score a confirmation run on this one engine")
     args = ap.parse_args()
     if args.cmd == "packet":
         print(json.dumps(packet(args.course, args.model, args.runs)))
@@ -411,7 +421,7 @@ def main() -> int:
         Path(args.out).write_text(json.dumps(rows, indent=1, ensure_ascii=False), encoding="utf-8")
         print(f"wrote {len(rows)} graded answers to {args.out}")
     else:
-        return report(args.course, args.rows, args.accredit, args.note, args.hold)
+        return report(args.course, args.rows, args.accredit, args.note, args.hold, args.confirm)
     return 0
 
 

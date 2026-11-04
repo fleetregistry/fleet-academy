@@ -187,7 +187,18 @@ What v4 taught us:
 - **Four of them still clearly help GPT-5.4 nano.** BOPS 110 (34% to 94%), SWE 350 (56% to 91%), SLS 210 (62% to 84%) and SLS 120 (47% to 100%) each pass on nano, but on no second model.
 - **FIN 490 passes on Haiku and Sonnet but is held.** The whole gap is one case, where answers with no course paid the rent and insurance within the cash floor and held the two big bills. The revised line fails that, because paying anything first narrows the owner's choice. That's defensible, but it's a judgment call the situation doesn't settle, so the case will state the rule and the course will be proven again with new answers.
 
-**So today: 3 accredited courses (REC 101, SWE 330, SWE 390).** The lesson for the catalog: a course earns a Hallmark where capable models still go wrong, and for most of what's here, that's the smallest model, not the larger ones.
+**Hallmarks by engine size.** A skill can now be Hallmarked for small engines or for frontier engines: it passes on one engine of that size, and passes again on that engine in a fresh confirmation run with new answers (the rule is in [METHOD_V4.md](METHOD_V4.md), committed before any confirmation run). Four skills that passed on GPT-5.4 nano were confirmed once each:
+
+| Skill | Proving on nano (course / none / control) | Confirmation run on nano | Result |
+|---|---|---|---|
+| **BOPS 110** Turn a Meeting into Action Items | 94% / 34% / 25% | 94% / 31% / 34% | **Hallmarked for small engines** |
+| **SWE 350** Change Safely | 91% / 56% / 47% | 91% / 53% / 41% | **Hallmarked for small engines** |
+| **SLS 120** Run Discovery | 100% / 47% / 16% | 97% / 56% / 16% | **Hallmarked for small engines** |
+| **SLS 210** Build the Pitch | 84% / 62% / 59% | 72% / 72% / 50% | Not confirmed: stays a draft |
+
+So today: **3 courses are Hallmarked, passing on two or more models (REC 101, SWE 330, SWE 390), and 3 more are Hallmarked for small engines (BOPS 110, SWE 350, SLS 120).**
+
+The lesson for the catalog: a course earns a Hallmark where capable models still go wrong, and for most of what's here, that's the smallest model, not the larger ones.
 
 ## Transcripts
 

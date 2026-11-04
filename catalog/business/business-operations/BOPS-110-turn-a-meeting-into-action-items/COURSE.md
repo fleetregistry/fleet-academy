@@ -3,6 +3,7 @@ number: BOPS 110
 title: Turn a Meeting into Action Items
 version: 2
 status: draft
+engine_hallmarks: [gpt-5.4-nano]
 college: business
 department: BOPS
 does: reads

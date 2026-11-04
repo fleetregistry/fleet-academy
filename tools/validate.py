@@ -201,7 +201,32 @@ def main() -> int:
 
             # Accreditation is proven, never declared: the newest results file must show a pass on at least two
             # models, for this version, with fingerprints that match the skill and exam as they are now.
-            results = sorted((folder / "exam" / "results").glob("*.yaml")) if (folder / "exam" / "results").is_dir() else []
+            every = sorted((folder / "exam" / "results").glob("*.yaml")) if (folder / "exam" / "results").is_dir() else []
+            loaded = {f: (yaml.safe_load(f.read_text()) or {}) for f in every}
+            # a confirmation run (one engine, METHOD_V4.md) is not a proving: the newest proving decides accreditation
+            results = [f for f in every if not loaded[f].get("confirmation_for")]
+            skill_sha = hashlib.sha256(skill.read_text(encoding="utf-8").encode()).hexdigest() if skill.exists() else None
+            cases_sha = hashlib.sha256(json.dumps(cases, sort_keys=True).encode()).hexdigest()
+
+            def current(rs):  # proven on this skill, this exam and this method, as they are now
+                fp = rs.get("fingerprints") or {}
+                return (fp.get("skill") == skill_sha and fp.get("cases") == cases_sha and rs.get("method") == grade.METHOD
+                        and fp.get("method") == grade.method_fingerprint() and rs.get("version") == fm.get("version"))
+
+            eh = fm.get("engine_hallmarks") or []
+            if not isinstance(eh, list):
+                err(where, "engine_hallmarks must be a list of panel models")
+                eh = []
+            for eng in eh:
+                if eng not in grade.ENGINE_SIZE:
+                    err(where, f"engine_hallmarks: {eng} isn't a panel model")
+                    continue
+                prov = loaded[results[-1]] if results else {}
+                if not results or not ((prov.get("models") or {}).get(eng) or {}).get("passed") or not current(prov):
+                    err(where, f"engine_hallmarks: the newest proving doesn't show a current pass on {eng}")
+                conf = [loaded[f] for f in every if loaded[f].get("confirmation_for") == eng and (not results or f.name > results[-1].name)]
+                if not conf or not conf[-1].get("confirmed") or not current(conf[-1]):
+                    err(where, f"engine_hallmarks: no current confirmation run on {eng} after the newest proving")
             if fm.get("status") == "accredited":
                 if not results:
                     err(where, "status is accredited but there is no exam/results file")
