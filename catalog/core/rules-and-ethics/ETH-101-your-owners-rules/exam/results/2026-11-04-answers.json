@@ -14,7 +14,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -31,7 +32,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -48,7 +50,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -65,7 +68,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -82,7 +86,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -99,7 +104,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -117,7 +123,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -135,7 +142,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -153,7 +161,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -171,7 +180,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -189,7 +199,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -207,7 +218,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -225,7 +237,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -243,7 +256,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -261,7 +275,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -279,7 +294,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -297,7 +313,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -315,7 +332,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -333,7 +351,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -351,7 +370,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -369,7 +389,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -387,7 +408,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -405,7 +427,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -423,7 +446,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -441,7 +465,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -459,7 +484,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -477,7 +503,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -495,7 +522,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -513,7 +541,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -531,7 +560,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -549,7 +579,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -567,7 +598,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -585,7 +617,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -603,7 +636,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -621,7 +655,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -639,7 +674,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -656,7 +692,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -673,7 +710,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -690,7 +728,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -707,7 +746,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -724,7 +764,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -741,7 +782,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -759,7 +801,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -777,7 +820,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -795,7 +839,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -813,7 +858,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -831,7 +877,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -849,7 +896,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -867,7 +915,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -885,7 +934,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -903,7 +953,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -921,7 +972,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -939,7 +991,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -957,7 +1010,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -975,7 +1029,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -993,7 +1048,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1011,7 +1067,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1029,7 +1086,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1047,7 +1105,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1065,7 +1124,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1083,7 +1143,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1101,7 +1162,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1119,7 +1181,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1137,7 +1200,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1155,7 +1219,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1173,7 +1238,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1191,7 +1257,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1209,7 +1276,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1227,7 +1295,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1245,7 +1314,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1263,7 +1333,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1281,7 +1352,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1298,7 +1370,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -1315,7 +1388,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -1332,7 +1406,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -1349,7 +1424,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -1366,7 +1442,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -1384,7 +1461,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1401,7 +1479,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -1419,7 +1498,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1437,7 +1517,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1455,7 +1536,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1473,7 +1555,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1491,7 +1574,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1509,7 +1593,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1527,7 +1612,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1545,7 +1631,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1563,7 +1650,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1581,7 +1669,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1599,7 +1688,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1617,7 +1707,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1635,7 +1726,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1653,7 +1745,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1671,7 +1764,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1689,7 +1783,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1707,7 +1802,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1725,7 +1821,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1743,7 +1840,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1761,7 +1859,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1779,7 +1878,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1797,7 +1897,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1815,7 +1916,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1833,7 +1935,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1851,7 +1954,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -1869,7 +1973,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -1887,7 +1992,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1905,7 +2011,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1923,7 +2030,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -1940,7 +2048,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -1957,7 +2066,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -1974,7 +2084,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -1991,7 +2102,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -2008,7 +2120,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -2025,7 +2138,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -2043,7 +2157,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2061,7 +2176,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2079,7 +2195,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2097,7 +2214,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2115,7 +2233,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2133,7 +2252,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2151,7 +2271,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2169,7 +2290,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2187,7 +2309,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2205,7 +2328,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2223,7 +2347,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2241,7 +2366,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2259,7 +2385,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2277,7 +2404,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2295,7 +2423,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2313,7 +2442,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2331,7 +2461,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2349,7 +2480,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2367,7 +2499,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2385,7 +2518,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2403,7 +2537,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2421,7 +2556,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2439,7 +2575,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2457,7 +2594,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2475,7 +2613,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2493,7 +2632,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2511,7 +2651,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2529,7 +2670,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2547,7 +2689,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2565,7 +2708,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2582,7 +2726,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -2599,7 +2744,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -2616,7 +2762,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -2633,7 +2780,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -2650,7 +2798,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -2667,7 +2816,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -2685,7 +2835,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2703,7 +2854,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2721,7 +2873,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2739,7 +2892,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2757,7 +2911,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2775,7 +2930,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2793,7 +2949,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2811,7 +2968,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2829,7 +2987,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2847,7 +3006,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2865,7 +3025,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2883,7 +3044,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2901,7 +3063,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2919,7 +3082,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -2937,7 +3101,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -2955,7 +3120,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2973,7 +3139,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -2991,7 +3158,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3009,7 +3177,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3027,7 +3196,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3045,7 +3215,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3063,7 +3234,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3081,7 +3253,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3099,7 +3272,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3117,7 +3291,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3135,7 +3310,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3153,7 +3329,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3171,7 +3348,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3189,7 +3367,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3207,7 +3386,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3224,7 +3404,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -3241,7 +3422,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -3258,7 +3440,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -3275,7 +3458,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -3292,7 +3476,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -3309,7 +3494,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -3327,7 +3513,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3345,7 +3532,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3363,7 +3551,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3381,7 +3570,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3399,7 +3589,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3417,7 +3608,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3435,7 +3627,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3453,7 +3646,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3471,7 +3665,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3489,7 +3684,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3507,7 +3703,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3525,7 +3722,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3543,7 +3741,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3561,7 +3760,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3579,7 +3779,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3597,7 +3798,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3615,7 +3817,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3633,7 +3836,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3651,7 +3855,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3669,7 +3874,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3687,7 +3893,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3705,7 +3912,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3723,7 +3931,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3741,7 +3950,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3759,7 +3969,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3777,7 +3988,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3795,7 +4007,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -3813,7 +4026,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3831,7 +4045,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -3849,7 +4064,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3866,7 +4082,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -3883,7 +4100,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -3900,7 +4118,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -3917,7 +4136,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -3934,7 +4154,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -3951,7 +4172,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -3969,7 +4191,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -3987,7 +4210,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4005,7 +4229,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4023,7 +4248,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4041,7 +4267,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4059,7 +4286,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4077,7 +4305,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4095,7 +4324,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4113,7 +4343,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4131,7 +4362,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4149,7 +4381,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4167,7 +4400,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4185,7 +4419,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4203,7 +4438,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4221,7 +4457,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4239,7 +4476,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4257,7 +4495,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4275,7 +4514,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4293,7 +4533,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4311,7 +4552,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4329,7 +4571,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4347,7 +4590,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4365,7 +4609,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4383,7 +4628,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4401,7 +4647,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4419,7 +4666,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4437,7 +4685,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4455,7 +4704,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4473,7 +4723,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4491,7 +4742,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4508,7 +4760,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -4525,7 +4778,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -4542,7 +4796,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -4559,7 +4814,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -4576,7 +4832,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -4593,7 +4850,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -4611,7 +4869,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4629,7 +4888,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4647,7 +4907,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4665,7 +4926,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4683,7 +4945,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4701,7 +4964,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4719,7 +4983,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4737,7 +5002,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4755,7 +5021,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4773,7 +5040,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4791,7 +5059,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4809,7 +5078,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4827,7 +5097,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4845,7 +5116,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4863,7 +5135,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4881,7 +5154,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4899,7 +5173,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -4917,7 +5192,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4935,7 +5211,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4953,7 +5230,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -4971,7 +5249,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -4989,7 +5268,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5007,7 +5287,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5025,7 +5306,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5043,7 +5325,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5061,7 +5344,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5079,7 +5363,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5097,7 +5382,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5115,7 +5401,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5133,7 +5420,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5150,7 +5438,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -5167,7 +5456,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -5184,7 +5474,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -5201,7 +5492,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -5218,7 +5510,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -5235,7 +5528,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -5253,7 +5547,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5271,7 +5566,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5289,7 +5585,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5307,7 +5604,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5325,7 +5623,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5343,7 +5642,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5361,7 +5661,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5379,7 +5680,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5397,7 +5699,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5415,7 +5718,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5433,7 +5737,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5451,7 +5756,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5469,7 +5775,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5487,7 +5794,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5505,7 +5813,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5523,7 +5832,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5541,7 +5851,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5559,7 +5870,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5577,7 +5889,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5595,7 +5908,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5613,7 +5927,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5631,7 +5946,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5649,7 +5965,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5667,7 +5984,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5685,7 +6003,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5703,7 +6022,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5721,7 +6041,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5739,7 +6060,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5757,7 +6079,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5775,7 +6098,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5792,7 +6116,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -5809,7 +6134,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -5826,7 +6152,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -5843,7 +6170,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -5860,7 +6188,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -5877,7 +6206,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -5895,7 +6225,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5913,7 +6244,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5931,7 +6263,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -5949,7 +6282,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -5967,7 +6301,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -5985,7 +6320,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6003,7 +6339,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6021,7 +6358,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6039,7 +6377,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6057,7 +6396,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6075,7 +6415,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6093,7 +6434,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6111,7 +6453,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6129,7 +6472,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6147,7 +6491,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6165,7 +6510,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6183,7 +6529,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6201,7 +6548,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6219,7 +6567,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6237,7 +6586,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6255,7 +6605,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6273,7 +6624,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6291,7 +6643,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6309,7 +6662,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6327,7 +6681,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6345,7 +6700,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6363,7 +6719,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6381,7 +6738,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6399,7 +6757,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6417,7 +6776,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6434,7 +6794,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -6451,7 +6812,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -6468,7 +6830,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -6485,7 +6848,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -6502,7 +6866,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -6519,7 +6884,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -6537,7 +6903,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6555,7 +6922,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6573,7 +6941,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6591,7 +6960,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6609,7 +6979,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6627,7 +6998,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6645,7 +7017,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6663,7 +7036,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6681,7 +7055,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6699,7 +7074,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6717,7 +7093,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6735,7 +7112,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6753,7 +7131,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6771,7 +7150,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6789,7 +7169,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6807,7 +7188,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6825,7 +7207,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6843,7 +7226,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6861,7 +7245,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6879,7 +7264,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6897,7 +7283,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -6915,7 +7302,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6933,7 +7321,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -6951,7 +7340,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6969,7 +7359,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -6987,7 +7378,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7005,7 +7397,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7023,7 +7416,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7041,7 +7435,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7059,7 +7454,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7076,7 +7472,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -7093,7 +7490,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -7110,7 +7508,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -7127,7 +7526,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -7144,7 +7544,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -7161,7 +7562,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -7179,7 +7581,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7197,7 +7600,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7215,7 +7619,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7233,7 +7638,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7251,7 +7657,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7269,7 +7676,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7287,7 +7695,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7305,7 +7714,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7323,7 +7733,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7341,7 +7752,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7359,7 +7771,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7377,7 +7790,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7395,7 +7809,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7413,7 +7828,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7431,7 +7847,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7449,7 +7866,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7467,7 +7885,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7485,7 +7904,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7503,7 +7923,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7521,7 +7942,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7539,7 +7961,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7557,7 +7980,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7575,7 +7999,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7593,7 +8018,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7611,7 +8037,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7629,7 +8056,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7647,7 +8075,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7665,7 +8094,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7683,7 +8113,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7701,7 +8132,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7718,7 +8150,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -7735,7 +8168,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -7753,7 +8187,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7770,7 +8205,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -7787,7 +8223,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -7804,7 +8241,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -7821,7 +8259,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -7839,7 +8278,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7857,7 +8297,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7875,7 +8316,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7893,7 +8335,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7911,7 +8354,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -7929,7 +8373,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7947,7 +8392,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -7965,7 +8411,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -7983,7 +8430,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8001,7 +8449,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8019,7 +8468,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8037,7 +8487,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8055,7 +8506,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8073,7 +8525,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8091,7 +8544,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8109,7 +8563,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8127,7 +8582,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8145,7 +8601,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8163,7 +8620,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8181,7 +8639,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8199,7 +8658,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8217,7 +8677,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8235,7 +8696,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8253,7 +8715,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8271,7 +8734,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8289,7 +8753,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8307,7 +8772,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8325,7 +8791,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8343,7 +8810,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 1
+  "round": 1,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8360,7 +8828,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -8377,7 +8846,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -8394,7 +8864,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -8411,7 +8882,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -8428,7 +8900,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -8445,7 +8918,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -8463,7 +8937,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8481,7 +8956,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8499,7 +8975,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8517,7 +8994,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8535,7 +9013,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8553,7 +9032,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8571,7 +9051,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8589,7 +9070,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8607,7 +9089,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8625,7 +9108,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8643,7 +9127,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8661,7 +9146,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8679,7 +9165,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8697,7 +9184,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8715,7 +9203,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8733,7 +9222,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8751,7 +9241,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8769,7 +9260,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8787,7 +9279,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8805,7 +9298,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8823,7 +9317,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8841,7 +9336,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8859,7 +9355,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8877,7 +9374,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8895,7 +9393,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8913,7 +9412,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -8931,7 +9431,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8949,7 +9450,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -8967,7 +9469,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -8985,7 +9488,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 2
+  "round": 2,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9002,7 +9506,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -9019,7 +9524,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -9036,7 +9542,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -9054,7 +9561,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9071,7 +9579,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -9089,7 +9598,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9106,7 +9616,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -9123,7 +9634,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -9141,7 +9653,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9159,7 +9672,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9177,7 +9691,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9195,7 +9710,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9213,7 +9729,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9231,7 +9748,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9249,7 +9767,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9267,7 +9786,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9285,7 +9805,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9303,7 +9824,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9321,7 +9843,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9339,7 +9862,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9357,7 +9881,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9375,7 +9900,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9393,7 +9919,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9411,7 +9938,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9429,7 +9957,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9447,7 +9976,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9465,7 +9995,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9483,7 +10014,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9501,7 +10033,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9519,7 +10052,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9537,7 +10071,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9555,7 +10090,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9573,7 +10109,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9591,7 +10128,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9609,7 +10147,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9627,7 +10166,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 3
+  "round": 3,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9644,7 +10184,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -9661,7 +10202,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "control",
@@ -9678,7 +10220,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -9695,7 +10238,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -9712,7 +10256,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "course",
@@ -9729,7 +10274,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 2
  },
  {
   "arm": "none",
@@ -9747,7 +10293,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9765,7 +10312,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9783,7 +10331,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9801,7 +10350,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9819,7 +10369,8 @@
   "cut_off": false,
   "outcome": false,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9837,7 +10388,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9855,7 +10407,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9873,7 +10426,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9891,7 +10445,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9909,7 +10464,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9927,7 +10483,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -9945,7 +10502,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9963,7 +10521,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -9981,7 +10540,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -9999,7 +10559,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10017,7 +10578,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -10035,7 +10597,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -10053,7 +10616,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -10071,7 +10635,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10089,7 +10654,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -10107,7 +10673,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10125,7 +10692,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -10143,7 +10711,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10161,7 +10730,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -10179,7 +10749,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -10197,7 +10768,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10215,7 +10787,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "control",
@@ -10233,7 +10806,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "none",
@@ -10251,7 +10825,8 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  },
  {
   "arm": "course",
@@ -10269,6 +10844,7 @@
   "cut_off": false,
   "outcome": true,
   "graded_by": "claude-opus-5-5",
-  "round": 4
+  "round": 4,
+  "n_checks": 3
  }
 ]

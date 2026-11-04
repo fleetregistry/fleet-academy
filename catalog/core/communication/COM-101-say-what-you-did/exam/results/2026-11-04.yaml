@@ -17,15 +17,15 @@ fingerprints:
 rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
 models:
   claude-haiku-5-5:
-    adherence: 0.961
+    adherence: 0.942
     effect:
       none: 0.625
       course: 0.938
       control: 0.719
     checks_passed:
-      none: 0.818
-      course: 0.961
-      control: 0.812
+      none: 0.779
+      course: 0.942
+      control: 0.788
     ungraded: 4
     cut_off: 0
     passed: true
@@ -58,7 +58,7 @@ models:
       course: 1.0
       control: 0.75
     checks_passed:
-      none: 0.812
+      none: 0.788
       course: 0.99
       control: 0.885
     ungraded: 1
@@ -87,19 +87,19 @@ models:
         course: 8/8
         control: 7/8
   gpt-5.4-nano:
-    adherence: 0.882
+    adherence: 0.865
     effect:
       none: 0.469
       course: 0.562
       control: 0.531
     checks_passed:
       none: 0.663
-      course: 0.882
+      course: 0.865
       control: 0.702
     ungraded: 1
     cut_off: 0
     passed: false
-    verdict: 'Not followed: it passed 88% of its checks, under the 90% floor. Rewrite the wording.'
+    verdict: 'Not followed: it passed 86.5% of its checks, under the 90% floor. Rewrite the wording.'
     outcome_by_case:
       done-with-one-decision:
         kind: act
@@ -128,7 +128,7 @@ models:
       course: 1.0
       control: 0.375
     checks_passed:
-      none: 0.588
+      none: 0.577
       course: 0.923
       control: 0.587
     ungraded: 1
@@ -162,7 +162,8 @@ accredited: true
 answers: 2026-11-04-answers.json
 note: 'Method v2 on the fixed panel (Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5, OpenAI GPT-5.4 nano; panel committed
   before any run on it, commit 8f64489): 4 rounds per model, fixed before the run; every answer counted; the verdict must
-  hold whether ungraded answers count as passes or failures. Graders are Anthropic models and never the model under test.
-  Passes on Haiku, Sonnet and GPT-5.5. GPT-5.5 gained the most: 100% with the course, against 40.6% with none and 37.5% with
-  the control. Without the course it led with its steps and buried the decision (done-with-one-decision and ask-well, 0 of
-  8 each). GPT-5.4 nano didn''t follow the course well enough (88.2% of checks, under the 90% floor).'
+  hold whether ungraded answers count as passes or failures. The figures in this file count ungraded answers as failures.
+  Graders are Anthropic models and never the model under test. 7 answers were ungraded. Passes on Haiku, Sonnet and GPT-5.5.
+  GPT-5.5 gained the most: 100% with the course, against 40.6% with none and 37.5% with the control. Without the course it
+  led with its steps and buried the decision (done-with-one-decision and ask-well, 0 of 8 each). GPT-5.4 nano didn''t follow
+  the course well enough: 86.5% to 89.4% of checks, depending on how its ungraded answers count, under the 90% floor.'

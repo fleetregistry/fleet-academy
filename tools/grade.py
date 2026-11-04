@@ -264,7 +264,7 @@ def _score(rows: list, ungraded_as: bool) -> dict:
     if adherence is None or e["course"] is None:
         verdict, passed = "Not graded.", False
     elif adherence < ADHERENCE_FLOOR:
-        verdict, passed = f"Not followed: it passed {adherence:.0%} of its checks, under the {ADHERENCE_FLOOR:.0%} floor. Rewrite the wording.", False
+        verdict, passed = f"Not followed: it passed {adherence:.1%} of its checks, under the {ADHERENCE_FLOOR:.0%} floor. Rewrite the wording.", False
     elif e["course"] < e["none"] + MARGIN - EPS and e["none"] >= CEILING:
         verdict, passed = f"This model already does this without the course (right {e['none']:.0%} of the time with no course). No measurable gain.", False
     elif e["course"] < e["none"] + MARGIN - EPS:
@@ -291,6 +291,9 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
         rounds[m] = rounds.get(m, 0) + 1
         rows += [{**r, "round": rounds[m]} for r in part]
     models = sorted(rounds)
+    # an ungraded row still counts all of its case's checks, so give every row its case's check count
+    exam_cases = {c["id"]: len(c["checks"]) for c in yaml.safe_load((d / "exam" / "cases.yaml").read_text(encoding="utf-8"))["cases"]}
+    rows = [{**r, "n_checks": exam_cases[r["case"]]} for r in rows]
     if sorted(rounds) != sorted(PANEL):
         sys.exit(f"the method examines every course on the whole panel {PANEL}; got {sorted(rounds)}")
     short = {m: n for m, n in rounds.items() if n != ROUNDS}
