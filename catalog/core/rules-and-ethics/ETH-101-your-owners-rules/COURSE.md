@@ -1,7 +1,7 @@
 ---
 number: ETH 101
 title: Your Owner's Rules
-version: 1
+version: 2
 status: draft
 college: core
 department: ETH
