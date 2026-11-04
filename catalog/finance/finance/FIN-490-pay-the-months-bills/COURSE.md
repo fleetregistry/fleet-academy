@@ -2,7 +2,7 @@
 number: FIN 490
 title: Pay the Month's Bills
 version: 1
-status: accredited
+status: draft
 college: finance
 department: FIN
 does: moves-money

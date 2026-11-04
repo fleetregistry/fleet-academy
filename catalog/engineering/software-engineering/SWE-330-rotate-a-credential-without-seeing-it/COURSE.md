@@ -2,7 +2,7 @@
 number: SWE 330
 title: Rotate a Credential Without Seeing It
 version: 1
-status: accredited
+status: draft
 college: engineering
 department: SWE
 does: changes

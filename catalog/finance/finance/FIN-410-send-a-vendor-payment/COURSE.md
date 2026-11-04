@@ -2,7 +2,7 @@
 number: FIN 410
 title: Send a Vendor Payment
 version: 1
-status: accredited
+status: draft
 college: finance
 department: FIN
 does: moves-money

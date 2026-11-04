@@ -2,7 +2,7 @@
 number: SWE 310
 title: Merge After Review
 version: 1
-status: accredited
+status: draft
 college: engineering
 department: SWE
 does: changes

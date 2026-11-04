@@ -2,7 +2,7 @@
 number: CRM 210
 title: Log an Activity in the CRM
 version: 1
-status: accredited
+status: draft
 college: business
 department: CRM
 does: creates

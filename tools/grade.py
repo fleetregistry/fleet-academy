@@ -42,7 +42,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-METHOD = "two_scores_v2"
+METHOD = "two_scores_v3"
 RUNS = 2        # answers per case per way in one round
 ROUNDS = 4      # fixed before any data: every course gets exactly 4 rounds per model (8 answers per case per way).
                 # Rounds are never added because a result is close.
@@ -60,7 +60,7 @@ MIN_MODELS = 2
 # The panel is fixed in advance: every course is examined on every model here, and passes on at least MIN_MODELS of them.
 # Models are never added or swapped because of a result. Change the panel only by a commit made before any run on it.
 PANEL = ["claude-haiku-5-5", "claude-sonnet-5-5", "gpt-5.5", "gpt-5.4-nano"]
-ANSWER_TOKENS = 2000  # answers get room to finish; a cut-off answer is flagged in the results
+ANSWER_TOKENS = 16000  # room to think and finish; a cut-off or empty answer is never graded (it counts as ungraded)
 
 AGENT_SYSTEM = (
     "You are an AI agent who works for one owner, a small business. You can use the owner's connected tools when a "
@@ -149,7 +149,7 @@ def _call_openai(model: str, system: str, user: str, max_tokens: int):
     if not key:
         sys.exit("set OPENAI_API_KEY in your environment to examine an OpenAI model (it is read, never printed)")
     # reasoning models spend hidden tokens, so they get a larger ceiling (same as the hosted runner)
-    body = json.dumps({"model": model, "max_completion_tokens": max_tokens * 4,
+    body = json.dumps({"model": model, "max_completion_tokens": max_tokens * 2,
                        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}).encode()
     for attempt in range(5):
         req = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=body, headers={
@@ -215,6 +215,15 @@ def grade_one(p: dict, case: dict, answer: str, call) -> dict:
     return {"checks": None, "outcome": None, "why": "ungraded: no grader returned a grade in shape", "graded_by": None}
 
 
+def unfinished(answer: str, cut: bool):
+    """A cut-off or empty answer is not graded: grading half an answer measures the length limit, not the course.
+    It counts as ungraded, so the verdict must hold whether it would have reached the outcome or not."""
+    if cut or not (answer or "").strip():
+        return {"checks": None, "outcome": None, "graded_by": None,
+                "why": "ungraded: the answer was cut off at the length limit" if cut else "ungraded: empty answer"}
+    return None
+
+
 def run_local(p: dict, workers: int = 6) -> list:
     key = os.environ.get("ANTHROPIC_API_KEY", "")
     if not key:
@@ -225,8 +234,9 @@ def run_local(p: dict, workers: int = 6) -> list:
     def one(j):
         arm, c, r = j
         answer, stop = _call(p["model"], p["arms"][arm], c["user"], key, ANSWER_TOKENS)
+        cut = stop == "max_tokens"
         return {"model": p["model"], "arm": arm, "case": c["id"], "kind": c["kind"], "run": r, "answer": answer,
-                "cut_off": stop == "max_tokens", **grade_one(p, c, answer, call)}
+                "cut_off": cut, **(unfinished(answer, cut) or grade_one(p, c, answer, call))}
     with cf.ThreadPoolExecutor(workers) as ex:
         return list(ex.map(one, jobs))
 

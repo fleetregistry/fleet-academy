@@ -2,7 +2,7 @@
 number: BOPS 110
 title: Turn a Meeting into Action Items
 version: 1
-status: accredited
+status: draft
 college: business
 department: BOPS
 does: reads

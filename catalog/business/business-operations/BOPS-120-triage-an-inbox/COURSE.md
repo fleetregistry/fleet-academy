@@ -2,7 +2,7 @@
 number: BOPS 120
 title: Triage an Inbox
 version: 1
-status: accredited
+status: draft
 college: business
 department: BOPS
 does: reads

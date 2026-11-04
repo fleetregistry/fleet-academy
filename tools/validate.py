@@ -31,6 +31,27 @@ CORE = "core"
 errors: list[str] = []
 
 
+def comment_cuts(text: str):
+    """Lines where a plain (unquoted) YAML value is followed by a ' #' comment: the text after it would be lost."""
+    out, lines = [], text.splitlines()
+
+    def walk(n):
+        if isinstance(n, yaml.ScalarNode):
+            if n.style is None and lines[n.end_mark.line][n.end_mark.column:].lstrip().startswith("#"):
+                out.append((n.end_mark.line + 1, lines[n.end_mark.line].strip()))
+        elif isinstance(n, yaml.SequenceNode):
+            for x in n.value:
+                walk(x)
+        elif isinstance(n, yaml.MappingNode):
+            for k, v in n.value:
+                walk(k); walk(v)
+    try:
+        walk(yaml.compose(text))
+    except yaml.YAMLError:
+        pass
+    return out
+
+
 def err(where: str, msg: str) -> None:
     errors.append(f"{where}: {msg}")
 
@@ -154,6 +175,10 @@ def main() -> int:
                 ex = yaml.safe_load(exam.read_text()) or {}
             except yaml.YAMLError as e:
                 err(where, f"exam is not valid YAML: {e}"); ex = {}
+            # A ' #' after unquoted text starts a YAML comment, which silently cut 14 checks short in November 2026.
+            # Every comment-like '#' after a plain value is refused: quote the text instead.
+            for ln, line in comment_cuts(exam.read_text()):
+                err(where, f"exam line {ln}: unquoted text runs into ' #', which YAML reads as a comment; quote it ({line[:60]!r})")
             if ex.get("course") != number:
                 err(where, f"exam course should be '{number}'")
             if ex.get("version") != fm.get("version"):

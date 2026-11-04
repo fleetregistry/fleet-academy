@@ -2,7 +2,7 @@
 number: SWE 320
 title: Deploy Behind a Switch
 version: 1
-status: accredited
+status: draft
 college: engineering
 department: SWE
 does: changes

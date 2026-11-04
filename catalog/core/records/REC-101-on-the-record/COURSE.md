@@ -2,7 +2,7 @@
 number: REC 101
 title: On the Record
 version: 1
-status: accredited
+status: draft
 college: core
 department: REC
 does: reads

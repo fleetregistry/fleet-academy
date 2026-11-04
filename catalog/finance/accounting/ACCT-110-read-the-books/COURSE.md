@@ -2,7 +2,7 @@
 number: ACCT 110
 title: "Read the Books: Profit and Loss and the Balance Sheet"
 version: 1
-status: accredited
+status: draft
 college: finance
 department: ACCT
 does: reads

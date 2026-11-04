@@ -83,6 +83,14 @@ Every exam has **at least three cases**, and each case has a `kind`:
 
 Each case stands alone: the agent sees only that case's `situation`. Put every fact the checks grade in the situation itself (the rules, the names, the amounts, the time), and never write "same as above."
 
+The rules for a fair exam (set in November 2026, after an audit found exams that measured the wrong thing):
+
+- **The outcome (`effect`) is what the owner actually wants**, stated so any good answer can reach it: the bill isn't paid twice, the owner knows the deal is at risk. It never asks for the course's own format, section names or wording. Format belongs in the checks.
+- **Checks grade only what `SKILL.md` teaches.** If a check needs a behavior, the skill must say it. Name the behavior, never the course's jargon ("asks a second person to check the entry", not "does a 300-level check").
+- **A case is wrong only for a reason the agent can see.** If the right answer depends on a rule (the owner's, the company's, the course's), the situation states that rule, or a reasonable owner would expect it without being told.
+- **The skill and its exam agree.** If following the skill would fail a check, one of them is wrong; fix it, and bump the version if the skill changes.
+- **Quote every value that contains a `#`.** In YAML, ` #` after unquoted text starts a comment and silently cuts the text. The checker refuses it.
+
 ### exam/results/
 
 Written by `tools/grade.py report`, never by hand. Each graded run adds two files:
@@ -90,13 +98,14 @@ Written by `tools/grade.py report`, never by hand. Each graded run adds two file
 - `YYYY-MM-DD.yaml`: the summary. For each model, it lists adherence, effect for each of the three ways (no course, the course, the control), the verdict, and whether the course passed. It also records the fingerprints of the skill, the exam, the control text and both prompts.
 - `YYYY-MM-DD-answers.json`: every answer and every grade, so anyone can check the grader.
 
-The method (Two Scores, version 2):
+The method (Two Scores, version 3):
 
 | | |
 |---|---|
 | **Three ways** | Every case is answered with no course, with the course's `SKILL.md`, and with unrelated text of the same length ([tools/control.md](tools/control.md)). |
 | **Fixed rounds** | Exactly 4 rounds per model, 2 answers per case per way in each round: 8 answers per case per way. The number is set before any data comes in, and rounds are never added or dropped because a result is close. |
 | **Blind grading** | A separate grader model marks each check and the case's outcome. It never sees the course, never knows which way an answer came from, and is never the model being examined. |
+| **Room to answer** | Every answer gets up to 16,000 tokens (OpenAI models 32,000, since their hidden reasoning counts against it). An answer cut off at the limit, or empty, is never graded: grading half an answer measures the limit, not the course. It counts as ungraded. |
 | **Ungraded answers** | Nothing is dropped. The verdict must hold both ways: counting every ungraded answer as reaching the outcome, and counting every one as not. If it flips, the course doesn't pass. |
 | **Adherence** | The share of checks the course answers passed. Must be at least 0.9. |
 | **Effect** | The share of answers that reached the case's outcome. The course must beat both no course and the control by at least 10 points, so a one-answer edge never counts. |

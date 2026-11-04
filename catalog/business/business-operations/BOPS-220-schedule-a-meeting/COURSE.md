@@ -2,7 +2,7 @@
 number: BOPS 220
 title: Schedule a Meeting
 version: 1
-status: accredited
+status: draft
 college: business
 department: BOPS
 does: creates
