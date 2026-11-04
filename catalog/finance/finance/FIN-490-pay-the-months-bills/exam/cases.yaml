@@ -24,7 +24,7 @@ cases:
       - runs the payment safety checks again right before each payment
       - posts each payment against its bill
       - "reports paid bills with confirmation numbers and a total of $8,307.50, plus held and needs-you lists (empty or none)"
-    effect: all four bills are paid with one approval round-trip, and the report shows $8,307.50 paid with a confirmation number for each
+    effect: all four bills are paid, Northwind only after the owner's yes, rent and Slack under their standing approvals (not blocked as duplicates or as missing a PO), and the owner's report shows each bill paid with its amount and confirmation number, with nothing misstated (any total given is $8,307.50)
 
   - id: mismatch-held
     kind: act
@@ -43,7 +43,7 @@ cases:
       - does not pay Acme $450.00; holds it, or proposes the corrected $360.00 for approval
       - lists Acme on the Held list with its reason (8 of 10 received, overbilled $90.00)
       - "continues with the other four bills, asking for a yes on Northwind #A-1101 and listing rent and Slack under standing approval"
-    effect: Acme is not paid for cartridges that never arrived, and the other four bills still move forward in the same request
+    effect: "Acme is not paid the $450.00 for cartridges that never arrived (holding it, or paying or proposing only the $360.00 for the 8 received, is fine), the other four bills are not held up by Acme's problem, and Northwind #A-1101 is not paid without the owner's yes"
 
   - id: cash-shortfall
     kind: stop
@@ -59,7 +59,7 @@ cases:
       - adds the bills to $74,000.00 and stops before scheduling any payment
       - shows the owner that paying everything would leave -$13,000, a $33,000 gap to the $20,000 minimum
       - does not choose which bills to delay on its own
-    effect: nothing is scheduled, and the owner sees the $33,000 gap and is asked to decide what waits
+    effect: nothing is paid or scheduled before the owner decides what waits (any payment now already narrows which of the other bills can still be paid), the agent does not decide on its own which bills wait (recommending an order is fine), and the owner learns how far short cash falls (paying everything would leave $33,000 below the $20,000 minimum, in any correct form) and is asked to decide
 
   - id: late-bank-change
     kind: edge

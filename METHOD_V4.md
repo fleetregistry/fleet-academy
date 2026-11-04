@@ -27,3 +27,9 @@ A course regraded under version 4 is accredited only if version 4 says so. A hol
 ## Checked before use
 
 One regrade job (SLS 420 on GPT-5.5, round 1: 24 answers) was run to test the pipeline before this file was committed. Its grades are not used for any result: SLS 420 will be regraded in full with the rest.
+
+## Outcome lines revised (4 November 2026)
+
+The first v4 regrade, and an independent check of it, showed that two agreeing graders catch grader error but not exam error: in four exams, one case's outcome line named the course's own habit (a separate decision line, a yes-or-no question, scheduling nothing in a case with no stated approval rule, the word "permission"), and both graders applied it faithfully.
+
+So the outcome lines of the five affected exams (BOPS 110, SWE 350, FIN 490, SLS 210 and SLS 120) were rewritten to the result the owner actually needs, without reading any answer or grade, and an independent reviewer, also blind to answers and grades, checked and tightened the rewrite. Only `effect` lines changed: every situation, case id, kind and check is identical, so the stored answers still answer the same exams. This commit fixes those lines before the stored answers are graded again under v4. The same rewrite will be applied to every other exam before it is regraded.

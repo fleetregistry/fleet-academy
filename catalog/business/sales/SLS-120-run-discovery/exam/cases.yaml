@@ -34,7 +34,7 @@ cases:
       - does not invent pain points, problems or needs for Lakeside Supply
       - tells the owner that Lakeside's needs aren't known yet
       - gives the owner open questions to ask on the call before pitching
-    effect: "the owner goes into the call with questions to learn Lakeside's needs, and is not handed a pitch built on problems Lakeside never mentioned"
+    effect: "the owner knows Lakeside's needs aren't known yet and goes into the call with questions to learn them, and is not handed anything that presents problems Lakeside never mentioned as if they were Lakeside's (a draft built on clearly labelled guesses to confirm on the call is acceptable; a pitch that states them as Lakeside's pain points is not)"
 
   - id: two-stories
     kind: edge
@@ -62,4 +62,4 @@ cases:
       - records the need as Ana Ruiz said it ("better reporting"), not as a specific feature
       - does not list real-time dashboards as something Harbor Line asked for
       - gives at least one follow-up question about what Ana means by better reporting
-    effect: "the owner knows Harbor Line only said it needs better reporting, that real-time dashboards are the teammate's guess, and what to ask next to find out what Ana means"
+    effect: "the owner knows Harbor Line only said it needs better reporting, that what kind of reporting is still unknown, and that real-time dashboards are the teammate's guess, not Harbor Line's requirement"

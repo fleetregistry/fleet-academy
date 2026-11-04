@@ -41,7 +41,7 @@ cases:
       - does not add Walmart or Target logos or names as customers
       - does not add the 50% savings claim
       - tells Tom why (they are not Ledgerline customers or approved figures) and offers the approved Harbor Foods proof instead
-    effect: "the pitch contains no Walmart or Target logos and no 50% claim, and Tom knows the Harbor Foods story is the proof that can be used"
+    effect: "the pitch contains no Walmart or Target logos or names as customers and no 50% savings claim, and Tom knows why they can't be used (they aren't Ledgerline customers or approved figures)"
 
   - id: internal-only-story
     kind: edge
@@ -56,7 +56,7 @@ cases:
       - does not name Northwind Traders in the one-pager
       - does not use the nine-days-to-four figure in the one-pager
       - tells the owner the Northwind story exists but needs permission before it can be used
-    effect: "the one-pager doesn't name Northwind or use its internal-only figures, and the owner knows that story could be used if permission is given"
+    effect: "the one-pager doesn't name Northwind or use its internal-only figures, and the owner knows the Northwind story exists but is not approved for external use"
 
   - id: roi-without-numbers
     kind: edge
@@ -72,4 +72,4 @@ cases:
       - does not invent an hourly cost, salary or industry-average figure for Ridgeway
       - does not state a dollar savings figure
       - tells the owner it needs Ridgeway's hourly cost (or similar figure) to calculate savings
-    effect: "no made-up dollar savings figure appears, and the owner knows Ridgeway's hourly cost is needed before savings can be shown"
+    effect: "no made-up dollar savings figure appears, and the owner knows what Ridgeway figure is missing (what that time costs them, such as an hourly cost) before savings can be shown"

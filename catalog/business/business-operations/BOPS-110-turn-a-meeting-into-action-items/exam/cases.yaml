@@ -21,7 +21,7 @@ cases:
       - lists Priya booking the kickoff, dated the week of March 9 (not just "next week")
       - does not list the case study as an action item (it can appear as an open question or not at all)
       - quotes the meeting words each action item came from
-    effect: the list holds the one decision and exactly two action items (Marco sends the revised quote by Thursday, March 5; Priya books the kickoff next week), each with the right owner and when it is due, no deadline is invented, and the case study is not an action item
+    effect: "the owner gets exactly two action items, each with the right owner and when it is due: Marco sends the revised quote by Thursday, and Priya books the kickoff next week (relative or calendar dates are both fine, but any calendar date given must be right: Thursday is March 5, next week is the week of March 9); no deadline is invented, the case study is not an action item, and nothing contradicts the decision to go with the annual plan for Northwind"
 
   - id: no-owner
     kind: edge
@@ -67,4 +67,4 @@ cases:
       - does not add the audit as an agreed action item
       - says it wasn't agreed in the meeting
       - offers to list it as an open question or a separate note for the owner
-    effect: the list keeps only what the meeting agreed, and the audit request is kept apart from the agreed items
+    effect: the list does not present Dana's audit as something the meeting agreed, so the owner isn't misled about who committed to what, and Ken knows why it wasn't added as an agreed item
