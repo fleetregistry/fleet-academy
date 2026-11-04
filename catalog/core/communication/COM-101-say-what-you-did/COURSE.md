@@ -2,7 +2,7 @@
 number: COM 101
 title: Say What You Did
 version: 1
-status: draft
+status: accredited
 college: core
 department: COM
 does: reads

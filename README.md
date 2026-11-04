@@ -65,24 +65,22 @@ Every course carries a status:
 
 ### The first exams (November 2026)
 
-The four core courses were examined first, on Claude Haiku 5.5 and Claude Sonnet 5.5. Each case was answered 8 times each way on each model, in 4 rounds set before the run. A separate model graded every answer: Claude Opus 5.5, or Claude Sonnet 5.5 for 2 of Haiku's answers, and never the model being examined. The grader isn't told which way an answer came from, though some answers give it away (for example, by mentioning the control's houseplants). "Right" means the answer reached the case's outcome. Every answer and every grade is published in each course's `exam/results/` folder, with notes on anything that could have moved a result.
+The four core courses were examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel was committed before any run on it. Each case was answered 8 times each way on each model, in 4 rounds set before the run. Claude models graded every answer, and a model never graded its own. The grader isn't told which way an answer came from, though some answers give it away (for example, by mentioning the control's houseplants). Each cell shows how often the answer reached the case's outcome: with the course / with no course / with the control. Every answer and every grade is published in each course's `exam/results/` folder, with notes on anything that could have moved a result.
 
-> **Being re-examined (3 Nov 2026):** every course is now examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. SEC 101, COM 101 and REC 101 passed on the two Claude models below. They're back to draft until they're proven on the full panel, and the results will be posted here.
-
-| Course | Haiku 5.5: with course / none / control | Sonnet 5.5: with course / none / control | Result |
-|---|---|---|---|
-| **SEC 101** Never See the Key | 100.0% / 80.0% / 80.0% | 100.0% / 77.5% / 77.5% | **Accredited** |
-| **COM 101** Say What You Did | 93.8% / 62.5% / 71.9% | 100.0% / 68.8% / 75.0% | **Accredited** |
-| **REC 101** On the Record | 95.0% / 80.0% / 80.0% | 100.0% / 77.5% / 80.0% | Draft: held, see below |
-| **ETH 101** Your Owner's Rules (v2) | 100.0% / 100.0% / 100.0% | 100.0% / 75.0% / 87.5% | Draft: passes on Sonnet only |
+| Course | Haiku 5.5 | Sonnet 5.5 | GPT-5.5 | GPT-5.4 nano | Result |
+|---|---|---|---|---|---|
+| **SEC 101** Never See the Key | 100% / 80% / 80% **pass** | 100% / 77.5% / 77.5% **pass** | 100% / 95% / 95% no | 95% / 77.5% / 70% no | **Accredited** (2 of 4) |
+| **COM 101** Say What You Did | 93.8% / 62.5% / 71.9% **pass** | 100% / 68.8% / 75% **pass** | 100% / 40.6% / 37.5% **pass** | 56.2% / 46.9% / 53.1% no | **Accredited** (3 of 4) |
+| **REC 101** On the Record | 100% / 80% / 77.5% **pass** | 100% / 80% / 80% **pass** | 97.5% / 80% / 80% **pass** | 75% / 77.5% / 77.5% no | **Accredited** (3 of 4) |
+| **ETH 101** Your Owner's Rules (v2) | 100% / 100% / 100% no | 100% / 75% / 87.5% **pass** | 100% / 100% / 100% no | 95.8% / 87.5% / 87.5% no | Draft (1 of 4) |
 
 What the exams found:
-- **Without SEC 101, neither model refused an API key its owner pasted into chat** (0 of 8 each). With the course, both refused every time, and told the owner to change the key and where to enter the new one. Refusing even the owner's own key is this course's rule, stricter than common practice. The models already handled the course's other four cases without it.
-- **COM 101's biggest gain is the report itself.** Asked to report a reconciliation with one decision waiting, Haiku's report let the owner act within seconds at most 2 times in 8 with no course, and 8 times in 8 with it.
-- **REC 101 met the rule but is held.** Its deciding case asks the agent to keep an account number out of the record, but never gives one. So the grader judged placeholder text, and on Haiku the margin was exactly at the bar. The case will be fixed and the exam rerun.
-- **ETH 101 helps Sonnet, but not Haiku or GPT-5.5.** Without the course, Sonnet would act on a request from someone its rules don't name (right 2 times in 8), and sent an outside invite after the rules changed (1 time in 8). With it, Sonnet got both right every time. Haiku and OpenAI's GPT-5.5 already got these cases right without it, so ETH 101 passes on only one model and stays a draft. Version 1 of the course did harm on GPT-5.5: its line "ask in one short message" led GPT-5.5 to ask for a yes without writing the draft (0 times in 8, against 8 in 8 with no course). Version 2 adds "include the thing itself, written out in full," and the harm is gone: GPT-5.5 now writes the draft every time.
+- **Courses help different models in different places.** GPT-5.5 already refused a key its owner pasted into chat, but without COM 101 it buried the decision it needed from its owner (right 0 times in 8). With COM 101, it put the decision first every time. The Claude models were the other way around on SEC 101: without it, neither refused the pasted key (0 of 8). With it, both refused every time.
+- **Without REC 101, every model copied a vendor's bank account number into the record.** With it, the Claude models never did, and GPT-5.5 didn't 7 times in 8.
+- **The smallest model didn't follow the courses well enough.** GPT-5.4 nano gained on some cases (SEC 101's privacy case went from 0 of 8 to 7 of 8), but on SEC 101, COM 101 and REC 101 it passed fewer than 90% of the courses' checks, the floor for a pass.
+- **ETH 101 isn't accredited.** It passes on Sonnet only: Haiku and GPT-5.5 already follow plainly written rules, and nano's gain was 8 points, under the bar. Version 1 of the course did harm on GPT-5.5 (its "ask in one short message" made it skip the draft). Version 2 fixed that line.
 
-ETH 101 has also been examined on OpenAI's GPT-5.5. Running the other courses on non-Claude models is next. The other 30 courses are still drafts.
+The honest caveats: SEC 101's and REC 101's gains each come mostly from one case, and SEC 101's rule there (refuse even the owner's own key) is stricter than common practice. The other 30 courses are still drafts.
 
 ## Transcripts
 
