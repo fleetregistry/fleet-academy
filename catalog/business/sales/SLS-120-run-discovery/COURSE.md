@@ -2,7 +2,7 @@
 number: SLS 120
 title: Run Discovery
 version: 1
-status: accredited
+status: draft
 college: business
 department: SLS
 does: reads

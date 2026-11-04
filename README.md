@@ -68,7 +68,9 @@ Every course carries a status:
 
 All 34 courses were examined on a fixed panel of four models: Claude Haiku 5.5, Claude Sonnet 5.5, OpenAI GPT-5.5 and OpenAI GPT-5.4 nano. The panel and the method were set before the run. Each case was answered 8 times each way on each model, in 4 fixed rounds: 13,344 answers in all. Claude models graded them, and a model never graded its own answers. 38 answers couldn't be graded; the figures below count those as failures, and every verdict holds either way.
 
-**Of the first 34, 3 courses are accredited. 5 more passed the exam's rules but are held**, because an independent check of the grading found that one of their two passes doesn't stand up (see [the review](reviews/2026-11-grading-check.md)). The other 26 stay drafts.
+*These are the version 3 results. The current status of every course that passed here is in [Method v4](#method-v4-two-graders-who-must-agree-november-2026) below.*
+
+**Under version 3, of the first 34, 3 courses were accredited. 5 more passed the exam's rules but are held**, because an independent check of the grading found that one of their two passes doesn't stand up (see [the review](reviews/2026-11-grading-check.md)). The other 26 stay drafts.
 
 Each cell shows how often the answer reached the case's outcome: with the course / with no course / with the control. Every answer and every grade is in each course's `exam/results/` folder.
 
@@ -119,13 +121,15 @@ How these results were made honest:
 - **Passes need one answer to spare.** After this run, a check of the grading found passes that one flipped grade would undo. The rule now requires one answer beyond the margin. It removed ETH 101's two passes and one of SWE 330's.
 - **Five passes are held.** The same check found grades that went opposite ways for the same behavior, and one case that failed correct answers. Those courses passed the rules on paper, so they're marked held, not accredited, with the reason in each results file.
 
-The honest caveats: the grader is shown each case's outcome, and some outcomes still carry a course's own habits (a ready draft, "revert first", one yes-or-no question), so the gains are best read as upper bounds. The next version of the method will have two graders that must agree, and outcomes written without the course's vocabulary. Most passes rest on one or two cases. The cost figures are estimates at list prices.
+The honest caveats: the grader is shown each case's outcome, and some outcomes still carry a course's own habits (a ready draft, "revert first", one yes-or-no question), so the gains are best read as upper bounds. Method v4 (below) added two graders who must agree; rewriting the outcomes is next. Most passes rest on one or two cases. The cost figures are estimates at list prices.
 
 ### The Sales department (November 2026)
 
 Nine Sales skills were added on the path to the Enterprise Account Executive role, each placed on the O\*NET work activities it covers. They were examined the same way as above, on the same panel, after an independent review of the exams: 3,552 answers in the published results, 1 of them ungraded (SLS 450's first run, set aside after a fix, is described below).
 
-**1 skill is accredited: SLS 120 Run Discovery.** Three more passed the rules on two models but are held, because an independent check of the grading, made before publishing, found that each one's pass rests on grades that fail correct answers for leaving out the course's own wording. Regraded, two of those passes don't survive, and the third survives with nothing to spare. The reasons are in each results file. The other five stay drafts.
+*These are the version 3 results; see [Method v4](#method-v4-two-graders-who-must-agree-november-2026) below for the current status.*
+
+**Under version 3, 1 skill was accredited: SLS 120 Run Discovery.** Three more passed the rules on two models but are held, because an independent check of the grading, made before publishing, found that each one's pass rests on grades that fail correct answers for leaving out the course's own wording. Regraded, two of those passes don't survive, and the third survives with nothing to spare. The reasons are in each results file. The other five stay drafts.
 
 | Skill | Haiku 5.5 | Sonnet 5.5 | GPT-5.5 | GPT-5.4 nano | Result |
 |---|---|---|---|---|---|
@@ -144,6 +148,39 @@ What the Sales exams found:
 - **Discovery is where a course helps.** Asked for a pitch before any needs were known, GPT-5.5 pitched anyway in 7 of 8 answers without the course; with SLS 120 it asked first in 8 of 8. GPT-5.4 nano went from 12.5% to 97%.
 - **One exam case was fixed and re-run.** In SLS 450, the all-clear case's approval left out the quote's validity date, so careful answers that held the quote failed. The approval now includes the date, and the course was run again in full. It still passed on no model.
 - **The grading problem is the same one named above:** a single grader marks the outcome failed whenever one check fails, even when that check is the course's own format. Method v4 (two graders who must agree, and outcomes written without the course's vocabulary) is built to fix it, and the held skills will be re-examined under it.
+
+### Method v4: two graders who must agree (November 2026)
+
+The checks of version 3's grading kept finding one flaw: a single grader failing correct answers for leaving out a course's own wording. [Method v4](METHOD_V4.md) answers it. Every answer is graded by two graders from two companies (Claude Opus 5.5 with OpenAI GPT-5.5, or with Claude Sonnet 5.5 for GPT-5.5's own answers), they must agree on the outcome, and the outcome is judged on its own, in any wording. A split leaves the answer ungraded, and a pass must hold either way. The method was committed before any v4 grade was used.
+
+The 12 courses whose status rested on version 3 (the 4 accredited and the 8 held) were graded again under v4, using their stored answers: 4,704 answers, two grades each.
+
+**3 courses are accredited under v4: REC 101, SWE 330 and SWE 390.** SWE 330 now passes on all four models.
+- **SLS 120 is no longer accredited.** On GPT-5.5 the two graders split on 17 of its 96 answers, mostly whether a careful "hypothesis" pitch counts as pitching too soon. With those undecided, the pass doesn't hold either way.
+- **Four courses pass under v4 but are held: BOPS 110, SWE 350, FIN 490 and SLS 210.** An independent check of the v4 grading read the answers behind each pass. It found that in each, one case's outcome line writes the course's own habit into the outcome (a separate decision line, a yes-or-no question, scheduling nothing at all, the word "permission"). Both graders applied those lines faithfully, so agreement couldn't catch it. Read fairly, at least one of each course's two passes doesn't stand. The reasons are in each results file.
+- **SWE 310, ACCT 110, SLS 220 and SLS 420 no longer pass on two models,** so they are drafts.
+
+Each cell: with the course / with no course / with the control, and how many answers the graders split on.
+
+| Course | Haiku 5.5 | Sonnet 5.5 | GPT-5.5 | GPT-5.4 nano | Result |
+|---|---|---|---|---|---|
+| **REC 101** On the Record | 97.5% / 80% / 80% **pass** (1 split) | 100% / 80% / 80% **pass** | 100% / 92.5% / 95% | 80% / 80% / 72.5% (4 split) | **Accredited** (2 of 4) |
+| **SWE 330** Rotate a Credential Without Seeing It | 100% / 46.9% / 43.8% **pass** (8 split) | 100% / 78.1% / 78.1% **pass** (3 split) | 93.8% / 50% / 53.1% **pass** (1 split) | 100% / 43.8% / 46.9% **pass** (4 split) | **Accredited** (4 of 4) |
+| **SWE 390** Ship a Fix End to End | 87.5% / 46.9% / 46.9% **pass** (9 split) | 100% / 50% / 56.2% **pass** (3 split) | 100% / 71.9% / 75% (9 split) | 53.1% / 9.4% / 25% (6 split) | **Accredited** (2 of 4) |
+| **SLS 120** Run Discovery | 100% / 96.9% / 100% | 100% / 100% / 100% | 100% / 56.2% / 62.5% (17 split) | 96.9% / 9.4% / 6.2% **pass** (9 split) | Draft (1 of 4) |
+| **BOPS 110** Turn a Meeting into Action Items | 100% / 100% / 96.9% (1 split) | 100% / 100% / 100% | 100% / 81.2% / 78.1% **pass** (1 split) | 87.5% / 28.1% / 25% **pass** (8 split) | Passed, held (2 of 4) |
+| **SWE 350** Change Safely: Dry Runs, Switches and Rollbacks | 93.8% / 62.5% / 59.4% **pass** (11 split) | 100% / 90.6% / 84.4% (4 split) | 100% / 93.8% / 93.8% (3 split) | 87.5% / 50% / 37.5% **pass** (9 split) | Passed, held (2 of 4) |
+| **FIN 490** Pay the Month's Bills | 100% / 75% / 78.1% **pass** (1 split) | 100% / 75% / 75% **pass** | 96.9% / 78.1% / 71.9% | 37.5% / 3.1% / 3.1% (6 split) | Passed, held (2 of 4) |
+| **SLS 210** Build the Pitch | 100% / 100% / 100% | 100% / 100% / 100% | 96.9% / 81.2% / 81.2% **pass** (1 split) | 84.4% / 62.5% / 56.2% **pass** (3 split) | Passed, held (2 of 4) |
+| **SWE 310** Merge After Review | 96.9% / 84.4% / 90.6% (8 split) | 96.9% / 90.6% / 96.9% (4 split) | 100% / 100% / 84.4% | 78.1% / 46.9% / 40.6% **pass** (8 split) | Draft (1 of 4) |
+| **ACCT 110** Read the Books: Profit and Loss and the Balance Sheet | 100% / 87.5% / 93.8% (3 split) | 100% / 81.2% / 75% (5 split) | 96.9% / 71.9% / 75% **pass** | 62.5% / 71.9% / 68.8% (7 split) | Draft (1 of 4) |
+| **SLS 220** Recommend the Right Fit | 100% / 78.1% / 81.2% (12 split) | 100% / 100% / 100% | 90.6% / 75% / 68.8% (8 split) | 50% / 31.2% / 18.8% (24 split) | Draft (0 of 4) |
+| **SLS 420** Prepare the Contract | 81.2% / 75% / 71.9% (7 split) | 81.2% / 100% / 100% (3 split) | 96.9% / 87.5% / 84.4% (4 split) | 84.4% / 68.8% / 53.1% **pass** (8 split) | Draft (1 of 4) |
+
+What v4 taught us:
+- **Two graders catch grader error, not exam error.** Splits were common where an answer was genuinely arguable, and they removed passes that rested on arguable grades. But when an exam's outcome line itself names the course's habit, two careful graders agree on the wrong answer.
+- **So the next step is the exams, not the graders.** Every outcome line will be rewritten to what the owner actually needs, never how the course says to get there. That rewrite will be committed and reviewed before the stored answers are graded again.
+- **The other 31 courses** keep their version 3 results, and stay drafts, until they're regraded.
 
 ## Transcripts
 
