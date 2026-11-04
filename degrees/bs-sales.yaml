@@ -1,0 +1,11 @@
+id: bs-sales
+type: major
+title: B.S. Sales
+college: business
+cip: ["52.1804"]
+soc: ["41-4011", "41-3091"]
+summary: "Works an enterprise deal the way an Enterprise Account Executive does, from qualifying and discovery to the proposal, the quote, honest answers, negotiation within written limits and a contract ready for a person to sign, with the CRM kept true throughout."
+requires:
+  core: true
+  courses: [SLS 110, SLS 120, SLS 200, SLS 210, SLS 220, SLS 230, SLS 450, SLS 410, SLS 420, CRM 110, CRM 210, CRM 350, CRM 310, ACCT 110, ACCT 210, SLS 490]
+capstone: SLS 490
