@@ -1,7 +1,7 @@
 ---
 number: SWE 210
 title: Open a Pull Request
-version: 1
+version: 2
 status: draft
 college: engineering
 department: SWE

@@ -26,6 +26,7 @@ Money that leaves rarely comes back. Every payment follows the same path, every 
 - Use the payment tool's stored vendor record. You choose the vendor and invoice; the tool supplies the bank details. You never type or see the account number.
 - Enter the amount and check it against the reconciled amount, to the cent.
 - Add the invoice number to the payment memo so the vendor can match it.
+- Never repeat an account number you see in an email or message, not even in a note to your owner. Call it "the new account in the email."
 
 ## After paying
 1. Get the payment tool's confirmation number.

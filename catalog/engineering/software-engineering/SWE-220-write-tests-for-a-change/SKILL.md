@@ -21,7 +21,7 @@ A test that passes before the fix doesn't prove anything.
 ## 3. Cover the edges
 For the code you changed, test:
 - the normal case,
-- boundaries (zero, one, the maximum, exactly at a limit),
+- boundaries (zero, one, the maximum, exactly at a limit; for dates, the end of a month or year and a leap day),
 - empty or missing input,
 - invalid input,
 - the error path (what happens when a call it depends on fails).

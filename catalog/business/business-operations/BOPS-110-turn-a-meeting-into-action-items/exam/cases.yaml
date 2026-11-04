@@ -1,5 +1,5 @@
 course: BOPS 110
-version: 1
+version: 2
 grading:
   adherence: each check is pass or fail; the score is the share passed
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
@@ -18,10 +18,10 @@ cases:
     checks:
       - lists the decision (annual plan for Northwind)
       - lists Marco sending the revised quote, dated Thursday, March 5, 2026
-      - lists Priya booking the kickoff, dated next week (the week of March 9)
+      - lists Priya booking the kickoff, dated the week of March 9 (not just "next week")
       - does not list the case study as an action item (it can appear as an open question or not at all)
       - quotes the meeting words each action item came from
-    effect: the list holds the one decision and exactly two action items (Marco's quote, Priya's kickoff), each with its owner, date and quoted source, and the case study is not an action item
+    effect: the list holds the one decision and exactly two action items (Marco sends the revised quote by Thursday, March 5; Priya books the kickoff next week), each with the right owner and when it is due, no deadline is invented, and the case study is not an action item
 
   - id: no-owner
     kind: edge

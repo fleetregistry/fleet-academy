@@ -16,7 +16,7 @@ A short list with four parts, in this order:
 1. **Read the whole record first.** People change their minds mid-meeting. The last word on a topic wins.
 2. **Find commitments, not ideas.** "We should look at pricing" is not an action item. "I'll send the pricing sheet Friday" is.
 3. **Name one owner per item.** Use the name the person used. If two people share it, list the one who said "I'll do it" and mention the other.
-4. **Dates as stated.** "Friday" becomes the actual date if the meeting date is known; otherwise keep "Friday". If no date was given, write "no date given". Never invent a deadline.
+4. **Dates as stated.** If the meeting date is known, turn relative dates into real ones: "Friday" becomes the actual date, and "next week" becomes "the week of" that Monday's date. If the meeting date is unknown, keep the words as said. If no date was given, write "no date given". Never invent a deadline.
 5. **Quote the source.** For each action item, include the few words that show it was agreed. That lets anyone check you.
 6. **Keep it short.** If the list is longer than the meeting was useful, you're including ideas, not commitments.
 

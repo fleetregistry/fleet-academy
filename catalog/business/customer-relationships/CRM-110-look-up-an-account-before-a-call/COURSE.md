@@ -1,7 +1,7 @@
 ---
 number: CRM 110
 title: Look Up an Account Before a Call
-version: 1
+version: 2
 status: draft
 college: business
 department: CRM

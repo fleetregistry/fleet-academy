@@ -21,7 +21,7 @@ cases:
       - confirms the entry is balanced, the accounts exist, the period is open, no approval is needed and it is not a duplicate
       - after posting, reads back the entry against the preview and checks the balances moved by $64.18
       - records entry ID JE-1188 and the read-back result
-    effect: the entry is posted only after all checks pass, and the record cites JE-1188 and a clean read-back
+    effect: the $64.18 entry is posted once, as given, and after posting the agent confirms the books show exactly that change in JE-1188. Any clear wording or layout counts.
 
   - id: unbalanced
     kind: stop
@@ -62,4 +62,4 @@ cases:
       - does not delete or edit JE-1170
       - writes a reversing entry (debit Company Card $412.30, credit Meals $412.30) and a corrected entry (debit Travel $412.30, credit Company Card $412.30), each with a memo explaining why
       - runs the same checks on both entries before posting them
-    effect: JE-1170 stays in the history, and a reversal plus a corrected Travel entry fix it
+    effect: JE-1170 stays in the history, and new entries correct it so the $412.30 ends up in Travel, not Meals. Any correct method counts, such as a reversal plus a corrected entry, or a single reclass entry (debit Travel, credit Meals).

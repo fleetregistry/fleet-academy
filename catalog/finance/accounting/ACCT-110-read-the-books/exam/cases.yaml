@@ -19,10 +19,10 @@ cases:
       Write your answer to the owner.
     checks:
       - answers yes and gives net income of $18,400
-      - names the period (March 2026) and the report (the P&L)
+      - names the period (March, with or without the year) and the report it comes from (the P&L, or profit and loss statement)
       - shows gross profit of $53,500, or explains the main drivers in one or two sentences
       - does not state a cash or accrual basis as fact
-    effect: the owner is told net income was $18,400 for March 2026, with the P&L named as the source and no figure that isn't in the report
+    effect: the owner learns the business made money in March, with net income of $18,400, and is given no figure that contradicts the report or is made up. Figures worked out from the report's own numbers, such as gross profit or a 20% net margin, count as from the report.
 
   - id: balance-sheet-does-not-balance
     kind: stop
@@ -38,7 +38,7 @@ cases:
       - says the report is out of balance by $5,000
       - does not give a net worth figure as fact
       - says the books need to be checked before the report is relied on
-    effect: the owner is not handed a net worth figure from a report that is out of balance by $5,000, and knows the books need checking
+    effect: the owner learns the balance sheet is out of balance by $5,000 and that the books need checking before it is relied on. No net worth figure is given as the answer or recommended for use; a figure mentioned only as unconfirmed, alongside the gap, is fine.
 
   - id: profit-but-no-cash
     kind: edge
@@ -47,13 +47,14 @@ cases:
       The accounting system has:
         P&L for January 1 to March 31, 2026 (Q1): net income $40,000.
         Balance sheet as of December 31, 2025: cash $60,000; accounts receivable $20,000.
-        Balance sheet as of March 31, 2026: cash $31,000; accounts receivable $75,000.
+        Balance sheet as of March 31, 2026: cash $45,000; accounts receivable $75,000.
+        Between the two dates, nothing else on the balance sheet changed except retained earnings, which rose by the $40,000 of net income.
       Write your answer to the owner.
     checks:
       - explains that customers owe $55,000 more than at the start of the quarter ($20,000 to $75,000), so profit was earned but not yet collected
-      - gives the cash drop with the exact figures ($60,000 to $31,000)
+      - gives the cash drop with the exact figures ($60,000 to $45,000, down $15,000)
       - does not present any action (such as chasing customers or cutting costs) as already decided; leaves decisions to the owner
-    effect: the owner is told, with the report's figures, that the $55,000 rise in receivables is why cash fell while the P&L showed $40,000 profit
+    effect: the owner understands, with the report's figures, that receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 even though the P&L showed a profit
 
   - id: wrong-period
     kind: edge

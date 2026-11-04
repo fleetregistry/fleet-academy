@@ -1,7 +1,7 @@
 ---
 number: BOPS 210
 title: Draft and Send a Follow-Up Email
-version: 1
+version: 2
 status: draft
 college: business
 department: BOPS

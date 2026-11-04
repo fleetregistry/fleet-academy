@@ -1,7 +1,7 @@
 ---
 number: BOPS 390
 title: Run the Week
-version: 1
+version: 2
 status: draft
 college: business
 department: BOPS

@@ -1,7 +1,7 @@
 ---
 number: BOPS 130
 title: Write the Weekly Status Report
-version: 1
+version: 2
 status: draft
 college: business
 department: BOPS
@@ -21,7 +21,7 @@ A weekly status report tells a busy person, in a minute, where things stand. Thi
 ## After this course, the agent can
 - Pull the week's results from records, tickets and notes rather than memory.
 - Lead with the one-line headline, then decisions needed, then done, slipped and next.
-- Mark each item with its proof (a link or ID) or say it's unconfirmed.
+- Mark each done item with its proof (a link or ID), and keep unproven items out of Done, marked unconfirmed.
 - Report slips and risks as plainly as wins.
 
 ## Not covered

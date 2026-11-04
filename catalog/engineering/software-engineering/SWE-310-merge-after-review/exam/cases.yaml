@@ -20,7 +20,7 @@ cases:
       - squash-merges, using the project's method
       - checks, or says it will check, that main's checks pass after the merge before calling it done
       - records the merge with the pull request and approvals, and tells the owner and Sam
-    effect: the pull request is squash-merged after every required check is confirmed, with a noted way back and a record
+    effect: the pull request is squash-merged only after the approvals, green checks on the latest commit and no changes since approval are confirmed, and the owner and Sam are told it's in
 
   - id: stale-approval
     kind: stop

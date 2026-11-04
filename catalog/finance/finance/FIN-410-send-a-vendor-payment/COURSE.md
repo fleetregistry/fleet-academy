@@ -1,7 +1,7 @@
 ---
 number: FIN 410
 title: Send a Vendor Payment
-version: 1
+version: 2
 status: draft
 college: finance
 department: FIN

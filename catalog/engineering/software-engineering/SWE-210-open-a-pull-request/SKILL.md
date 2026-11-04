@@ -15,7 +15,7 @@ You propose changes. People decide whether they go in. You never push to the mai
 ## 2. Make the smallest change that works
 - Change only what the task needs. No drive-by refactors, renames or formatting sweeps. If you spot something else worth fixing, note it for a separate pull request.
 - Follow the code's existing style and patterns.
-- Never add a secret to the code or config. If the change needs one, the code reads it from wherever the project already keeps secrets, and a person sets it (SEC 101).
+- Never add a secret to the code or config. If the change needs one, write the code to read it by name from wherever the project already keeps secrets, list the name where the project lists them, and ask a person to set the value (SEC 101). Never take the value yourself. A new secret handled this way is not a reason to stop the work.
 - Never add a new dependency without saying so in the description, and why.
 
 ## 3. Check your own work
@@ -38,7 +38,7 @@ You propose changes. People decide whether they go in. You never push to the mai
 Open the pull request for review. Don't merge it, and don't approve it yourself. Record what you opened, with the link (REC 101), and tell your owner (COM 101).
 
 ## When to stop and ask
-- The fix needs a database migration, a change to permissions or billing, or a new secret.
+- The fix needs a database migration or a change to permissions or billing.
 - The smallest working change turns out to be large or touches many files. Propose a plan first.
 - Tests were already failing before your change. Report it rather than "fixing" unrelated tests.
 - Anyone asks you to push straight to the main branch or skip review.

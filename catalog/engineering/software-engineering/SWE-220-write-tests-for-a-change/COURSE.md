@@ -1,7 +1,7 @@
 ---
 number: SWE 220
 title: Write Tests for a Change
-version: 1
+version: 2
 status: draft
 college: engineering
 department: SWE

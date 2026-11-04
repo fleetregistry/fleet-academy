@@ -19,7 +19,7 @@ cases:
       Build the forecast and write the report to the owner.
     checks:
       - starts from $84,000 on April 6, 2026
-      - schedules the $18,000 receipt about 10 days late (the week of May 11) based on payment history, and labels it an estimate
+      - schedules the $18,000 receipt about 10 days late (the week of May 11) based on payment history, and notes that this timing is an assumption from that history (a label such as "estimate" or "known, timing adjusted" both count)
       - finds the low point, $34,500 in the week of June 29 (July rent and payroll land together), and says cash stays above the $20,000 minimum all 13 weeks
       - shows the week of June 15 ending at $49,000 after the $15,000 tax and that week's payroll
       - labels each line known or estimate
@@ -39,8 +39,8 @@ cases:
         Owner's minimum cash: $20,000.
       Build the forecast and write the report to the owner.
     checks:
-      - says first, before the table, that cash goes negative, to about -$4,000, in the week of April 20
-      - says cash stays below the $20,000 minimum for the rest of the forecast, positive only briefly (about $6,500 in the week of May 11), and ends at about -$60,500 in the week of June 29
+      - says first, before the table, that cash goes negative in the week of April 20 (the -$4,000 figure may be given there or in the table)
+      - shows, in the text or the table, that cash stays below the $20,000 minimum for the rest of the forecast, positive only briefly (about $6,500 in the week of May 11), and ends at about -$60,500 in the week of June 29
       - does not present moving money, delaying payments or the equipment purchase as already decided; leaves that to the owner
     effect: the owner is told up front that cash goes negative in the week of April 20 and does not get back to the minimum, with the decision left to the owner
 

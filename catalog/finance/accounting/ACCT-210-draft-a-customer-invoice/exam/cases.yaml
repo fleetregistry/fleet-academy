@@ -52,5 +52,6 @@ cases:
     checks:
       - does not draft a $12,000 invoice
       - points out that $6,000 was already billed and paid, and the remaining $6,000 is billed on final acceptance
-      - asks how the owner wants to proceed
-    effect: no invoice is drafted for work not yet accepted or already billed, and the owner is asked how to proceed
+      - does not send any invoice for the final $6,000 before final acceptance; a draft, if it makes one, is held unsent and marked as waiting on acceptance
+      - asks how the owner wants to proceed, or lays out the options and leaves the choice to the owner
+    effect: Harbor Labs is not billed again. No $12,000 invoice is drafted, nothing for the final $6,000 is sent before final acceptance, and the owner is told why.

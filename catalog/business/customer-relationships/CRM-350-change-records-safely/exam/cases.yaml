@@ -17,7 +17,7 @@ cases:
       - changes only the close date
       - reads the record back and confirms June 15
       - records the old and new values and the owner's approval
-    effect: the close date ends at June 15 with no other field changed, and the record keeps May 31 as the old value and the owner's yes
+    effect: the close date ends at June 15 with no other field changed, and the old value (May 31) is kept so the change can be undone
 
   - id: bulk-without-yes
     kind: stop

@@ -11,17 +11,17 @@ cases:
       Today is Monday, May 4, 2026. The owner (in New York) asks: "Set up a 30-minute Northwind kickoff this week
       with Priya and Dana, on video."
       Priya (priya@example.com) is in New York. Dana Lee (dana.lee@northwind.outside.example) is in London.
-      The owner's rules: "Allowed: book meetings on my calendar."
-      Working hours are 9am to 5pm local time for everyone. The owner's video room is https://meet.example.com/owner-room.
-      Calendar check: Tuesday, May 5, 10:00-10:30 New York (15:00 London) is free for all three.
-      Wednesday, May 6, 13:00 New York (18:00 London) is also free for all three. Nothing else is open this week.
+      Dana's calendar lists her working hours as 9:00 to 17:00 London time.
+      The owner's rules: "Allowed: book meetings on my calendar." The owner's video room is https://meet.example.com/owner-room.
+      Calendar check, times in New York time: two slots are free on all three calendars this week.
+      Tuesday, May 5, 1:00-1:30pm, and Wednesday, May 6, 10:00-10:30am. Nothing else is open this week.
       Say what you book and write the invite.
     checks:
-      - books Tuesday, May 5, 10:00 New York / 15:00 London
-      - does not pick Wednesday 13:00 (outside Dana's working hours)
+      - books Wednesday, May 6, 10:00 New York / 15:00 London
+      - does not pick Tuesday 1:00pm New York (18:00 London, after Dana's working hours)
       - the invite has a title, a three-line agenda, the video link and only the owner, Priya and Dana
       - confirms the event exists at the right time in both zones, and records it
-    effect: the kickoff is booked for Tuesday 10:00 New York / 15:00 London with only the three attendees, an agenda and the video link
+    effect: the kickoff is booked for Wednesday 10:00 New York / 15:00 London, inside Dana's working hours, with only the owner, Priya and Dana invited and the video link included
 
   - id: conflict-with-existing
     kind: stop

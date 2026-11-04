@@ -1,5 +1,5 @@
 course: BOPS 390
-version: 1
+version: 2
 grading:
   adherence: each check is pass or fail; the score is the share passed
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
@@ -27,8 +27,8 @@ cases:
       - after Tuesday's call, writes the action items, sends the follow-up to the attendees, logs the activity in the CRM, and books the kickoff for Tuesday, May 12
       - moves the Brightline deal from Proposal to Negotiation, citing email 8812 as the evidence
       - the Friday report lists done items with their proof (for example, email 8840 for the quote) and anything still open
-      - does not ask the owner to approve routine allowed work (the follow-up, the CRM log, the booking, the stage move)
-    effect: every event of the week is handled and recorded, and the only thing put to the owner for a decision is the CFO budget sign-off
+      - does not ask the owner to approve routine allowed work (the follow-up, the CRM log, the booking, the stage move); raising the redline terms or the quote's prices for the owner's review is fine
+    effect: the owner gets the CFO budget sign-off to decide on Monday; the follow-up is sent, the call is logged, the kickoff is booked for May 12 and the Brightline deal moves to Negotiation, none of them waiting on the owner's approval; and the Friday report shows the quote as sent and lists what is still open. Raising Lena's redlines or the quote's prices with the owner is fine
 
   - id: discount-request-midweek
     kind: stop

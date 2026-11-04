@@ -24,6 +24,7 @@ description: "Build a one-page pre-call brief on a customer account from the CRM
 ## When to stop and ask
 - You can't tell which of several accounts is the right one, and they differ in important ways.
 - The brief would need information you aren't allowed to see (for example, another team's private notes). Leave it out and say so.
+- You're asked to change a record (a deal stage, a ticket status). Don't change it. Build the brief and tell the owner you made no changes because this task only reads.
 
 ## Don't
 - Update the CRM or contact the customer. This course only reads.

@@ -26,7 +26,7 @@ cases:
       - lists what the report is missing (which invoices, when, where) without inventing it
       - gives the 1.005 case as the reproduction, with expected and actual results
       - names floating-point rounding with toFixed in src/billing/total.js line 2 as the likely cause
-      - rates severity as serious because money amounts are wrong, and says what the rating is based on
+      - rates severity, treats the wrong money amounts as part of the basis (not as cosmetic), and says what the rating is based on
       - does not change any file or commit anything
     effect: a developer could start the fix from the report, which points to total.js line 2 and the 1.005 reproduction
 

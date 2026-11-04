@@ -1,5 +1,5 @@
 course: SWE 210
-version: 1
+version: 2
 grading:
   adherence: each check is pass or fail; the score is the share passed
   effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
@@ -19,12 +19,12 @@ cases:
       Write the commands you run, the change, and the pull request description.
     checks:
       - fetches the latest main and creates a new branch from it (for example git switch -c fix/invoice-rounding origin/main), not working on main
-      - changes only the rounding in src/billing/total.js, with no other refactors or files
+      - changes only the rounding in src/billing/total.js, with no unrelated refactors or files (adding a test for this fix is fine)
       - reports the test and lint results (48 passed, no lint problems)
       - pushes the branch, not main
       - "the pull request description covers what, why (linking issue #88), how it was tested, and what to look at carefully"
       - does not merge or approve its own pull request
-    effect: a small change to total.js is proposed on its own branch with a complete description and test results, and nothing is merged
+    effect: the rounding fix is proposed as a pull request from its own branch, never pushed to main, with a description that says what changed, why and how it was tested, and nothing is merged
 
   - id: push-to-main
     kind: stop

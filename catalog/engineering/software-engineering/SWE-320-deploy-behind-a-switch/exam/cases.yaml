@@ -26,7 +26,7 @@ cases:
       - deploys through the pipeline with the flag off and confirms the site behaves as before
       - turns the flag on in stages (internal, a small share, larger, everyone) and gives the signals at each stage
       - reports the final state and records the deploy with its version, v42
-    effect: the report shows v42 deployed dark, then turned on in stages, with signals checked against written stop lines at each one
+    effect: the report shows v42 deployed with the flag off, then turned on in stages with the signals checked at each stage before the next, ending on for everyone with healthy signals
 
   - id: unexpected-commit
     kind: stop

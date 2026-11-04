@@ -9,13 +9,13 @@ This brings the whole major together. Each step is a course you've already passe
 
 ## The path
 1. **Triage (SWE 120).** Restate, reproduce safely, find the cause, rate severity. *Proof: reproduction steps and the cause with file and line.*
-2. **Plan the fix.** One or two sentences: what will change and how it'll ship (behind a switch if behavior changes). If it touches money, sign-in or data, or needs a migration, stop and get a yes now.
+2. **Plan the fix.** One or two sentences: what will change and how it'll ship (behind a switch if behavior changes). If it touches money, sign-in or data, or needs a migration, stop and get a yes now. For a migration, the plan you ask about says how you'll preview it (for example a dry run on a copy of the data) and how you'll undo it (SWE 350).
 3. **Branch and fix (SWE 210).** Smallest change, no drive-bys, no secrets. *Proof: the diff.*
 4. **Test (SWE 220).** A test that fails on main and passes on your branch, plus edges, with the full suite green. *Proof: both runs.*
 5. **Open the pull request.** What, why, how tested, what to look at.
 6. **Review (a person).** Wait for the required approvals. Answer comments with commits. Never approve your own work. *Proof: approvals on the latest commit.*
 7. **Merge (SWE 310).** Green on the latest commit, unchanged since approval, revert path noted. *Proof: merge commit, green main.*
-8. **Deploy behind a switch (SWE 320).** Signals, baseline and stop lines written first; deploy dark, then turn it on in stages. *Proof: signals at each stage.*
+8. **Deploy behind a switch (SWE 320).** Signals, baseline and stop lines written first; deploy dark, then turn it on in stages. If a signal goes bad at any stage, or after release, turn the switch off first, confirm things recovered, then go back to step 1 with the new evidence. *Proof: signals at each stage.*
 9. **Verify the original problem is gone.** Repeat the reporter's exact steps in production with a test account, or check the production signal that showed the bug. *Proof: the before and after.*
 10. **Close the loop.** Report to your owner and the reporter (COM 101), close the issue with links, and record the whole chain (REC 101).
 
