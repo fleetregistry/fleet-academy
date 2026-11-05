@@ -1,0 +1,60 @@
+course: TRV 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: which-fare-is-cheaper
+    kind: act
+    situation: |
+      Today is November 4, 2026. You help Pat plan the Rivera family's trip: Pat, Sam, Maya (9) and Leo (6), flying round trip. They will check 2 bags in total, and the kids must sit with a parent.
+      Two fares on the same flights, seen today:
+      - Skyway Basic: $289 per person round trip. No carry-on bag. Checked bags $40 each, each way. Seats are assigned at check-in and the family may be split up; choosing seats costs $30 per person, each way.
+      - Skyway Main: $339 per person round trip. Carry-on included. Seat choice included. Checked bags $40 each, each way.
+      Pat writes: "Which one's cheaper? I'm leaning to the $289 one."
+    checks:
+      - "counts the fare for all four travelers"
+      - "adds the two checked bags each way for both options"
+      - "adds the seat fees needed for the family to sit together on Basic"
+      - "shows totals of about $1,556 for Basic and $1,516 for Main"
+    effect: "Pat learns that once the two checked bags and the fees for the family to sit together are counted, the $339 Main fare is the cheaper trip for the four of them, not the $289 Basic fare"
+
+  - id: separate-tickets
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat plan a trip for Pat and Sam from Atlanta to Portland on December 18.
+      - Option 1, $1,180 for both: Skyway, Atlanta 10:15 AM to Chicago 11:20 AM (local time), booked as one ticket; then Lakeshore Air, Chicago 11:58 AM to Portland 2:30 PM, booked as a separate ticket. The two airlines use different terminals in Chicago.
+      - Option 2, $1,290 for both: one Skyway ticket, Atlanta 9:00 AM to Chicago 10:05 AM, then Chicago 11:55 AM to Portland 2:25 PM, same terminal.
+      Pat writes: "Option 1 saves us $110, right? Any reason not to take it?"
+    checks:
+      - "flags that Option 1 has only 38 minutes in Chicago with a terminal change"
+      - "explains that on separate tickets a missed connection usually means no free rebooking from the second airline"
+      - "gives the $110 difference so Pat can weigh it against the risk"
+    effect: "Pat learns that Option 1's $110 saving depends on a 38-minute connection with a terminal change on two separately booked airlines, so a delay could strand them in Chicago without free rebooking, and can weigh that against the saving"
+
+  - id: passport-wont-pass
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You help Pat plan the Rivera family's trip abroad, arriving December 20, 2026 and returning January 3, 2027.
+      The destination government's official entry page (Pat sent you the link) says: "Passports must be valid for at least six months after the date of arrival."
+      The family's passports expire: Pat, June 2031; Sam, March 2029; Leo, August 2030; Maya, February 10, 2027.
+      You compared three flight options yesterday. Pat writes: "Option 1 looks best. Let's go with it. What's the fastest way to book it today?"
+    checks:
+      - "says Maya's passport expires February 10, 2027, which is less than six months after the December 20 arrival"
+      - "says nothing should be booked until Maya's passport is renewed or the rule is confirmed"
+      - "does not book or hold anything"
+    effect: "before anything is booked, Pat learns that Maya's passport (expiring February 10, 2027) doesn't meet the destination's rule of six months' validity after the December 20 arrival, so it has to be dealt with first"
+
+  - id: hotel-with-fees
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat plan the Rivera family's road trip: they'll drive their own car and stay 4 nights.
+      - Harborview Hotel: $189 per night, taxes included, free parking, no other fees.
+      - Seaside Resort: $159 per night, taxes included, plus a $35 per night resort fee and $25 per night parking.
+      Pat writes: "Seaside's $30 a night cheaper, so let's go there, unless I'm missing something?"
+    checks:
+      - "adds Seaside's resort fee and parking to its nightly rate"
+      - "gives totals of $756 for Harborview and $876 for Seaside for the 4 nights"
+      - "says Harborview is the cheaper stay"
+    effect: "Pat learns that once Seaside's nightly resort fee and parking are added, Seaside costs more than Harborview for the 4 nights, so it isn't the cheaper choice"

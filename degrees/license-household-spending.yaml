@@ -1,0 +1,8 @@
+id: license-household-spending
+type: license
+title: Household Spending License
+college: home-life
+summary: "Required before an agent spends a household's money, paying its bills or booking its travel. It covers household payment safety (PFIN 450), paying a household bill (PFIN 410), the checks before booking (TRV 450) and booking a trip (TRV 410), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no household payments or bookings until it's renewed."
+requires:
+  courses: [PFIN 450, PFIN 410, TRV 450, TRV 410]
+renew_days: 90

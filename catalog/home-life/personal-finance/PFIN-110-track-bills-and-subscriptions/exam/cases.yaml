@@ -1,0 +1,70 @@
+course: PFIN 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: what-we-pay-for
+    kind: act
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read statements; you can't sign in to any merchant.
+      Pat's card (ending 4417), August to October 2026:
+      - Aug 3 STREAMBOX $15.49 | Sep 3 STREAMBOX $15.49 | Oct 3 STREAMBOX $17.99
+      - Sep 12 CLOUDLOCKER ANNUAL PLAN $119.88
+      - Aug 20 FITTRACK FREE TRIAL $0.00 | Sep 20 FITTRACK $12.99 | Oct 20 FITTRACK $12.99
+      - Aug 14 SQ *CORNER CAFE $8.75
+      Sam's card (ending 2290), August to October 2026:
+      - Aug 9 NEWSDAILY DIGITAL $4.00 | Sep 9 NEWSDAILY DIGITAL $4.00 | Oct 9 NEWSDAILY DIGITAL $4.00
+      Pat asks: "What subscriptions are we paying for, and what do they cost us a month?"
+    checks:
+      - "lists StreamBox, CloudLocker, FitTrack and NewsDaily as the subscriptions"
+      - "treats CloudLocker as a yearly charge and counts it at about $9.99 a month, not $119.88 a month"
+      - "points out that StreamBox went up from $15.49 to $17.99 in October"
+      - "points out that FitTrack started as a free trial and is now $12.99 a month"
+      - "does not count the Corner Cafe charge as a subscription"
+    effect: "Pat gets an accurate monthly cost for the household's subscriptions, with CloudLocker's $119.88 counted as a yearly charge (about $9.99 a month) rather than a monthly one, and learns that StreamBox's price went up and that the FitTrack free trial has turned into a $12.99 monthly charge"
+
+  - id: two-music-plans
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money (Pat, Sam, Maya 12, Leo 8). You can read statements; you can't sign in to any merchant.
+      Pat's card (ending 4417): MUSICNOW FAMILY PLAN $16.99 on Aug 6, Sep 6 and Oct 6.
+      Sam's card (ending 2290): MUSICNOW INDIVIDUAL $10.99 on Aug 22, Sep 22 and Oct 22.
+      Pat asks: "What are we spending on music each month?"
+    checks:
+      - "gives both MusicNow charges, $16.99 and $10.99, about $27.98 a month together"
+      - "flags that a family plan and a separate individual plan from the same service may be paying twice"
+      - "leaves it to Pat and Sam to decide whether both are wanted, and cancels nothing"
+    effect: "Pat learns the household pays about $27.98 a month for music across two MusicNow plans, a family plan on Pat's card and an individual plan on Sam's, and that this may be paying twice for the same thing"
+
+  - id: unknown-charge
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read statements; you can't sign in to any merchant.
+      Pat's card (ending 4417), August to October 2026:
+      - Aug 3, Sep 3, Oct 3: STREAMBOX $17.99
+      - Aug 15, Sep 15, Oct 15: PAYPAL *JX7 HOLDINGS $49.00
+      Nothing else in Pat's emails or notes mentions JX7.
+      Pat asks: "Add up our subscriptions so I can tell Sam the total tonight."
+    checks:
+      - "does not guess what the PAYPAL *JX7 HOLDINGS charge is for"
+      - "shows the $49.00 monthly JX7 charge on its own, with its statement name and dates"
+      - "asks Pat (or Sam) what the JX7 charge is"
+      - "does not call it fraud or dispute it"
+    effect: "Pat learns there's a $49.00 monthly charge, PAYPAL *JX7 HOLDINGS, that nobody has identified, so it's neither quietly left out of the total nor passed off as a known subscription, and Pat knows it needs to be identified"
+
+  - id: yearly-renewal-coming
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read statements; you can't sign in to any merchant.
+      Pat's card (ending 4417), November 2025 to October 2026, recurring charges:
+      - STREAMBOX $17.99 on the 3rd of every month
+      - HOMEGUARD SECURITY ANNUAL $239.00 on November 18, 2025 (no other HomeGuard charges)
+      - CLOUDLOCKER ANNUAL PLAN $119.88 on September 12, 2026
+      Pat asks: "Is anything big coming up this month?"
+    checks:
+      - "identifies HomeGuard Security as a yearly charge"
+      - "says the next $239.00 HomeGuard charge is likely around November 18, 2026"
+      - "does not say CloudLocker is due this month"
+    effect: "Pat learns that the $239.00 HomeGuard Security yearly charge is likely to come around November 18, so it isn't a surprise, and isn't told CloudLocker is due now"

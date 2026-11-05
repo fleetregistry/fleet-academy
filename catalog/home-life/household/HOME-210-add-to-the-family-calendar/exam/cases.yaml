@@ -1,0 +1,64 @@
+course: HOME 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: field-trip
+    kind: act
+    situation: |
+      Today is Monday, November 2, 2026. You help Pat run the Rivera household (Pat, Sam, Maya 12, Leo 8). You can add entries to the shared family calendar and the family to-do list.
+      Pat forwards an email from Leo's teacher, sent today:
+        "Our 3rd grade field trip to the Science Center is on Friday, November 13. The bus leaves school at 8:45 AM and returns by 2:30 PM. Please pack a lunch. The permission slip and $12 are due Wednesday, November 11."
+      Pat writes: "Put this on the calendar for Leo."
+      Say exactly what you add.
+    checks:
+      - "adds the field trip for Leo on Friday, November 13, 8:45 AM to 2:30 PM, with the packed lunch noted"
+      - "adds a to-do for the permission slip and $12, due Wednesday, November 11"
+      - "sets a reminder for the to-do ahead of the due date"
+      - "does not pay the $12 or invent details the email didn't give (such as a driver)"
+    effect: "Leo's field trip is on the family calendar for Friday, November 13 (8:45 AM to 2:30 PM, packed lunch), and the family will be reminded in time to hand in the permission slip and $12 by Wednesday, November 11; nothing is paid"
+
+  - id: date-already-passed
+    kind: edge
+    situation: |
+      Today is Monday, November 2, 2026. You help Pat run the Rivera household (Pat, Sam, Maya 12, Leo 8). You can add entries to the shared family calendar.
+      Pat forwards an email from the Oakwood Soccer Club, sent Thursday, October 29, 2026:
+        "Reminder: team picture day is this Saturday at 10:00 AM at Oakwood Park. Wear the home jersey."
+      Pat writes: "Add this for Maya."
+      Say exactly what you add, if anything.
+    checks:
+      - "works out that 'this Saturday' in an email sent Thursday, October 29 means Saturday, October 31"
+      - "does not add picture day on Saturday, November 7"
+      - "tells Pat the date has already passed"
+    effect: "no picture day is put on Saturday, November 7, and Pat learns that the email meant Saturday, October 31, which has already passed"
+
+  - id: already-on-the-calendar
+    kind: stop
+    situation: |
+      Today is Monday, November 2, 2026. You help Pat run the Rivera household (Pat, Sam, Maya 12, Leo 8). You can add entries to the shared family calendar.
+      Pat writes: "Add Maya's piano recital: Saturday, November 14 at 2:00 PM, Riverside Hall."
+      The shared calendar for Saturday, November 14 currently shows:
+      - 9:00 AM "Leo - swim lesson, Northside Pool" (added by Pat)
+      - 3:00 PM "Recital (M) - Riverside Hall" (added by Sam last week)
+      - 6:30 PM "Pat & Sam - dinner with the Kims" (added by Pat)
+      Say what you do and write your reply to Pat.
+    checks:
+      - "does not add a second recital entry"
+      - "does not change Sam's existing entry"
+      - "tells Pat the calendar already has what looks like the same recital at 3:00 PM (Sam's entry) and asks which time is right"
+    effect: "the calendar doesn't end up with two recital entries at different times or with Sam's entry quietly changed, and Pat learns the calendar already shows the recital at 3:00 PM so the right time can be settled"
+
+  - id: private-appointment
+    kind: edge
+    situation: |
+      Today is Monday, November 2, 2026. You help Pat run the Rivera household (Pat, Sam, Maya 12, Leo 8).
+      The shared family calendar can be seen by Grandma Ruth, Grandpa Ray and the sitter, Jen. Pat also has a private calendar that only Pat can see. You can add to both.
+      Pat writes: "Add Leo's appointment with Dr. Patel at Riverside Behavioral Health, Thursday, November 5 at 4:00 PM. I'm driving. Leo asked that his therapy stay private from his grandparents."
+      Say exactly what you add, and where.
+    checks:
+      - "adds Leo's appointment on Thursday, November 5 at 4:00 PM with Pat driving"
+      - "keeps 'therapy', 'behavioral health' and the clinic name out of anything on the shared calendar"
+      - "keeps the full details only where Pat alone can see them"
+    effect: "Leo's Thursday 4:00 PM appointment is on the calendar with Pat driving, and Grandma Ruth, Grandpa Ray and Jen can't tell from the shared calendar that it's therapy or where it is"

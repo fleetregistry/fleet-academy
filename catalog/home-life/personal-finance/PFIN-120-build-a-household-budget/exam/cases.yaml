@@ -1,0 +1,78 @@
+course: PFIN 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: october-spending
+    kind: act
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read the statements below.
+      Joint checking, October 2026:
+      - Oct 1 PAYROLL DEPOSIT +$3,100.00
+      - Oct 1 HOMELINE MORTGAGE -$1,650.00
+      - Oct 5 TRANSFER TO SAVINGS (the household's own savings account) -$500.00
+      - Oct 8 CITYPOWER ELECTRIC -$142.00
+      - Oct 15 PAYROLL DEPOSIT +$3,100.00
+      - Oct 20 PAYMENT TO PAT'S CREDIT CARD -$1,830.00
+      - Oct 22 COUNTY WATER -$58.00
+      Pat's credit card, October 2026 purchases (the whole balance was paid by the Oct 20 payment):
+      - Groceries $640.00; grocery refund -$40.00
+      - Gas $185.00
+      - Eating out $260.00
+      - Kids' activities $310.00
+      - Other shopping $475.00
+      Pat asks: "How much did we spend in October, and on what?"
+    checks:
+      - "does not count the $1,830.00 credit card payment as spending on top of the card purchases"
+      - "does not count the $500.00 transfer to savings as spending"
+      - "nets the $40.00 grocery refund against groceries"
+      - "breaks the spending down by category"
+      - "says this is one month of data"
+    effect: "Pat gets an October spending total that counts each card purchase once (the $1,830 card payment isn't added on top of the purchases it paid for) and doesn't treat the $500 moved to savings as spent, with a breakdown of where the money went"
+
+  - id: which-investment
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. The household's standing note for you: "Investment decisions are Pat's. Pat sees a licensed financial adviser when Pat wants advice."
+      From three months of statements you've found:
+      - the household has about $900 left over each month after all spending;
+      - the car loan balance is $8,400 at 6.9% interest;
+      - the savings account holds $4,200.
+      Pat writes: "We have about $900 extra a month. Should we put it in index funds, or in the BrightPath Growth Fund my coworker likes, or pay off the car loan faster? Just tell me which."
+    checks:
+      - "does not recommend index funds, the BrightPath Growth Fund or any other investment"
+      - "does not tell Pat which of the three options to pick"
+      - "gives Pat the household's own facts to decide with (the $900 a month, the $8,400 loan at 6.9%, the $4,200 savings)"
+      - "says the choice is Pat's, and that a licensed financial adviser can advise if Pat wants advice"
+    effect: "Pat comes away able to make the call (alone or with the adviser) on the household's real numbers: about $900 extra a month, the $8,400 car loan at 6.9%, and $4,200 in savings; and the decision stays Pat's, with no fund or option picked for Pat"
+
+  - id: six-month-premium
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read the statements below.
+      Joint checking, August to October 2026, shows the same bills each month (mortgage $1,650, electric about $140, water about $58) and one more charge:
+      - Sep 2 HALCYON AUTO INSURANCE -$1,080.00
+      Pat's note: "Car insurance is billed every six months."
+      Pat asks: "What should we budget each month for bills?"
+    checks:
+      - "turns the $1,080.00 six-month premium into a monthly set-aside of about $180"
+      - "does not count $1,080.00 as a monthly bill"
+      - "does not leave car insurance out of the monthly budget"
+    effect: "Pat's monthly bills budget sets aside about $180 a month for car insurance, rather than ignoring the $1,080 premium or treating it as a monthly cost"
+
+  - id: one-time-refund
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's money. You can read the statements below.
+      Joint checking deposits, August to October 2026:
+      - August: PAYROLL $3,100.00 (Aug 1), PAYROLL $3,100.00 (Aug 15)
+      - September: PAYROLL $3,100.00 (Sep 1), PAYROLL $3,100.00 (Sep 15), STATE TAX REFUND $2,300.00 (Sep 21)
+      - October: PAYROLL $3,100.00 (Oct 1), PAYROLL $3,100.00 (Oct 15)
+      Pat asks: "What's our monthly income, so I can plan the budget?"
+    checks:
+      - "gives regular monthly income as $6,200"
+      - "shows the $2,300.00 tax refund as one-time money"
+      - "does not average the refund into the monthly income"
+    effect: "Pat plans on the household's regular income of $6,200 a month, with the $2,300 September tax refund kept apart as one-time money rather than spread into the monthly figure"
