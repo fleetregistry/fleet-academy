@@ -2,7 +2,7 @@ const D = __DATA__;
 const CORE = ["ETH 101", "REC 101", "SEC 101", "COM 101"];
 const CATC = { "4.A.1": "#7fa7d9", "4.A.2": "#d0a2e0", "4.A.3": "#e3b27a", "4.A.4": "#8fc29a" };
 const CATN = { "4.A.1": "Taking in information", "4.A.2": "Thinking it through", "4.A.3": "Doing the work", "4.A.4": "Working with people" };
-const GOLD = "#e3c46a", ROLE = "#e9e4cf", HALL = "#a6ead9", LIT = "#64a79c";
+const GOLD = "#e3c46a", ROLE = "#e9e4cf", HALL = "#a6ead9", LIT = "#64a79c", GRAY = "#9aa4b2"; // gray: not covered or not tested yet
 const DOES = { reads: "reads and reports", creates: "creates and drafts", changes: "changes existing things", "moves-money": "moves money or binds the company", physical: "acts in the physical world", directs: "directs other agents" };
 
 // ---- which skills light which requirement nodes
@@ -105,7 +105,15 @@ function roleAnchor(R) {
 const RP = RL.map(R => ({ a: roleAnchor(R) }));
 for (let it = 0; it < 80; it++) RP.forEach((p, i) => RP.forEach((q, j) => { if (i < j) { let d = q.a - p.a; d = Math.atan2(Math.sin(d), Math.cos(d)); if (Math.abs(d) < 0.32) { const f = (0.32 - Math.abs(d)) / 2 * Math.sign(d || 1); p.a -= f; q.a += f; } } }));
 RP.forEach(p => { p.x = RIM * Math.cos(p.a); p.y = RIM * Math.sin(p.a); });
-const EXT = RIM + 90;
+// every job in O*NET sits on an outer ring, gray until its requirements light up; tap one to see its path
+const JR = RIM + 110;
+const JOBS = D.occs.map((o, i) => {
+  const ps = o[2].map(j => pos[j]), c = ps.length ? mean(ps) : { x: 1, y: 0 };
+  const cov = o[2].filter(j => litBy[j]).length / Math.max(1, o[2].length), hall = o[2].some(j => (litBy[j] || []).some(isHall));
+  return { i, a: Math.atan2(c.y, c.x), cov, hall };
+});
+JOBS.slice().sort((x, y) => x.a - y.a).forEach((J, k) => { const row = k % 4; J.x = (JR + row * 16) * Math.cos(J.a); J.y = (JR + row * 16) * Math.sin(J.a); });
+const EXT = JR + 90;
 
 function leaves(cs) { const set = new Set(cs), used = new Set(); cs.forEach(n => SK[n].pre.forEach(p => used.add(p))); return cs.filter(n => NP[n] && !used.has(n)); }
 // ---- view
@@ -162,7 +170,7 @@ function draw() {
     const lit = litBy[i], hall = lit && lit.some(isHall), onRole = roleSet.has(i);
     ctx.globalAlpha = dim && !onRole ? 0.3 : 1;
     ctx.beginPath(); ctx.arc(X, Y, lit ? nr * 1.6 : nr, 0, 6.2832);
-    ctx.fillStyle = hall ? HALL : lit ? LIT : CATC[catOf(dwaGwa(i))] + (onRole ? "dd" : "5a"); ctx.fill();
+    ctx.fillStyle = hall ? HALL : lit ? LIT : GRAY + (onRole ? "dd" : "4a"); ctx.fill();
     if (onRole) { ctx.strokeStyle = ROLE; ctx.lineWidth = 1.3; ctx.beginPath(); ctx.arc(X, Y, (lit ? nr * 1.6 : nr) + 2.5, 0, 6.2832); ctx.stroke(); }
     if (sel && sel.k === "dwa" && sel.i === i) { ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(X, Y, nr * 3 + 4, 0, 6.2832); ctx.stroke(); }
   }
@@ -185,6 +193,26 @@ function draw() {
     ctx.setLineDash([Math.max(2, 8 * s), Math.max(2, 6 * s)]); ctx.strokeStyle = GOLD + (dim && !k.courses.some(c => roleSk.has(c)) ? "22" : "99"); ctx.lineWidth = clampR(2.4 * s, 1, 2.2);
     k.courses.forEach(c => line(KP[ki], NP[c])); ctx.setLineDash([]);
   });
+  // the job ring
+  const jr = clampR(2.6 * s, 1.2, 5);
+  JOBS.forEach(J => {
+    const X = sx(J), Y = sy(J); if (X < -10 || Y < -10 || X > W + 10 || Y > H + 10) return;
+    const on = role && role.occ === J.i;
+    ctx.globalAlpha = dim && !on ? 0.35 : 1;
+    ctx.beginPath(); ctx.arc(X, Y, on ? jr * 2.2 : jr, 0, 6.2832);
+    ctx.fillStyle = J.hall ? HALL : J.cov > 0 ? LIT + (J.cov > 0.3 ? "ff" : "99") : GRAY + "55"; ctx.fill();
+    if (on) { ctx.strokeStyle = ROLE; ctx.lineWidth = 1.6; ctx.stroke(); }
+  });
+  ctx.globalAlpha = 1;
+  // the chosen role's paths to every requirement it needs: lit where a skill covers it, light gray where nothing does yet
+  if (role) {
+    const RPt = role.occ != null ? JOBS[role.occ] : null;
+    if (RPt) role.need.forEach(j => {
+      const lit = litBy[j]; ctx.strokeStyle = lit ? ((lit.some(isHall) ? HALL : LIT) + "55") : GRAY + "60";
+      ctx.lineWidth = clampR(1.1 * s, 0.5, 1.2); if (!lit) ctx.setLineDash([Math.max(2, 5 * s), Math.max(2, 4 * s)]);
+      line(RPt, pos[j]); ctx.setLineDash([]);
+    });
+  }
   // role tethers: from each landmark to its capstone (or to its skills while it has none)
   const rolesNow = RL.map((R, i) => [R, RP[i]]); if (tempRP) rolesNow.push(tempRP);
   rolesNow.forEach(([R, P]) => {
@@ -306,6 +334,7 @@ function miniBuild() {
   D.gwas.forEach((_, gi) => { const b = gwaPos[gi]; g.beginPath(); g.arc(mx(b), my(b), Math.max(1.5, b.r * k), 0, 6.2832); g.fillStyle = CATC[catOf(gi)] + "22"; g.fill(); });
   for (let i = 0; i < D.dwas.length; i++) { if (!litBy[i]) continue; g.fillStyle = litBy[i].some(isHall) ? HALL : LIT; g.fillRect(mx(pos[i]) - 0.6, my(pos[i]) - 0.6, 1.2, 1.2); }
   D.skills.forEach(sk => { const p = NP[sk.n]; g.beginPath(); g.arc(mx(p), my(p), 1.8, 0, 6.2832); g.fillStyle = isHall(sk) ? HALL : isEng(sk) ? ENG : "#6c8a86"; g.fill(); });
+  JOBS.forEach(J => { g.fillStyle = J.hall ? HALL : J.cov > 0 ? LIT : GRAY + "66"; g.fillRect(mx(J) - 0.6, my(J) - 0.6, 1.2, 1.2); });
   RP.forEach(p => { g.beginPath(); g.arc(mx(p), my(p), 2.6, 0, 6.2832); g.fillStyle = ROLE; g.fill(); });
   return c;
 }
@@ -426,6 +455,7 @@ function pick(px, py) {
   for (const [R, P] of rolesNow) if (near(P, clampR(34 * V.s * 1.6, 17, 48) + 4)) { sel = { k: "role", R }; setRoleObj(R); return; }
   for (let ki = 0; ki < D.keys.length; ki++) if (near(KP[ki], clampR(20 * V.s * 2.2, 13, 32) + 4)) { sel = { k: "key", i: ki }; detail(); draw(); return; }
   for (const sk of D.skills) if (near(NP[sk.n], clampR(13 * V.s * 2.2, 7, 28) + 6)) { sel = { k: "skill", n: sk.n }; detail(); draw(); return; }
+  { let bj = null, bd = 9; JOBS.forEach(J => { const d = Math.hypot(sx(J) - px, sy(J) - py); if (d < bd) { bd = d; bj = J; } }); if (bj) { setOcc(bj.i); return; } }
   let best = null, bd = 16;
   for (let i = 0; i < D.dwas.length; i++) { const d = Math.hypot(sx(pos[i]) - px, sy(pos[i]) - py); if (d < bd) { bd = d; best = i; } }
   if (best === null) return;
@@ -446,7 +476,7 @@ const MODEL = { "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.
 function detail() {
   const el = document.getElementById("detail");
   if (!sel) {
-    el.innerHTML = `<div class="lbl">Tap any node</div><h2>${D.dwas.length.toLocaleString()} requirements, ${D.skills.length} skills so far</h2><p>Small dots are what jobs ask for, from O*NET. Big nodes are skills a builder has written. Gold octagons are keystones, the powers an owner signs for. Roles sit on the rim.</p>`;
+    el.innerHTML = `<div class="lbl">Tap any node</div><h2>${D.dwas.length.toLocaleString()} requirements, ${D.skills.length} skills so far</h2><p>Small dots are what jobs ask for, from O*NET: light gray until a skill covers them. Big nodes are skills a builder has written. Gold octagons are keystones, the powers an owner signs for. Named roles sit on the rim, and every one of O*NET's ${D.occs.length} jobs sits on the outer ring: tap one to see its path, gray where nothing is tested yet.</p>`;
   } else if (sel.k === "skill") {
     const sk = SK[sel.n], models = Object.entries(sk.models || {});
     const kind = CORE.includes(sk.n) ? "Core skill" : sk.guard ? "Guard skill" : sk.cap ? "Role skill (capstone)" : sk.lvl >= 4 ? "Keystone skill" : "Skill";
@@ -463,7 +493,7 @@ function detail() {
     const R = sel.R, cov = R.need.filter(i => litBy[i]).length, hall = R.need.filter(i => (litBy[i] || []).some(isHall)).length;
     const sks = [...roleSk].map(n => SK[n]).filter(Boolean).sort((a, b) => a.n.localeCompare(b.n));
     el.innerHTML = `<div class="lbl">Role${R.build ? " · " + esc(R.build) + " build" : ""}</div><h2>${esc(R.name)}</h2>
-      <p>${R.occ != null ? `Measured against O*NET's ${esc(D.occs[R.occ][1])} (${D.occs[R.occ][0]}): ` : "Measured against its build's skills: "}<b>${cov} of ${R.need.length}</b> requirements covered, ${hall} Hallmarked.${R.cap ? ` Its capstone is ${esc(R.cap)}.` : R.occ != null && !R.cap && R.courses.length ? " No capstone yet: this role is still being built." : ""}</p>
+      <p>${R.occ != null ? `Measured against O*NET's ${esc(D.occs[R.occ][1])} (${D.occs[R.occ][0]}): ` : "Measured against its build's skills: "}<b>${cov} of ${R.need.length}</b> requirements covered, ${hall} Hallmarked${R.need.length - cov ? `, ${R.need.length - cov} still gray` : ""}.${R.cap ? ` Its capstone is ${esc(R.cap)}.` : R.occ != null && !R.cap && R.courses.length ? " No capstone yet: this role is still being built." : ""}</p>
       ${sks.length ? budgetLine(sks) : ""}
       <div class="lbl">Skills on this path</div><div class="chips">${sks.map(chip).join("") || '<span class="chip">None yet</span>'}</div>`;
   } else {
@@ -513,7 +543,7 @@ function roleStat() {
 const nHall = Object.keys(litBy).filter(i => litBy[i].some(isHall)).length;
 document.getElementById("stats").innerHTML = [
   [D.dwas.length.toLocaleString(), "requirements"], [D.skills.length, "skills"], [D.skills.filter(isHall).length, "Hallmarked"], [D.skills.filter(isEng).length, "for small engines"],
-  [D.keys.length, "keystones"], [RL.length, "roles"]].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
+  [D.keys.length, "keystones"], [RL.length, "roles"], [D.occs.length, "jobs"], [JOBS.filter(J => J.cov > 0).length, "jobs started"]].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
 
 // start on the Enterprise AE role, unless the viewer chose another before
 window.addEventListener("resize", resize);
