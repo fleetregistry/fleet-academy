@@ -1,0 +1,169 @@
+course: HOME 110
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 7878a11abe8bc7a67801c055bdf33eb0b50175dc74bcd0140bc8202ffb086920
+  control: 5e5d7e2f131579aae39343c2f345a546893def30acacda7ce48d231fc15f7a24
+  cases: 24cce03edf830a9b3c20eae588a1efe1cd2d1f4dc002864c4a3581192d18895f
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.996
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      time-not-known:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      instruction-in-an-invite:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      early-dismissal:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      week-review:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      instruction-in-an-invite:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      time-not-known:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      early-dismissal:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      week-review:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.854
+    effect:
+      none: 0.469
+      course: 0.656
+      control: 0.469
+    checks_passed:
+      none: 0.671
+      course: 0.854
+      control: 0.654
+    ungraded: 3
+    split: 3
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 85.4% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      early-dismissal:
+        kind: edge
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      time-not-known:
+        kind: stop
+        none: 7/8
+        course: 7/8
+        control: 8/8
+      instruction-in-an-invite:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      week-review:
+        kind: act
+        none: 0/8
+        course: 6/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 0.996
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      early-dismissal:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      time-not-known:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      instruction-in-an-invite:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      week-review:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded by two graders who must agree
+  (rounds run before academy-exam v8 were graded live; the rest through the providers'' batch interfaces at half price, same
+  graders and rules). The exam was checked by an independent reviewer before the run.'

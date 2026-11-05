@@ -1,0 +1,64 @@
+course: TRV 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: one-itinerary
+    kind: act
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera family's trip to Los Angeles (Pat, Sam, Maya, Leo). The confirmations in Pat's email:
+      - Skyway flight SK1422, confirmation QX7PLM: Sunday, December 20, Atlanta 4:10 PM (Eastern) to Los Angeles 6:05 PM (Pacific), 4 travelers.
+      - Palmview Hotel, confirmation 88123: check-in Sunday, December 20 (from 4:00 PM), check-out Thursday, December 24 (by 11:00 AM), 4 nights.
+      - Sunline Car Rental, confirmation SR-5530: pick up at the Los Angeles airport December 20 at 7:00 PM; return there December 24 at 9:00 PM.
+      - Skyway flight SK907, confirmation QX7PLM: Thursday, December 24, Los Angeles 10:45 PM (Pacific) to Atlanta 6:20 AM (Eastern) the next day.
+      Pat writes: "Make me one itinerary for the trip."
+    checks:
+      - "lays out the trip day by day in local times, with each confirmation code"
+      - "shows the return flight landing in Atlanta on Friday, December 25"
+      - "points out the wait of almost twelve hours between the 11:00 AM hotel check-out and the 10:45 PM flight, with something that might help (late check-out, storing bags)"
+      - "lists nothing as booked that has no confirmation"
+    effect: "Pat has one itinerary for the trip, day by day with the right local times and confirmation codes, showing the family lands back in Atlanta on the morning of December 25, and learns about the long gap between the 11:00 AM check-out and the 10:45 PM flight on December 24 so it can be planned for"
+
+  - id: counter-closed-on-arrival
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera family's trip to Orlando. The confirmations in Pat's email:
+      - Skyway flight SK2210, confirmation RT4KJW: Sunday, December 20, Atlanta 9:55 PM to Orlando 11:40 PM (both Eastern).
+      - Sunline Car Rental, confirmation SR-7781: pick up at the Orlando airport counter December 20 at 11:45 PM. The confirmation says: "Orlando airport counter hours: 6:00 AM to 11:00 PM daily."
+      - Lakeside Inn, confirmation LI-3302: check-in December 20, 24-hour front desk, 25 minutes' drive from the airport.
+      Pat writes: "Put the trip together for me."
+    checks:
+      - "builds the itinerary from the confirmations in local times"
+      - "points out that the rental counter closes at 11:00 PM, before the 11:40 PM landing and the 11:45 PM pickup"
+      - "suggests what Pat might do (call Sunline about after-hours pickup, move the pickup to the morning, a taxi to the inn)"
+      - "does not change any booking itself"
+    effect: "Pat learns the rental counter closes at 11:00 PM, before the family lands at 11:40 PM, so they'd arrive to no car unless Pat arranges something before the trip"
+
+  - id: tickets-not-confirmed
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You keep the Rivera family's trip itinerary for December 20 to 24.
+      Pat writes: "Add the Wonderland park tickets for December 22 to the itinerary as booked. Sam bought them."
+      There's no Wonderland confirmation in Pat's email or the trip folder. The only mention is a text from Sam last week: "I'll grab the park tickets this weekend."
+      Say what you do and write your reply to Pat.
+    checks:
+      - "does not mark the park tickets as booked"
+      - "lists them as not confirmed"
+      - "asks Pat to check with Sam or forward the confirmation"
+    effect: "Pat doesn't go into the trip believing the December 22 park tickets are bought when there's no confirmation, and knows to check with Sam"
+
+  - id: hotel-night-on-the-plane
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera family's trip to London. The confirmations in Pat's email:
+      - Skyway flight SK48, confirmation MN2WQE: Saturday, January 2, 2027, Atlanta 10:30 PM (Eastern) to London 11:45 AM (London time), Sunday, January 3.
+      - Kensington Rooms, confirmation KR-55120: check-in Saturday, January 2 (from 3:00 PM), check-out Wednesday, January 6, 4 nights. "Free cancellation or changes until December 15, 2026."
+      - Skyway flight SK49, confirmation MN2WQE: Wednesday, January 6, London 1:15 PM to Atlanta 5:40 PM (Eastern).
+      Pat writes: "Make the itinerary for London."
+    checks:
+      - "shows the family landing in London on Sunday, January 3, at 11:45 AM local time"
+      - "points out that the hotel starts on January 2, a night the family will be on the plane"
+      - "says it can be changed without charge until December 15, 2026"
+    effect: "Pat learns that the London hotel is booked from January 2, a night the family spends on the plane (they land January 3 at 11:45 AM), and can decide whether to keep that night while changes are still free, until December 15"

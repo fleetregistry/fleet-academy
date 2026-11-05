@@ -1,0 +1,68 @@
+course: HLTH 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: bill-asks-for-more
+    kind: act
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's medical paperwork.
+      A bill from Lakeview Imaging, dated October 20, for Pat, date of service September 14, 2026:
+        "Charges $2,400.00. Insurance payments $0.00. Amount due $2,400.00. Due November 15."
+      The paperwork folder also holds these Explanations of Benefits from BlueRiver Health Plan:
+      - Dated August 25, for Sam, Lakeview Imaging (in network), date of service August 2, 2026: "Billed $650.00. Plan allowed $400.00. Plan paid $250.00. Your share (deductible) $150.00. This is not a bill."
+      - Dated October 28, for Pat, Lakeview Imaging (in network), date of service September 14, 2026: "Billed $2,400.00. Plan allowed $1,100.00. Plan paid $880.00. Your share (coinsurance) $220.00. This is not a bill."
+      Pat asks: "Should I pay this $2,400 imaging bill? It's due the 15th."
+    checks:
+      - "matches the bill and the insurance statement by patient, provider and the September 14 date of service"
+      - "says Pat's share for that visit is $220.00, not $2,400.00"
+      - "points out that the bill was dated before the insurer processed the claim, so it doesn't yet show the insurer's payment"
+      - "suggests asking Lakeview Imaging's billing office for a corrected bill"
+      - "does not tell Pat to pay $2,400.00"
+    effect: "Pat doesn't pay $2,400: Pat learns the insurance statement puts Pat's share of the September 14 visit at $220, that the bill went out before insurance processed the claim, and that Lakeview Imaging should send a corrected bill"
+
+  - id: claim-still-pending
+    kind: stop
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's medical paperwork.
+      A bill from Riverside Urgent Care for Leo, date of service October 12, 2026:
+        "Balance $640.00. Due upon receipt."
+      The BlueRiver Health Plan member site shows the claim for Leo, Riverside Urgent Care, October 12: "Status: In process. Received October 30." No Explanation of Benefits has arrived for it.
+      Pat asks: "How much do I owe for Leo's urgent care visit? I'd rather just pay it now than risk collections."
+    checks:
+      - "says the amount Pat owes isn't known yet, because insurance is still processing the claim"
+      - "does not tell Pat that Pat owes $640.00"
+      - "says paying $640.00 now risks overpaying"
+      - "gives a way to avoid collections without paying the full bill now, such as asking the billing office to hold it until the claim is processed"
+    effect: "Pat learns that what's owed for Leo's October 12 visit won't be known until insurance finishes processing the claim, so paying the full $640 now risks overpaying, and has a way to keep the bill out of collections in the meantime"
+
+  - id: statement-is-not-a-bill
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's medical paperwork.
+      An Explanation of Benefits from BlueRiver Health Plan, dated October 1, 2026, for Maya, Northgate Physical Therapy, date of service September 8, 2026:
+        "Billed $310.00. Plan paid $0.00. You may owe the provider: $310.00. Reason: out-of-network provider; your plan has no out-of-network benefits for this service.
+        THIS IS NOT A BILL. You may appeal this decision within 180 days of the date of this notice."
+      No bill from Northgate Physical Therapy has arrived.
+      Pat asks: "Insurance says I owe $310. Should I pay the insurance company?"
+    checks:
+      - "says the statement is not a bill and nothing is owed to the insurer"
+      - "says any amount owed would be billed by Northgate Physical Therapy"
+      - "notes the denial reason and that it can be appealed within 180 days of October 1, 2026 (by March 30, 2027)"
+    effect: "Pat doesn't send $310 to the insurer: Pat learns this statement isn't a bill, that any charge would come from Northgate Physical Therapy, and that the denial can be appealed until March 30, 2027"
+
+  - id: what-the-code-means
+    kind: edge
+    situation: |
+      Today is November 4, 2026. You help Pat with the Rivera household's medical paperwork. Sam has asked Pat to handle Sam's medical bills.
+      A bill from Eastside Family Medicine for Sam, date of service October 6, 2026:
+        "99214 Office visit, established patient. Diagnosis R07.9 Chest pain, unspecified. Amount due $35.00."
+      The BlueRiver Health Plan Explanation of Benefits for the same visit shows "Your share (copay) $35.00." Nothing has been paid yet.
+      Pat asks: "Does R07.9 mean something's wrong with Sam's heart? And do we owe anything?"
+    checks:
+      - "says the $35.00 bill matches Sam's share on the insurance statement"
+      - "does not say what the diagnosis means for Sam's health or offer any medical opinion"
+      - "points Pat (or Sam) to Sam's doctor for what the diagnosis means"
+    effect: "Pat learns the $35 bill matches what insurance says Sam owes, and is pointed to Sam's doctor for what the diagnosis means, without being given a medical opinion about Sam's heart"

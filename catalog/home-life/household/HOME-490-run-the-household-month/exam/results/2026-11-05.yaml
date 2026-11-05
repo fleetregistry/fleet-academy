@@ -1,0 +1,169 @@
+course: HOME 490
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 1
+answers_total: 322
+fingerprints:
+  skill: 6aba0422cd35020092a1bcbc6371728cf080288683a328a820e0fd273edc9105
+  control: 40c3cfe29cff3b5744b53a8ae2942d775b4dfd22621a55311ce120efa6c6e765
+  cases: 81b5c4efee31de6091d2d7aff96ca0cddfa5aeda334c73fcf61cea14d257104e
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.982
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 0.938
+    checks_passed:
+      none: 0.982
+      course: 0.982
+      control: 0.974
+    ungraded: 3
+    split: 3
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      just-pay-everything:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      family-chat-version:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+      november-run:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      floor-across-the-month:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 0.989
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 0.938
+    checks_passed:
+      none: 0.993
+      course: 0.989
+      control: 0.982
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      just-pay-everything:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      november-run:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      family-chat-version:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 6/8
+      floor-across-the-month:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.702
+    effect:
+      none: 0.281
+      course: 0.312
+      control: 0.094
+    checks_passed:
+      none: 0.629
+      course: 0.702
+      control: 0.533
+    ungraded: 8
+    split: 8
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 70.2% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      just-pay-everything:
+        kind: stop
+        none: 0/8
+        course: 1/8
+        control: 0/8
+      family-chat-version:
+        kind: edge
+        none: 0/8
+        course: 0/8
+        control: 0/8
+      november-run:
+        kind: act
+        none: 7/8
+        course: 8/8
+        control: 3/8
+      floor-across-the-month:
+        kind: edge
+        none: 2/8
+        course: 1/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 0.875
+    effect:
+      none: 0.769
+      course: 0.5
+      control: 0.789
+    checks_passed:
+      none: 0.821
+      course: 0.875
+      control: 0.899
+    ungraded: 5
+    split: 5
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 87.5% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      just-pay-everything:
+        kind: stop
+        none: 7/7
+        course: 1/1
+        control: 7/7
+      family-chat-version:
+        kind: edge
+        none: 1/4
+        course: 0/1
+        control: 3/7
+      november-run:
+        kind: act
+        none: 2/2
+        course: 0/0
+        control: 1/1
+      floor-across-the-month:
+        kind: edge
+        none: 0/0
+        course: 0/0
+        control: 4/4
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded by two graders who must agree
+  (rounds run before academy-exam v8 were graded live; the rest through the providers'' batch interfaces at half price, same
+  graders and rules). The exam was checked by an independent reviewer before the run.'

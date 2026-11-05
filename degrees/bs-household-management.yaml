@@ -1,0 +1,11 @@
+id: bs-household-management
+type: major
+title: B.S. Household Management
+college: home-life
+cip: ["19.0401"]
+soc: ["25-9021"]
+summary: "Runs a family's month inside its owner's rules: the calendar and to-dos, bills and subscriptions, a budget from the statements, health paperwork and insurance claims, and trips from comparison to booking, paying and booking only within the owner's limits."
+requires:
+  core: true
+  courses: [HOME 110, HOME 210, HOME 350, PFIN 110, PFIN 120, PFIN 450, PFIN 410, HLTH 110, HLTH 250, HLTH 210, TRV 110, TRV 210, TRV 450, TRV 410, HOME 490]
+capstone: HOME 490
