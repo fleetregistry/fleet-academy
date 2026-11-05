@@ -58,5 +58,5 @@ answers: 2026-11-04T1734-answers.json
 confirmation_for: gpt-5.4-nano
 confirmed: true
 note: 'Confirmation run on GPT-5.4 nano under method v4 (METHOD_V4.md, ''Hallmarks by engine size''): fresh answers, four
-  fixed rounds, graded at half price through the providers'' batch interfaces by the same two graders, who must agree. It
+  fixed rounds, graded live (at full price) by the same two graders, who must agree. It
   counts toward a small-engine Hallmark only together with the passing proving before it, and never decides accreditation.'

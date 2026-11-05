@@ -55,3 +55,14 @@ The same rewrite was applied to the other 38 exams: two writers rewrote 98 outco
 An independent check of the all-43 regrade held four passes (ACCT 110, ACCT 201, FIN 410, FIN 450) because one clause in each outcome line still copied a course rule ("the new account number is not repeated", "no account number appears in the answer") or was ambiguous (ACCT 110's net-worth clause). Those clauses were removed, without reading any answer or grade, and an independent reviewer, also blind, confirmed each changed line before any regrade. Only `effect` lines changed in these four exams, so their stored answers are graded again.
 
 FIN 490's cash-shortfall case now states the owner's standing rule (the owner chooses which bills wait when cash would fall below the minimum), which the outcome depended on. That changes a situation, so FIN 490 is version 2 and is proved again with new answers, not regraded.
+
+## Correction, and DeepSeek joins as an extra engine (4 November 2026, evening)
+
+**Correction.** The notes on 55 results written today (the first provings of Software, Sales, Finance, Business Operations, Communications, Law & Risk and People, the nano confirmation runs, and FIN 490 version 2) said their grades came through the providers' batch interfaces at half price. They didn't: until academy-exam v8, the batch flag applied only to regrades of stored answers, so fresh provings were graded live, at full price. The graders, prompts and rules were the same either way, so no verdict changes; only the notes were wrong, and they now say "graded live". From v8 on, a fresh proving answers live and is then graded through the batch interfaces.
+
+**DeepSeek, registered before any of its data.** Agents on the registry run DeepSeek more than any of the four panel engines, so DeepSeek is added as a fifth engine the Academy examines on. These rules were written down before any DeepSeek result was seen:
+
+- **Engine:** `deepseek-flash`, the model id DeepSeek's API lists for its Flash model, which is what DeepSeek agents on the registry run. It counts as a **small** engine.
+- **Same method:** the same packets, the same four fixed rounds, and the same two graders (Claude Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers; it never grades.
+- **Answer length:** DeepSeek's API caps an answer at 8,192 tokens (the panel's limit is 16,000). An answer cut off at that cap counts as ungraded, exactly as a cut-off answer does for any engine.
+- **What a pass earns:** a pass on DeepSeek is shown as a result for DeepSeek. An engine Hallmark for DeepSeek needs a passing proving and a confirmation run on DeepSeek, as for any engine. The panel rule for accreditation (the four panel engines) doesn't change.

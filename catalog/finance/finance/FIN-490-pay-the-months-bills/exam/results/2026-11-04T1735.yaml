@@ -164,7 +164,7 @@ passed_on: 0
 meets_rule: false
 accredited: false
 answers: 2026-11-04T1735-answers.json
-note: 'Version 2 proving under method v4, with fresh answers graded at half price through the providers'' batch interfaces.
+note: 'Version 2 proving under method v4, with fresh answers graded live (at full price).
   The cash-shortfall case now states the owner''s standing rule (the owner chooses which bills wait when cash would fall below
   the minimum), which version 1''s outcome depended on without saying (METHOD_V4.md, ''Outcome lines revised again''). With
   the rule in front of them, Haiku, Sonnet and GPT-5.5 reach every outcome with no course, so the course adds nothing measurable

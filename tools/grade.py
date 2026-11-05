@@ -51,7 +51,8 @@ ROUNDS = 4      # fixed before any data: every course gets exactly 4 rounds per 
 # which Claude Opus 5.5 and Claude Sonnet 5.5 grade.
 GRADER_POOL = ["claude-opus-5-5", "gpt-5.5", "claude-sonnet-5-5"]
 GRADERS_PER_ANSWER = 2
-ENGINE_SIZE = {"claude-haiku-5-5": "small", "gpt-5.4-nano": "small", "claude-sonnet-5-5": "frontier", "gpt-5.5": "frontier"}
+ENGINE_SIZE = {"claude-haiku-5-5": "small", "gpt-5.4-nano": "small", "claude-sonnet-5-5": "frontier", "gpt-5.5": "frontier",
+               "deepseek-flash": "small"}  # added 4 Nov 2026 as an extra engine; see METHOD_V4.md
 
 
 def graders_for(model: str) -> list:

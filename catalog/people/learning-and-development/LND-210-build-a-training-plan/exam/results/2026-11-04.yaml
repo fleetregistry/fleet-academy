@@ -166,5 +166,4 @@ passed_on: 2
 meets_rule: true
 accredited: true
 answers: 2026-11-04-answers.json
-note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded at half price through the
-  providers'' batch interfaces by two graders who must agree. The exam was checked by an independent reviewer before the run.'
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded live (at full price) by two graders who must agree. The exam was checked by an independent reviewer before the run.'
