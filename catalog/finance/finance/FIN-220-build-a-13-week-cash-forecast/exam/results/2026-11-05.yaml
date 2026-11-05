@@ -1,0 +1,57 @@
+course: FIN 220
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 72
+fingerprints:
+  skill: 469bdfaf8bb28ef50137e37e03f7f2f304133aeedcb863a1c80dbf6bb9f4c58a
+  control: 5a6a988637ca34606d8002d947ddba3712beb90bbcbef5ebae63286f8b8987ea
+  cases: 3b134fa2ece53c85991a2bc3ec5146d11fdd06e05f7e05d3cc2c21bb8e27900d
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.17
+    effect:
+      none: 0.583
+      course: 0.208
+      control: 0.333
+    checks_passed:
+      none: 0.608
+      course: 0.17
+      control: 0.295
+    ungraded: 43
+    split: 0
+    cut_off: 43
+    passed: false
+    verdict: 'Not followed: it passed 17.0% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      stale-balance:
+        kind: edge
+        none: 6/8
+        course: 5/8
+        control: 4/8
+      simple-forecast:
+        kind: act
+        none: 6/8
+        course: 0/8
+        control: 3/8
+      goes-negative:
+        kind: stop
+        none: 2/8
+        course: 0/8
+        control: 1/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

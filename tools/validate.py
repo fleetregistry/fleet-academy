@@ -204,7 +204,7 @@ def main() -> int:
             every = sorted((folder / "exam" / "results").glob("*.yaml")) if (folder / "exam" / "results").is_dir() else []
             loaded = {f: (yaml.safe_load(f.read_text()) or {}) for f in every}
             # a confirmation run (one engine, METHOD_V4.md) is not a proving: the newest proving decides accreditation
-            results = [f for f in every if not loaded[f].get("confirmation_for")]
+            results = [f for f in every if not loaded[f].get("confirmation_for") and not loaded[f].get("extra_engine")]  # an extra engine (DeepSeek) is shown beside the panel; it never decides status
             skill_sha = hashlib.sha256(skill.read_text(encoding="utf-8").encode()).hexdigest() if skill.exists() else None
             cases_sha = hashlib.sha256(json.dumps(cases, sort_keys=True).encode()).hexdigest()
 
