@@ -471,7 +471,7 @@ function budgetLine(list) {
 }
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function statusWord(sk) { return isHall(sk) ? "Hallmarked" : isEng(sk) ? engWord(sk) : sk.status === "held" ? "Passed, held for review" : "Built, not yet proven"; }
-function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? " · Hallmarked, small engines" : sk.status === "held" ? " · held" : ""}</button>`; }
+function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? ` · Hallmarked, ${sk.eh.some(e => SMALL.has(e)) ? "small" : "frontier"} engines` : sk.status === "held" ? " · held" : ""}</button>`; }
 const MODEL = { "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5", "gpt-5.4-nano": "GPT-5.4 nano", "deepseek-flash": "DeepSeek Flash" };
 function detail() {
   const el = document.getElementById("detail");
@@ -542,7 +542,7 @@ function roleStat() {
 }
 const nHall = Object.keys(litBy).filter(i => litBy[i].some(isHall)).length;
 document.getElementById("stats").innerHTML = [
-  [D.dwas.length.toLocaleString(), "requirements"], [D.skills.length, "skills"], [D.skills.filter(isHall).length, "Hallmarked"], [D.skills.filter(isEng).length, "for small engines"],
+  [D.dwas.length.toLocaleString(), "requirements"], [D.skills.length, "skills"], [D.skills.filter(isHall).length, "Hallmarked"], [D.skills.filter(s => isEng(s) && s.eh.some(e => SMALL.has(e))).length, "for small engines"], [D.skills.filter(s => isEng(s) && !s.eh.some(e => SMALL.has(e))).length, "for frontier engines"],
   [D.keys.length, "keystones"], [RL.length, "roles"], [D.occs.length, "jobs"], [JOBS.filter(J => J.cov > 0).length, "jobs started"]].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
 
 // start on the Enterprise AE role, unless the viewer chose another before

@@ -126,7 +126,7 @@ body.noscroll { overflow: hidden; }
           <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#10232a" stroke="#64a79c" stroke-width="1.6" stroke-dasharray="3 2.5"/></svg>Skill, built but not yet proven</span>
           <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#64a79c" stroke="#a6ead9" stroke-width="1.2"/></svg>Skill that passed its proving, held for review</span>
           <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#a6ead9" stroke="#effffa" stroke-width="1.2"/></svg>Hallmarked skill: passed on two or more models</span>
-          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#9fd8f0" stroke="#e4f6ff" stroke-width="1.2"/></svg>Hallmarked for small engines: proven, and confirmed, on a small model</span>
+          <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="#9fd8f0" stroke="#e4f6ff" stroke-width="1.2"/></svg>Hallmarked for one engine size: proven, then confirmed in a second run, on a small model (Haiku, nano, DeepSeek Flash) or a frontier one (Sonnet, GPT-5.5)</span>
           <span><svg viewBox="0 0 16 16"><polygon points="8,1.5 13.6,4.75 13.6,11.25 8,14.5 2.4,11.25 2.4,4.75" fill="#10232a" stroke="#64a79c" stroke-width="1.4"/></svg>Guard skill: the safety habits that come first</span>
           <span><svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="4.5" fill="#10232a" stroke="#64a79c" stroke-width="1.2"/><circle cx="8" cy="8" r="7" fill="none" stroke="#e3c46a" stroke-width="1.4"/></svg>Gold ring: a skill that moves money or binds the company</span>
           <span><svg viewBox="0 0 16 16"><polygon points="11,1.4 14.6,5 14.6,11 11,14.6 5,14.6 1.4,11 1.4,5 5,1.4" fill="#231d0c" stroke="#e3c46a" stroke-width="1.4"/></svg>Keystone: a power an owner signs for, made of several skills</span>
@@ -618,7 +618,7 @@ function budgetLine(list) {
 }
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function statusWord(sk) { return isHall(sk) ? "Hallmarked" : isEng(sk) ? engWord(sk) : sk.status === "held" ? "Passed, held for review" : "Built, not yet proven"; }
-function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? " · Hallmarked, small engines" : sk.status === "held" ? " · held" : ""}</button>`; }
+function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? ` · Hallmarked, ${sk.eh.some(e => SMALL.has(e)) ? "small" : "frontier"} engines` : sk.status === "held" ? " · held" : ""}</button>`; }
 const MODEL = { "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5", "gpt-5.4-nano": "GPT-5.4 nano", "deepseek-flash": "DeepSeek Flash" };
 function detail() {
   const el = document.getElementById("detail");
@@ -689,7 +689,7 @@ function roleStat() {
 }
 const nHall = Object.keys(litBy).filter(i => litBy[i].some(isHall)).length;
 document.getElementById("stats").innerHTML = [
-  [D.dwas.length.toLocaleString(), "requirements"], [D.skills.length, "skills"], [D.skills.filter(isHall).length, "Hallmarked"], [D.skills.filter(isEng).length, "for small engines"],
+  [D.dwas.length.toLocaleString(), "requirements"], [D.skills.length, "skills"], [D.skills.filter(isHall).length, "Hallmarked"], [D.skills.filter(s => isEng(s) && s.eh.some(e => SMALL.has(e))).length, "for small engines"], [D.skills.filter(s => isEng(s) && !s.eh.some(e => SMALL.has(e))).length, "for frontier engines"],
   [D.keys.length, "keystones"], [RL.length, "roles"], [D.occs.length, "jobs"], [JOBS.filter(J => J.cov > 0).length, "jobs started"]].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
 
 // start on the Enterprise AE role, unless the viewer chose another before
