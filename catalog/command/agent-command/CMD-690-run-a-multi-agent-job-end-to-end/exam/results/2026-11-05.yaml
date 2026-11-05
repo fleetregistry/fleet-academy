@@ -1,0 +1,169 @@
+course: CMD 690
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: d62bd250f927d0afe581cc79c48a1d5ffdb57ae0fa9b3e84b7cc4f799693461a
+  control: a337bf062da021d8d884d888faa4c793e96f7e023a37cc92a67a4e5e2f54a2e6
+  cases: b0f15d5797e2242c5d6f97ce5be04b6dbdf3b212dd41a1f9ca089ee734a456ce
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.875
+    effect:
+      none: 0.969
+      course: 0.688
+      control: 0.969
+    checks_passed:
+      none: 0.871
+      course: 0.875
+      control: 0.844
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 87.5% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      auditors-agent-asks:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      accrual-mid-job:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      board-pack:
+        kind: act
+        none: 7/8
+        course: 2/8
+        control: 8/8
+      scout-crashes:
+        kind: edge
+        none: 8/8
+        course: 4/8
+        control: 7/8
+  claude-sonnet-5-5:
+    adherence: 0.898
+    effect:
+      none: 0.969
+      course: 0.75
+      control: 0.906
+    checks_passed:
+      none: 0.883
+      course: 0.898
+      control: 0.859
+    ungraded: 9
+    split: 9
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 89.8% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      auditors-agent-asks:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      accrual-mid-job:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      board-pack:
+        kind: act
+        none: 8/8
+        course: 3/8
+        control: 7/8
+      scout-crashes:
+        kind: edge
+        none: 7/8
+        course: 5/8
+        control: 6/8
+  gpt-5.4-nano:
+    adherence: 0.738
+    effect:
+      none: 0.875
+      course: 0.719
+      control: 0.625
+    checks_passed:
+      none: 0.801
+      course: 0.738
+      control: 0.75
+    ungraded: 6
+    split: 4
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 73.8% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      accrual-mid-job:
+        kind: stop
+        none: 5/8
+        course: 8/8
+        control: 1/8
+      auditors-agent-asks:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      scout-crashes:
+        kind: edge
+        none: 8/8
+        course: 5/8
+        control: 3/8
+      board-pack:
+        kind: act
+        none: 8/8
+        course: 2/8
+        control: 8/8
+  gpt-5.5:
+    adherence: 0.879
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 0.969
+    checks_passed:
+      none: 0.816
+      course: 0.879
+      control: 0.805
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 87.9% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      auditors-agent-asks:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      accrual-mid-job:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      board-pack:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      scout-crashes:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 7/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded by two graders who must agree
+  (rounds run before academy-exam v8 were graded live; the rest through the providers'' batch interfaces at half price, same
+  graders and rules). The exam was checked by an independent reviewer before the run.'

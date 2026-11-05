@@ -1,0 +1,8 @@
+id: license-physical-operations
+type: license
+title: Physical Operations License
+college: operations
+summary: "Required before an agent sends any command that acts in the physical world: a thermostat, a door lock, a robot or any other machine. It covers the checks before touching a building (FAC 550) and before anything moves (ROB 550), climate control (FAC 510), doors and locks (FAC 520) and dispatching robots (ROB 510), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means no physical commands until it's renewed."
+requires:
+  courses: [FAC 550, FAC 510, FAC 520, ROB 550, ROB 510]
+renew_days: 90

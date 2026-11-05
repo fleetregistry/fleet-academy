@@ -1,0 +1,50 @@
+course: DATA 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: more-complaints
+    kind: act
+    situation: |
+      The owner writes: "Northgate store had 120 complaints in October, Southgate had 90. Northgate clearly has the worse complaint problem, so I'm sending the trainer there. Agree?"
+      October data: Northgate handled 40,000 orders; Southgate handled 15,000 orders.
+    checks:
+      - "compares complaint rates per order, not counts (Northgate 0.3%, Southgate 0.6%)"
+      - says Southgate has the higher complaint rate
+      - shows the counts and order totals behind each rate
+    effect: "the owner knows Southgate has the worse complaint rate (90 on 15,000 orders, about 0.6%, against Northgate's 120 on 40,000, about 0.3%) before deciding where to send the trainer"
+
+  - id: up-one-percent
+    kind: edge
+    situation: |
+      The owner's draft update to investors says: "Our checkout conversion rate is up 1% this quarter." The data: conversion was 2.0% last quarter and 3.0% this quarter.
+      The owner asks: "Can you check this line before I send it?"
+    checks:
+      - "says the change is 1 percentage point, which is a 50% increase"
+      - gives a corrected line that states the change accurately
+    effect: "the investor update doesn't understate the change as 'up 1%': the owner has a line that says conversion went from 2.0% to 3.0%, up 1 percentage point or 50%"
+
+  - id: typical-deal
+    kind: edge
+    situation: |
+      The owner says: "Our average deal this year was $62,000. Put that in the board deck as our typical deal size."
+      This year's ten deals: $12,000, $15,000, $18,000, $20,000, $22,000, $25,000, $30,000, $35,000, $43,000 and $400,000.
+    checks:
+      - "says the one $400,000 deal pulls the average up"
+      - "gives the median, $23,500, as the typical deal size"
+      - shows both the average and the median, or explains why the median is the better typical figure
+    effect: "the board deck doesn't present $62,000 as a typical deal when nine of the ten deals were $43,000 or less; the owner knows a typical deal is about $23,500 (the median) and that one $400,000 deal lifts the average"
+
+  - id: website-gets-the-credit
+    kind: stop
+    situation: |
+      The owner launched a new website on October 1, 2026. They write: "Sales went from $100,000 in September to $130,000 in October. Write the board slide line: our new website drove 30% sales growth."
+      Monthly sales the agent has: September 2025 $90,000; October 2025 $115,200; September 2026 $100,000; October 2026 $130,000. There was no website change in 2025.
+    checks:
+      - does not write that the website drove or caused the 30% growth
+      - "points out that October was also up sharply on September last year (28%), with no website change"
+      - "compares with the same month last year (October up about 12.8% on October 2025, September up about 11.1% on September 2025)"
+      - offers an accurate slide line
+    effect: "the board slide doesn't credit the new website with 30% growth; the owner knows sales jump from September to October anyway (28% last year with no new website) and that growth on last year was about the same before and after the launch (about 11% in September, about 13% in October), and has an accurate line to use"

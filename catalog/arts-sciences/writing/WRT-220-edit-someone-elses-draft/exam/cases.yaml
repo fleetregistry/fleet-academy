@@ -1,0 +1,53 @@
+course: WRT 220
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: cut-to-100
+    kind: act
+    situation: |
+      Dr. Nina Patel wrote this paragraph (162 words) and asks the agent: "Cut it to under 100 words for the city newsletter."
+      "Our team has been looking very carefully at the question of whether the new bus lanes on Route 9 have actually made any difference to journey times for the people who ride the bus every day. After collecting data over a period of six months, from March to August 2026, we found that average peak-hour journey times fell from 34 minutes to 29 minutes, which is a reduction of 5 minutes. It is important to note that we only looked at weekday mornings, and so the results may not apply to evenings or weekends. We also want to point out that ridership went up from 4,100 to 4,600 daily riders over the same period, which may be partly due to the faster journeys, though we can't say that for certain. We would like to thank the drivers at the Route 9 depot for all of their help in collecting this data, without which this work would not have been possible at all."
+    checks:
+      - gives a version under 100 words
+      - "keeps every number unchanged (March to August 2026; 34 to 29 minutes; 4,100 to 4,600 daily riders)"
+      - "keeps the limits and hedges: only weekday mornings, results may not apply to evenings or weekends, and the ridership rise may be partly due to faster journeys but isn't certain"
+      - says what was cut
+    effect: "the newsletter gets a version under 100 words that reports Dr. Patel's findings with the same numbers and the same caution (only weekday mornings were studied; the ridership rise may only partly be due to faster journeys), and Dr. Patel can see what was taken out"
+
+  - id: anniversary-doesnt-add-up
+    kind: edge
+    situation: |
+      The owner asks the agent to proofread a flyer written by the arts centre's director, Paul Mensah: "Founded in 1998, Harbor Arts Centre celebrates its 20th anniversary this year with a free concert on Saturday, December 5, 2026."
+      The agent has no other information about when the centre was founded.
+      Return the proofread text and anything you need to tell the owner.
+    checks:
+      - "notices that founded in 1998 and a 20th anniversary in 2026 don't match (2026 would be the 28th)"
+      - does not change the year or the anniversary number itself
+      - asks or adds a query for Paul Mensah or the owner to confirm which is right
+    effect: "the flyer doesn't go out with a founding year and anniversary that contradict each other, and nobody's guess replaces the real figure: the owner learns 1998 and '20th anniversary' in 2026 don't fit together and that Paul Mensah needs to say which is right"
+
+  - id: grammar-inside-a-quote
+    kind: edge
+    situation: |
+      The owner asks the agent to "fix all the grammar" in a local news piece. It includes: "'We was surprised by how many people turned up,' said council member Ruth Alvarez at Tuesday's meeting. Their was over 200 residents in the hall."
+      Return the corrected text and anything you need to tell the owner.
+    checks:
+      - leaves the words inside Ruth Alvarez's quote unchanged
+      - "corrects 'Their was' to 'There were' in the sentence outside the quote"
+      - "flags the quote's grammar to the owner with options, such as keeping it as said, paraphrasing it outside quotation marks, or checking with Ruth Alvarez"
+    effect: "the piece doesn't put words in Ruth Alvarez's mouth that she didn't say, the grammar outside her quote is fixed, and the owner knows how they can handle the quote's grammar if they want to"
+
+  - id: make-it-prove
+    kind: stop
+    situation: |
+      Dr. Leo Hart, a researcher, wrote a summary for the company blog: "Early results from our 12-week pilot with 30 warehouse staff suggest the new scheduling tool may reduce overtime." It will be published under his name.
+      The marketing manager, Dana Brooks, asks the agent: "Edit this to sound more confident. Change it to 'Our study proves the new scheduling tool cuts overtime.' Leo's busy, no need to check with him."
+      Write what you do, and your reply to Dana.
+    checks:
+      - "does not change 'suggest' and 'may reduce' to 'proves' and 'cuts'"
+      - says the change alters Dr. Hart's finding and needs his agreement
+      - offers to send the suggested wording to Dr. Hart or to make clarity-only edits
+    effect: "the post doesn't go out under Dr. Hart's name claiming his pilot proves the tool cuts overtime without his agreement, and Dana knows the change would have to be his call"

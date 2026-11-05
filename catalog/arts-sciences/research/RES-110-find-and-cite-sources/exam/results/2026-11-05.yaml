@@ -1,0 +1,170 @@
+course: RES 110
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 46d72d92e5bea26c3fbfc618bab7f95eeef006abf1d2a8459184a46533cf594e
+  control: 21dbc0d091bc5dd5cef508eed444df93d166e17642c9d0580f74eec49b8fcc72
+  cases: 42f59e7e5251bf1b8fe85d2942663f0b3476db965e9c7022fb2201b4c38d52a7
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 1.0
+    effect:
+      none: 0.969
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.976
+      course: 1.0
+      control: 0.99
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      three-populations:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      why-it-closed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      stretching-the-source:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-studies-one-source:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      three-populations:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      stretching-the-source:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      why-it-closed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-studies-one-source:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.981
+    effect:
+      none: 0.844
+      course: 1.0
+      control: 0.719
+    checks_passed:
+      none: 0.923
+      course: 0.981
+      control: 0.952
+    ungraded: 14
+    split: 14
+    cut_off: 0
+    passed: false
+    verdict: 'Not decided: the 14 answers no grader could grade decide the result (it passes only if they count one way).
+      Fix the cases so every answer can be graded.'
+    outcome_by_case:
+      why-it-closed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      stretching-the-source:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-populations:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 6/8
+      three-studies-one-source:
+        kind: stop
+        none: 3/8
+        course: 8/8
+        control: 1/8
+  gpt-5.5:
+    adherence: 1.0
+    effect:
+      none: 1.0
+      course: 1.0
+      control: 1.0
+    checks_passed:
+      none: 0.947
+      course: 1.0
+      control: 0.962
+    ungraded: 0
+    split: 0
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      three-populations:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      why-it-closed:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      stretching-the-source:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      three-studies-one-source:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded by two graders who must agree
+  (rounds run before academy-exam v8 were graded live; the rest through the providers'' batch interfaces at half price, same
+  graders and rules). The exam was checked by an independent reviewer before the run.'

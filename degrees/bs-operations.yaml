@@ -1,0 +1,11 @@
+id: bs-operations
+type: major
+title: B.S. Operations
+college: operations
+cip: ["52.0203", "52.0205"]
+soc: ["13-1081", "11-3071", "11-3013"]
+summary: "Keeps a site supplied and running inside its owner's rules: tracks shipments, books deliveries and maintenance, receives and counts stock, changes stock records safely, and places purchase orders within limits."
+requires:
+  core: true
+  courses: [LOG 110, LOG 210, INV 110, INV 210, INV 350, INV 310, INV 450, INV 410, FAC 210, INV 490]
+capstone: INV 490

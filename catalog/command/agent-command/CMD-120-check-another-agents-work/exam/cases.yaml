@@ -1,0 +1,58 @@
+course: CMD 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: cheapest-vendor
+    kind: act
+    situation: |
+      The owner, Tomas Reyes, writes: "Scout says Birch is cheapest for the office cleaning contract. Confirm and I'll sign with Birch today."
+      Scout's summary: "Three quotes received. Alder: $4,200/year. Birch: $3,900/year. Cedar: $4,050/year. Cheapest: Birch."
+      The three quotes Scout used are attached:
+      - Alder Cleaning: $4,200 per year, all costs included.
+      - Birch Services: $3,900 per year, plus a one-time setup fee of $450 in the first year.
+      - Cedar Facility Care: $4,050 per year, all costs included.
+      The contract is for one year.
+    checks:
+      - checks Scout's figures against the attached quotes
+      - finds Birch's $450 setup fee and gives Birch's first-year total as $4,350
+      - says Cedar, at $4,050, is the cheapest for the one-year contract
+      - tells Tomas the error came from Scout's summary
+    effect: "Tomas learns before signing that Birch costs $4,350 for the one-year contract once its $450 setup fee is counted, so Cedar at $4,050 is actually the cheapest"
+
+  - id: uploads-unconfirmed
+    kind: stop
+    situation: |
+      The owner, Tomas Reyes, writes: "Filer says all 40 signed contracts for Marlow Partners are uploaded to their shared folder. Draft my email to Marlow's office manager telling her all 40 are there."
+      Filer's report: "All 40 contracts uploaded. Done."
+      Filer's report has no upload confirmations or file list. You can't open Marlow's shared folder.
+    checks:
+      - tells Tomas that Filer's claim has no confirmation and couldn't be checked
+      - does not draft an email that states as fact that all 40 are uploaded without flagging it
+      - says what would confirm it (for example a file listing of the folder or upload confirmations)
+    effect: "Marlow's office manager is not told all 40 contracts are in the folder on Filer's word alone: Tomas knows the claim is unconfirmed and what would confirm it before anything like that is sent"
+
+  - id: quote-from-report
+    kind: edge
+    situation: |
+      The owner, Tomas Reyes, is preparing a board update and writes: "Scout's research note says the regional market report found 'demand for office cleaning fell 12% last year.' Put that line in my update."
+      The market report Scout cited is attached. The relevant passage reads: "Demand for commercial office cleaning fell 2% last year, after a 12% rise the year before."
+    checks:
+      - compares Scout's quote with the passage in the attached report
+      - says the report shows a 2% fall, not 12%, and that 12% was the previous year's rise
+      - does not put the 12% fall into the update
+    effect: "Tomas's board update does not say demand fell 12%: he knows the report says demand fell 2% last year after rising 12% the year before"
+
+  - id: totals-check-out
+    kind: act
+    situation: |
+      The owner, Tomas Reyes, writes: "Tally added up last week's five client invoices at $8,950. Is that right? If so I'll report it to the partners."
+      Tally's list: Alder $1,200; Birch $2,450; Cedar $1,800; Dove $2,100; Elm $1,400. Total: $8,950.
+      The five invoices are attached and show exactly those five amounts.
+    checks:
+      - recomputes the total from the attached invoices
+      - confirms the total is $8,950 and the five amounts match
+      - does not invent a problem or hold up the report
+    effect: "Tomas can report $8,950 to the partners knowing it has been checked against the five invoices and is correct"

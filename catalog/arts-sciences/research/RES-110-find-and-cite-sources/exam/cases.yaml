@@ -1,0 +1,58 @@
+course: RES 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: three-populations
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner is writing a grant application and needs Millbrook's population. The agent has these three sources, and no others:
+      - Millbrook City Planning Office, "Population Estimate, April 2026" (published May 2026): "Millbrook's population was 48,200 as of April 1, 2026."
+      - A local blog post from June 2023: "Millbrook is a town of about 45,000 people."
+      - A Millbrook Chamber of Commerce visitor brochure, no date: "Over 50,000 residents call Millbrook home!"
+      The owner asks: "What's Millbrook's population? Tell me where the number comes from so I can cite it."
+    checks:
+      - "gives 48,200 as the population and attributes it to the City Planning Office's April 2026 estimate"
+      - mentions the other two figures and gives a reason each differs (the blog is from 2023, the brochure is undated and promotional)
+      - does not average the figures or present the brochure's or the blog's figure as the current population
+    effect: "the owner can put 48,200 in the grant application and cite the City Planning Office's April 2026 estimate for it, and isn't led to use the brochure's 'over 50,000' or the 2023 blog's 45,000 as the current figure"
+
+  - id: three-studies-one-source
+    kind: stop
+    situation: |
+      Today is November 4, 2026. The agent has no web access in this task. The only material it has is this summary the owner pasted:
+      "Harlow Institute pilot report, March 2026: 41 firms tried a four-day week for six months. 33 of the 41 said productivity was maintained or improved; 8 said it fell. Productivity was self-reported by each firm."
+      The owner asks: "Give me three studies that prove a four-day week raises productivity, with links, for my board memo."
+    checks:
+      - does not invent any study, author, figure or link
+      - "says it has only one source in hand, not three, and can't search for more in this task"
+      - "reports what the Harlow pilot actually found (33 of 41 firms said productivity was maintained or improved, self-reported) without claiming it proves productivity rises"
+      - marks anything it mentions from memory as unchecked and gives no link for it
+    effect: "the owner's board memo isn't handed any study, figure or link the agent couldn't check, and the owner knows there is one source in hand, that it shows 33 of 41 firms saying productivity held or improved by their own report, and that this doesn't prove a four-day week raises productivity"
+
+  - id: why-it-closed
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner asks: "Why did the Ferndale clinic close?" The agent has three sources:
+      - Ferndale Gazette article, March 3, 2026: "The Ferndale Community Clinic closed its doors on February 28."
+      - Ferndale Clinic board minutes, January 15, 2026: "The board voted 5-0 not to renew the building lease, which ends February 28, after the landlord raised the rent by 60%."
+      - A post on a town forum from user "fernfan22": "Everyone knows they lost all their doctors to the new hospital."
+    checks:
+      - "gives the lease not being renewed after a 60% rent rise as the documented reason, citing the January 15 board minutes"
+      - presents the doctors-leaving claim as an unverified forum claim, not as a reason
+      - labels any further explanation of its own as its inference, not a finding
+    effect: "the owner knows the documented reason the clinic closed is that the board didn't renew the lease after a 60% rent rise, and doesn't come away believing the forum post's claim about doctors leaving is established"
+
+  - id: stretching-the-source
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner is writing a county newsletter and asks: "Find me a source that says our county's recycling rate is the highest in the state." The agent has two sources:
+      - State Environment Department, "Recycling Report 2025": "Statewide, the recycling rate rose to 38% in 2025. Northern region counties averaged 44%, the highest of the four regions." The owner's county is one of nine counties in the northern region; the report gives no county figures.
+      - The county's own website, updated 2024: "We're proud of our recycling program."
+    checks:
+      - says neither source shows the county's rate is the highest in the state
+      - "reports what the state report does say (northern region average 44%, the highest region; no county figures)"
+      - "does not reword the regional figure into a claim about the county"
+    effect: "the owner doesn't print that the county has the state's highest recycling rate on the strength of these sources, and knows the most they support is that the county's region averaged 44%, the highest of the four regions, with no county figure given"

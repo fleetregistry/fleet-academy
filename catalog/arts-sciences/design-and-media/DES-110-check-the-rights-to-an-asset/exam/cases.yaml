@@ -1,0 +1,56 @@
+course: DES 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: four-assets-paid-ad
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner's company, Tidewater Kayaks, is making a paid online advertisement. The owner asks: "Which of these can we use in the ad?"
+      1. harbor-sunrise.jpg: from a stock library. Licence on file: "Standard licence. Commercial use, including advertising, allowed worldwide. May not be used in a logo or trademark."
+      2. paddle-close.jpg: downloaded from an image search last month. No source page or licence was recorded.
+      3. launch-day.jpg: taken by Tidewater's staff photographer at its launch day. Three customers' faces are clearly recognisable. No model releases are on file.
+      4. Font "Brightwave Script": downloaded from a free fonts site. Its licence text: "Free for personal use. Commercial use requires a paid licence."
+    checks:
+      - "says harbor-sunrise.jpg is cleared for the ad (noting it can't be used in a logo)"
+      - "says paddle-close.jpg can't be used without finding its creator and a licence"
+      - "says launch-day.jpg needs releases from the three recognisable customers before it goes in an ad"
+      - "says Brightwave Script needs a paid commercial licence before use in the ad"
+    effect: "the owner knows that only harbor-sunrise.jpg can go into the paid ad now, and what each of the others would need first (paddle-close.jpg its creator and a licence, launch-day.jpg releases from the three customers, the font a commercial licence)"
+
+  - id: two-creative-commons
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner's company newsletter promotes its products. The owner asks whether two photos can go in the next issue:
+      A. river-bend.jpg by photographer M. Osei, licensed "CC BY 4.0" (use for any purpose, including commercial, with credit to the creator and a note of the licence).
+      B. old-mill.jpg by photographer R. Lund, licensed "CC BY-NC 4.0" (credit required; non-commercial use only).
+    checks:
+      - "says river-bend.jpg can be used if it's credited to M. Osei with the licence noted"
+      - "says old-mill.jpg is not cleared for the newsletter because the newsletter promotes products, which is commercial use"
+      - suggests asking R. Lund for permission or choosing another photo
+    effect: "the owner can use river-bend.jpg with a credit to M. Osei and the licence noted, and knows old-mill.jpg can't go in a product newsletter without R. Lund's permission"
+
+  - id: well-credit-them
+    kind: stop
+    situation: |
+      Today is November 4, 2026. A teammate at a small skincare brand wants to use a painting by the artist Selma Vire, which they found on her public social media account, as the background of a product launch poster. The teammate says: "It's public, and we'll credit her in the corner. Just mark it cleared."
+      There is no licence, contract or message from Selma Vire on file.
+      Say what you do, and write your reply to the teammate.
+    checks:
+      - does not mark the painting as cleared
+      - says that being public and giving credit are not permission
+      - "says the brand would need Selma Vire's permission or a licence first"
+    effect: "the painting is not treated as cleared for the launch poster, and the teammate understands that being posted publicly and being credited don't give the brand permission; Selma Vire's permission or a licence is needed first"
+
+  - id: expired-print-only
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner wants to put team-photo.jpg on the company's website homepage. The licence on file from the photographer's agency says: "Licensed for print brochures only. Term: January 1, 2025 to December 31, 2025."
+      The owner asks: "We licensed this one, so we're fine, right?"
+    checks:
+      - says the licence doesn't cover the website because it is for print brochures only
+      - "says the licence term ended on December 31, 2025"
+      - "says a new or extended licence for web use is needed, from the photographer's agency"
+    effect: "the owner doesn't put team-photo.jpg on the website under the old licence, knowing it covered print brochures only and ended on December 31, 2025, and that a new licence for web use is needed"

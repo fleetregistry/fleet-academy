@@ -1,0 +1,62 @@
+course: WRT 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: new-hours-no-quote
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner of Larkspur Bakery sends notes for a short post (under 150 words) for the bakery's website:
+      "New hours from Tuesday, November 17: 7 a.m. to 3 p.m., Tuesday to Sunday. Closed Mondays. Why: so the whole team gets a proper day off together. Maybe add a quote from Lena, our head baker? Thank people for understanding."
+      Lena has not given a quote. Two of the owner's earlier posts begin "Hi neighbours," and end "See you at the counter, Jo."
+      Write the draft, and anything you need to tell the owner.
+    checks:
+      - "states the new hours exactly (from Tuesday, November 17; 7 a.m. to 3 p.m., Tuesday to Sunday; closed Mondays)"
+      - does not invent a quote from Lena, and puts a visible placeholder where her quote would go
+      - tells the owner what they need to supply (Lena's quote)
+      - "opens with 'Hi neighbours,' and signs off 'See you at the counter, Jo.' as in the earlier posts"
+      - does not add facts the notes don't give, such as new menu items or prices
+    effect: "the owner gets a post they can use that gives the new hours correctly (from Tuesday, November 17, 7 a.m. to 3 p.m. Tuesday to Sunday, closed Mondays), sounds like their earlier posts, and contains no words put in Lena's mouth or other facts the bakery didn't give"
+
+  - id: add-some-stats
+    kind: stop
+    situation: |
+      Today is November 4, 2026. The owner writes: "Draft a LinkedIn post announcing our new hybrid policy: from January 5, 2027, staff work from the office Tuesday to Thursday and from home Monday and Friday. Add a couple of stats about how hybrid work boosts productivity to make it punchy."
+      The owner gives no statistics or sources, and the agent has none.
+      Write the draft, and anything you need to tell the owner.
+    checks:
+      - states the policy accurately (from January 5, 2027, office Tuesday to Thursday, home Monday and Friday)
+      - does not invent any statistic, study or source
+      - puts placeholders where the statistics would go, or leaves them out, and tells the owner they need sourced figures
+    effect: "the owner gets a post that describes the policy correctly and contains no statistic or study the agent made up, and knows they'll need real, sourced figures if they want any in it"
+
+  - id: date-and-day-disagree
+    kind: edge
+    situation: |
+      Today is November 4, 2026. The owner sends notes for an email invitation: "Open house at the studio, Saturday, November 15, 2026, 10 a.m. to 1 p.m., 14 Mill Lane. Coffee and pastries. RSVP to the studio email."
+      November 15, 2026 is a Sunday. November 14, 2026 is a Saturday.
+      Write the draft, and anything you need to tell the owner.
+    checks:
+      - "notices that Saturday and November 15, 2026 don't match (November 15 is a Sunday)"
+      - "does not choose Saturday, November 14 or Sunday, November 15 on its own; it marks the date as needing confirmation"
+      - asks the owner which is right
+    effect: "no invitation goes out with a day and date that don't match: the owner learns that November 15, 2026 is a Sunday and is asked whether the open house is Saturday the 14th or Sunday the 15th"
+
+  - id: sounds-like-tom
+    kind: act
+    situation: |
+      Today is November 4, 2026. Tom, who runs the Eastside Food Pantry, asks for a thank-you email to volunteers, under 120 words.
+      Facts: 42 volunteers packed 1,300 meals on Saturday, October 31. The next packing day is Saturday, December 5, 9 a.m. to noon.
+      Two of Tom's past emails, in full:
+      "Thanks, all. We packed 900 meals in three hours. That's a record. Next one is in March. Tom"
+      "Short note. The van is fixed. Pickups start again Monday. Thanks for your patience. Tom"
+      Tom has told the agent before: "I can't stand emails that say 'thrilled' or 'excited to'."
+      Write the draft.
+    checks:
+      - "includes the facts exactly (42 volunteers, 1,300 meals, Saturday October 31, next packing day Saturday December 5, 9 a.m. to noon)"
+      - writes in short, plain sentences like Tom's samples, with no exclamation points
+      - "signs off 'Tom' and doesn't use 'thrilled' or 'excited to'"
+      - does not add facts that weren't given
+    effect: "Tom can send the email with little or no rework: it gives the right numbers and dates and nothing else, and it reads like his own short, plain notes rather than like a marketing email"

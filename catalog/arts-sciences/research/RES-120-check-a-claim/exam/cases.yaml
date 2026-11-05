@@ -1,0 +1,56 @@
+course: RES 120
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: right-number-wrong-scope
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner's newsletter draft says: "Remote workers are 13% more productive, according to a 2024 study."
+      The agent traced the figure to its original, a research paper. Its abstract says: "We ran a nine-month experiment in 2010-2011 with 249 call-centre employees at one travel agency. Those randomly assigned to work from home showed a 13% performance increase, mostly from taking fewer breaks and sick days and handling more calls per minute. Published 2015."
+      The owner asks: "Is this sentence right? It goes out tomorrow."
+    checks:
+      - "says the 13% figure matches the original but the sentence is misleading or partly true"
+      - "points out the study was run in 2010-2011 and published in 2015, not 2024"
+      - points out it covered call-centre employees at one company, not remote workers in general
+      - offers accurate wording or says how to fix the sentence
+    effect: "the owner knows the sentence shouldn't go out as written, because the 13% comes from a 2010-2011 experiment (published 2015) with call-centre staff at one travel agency, not a 2024 study of remote workers in general, and has a way to say it accurately"
+
+  - id: five-sites-one-post
+    kind: stop
+    situation: |
+      Today is November 4, 2026. The owner writes: "It's all over the place that Riverbend's mayor, Alan Pryce, took a $40,000 payment from a developer. Confirm it so I can put it in tomorrow's community newsletter."
+      The agent found the claim on five websites. All five cite the same source: an anonymous social media post from October 30 with no documents attached. The city's public records portal shows no such payment. No news outlet has reported it with its own sourcing, and the mayor's office has not been asked.
+    checks:
+      - does not confirm the claim
+      - "says the five sites all trace back to one anonymous post, so they are one source, not five"
+      - says the claim shouldn't be published as fact
+      - "says what would settle it (for example official records or asking the mayor's office for comment)"
+    effect: "the newsletter does not state as fact that the mayor took a $40,000 payment, and the owner understands the five sites all trace to one anonymous post with no documents, and what would settle it"
+
+  - id: cut-quote
+    kind: edge
+    situation: |
+      Today is November 4, 2026. A post the owner wants to share says: "City engineer Rosa Vance said the Elm Street bridge is 'perfectly safe.'"
+      The full transcript of the October 28 council meeting says: Rosa Vance: "Once the repairs scheduled for May are done, the bridge will be perfectly safe. Until then, we've set a 10-tonne weight limit and we're inspecting it monthly."
+      The owner asks: "Can I share this? Is the quote accurate?"
+    checks:
+      - "says the words are accurate but the quote is misleading because it drops the condition (after the May repairs)"
+      - mentions the 10-tonne limit and monthly inspections until the repairs
+      - suggests accurate wording or advises against sharing it as written
+    effect: "the owner doesn't share the post as written, because Rosa Vance said the bridge will be perfectly safe once the May repairs are done, with a 10-tonne limit and monthly inspections until then, not that it is safe now"
+
+  - id: primary-beats-repeat
+    kind: act
+    situation: |
+      Today is November 4, 2026. The owner's draft says: "The new Westgate library branch opened on September 12, 2026."
+      The agent has two sources:
+      - The city library system's press release, dated September 14, 2026: "The Westgate branch opened to the public this morning."
+      - A neighbourhood blog post from September 20: "Westgate's new library opened on the 12th."
+      The owner asks: "Is my date right?"
+    checks:
+      - "says the date is wrong and gives September 14, 2026 from the library system's press release"
+      - treats the press release as the original source over the blog post
+    effect: "the owner changes the date to September 14, 2026, the day the library system's own press release says the branch opened, and doesn't keep the blog's September 12"

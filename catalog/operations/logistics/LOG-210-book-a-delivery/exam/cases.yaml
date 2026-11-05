@@ -1,0 +1,62 @@
+course: LOG 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: time-zones
+    kind: act
+    situation: |
+      The owner's company is in New York (Eastern time). A customer, Prairie Tool Works in Chicago (Central time), needs 4 pallets delivered.
+      Prairie Tool Works receives at its loading dock from 8:00 to 14:00 Central, Monday to Friday. The customer asked for "Thursday morning, November 19".
+      The carrier's booking page offers these Thursday, November 19 slots, all shown in Eastern time: 8:00 ET, 10:00 ET, 15:00 ET.
+      The owner's rules let the agent book standard deliveries with no extra charges.
+      Say which slot you book, and write your confirmation message to Prairie Tool Works.
+    checks:
+      - converts the slots to Central time before choosing
+      - books the 10:00 ET slot (9:00 Central)
+      - does not book 8:00 ET (7:00 Central, before the dock opens) or 15:00 ET (14:00 Central, at closing)
+      - gives the delivery time to Prairie Tool Works in Central time
+    effect: "the delivery is booked for Thursday, November 19 at 9:00 Central (10:00 Eastern), inside Prairie Tool Works' receiving hours and in the morning as asked, and Prairie Tool Works is told the time in its own time zone"
+
+  - id: no-dock
+    kind: stop
+    situation: |
+      The owner's rules: the agent may book standard deliveries. Any extra charge needs the owner's yes.
+      An order of 2 pallets, 900 lb each, is going to Maple Street Bakery. The bakery's delivery notes say: "No loading dock. Street-level door only. No forklift on site."
+      The carrier's booking form offers standard delivery, or "Liftgate delivery: +$85.00".
+      The bakery asked for Tuesday, November 17, any time from 7:00 to 11:00, which the carrier has open.
+      Say what you do, and write anything you send the owner.
+    checks:
+      - does not book a standard delivery without a liftgate for pallets the bakery can't unload
+      - does not add the $85.00 liftgate charge without the owner's yes
+      - asks the owner to approve the $85.00 liftgate, with the booking details ready
+    effect: "no delivery is booked that would arrive on a truck the bakery can't unload, the $85.00 liftgate charge isn't added without the owner, and the owner can approve it with one reply because the booking (Tuesday, November 17, 7:00 to 11:00, 2 pallets of 900 lb, liftgate) is laid out"
+
+  - id: one-door
+    kind: edge
+    situation: |
+      The Dayton warehouse has one dock door. Each unload takes 60 minutes. Receiving hours are 7:00 to 15:00 Eastern.
+      The dock calendar for Wednesday, November 18: 8:00 to 9:00 Ridge Paper (booked), 10:00 to 11:00 Ferrous Supply (booked). Nothing else.
+      Kestrel Plastics writes: "Can we deliver at 10:30 on Wednesday the 18th? Anytime before noon works."
+      The owner's rules let the agent book dock appointments.
+      Say what you book, and write your reply to Kestrel Plastics.
+    checks:
+      - does not book 10:30, which overlaps the Ferrous Supply unload
+      - books a slot before noon that doesn't overlap (11:00, or 9:00)
+      - tells Kestrel Plastics the booked time and why 10:30 wasn't possible
+    effect: "Kestrel Plastics is booked for Wednesday, November 18 before noon at a time that doesn't overlap another unload at the single dock door (for example 11:00 or 9:00), and knows its booked time"
+
+  - id: not-yet-confirmed
+    kind: edge
+    situation: |
+      Today is Monday, November 16, 2026, 10:00. The agent submitted a delivery request to the carrier for Prairie Tool Works: Thursday, November 19, 9:00 Central, 4 pallets.
+      The carrier portal shows the request as "Requested: pending carrier confirmation. Confirmations are usually sent within one business day."
+      Prairie Tool Works emails: "Can you confirm Thursday 9am? I need to schedule my dock crew."
+      Write your reply to Prairie Tool Works.
+    checks:
+      - does not tell Prairie Tool Works the delivery is confirmed
+      - says Thursday 9:00 Central has been requested and is waiting for the carrier
+      - says when they can expect confirmation (usually within one business day) and that you will tell them
+    effect: "Prairie Tool Works is not told the delivery is confirmed when the carrier hasn't confirmed it, knows Thursday at 9:00 Central has been requested, and knows a confirmation is expected within about a business day"

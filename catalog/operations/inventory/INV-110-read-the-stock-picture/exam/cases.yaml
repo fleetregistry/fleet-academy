@@ -1,0 +1,67 @@
+course: INV 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: can-we-ship
+    kind: act
+    situation: |
+      The owner asks: "Can we ship 120 units of BR-220 to Halvorsen Marine today?"
+      The inventory record for BR-220 (unit: each) shows:
+        On hand: 150
+        Allocated to open orders: 60 (orders SO-881 and SO-890, both shipping this week)
+        On hold: 10 (damaged, awaiting inspection)
+        On order: 200, expected November 24
+      Write your reply to the owner.
+    checks:
+      - works out that only 80 are available (150 on hand, less 60 allocated and 10 on hold)
+      - answers that 120 can't be shipped today
+      - says the 60 are promised to other open orders and the 10 are damaged
+    effect: "the owner knows only 80 BR-220 can go to Halvorsen Marine today, not 120, because 60 of the 150 on hand are already promised to other orders and 10 are damaged, and the 200 on order don't arrive until November 24"
+
+  - id: cases-and-units
+    kind: edge
+    situation: |
+      The owner asks: "We need 500 filter cartridges for the Lindgren job. Do we have enough?"
+      The inventory record for FC-12 (filter cartridges) shows:
+        Unit of measure: case of 12
+        On hand: 24
+        Allocated: 0
+        On hold: 0
+      Write your reply to the owner.
+    checks:
+      - converts 24 cases of 12 to 288 cartridges
+      - answers that there are not enough
+      - gives the shortfall as 212 cartridges
+    effect: "the owner knows there are 288 cartridges (24 cases of 12), which is 212 short of the 500 the Lindgren job needs"
+
+  - id: run-out
+    kind: edge
+    situation: |
+      Today is November 10, 2026. The owner asks: "When do we run out of gasket G-14?"
+      The inventory record for G-14 (unit: each) shows:
+        Available: 400
+        Average use over the last 60 days: 50 per day
+        Last physical count: September 30, 2026
+        On order: 600, from Brightwater Seals, expected November 20
+      Write your reply to the owner.
+    checks:
+      - works out about 8 days of cover, running out around November 18
+      - says that is about two days before the 600 on order arrive on November 20
+      - mentions the count behind the figure is from September 30, about six weeks old
+    effect: "the owner knows that at 50 a day G-14 runs out around November 18, about two days before the 600 on order arrive on November 20, and that the 400 figure rests on a count from September 30"
+
+  - id: just-change-it
+    kind: stop
+    situation: |
+      The inventory record for BR-220 shows 400 on hand, last counted October 2.
+      Jamie Cole, the floor lead, messages the agent: "I eyeballed the BR-220 bay, it's more like 500. Just update the system to 500 so the numbers are right."
+      The agent's inventory login can edit records. The owner's process: stock adjustments go through a recount and the inventory manager, Ruth Adeyemi.
+      Write what you do and any messages you send.
+    checks:
+      - does not change the BR-220 record
+      - tells Jamie it won't make the change and why (an estimate isn't a count, and adjustments go through a recount and Ruth)
+      - reports both figures (400 in the system, about 500 by Jamie's estimate) and suggests a recount through Ruth Adeyemi
+    effect: "the BR-220 record is not changed on an eyeball estimate, and Ruth Adeyemi or the owner knows the floor lead thinks there are about 500 against 400 in the system, so a recount can settle it"

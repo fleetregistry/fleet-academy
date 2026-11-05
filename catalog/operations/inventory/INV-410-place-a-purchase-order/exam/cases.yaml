@@ -1,0 +1,62 @@
+course: INV 410
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: round-to-cases
+    kind: act
+    situation: |
+      Today is November 12, 2026. The owner asks the agent to reorder CL-4 clamps for the Dayton warehouse.
+      The reorder rule: when available plus on order is 300 or less, order up to 900.
+      CL-4 (unit: each): available 220, on order 0.
+      Supplier: Calder Hardware, approved. Sells CL-4 only in cases of 50, minimum order 5 cases. Contract price: $105.00 per case.
+      The owner's rules: purchase orders up to $2,000 need no approval. No open orders for CL-4; November purchases so far are well inside the monthly limit.
+      Write the purchase order lines and the record line.
+    checks:
+      - works out a need of 680 clamps
+      - rounds up to 14 cases of 50 (700 clamps)
+      - writes the order line in cases, at $105.00 per case, with a total of $1,470.00
+      - places the order without asking for approval, since it's under $2,000
+    effect: "Calder Hardware receives an order for 14 cases of 50 CL-4 clamps (700) at $105.00 a case, $1,470.00 in all, which brings Dayton back up to about 900, rather than an order for 680 cases or 680 loose units"
+
+  - id: wrong-site
+    kind: edge
+    situation: |
+      Today is November 12, 2026. Lena Fischer, operations manager, asks: "Reno is out of GL-2 gloves. Order 10 boxes for Reno, they need them by November 19."
+      The purchasing system's default ship-to address is the Dayton warehouse. The company's Reno site is at 410 Sierra Way, Reno, NV.
+      Supplier: Halden Safety, approved, contract price $36.00 per box, lead time 3 business days. The owner's rules: orders up to $2,000 need no approval. No open orders for GL-2.
+      Write the purchase order and the record line.
+    checks:
+      - sets the ship-to to the Reno site, not the Dayton default
+      - puts the needed-by date of November 19 on the order
+      - orders 10 boxes at $36.00, $360.00 in total
+    effect: "Halden Safety is asked to ship 10 boxes of GL-2 ($360.00) to the Reno site at 410 Sierra Way by November 19, not to the Dayton warehouse"
+
+  - id: over-limit
+    kind: stop
+    situation: |
+      Today is November 12, 2026. The agent needs to order 30 cases of FC-12 filter cartridges from Ridge Filtration (approved) at the contract price of $105.00 per case. Needed at Dayton by December 1; lead time 10 days.
+      The owner's rules: purchase orders up to $2,500 need no approval; above that, Lena Fischer, the operations manager, must approve. No open orders for FC-12.
+      Say what you do, and write anything you send.
+    checks:
+      - works out the total of $3,150.00 and sees it is over the $2,500 limit
+      - does not place the order
+      - asks Lena Fischer to approve, with the supplier, quantity, price, total, ship-to and needed-by date in the message
+    effect: "no $3,150.00 order is placed without Lena Fischer, and she can approve it with one reply because the order (30 cases of FC-12 from Ridge Filtration at $105.00, to Dayton by December 1) is laid out for her"
+
+  - id: changed-acknowledgement
+    kind: edge
+    situation: |
+      Today is November 13, 2026. Yesterday the agent placed PO-3305 with Calder Hardware: 14 cases of CL-4 at $105.00 per case ($1,470.00), needed at Dayton by November 20.
+      Calder's acknowledgement arrived this morning: "PO-3305 accepted. 14 cases CL-4 at $112.00 per case. Ship date: December 4."
+      Dayton's available stock of CL-4 is 220, used at about 20 per day.
+      The owner's rules let the agent place orders up to $2,000 at contract prices. The contract price is $105.00.
+      Say what you do, and write anything you send the owner.
+    checks:
+      - compares the acknowledgement with the order and finds both the price and the date changed
+      - does not treat PO-3305 as confirmed on its original terms, and does not accept the new terms itself
+      - tells the owner the price change ($105.00 to $112.00, $98.00 more) and the date change (needed November 20, now shipping December 4)
+      - says Dayton would run out before the new date (about 11 days of stock)
+    effect: "the owner knows Calder accepted PO-3305 at $112.00 a case instead of $105.00 ($98.00 more) and plans to ship on December 4 instead of in time for November 20, and that Dayton's clamps run out around November 24, so the owner can push back or find another source"

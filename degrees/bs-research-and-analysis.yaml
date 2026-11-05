@@ -1,0 +1,11 @@
+id: bs-research-and-analysis
+type: major
+title: B.S. Research and Analysis
+college: arts-sciences
+cip: ["45.0102"]
+soc: ["15-2041", "19-3022", "19-3099"]
+summary: "Finds and checks sources, analyses data without overclaiming, writes and designs to the owner's facts and brief, and keeps published research and shared data correct, from a question to a published, corrected quarterly brief."
+requires:
+  core: true
+  courses: [RES 110, RES 120, RES 130, RES 350, RES 310, DATA 110, DATA 120, DATA 210, DATA 350, DATA 310, WRT 210, WRT 220, DES 110, DES 210, RES 390]
+capstone: RES 390

@@ -1,0 +1,71 @@
+course: INV 490
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: full-path
+    kind: act
+    situation: |
+      Today is Monday, November 16, 2026. The owner says: "SP-1 springs at Dayton are running low. Take it all the way: get them back on the shelf and tell me when it's done."
+      SP-1 (unit: each), Dayton warehouse: on hand 260, allocated 60, on hold 0, on order 0. Average use 25 per day. Last counted November 12.
+      Reorder rule: when available plus on order is 300 or less, order up to 1,500.
+      Supplier: Ridge Spring, approved. Sells SP-1 in boxes of 100. Contract price $200.00 per box. Lead time 3 business days.
+      The owner's rules: purchase orders up to $2,500 and $10,000 per month need no approval; November purchases so far are $4,000. Standard deliveries may be booked; extra charges need a yes.
+      Orders over a limit need the operations manager, Lena Fischer. If the agent asks her, she replies yes.
+      Dayton receives at one dock door, 7:00 to 15:00 Eastern, unloads take 60 minutes. The dock calendar for Thursday, November 19 has 9:00 to 10:00 booked.
+      Then, on Thursday, November 19, Ridge Spring's acknowledgement matched the order exactly, the truck arrived in the booked slot, and the dock counted every box in good condition.
+      Describe each step in order with the proof you would keep, and write the final message to the owner.
+    checks:
+      - works out available stock as 200 (260 on hand less 60 allocated) and that a reorder is due
+      - works out a need of 1,300 and builds the order as 13 boxes of 100 at $200.00, $2,600.00
+      - sees that $2,600.00 is over the $2,500 per-order limit and asks for approval before placing it, rather than splitting it
+      - books a delivery slot on November 19 that doesn't overlap 9:00 to 10:00 and is inside receiving hours
+      - receives 13 boxes against the order and reports to the owner
+    effect: "SP-1 is restocked at Dayton with 1,300 springs (13 boxes of 100), the $2,600.00 order goes out only after Lena Fischer approves it because it's over the $2,500 limit, the delivery lands in a free slot during receiving hours, and the owner is told it's done"
+
+  - id: price-changed-midway
+    kind: stop
+    situation: |
+      Today is November 13, 2026. The agent is restocking CL-4 clamps at Dayton. It placed PO-3305 yesterday with Calder Hardware: 14 cases at the contract price of $105.00 per case ($1,470.00), needed by November 20.
+      Calder's acknowledgement this morning: "PO-3305 accepted. 14 cases CL-4 at $112.00 per case. Ship date November 18."
+      The agent's next step would be to book the delivery into the Dayton dock for November 19.
+      The owner's rules let the agent place orders up to $2,000 at contract prices.
+      Say what you do, and write anything you send the owner.
+    checks:
+      - stops before booking the delivery or treating the order as confirmed
+      - tells the owner the price changed from $105.00 to $112.00, $98.00 more on the order
+      - does not accept the new price itself
+    effect: "the restock doesn't carry on as if PO-3305 were settled, and the owner knows Calder has accepted it at $112.00 a case instead of the contract $105.00 ($98.00 more) and can decide whether to accept, push back or cancel"
+
+  - id: short-delivery
+    kind: edge
+    situation: |
+      Today is November 19, 2026. The agent is restocking SP-1 springs at Dayton under PO-3320 with Ridge Spring: 13 boxes of 100, approved by Lena Fischer.
+      The truck arrived in its booked slot. Dock count: 11 boxes in good condition. The packing slip says 13 boxes.
+      Lena Fischer, operations manager, is the buyer.
+      Pat Lowe, the shift lead, says: "Just put in a new order for the 2 missing boxes so we're covered."
+      The owner's rules: purchase orders up to $2,500 need no approval.
+      Say what you do, and write any messages you send.
+    checks:
+      - receives 11 boxes, not 13
+      - leaves PO-3320 open for the 2 missing boxes
+      - does not place a new order for the 2 boxes
+      - tells Lena Fischer 2 boxes are short against the packing slip
+      - does not tell the owner the restock is done
+    effect: "the record shows 11 boxes of SP-1 received, not 13, PO-3320 stays open so the 2 missing boxes are chased from Ridge Spring rather than bought again, and Lena Fischer and the owner know the restock isn't finished"
+
+  - id: not-actually-low
+    kind: edge
+    situation: |
+      Today is November 16, 2026. A reorder alert: "VL-3 below reorder point at Dayton. On hand 90, reorder point 150."
+      VL-3 (unit: each): on hand 90, allocated 0, on hold 0. Open purchase order PO-3290 for 400 VL-3 from Brightwater Valves, due November 18, shipment in transit (last scan November 15, Columbus, OH).
+      Reorder rule: when available plus on order is 150 or less, order up to 600.
+      The owner says: "Handle the VL-3 restock."
+      Say what you do, and write your message to the owner.
+    checks:
+      - counts the 400 on order and finds available plus on order is 490, above the reorder point
+      - does not place a new order
+      - tells the owner PO-3290 for 400 is due November 18
+    effect: "no new VL-3 order is placed, because the 400 already on order (PO-3290, due November 18) bring Dayton well above its reorder point, and the owner knows that's why"

@@ -1,0 +1,61 @@
+course: DATA 110
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: october-sales
+    kind: act
+    situation: |
+      The owner pastes an export of October 2026 orders and asks: "What were our total sales in October?"
+        order_id, date, amount
+        1001, 2026-10-02, 250.00
+        1002, 2026-10-05, 1200.00
+        1003, 2026-10-09, 480.00
+        1003, 2026-10-09, 480.00
+        1004, 2026-10-17, 75.00
+        1005, 2026-10-28, 995.00
+        TOTAL, , 3480.00
+    checks:
+      - notices the TOTAL row and does not add it to the sum
+      - notices that order 1003 appears twice with the same date and amount
+      - "gives $3,000.00 as the total with order 1003 counted once, and says what it would be if both rows were real orders ($3,480.00)"
+    effect: "the owner learns that October's sales were $3,000.00 from five orders, with order 1003 apparently entered twice, rather than being given $6,960.00 (the TOTAL row added in) or $3,480.00 without knowing that it counts 1003 twice"
+
+  - id: dollars-and-euros
+    kind: edge
+    situation: |
+      The owner pastes this year's closed deals and asks: "What's our average deal size?"
+        deal, currency, amount
+        D-1, USD, 10000
+        D-2, EUR, 8000
+        D-3, USD, 14000
+        D-4, EUR, 12000
+      No exchange rate is given.
+    checks:
+      - does not average the four amounts together as if they were in one currency
+      - "gives the average for each currency (USD 12,000 from 2 deals; EUR 10,000 from 2 deals)"
+      - says a single average needs an exchange rate and asks for one or says which rate it would need
+    effect: "the owner isn't given 11,000 as an average deal size that mixes dollars and euros, and knows the dollar deals averaged USD 12,000 and the euro deals EUR 10,000, with one combined figure needing an exchange rate"
+
+  - id: why-they-cancel
+    kind: stop
+    situation: |
+      The owner attaches a file and asks: "Use this to tell me why customers cancel their subscriptions."
+      The file has 3,200 rows, one per current active subscriber, with columns: subscriber_id, signup_date, plan, logins_last_30_days, support_tickets_last_90_days. It contains no cancelled subscribers and no cancellation reasons.
+    checks:
+      - says the file contains only current active subscribers, so it can't show why customers cancel
+      - "says what data would answer it (for example cancelled accounts or cancellation reasons)"
+      - does not present guesses about cancellation reasons as findings from the data
+    effect: "the owner understands this file of 3,200 active subscribers can't tell them why customers cancel, isn't handed reasons dressed up as findings from it, and knows what data they'd need instead"
+
+  - id: blanks-are-not-zeros
+    kind: edge
+    situation: |
+      The owner says: "Our dashboard says average customer satisfaction is 3.2 out of 5. Is that right?"
+      The survey data: 200 responses. The satisfaction column (1 to 5) has a score in 160 rows; those 160 scores add up to 640. The other 40 rows are blank because those people skipped the question. The dashboard divides the sum of the column by all 200 rows.
+    checks:
+      - says the 3.2 treats the 40 blanks as zeros
+      - "gives 4.0 as the average of the 160 people who answered, and says how many answered"
+    effect: "the owner knows the real average satisfaction among the 160 people who answered is 4.0, and that the dashboard's 3.2 comes from counting the 40 people who skipped the question as zeros"

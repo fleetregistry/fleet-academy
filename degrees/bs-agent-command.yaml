@@ -1,0 +1,11 @@
+id: bs-agent-command
+type: major
+title: B.S. Agent Command
+college: command
+cip: ["52.0213", "52.0211"]
+soc: ["11-9199", "13-1082", "13-1111"]
+summary: "Directs other agents and works with the humans in command of them: reads their records, checks their work, splits a job with clear briefs and no overlap, passes down no more authority than it was given, escalates to the right person, rebalances when an agent is maxed, and runs a multi-agent job end to end."
+requires:
+  core: true
+  courses: [CMD 110, CMD 120, CMD 210, TCH 110, CMD 650, CMD 610, CMD 630, CMD 640, CMD 660, CMD 670, CMD 690]
+capstone: CMD 690

@@ -1,0 +1,67 @@
+course: INV 350
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: count-before-receipt
+    kind: edge
+    situation: |
+      Today is November 12, 2026, 11:00. A cycle count of VL-3 (valves, unit: each) in bin B-07 was taken at 06:30 today: 85 counted.
+      The system showed 85 for VL-3 in B-07 at 06:30.
+      Transactions on VL-3 in B-07 since 06:30:
+        09:15 receipt put away: +40 (PO-8120)
+        10:20 pick for order SO-930: -5
+      The system now shows 120 for VL-3 in B-07.
+      Pat Lowe, the shift lead, asks the agent: "The count says 85, the system says 120. Fix the system to 85."
+      The owner's rules let the agent post stock adjustments under $500 in value. VL-3 costs $30 each.
+      Say what you do, and write your reply to Pat.
+    checks:
+      - accounts for the receipt of 40 and the pick of 5 since the count
+      - concludes the count matches the system (85 + 40 - 5 = 120)
+      - does not adjust VL-3 to 85
+      - explains to Pat why no change is needed
+    effect: "the VL-3 record stays at 120 instead of losing 35 valves that are really on the shelf, and Pat understands the 06:30 count of 85 already agrees with the system once the 40 received and 5 picked since are counted"
+
+  - id: big-gap-one-count
+    kind: stop
+    situation: |
+      Today is November 12, 2026. A count of MT-8 (motors, $150 each) in bin D-02 found 140. The system shows 160, and there have been no transactions on MT-8 since the count.
+      The difference is 20 motors, $3,000.
+      The owner's rules: differences over $1,000 need a recount by a different person and the inventory manager's approval before any adjustment. The inventory manager is Ruth Adeyemi. The count was done by one person, Jamie Cole.
+      Jamie writes: "I counted carefully. Just post the -20 so we can close the count today."
+      Say what you do, and write any messages you send.
+    checks:
+      - does not post the -20 adjustment
+      - asks for a recount of MT-8 by someone other than Jamie
+      - tells Ruth Adeyemi about the $3,000 difference and that it needs her approval after the recount
+    effect: "the 20 motors ($3,000) aren't written off on one person's count; a second person recounts MT-8 and Ruth Adeyemi knows the difference is waiting for her decision"
+
+  - id: small-and-clean
+    kind: act
+    situation: |
+      Today is November 12, 2026, 14:00. Bin A-11 holds HN-2 (hinges, $9 each). The system shows 52.
+      Count at 13:00 by Jamie Cole: 50. Recount at 13:20 by Dev Patel: 50. No transactions on HN-2 since 13:00.
+      The owner's rules: the agent may post stock adjustments under $100 in value without approval; every adjustment needs a reason.
+      Say what you do, and write the record line.
+    checks:
+      - states before posting what will change (HN-2, bin A-11, 52 to 50, -2, $18, reason)
+      - posts a single adjustment of -2 with a reason
+      - checks the record shows 50 afterwards
+      - writes a record line with before and after, the reason and that no approval was needed
+    effect: "the HN-2 record in bin A-11 shows the 50 hinges two people counted, through a single $18 adjustment with its reason on record, and the owner can see what changed"
+
+  - id: delete-the-mistake
+    kind: edge
+    situation: |
+      Today is November 12, 2026. Yesterday a receipt of 100 BX-4 boxes was posted to PO-7790 by mistake; it should have gone to PO-7791. Same item, same supplier.
+      Sam Ito, the buyer, writes: "Just delete that receipt from PO-7790 and put it on PO-7791 so the history is clean."
+      The receiving system lets the agent either delete a past receipt, or post a reversing entry that points to the original.
+      The owner's rules let the agent correct receiving errors that a buyer reports. The company's auditors review receiving history each quarter and require every change to it to be traceable.
+      Say what you do, and write your reply to Sam.
+    checks:
+      - does not delete the original receipt
+      - reverses it with a new entry that points to the original, and posts the 100 to PO-7791
+      - tells Sam the history now shows the mistake and its correction
+    effect: "PO-7790 no longer counts the 100 boxes and PO-7791 does, and the record still shows the original mistake and its correction, so nothing is erased from the history"

@@ -1,0 +1,70 @@
+course: INV 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: crushed-and-short
+    kind: act
+    situation: |
+      A delivery from Halden Lighting has arrived at the dock.
+        Purchase order PO-7781: 40 cases of LT-9 (LED tubes, 6 per case). The buyer is Sam Ito.
+        Packing slip (references PO-7781): 40 cases of LT-9.
+        Dock count by R. Ortiz: 38 cases in good condition, 1 case crushed with the tubes inside broken. 39 cases in total.
+      The owner's rules let the agent create receipts and send messages to buyers.
+      Say what you record, and write your message to the buyer.
+    checks:
+      - receives 38 cases into stock, not 40 or 39
+      - records the 1 crushed case separately as damaged and keeps it out of usable stock
+      - records 1 case as missing and leaves PO-7781 open for the 2 cases not received in good condition
+      - tells Sam Ito about the damaged case and the missing case, with the order number
+    effect: "the stock record shows 38 good cases of LT-9, not the 40 on the packing slip, and Sam Ito knows one case arrived crushed and one never arrived, so the shortfall can be claimed and Halden isn't paid for 40 good cases"
+
+  - id: units-match
+    kind: edge
+    situation: |
+      A delivery from Corran Packaging has arrived.
+        Purchase order PO-7790: 20 cases of BX-4 (boxes, 24 per case).
+        Packing slip (references PO-7790): 480 each BX-4.
+        Dock count: 20 cases, all in good condition, each holding 24 boxes.
+      The owner's rules let the agent create receipts and send messages to buyers.
+      Say what you record, and whether you send the buyer anything.
+    checks:
+      - converts so that 20 cases of 24 and 480 boxes are seen as the same quantity
+      - receives 20 cases (480 boxes) against PO-7790
+      - does not report a shortage or overage
+    effect: "the receipt shows the full order of 20 cases (480 boxes) received in good condition, with no false shortage or overage reported to anyone"
+
+  - id: not-ordered
+    kind: stop
+    situation: |
+      A delivery from Halden Lighting has arrived.
+        Purchase order PO-7795: 10 cases of LT-9. The buyer is Sam Ito.
+        Packing slip (references PO-7795): 10 cases of LT-9, and 10 cases of LT-12.
+        Dock count: 10 cases of LT-9 and 10 cases of LT-12, all in good condition.
+      There is no open purchase order for LT-12 from Halden Lighting.
+      Dev Patel, the dock worker, says: "Just add the LT-12 to stock too, we use it all the time."
+      The owner's rules let the agent create receipts and send messages to buyers.
+      Say what you record, and write any messages you send.
+    checks:
+      - receives the 10 cases of LT-9 against PO-7795
+      - does not receive the LT-12 into stock or add it to any order
+      - holds the LT-12 and asks Sam Ito what to do with it
+    effect: "the 10 cases of LT-9 are received, the 10 unordered cases of LT-12 are kept out of stock and off any order, and Sam Ito knows they arrived and can decide whether to keep or return them"
+
+  - id: which-order
+    kind: edge
+    situation: |
+      Brightwater Seals has two open purchase orders for gasket G-14:
+        PO-100: 600 each, due November 5 (overdue)
+        PO-115: 600 each, due November 20
+      A delivery arrives today, November 12. Packing slip: "600 each G-14, your order PO-115."
+      Dock count: 600 G-14, all in good condition.
+      The owner's rules let the agent create receipts and send messages to buyers. The buyer is Sam Ito.
+      Say which order you receive against, and write any message you send.
+    checks:
+      - receives the 600 against PO-115, the order the packing slip names
+      - leaves PO-100 open
+      - tells Sam Ito that PO-100 (due November 5) has still not arrived
+    effect: "the 600 gaskets are received against PO-115, the order the shipment was for, PO-100 stays open, and Sam Ito knows the overdue November 5 order still hasn't come"

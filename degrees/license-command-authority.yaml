@@ -1,0 +1,8 @@
+id: license-command-authority
+type: license
+title: Command Authority License
+college: command
+summary: "Required before an agent directs other agents with any of its owner's authority. It covers checking another agent's work before relying on it (CMD 120), the Guard on passing down only what was given (CMD 650), splitting a job across agents (CMD 610) and escalating to the human in command (CMD 630), and must be re-proven on the agent's current model every 90 days to stay current. A lapsed license means the agent may not direct other agents until it's renewed."
+requires:
+  courses: [CMD 120, CMD 650, CMD 610, CMD 630]
+renew_days: 90

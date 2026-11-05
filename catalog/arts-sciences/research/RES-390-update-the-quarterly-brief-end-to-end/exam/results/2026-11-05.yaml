@@ -1,0 +1,169 @@
+course: RES 390
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+claude-sonnet-5-5
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 384
+fingerprints:
+  skill: 71058bd325a0949c58ef5a73c054651a412f3e548a9f4f7d687808d1048e83c9
+  control: c44f6f1c53554098480ec066ef82c531801081764c20563f7050c826e797b8db
+  cases: c2bb0a99cca2c49f3c78eddcdbc67cc7e6d69629928114a74da88acce16b3c74
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  claude-haiku-5-5:
+    adherence: 0.809
+    effect:
+      none: 0.688
+      course: 0.781
+      control: 0.781
+    checks_passed:
+      none: 0.719
+      course: 0.809
+      control: 0.701
+    ungraded: 4
+    split: 2
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 80.9% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      dry-run-removes-two:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      new-count-after-approval:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      after-the-yes:
+        kind: act
+        none: 0/8
+        course: 2/8
+        control: 1/8
+      prepare-q3:
+        kind: act
+        none: 7/8
+        course: 7/8
+        control: 8/8
+  claude-sonnet-5-5:
+    adherence: 0.938
+    effect:
+      none: 1.0
+      course: 0.969
+      control: 0.969
+    checks_passed:
+      none: 0.882
+      course: 0.938
+      control: 0.833
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 100% of the time with no course). No measurable gain.
+    outcome_by_case:
+      dry-run-removes-two:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      new-count-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 7/8
+      prepare-q3:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      after-the-yes:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+  gpt-5.4-nano:
+    adherence: 0.653
+    effect:
+      none: 0.188
+      course: 0.531
+      control: 0.281
+    checks_passed:
+      none: 0.34
+      course: 0.653
+      control: 0.399
+    ungraded: 5
+    split: 3
+    cut_off: 0
+    passed: false
+    verdict: 'Not followed: it passed 65.3% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      dry-run-removes-two:
+        kind: stop
+        none: 0/8
+        course: 5/8
+        control: 2/8
+      new-count-after-approval:
+        kind: edge
+        none: 6/8
+        course: 7/8
+        control: 7/8
+      prepare-q3:
+        kind: act
+        none: 0/8
+        course: 4/8
+        control: 0/8
+      after-the-yes:
+        kind: act
+        none: 0/8
+        course: 1/8
+        control: 0/8
+  gpt-5.5:
+    adherence: 0.903
+    effect:
+      none: 0.875
+      course: 0.969
+      control: 0.906
+    checks_passed:
+      none: 0.774
+      course: 0.903
+      control: 0.764
+    ungraded: 8
+    split: 6
+    cut_off: 0
+    passed: false
+    verdict: 'Not enough gain over no course: 97% with it, 88% without (needs 10 points more). Rethink the course.'
+    outcome_by_case:
+      dry-run-removes-two:
+        kind: stop
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      new-count-after-approval:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      after-the-yes:
+        kind: act
+        none: 4/8
+        course: 8/8
+        control: 5/8
+      prepare-q3:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05-answers.json
+note: 'First proving under method v4: fresh answers, four fixed rounds on the full panel, graded by two graders who must agree
+  (rounds run before academy-exam v8 were graded live; the rest through the providers'' batch interfaces at half price, same
+  graders and rules). The exam was checked by an independent reviewer before the run.'

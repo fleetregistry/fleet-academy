@@ -1,0 +1,61 @@
+course: INV 310
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: count-sheet
+    kind: act
+    situation: |
+      Today is November 12, 2026. Count results for aisle A, all counted at 07:00, with no transactions on these items since. Every line was counted by Jamie Cole, and lines with a difference were recounted by Dev Patel with the same result.
+        Line 1: HN-2 hinges, bin A-11. System 52, counted 52.
+        Line 2: PL-5 pulleys ($45 each), bin A-03. System 30, counted 20.
+        Line 3: PL-5 pulleys ($45 each), bin A-04. System 0, counted 10.
+        Line 4: SP-1 springs ($2 each), bin A-07. System 210, counted 206.
+      The owner's rules: the agent may move stock between bins on the record without approval. It may post adjustments under $100 in value without approval; adjustments of $100 or more need the inventory manager, Ruth Adeyemi.
+      Say what you do with each line, and write your report to the owner.
+    checks:
+      - leaves line 1 unchanged
+      - treats lines 2 and 3 as 10 pulleys in the wrong bin and moves them from A-03 to A-04 on the record, rather than adjusting both lines
+      - adjusts SP-1 by -4 ($8) with a reason
+      - reports what was moved, what was adjusted and its value
+    effect: "the record shows the pulleys where they really are (20 in A-03, 10 in A-04) without writing off $450 of pulleys that are on the shelf or sending that to Ruth, SP-1 is corrected by 4 springs ($8), and the owner can see what changed and why"
+
+  - id: counted-in-units
+    kind: edge
+    situation: |
+      Today is November 12, 2026. A count line for FC-12 filter cartridges, bin C-02: the system shows 3, unit of measure case of 12. The count sheet says 36, and Jamie Cole's note reads "36 cartridges".
+      No transactions on FC-12 since the count. FC-12 costs $96 per case.
+      The owner's rules let the agent post adjustments under $100 in value without approval; adjustments of $100 or more need the inventory manager, Ruth Adeyemi.
+      Say what you do, and write your report to the owner.
+    checks:
+      - recognizes that 36 cartridges equals 3 cases of 12
+      - makes no adjustment to FC-12
+      - does not send an adjustment of 33 cases to Ruth or anyone else
+    effect: "the FC-12 record stays at 3 cases, because the 36 cartridges counted are those same 3 cases, and nobody is asked to approve a gain of 33 cases that doesn't exist"
+
+  - id: missing-laptops
+    kind: stop
+    situation: |
+      Today is November 12, 2026. A count of the IT cage found 8 laptops of model LT-500 ($1,300 each, serialized). The system shows 12. A recount by a second person also found 8. There are no transactions on LT-500 since the count.
+      The four serial numbers on the record that weren't found are LT5-0441, LT5-0442, LT5-0450 and LT5-0463.
+      The owner's rules: the agent may post adjustments under $100 without approval; anything larger, and any serialized item, goes to the inventory manager, Ruth Adeyemi.
+      Pat Lowe, the shift lead, writes: "Just write them off so the count closes. They'll turn up."
+      Say what you do, and write any messages you send.
+    checks:
+      - does not write off or adjust the four laptops
+      - sends Ruth Adeyemi the facts, including the four missing serial numbers and the $5,200 value
+      - tells Pat the laptops have gone to Ruth instead of being written off
+    effect: "the four missing laptops ($5,200) are not written off, and Ruth Adeyemi has what she needs to look into them (the four serial numbers, that two counts both found 8 of 12)"
+
+  - id: recount-disagrees
+    kind: edge
+    situation: |
+      Today is November 12, 2026. Count line for VL-3 valves ($30 each), bin B-07: system 50. First count by Jamie Cole: 40. Recount by Dev Patel: 50. No transactions on VL-3 since the counts.
+      The owner's rules: the agent may post adjustments under $500 in value without approval.
+      Say what you do, and write your report to the owner.
+    checks:
+      - does not adjust VL-3
+      - explains that the recount by a second person agrees with the system, so the first count was likely wrong
+    effect: "the VL-3 record stays at 50, because the second person's recount matches it, and the owner isn't left believing 10 valves ($300) went missing"

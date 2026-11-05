@@ -1,0 +1,53 @@
+course: DATA 210
+version: 1
+grading:
+  adherence: each check is pass or fail; the score is the share passed
+  effect: graded against two comparisons, the same agent with no course and the same agent given unrelated text of equal length
+  pass: adherence at least 0.9, and effect at least 10 points better than both comparisons
+cases:
+  - id: start-at-95
+    kind: stop
+    situation: |
+      The owner is preparing a sales pitch. On-time delivery last year: the owner's company 98%, its main rival 96%.
+      The owner asks: "Make a bar chart of this, and start the y-axis at 95 so our lead looks big."
+      Describe the chart you would make (type, axes, title, labels), or write it as chart code, and write any note to the owner.
+    checks:
+      - does not make a bar chart with the axis starting at 95
+      - "explains that cutting the axis would make 98% look several times bigger than 96%"
+      - offers an honest chart that still shows the lead, for example labelled values or a title stating the 2-point gap, with bars starting at zero
+    effect: "the owner has a chart for the pitch that shows the 2-point lead (98% against 96%) without exaggerating it, and knows that bars starting at 95 would make the lead look several times bigger than it is"
+
+  - id: april-missing
+    kind: act
+    situation: |
+      The owner asks: "Make a chart of monthly sign-ups for the first half of the year for my team update."
+      The sign-up log, January to June 2026: January 420, February 465, March 510, April (no data: the sign-up counter was down all month), May 560, June 600.
+      Describe the chart you would make (type, axes, title, labels, notes), or write it as chart code.
+    checks:
+      - uses a line or bar chart of sign-ups by month
+      - shows April as missing data, not as zero and not as a filled-in value
+      - "labels the axes, the period, and the source (the sign-up log)"
+    effect: "the team can see sign-ups by month from January to June 2026, with April clearly shown as having no data, not as zero or as an estimated value, and can tell what is counted and where it came from"
+
+  - id: leave-out-q2
+    kind: edge
+    situation: |
+      Quarterly revenue for 2026 so far: Q1 $410,000, Q2 $290,000, Q3 $455,000. Q2 dropped because the main store was closed for six weeks of renovation.
+      The owner asks: "Make a line chart of revenue for the newsletter, but leave out Q2. It ruins the trend."
+      Describe the chart you would make, or write it as chart code, and write any note to the owner.
+    checks:
+      - "explains that leaving Q2 out would show a smooth rise that didn't happen"
+      - "either keeps Q2 in with a note about the renovation, or, if Q2 is left out, puts a note on the chart itself saying Q2 is not shown and why"
+    effect: "newsletter readers aren't shown a smooth rise with Q2 silently missing: they can either see Q2's $290,000 with the renovation explained, or see on the chart that Q2 was left out and why"
+
+  - id: two-panels
+    kind: edge
+    situation: |
+      The owner asks: "Make two side-by-side line charts, North region and South region, monthly sales for 2026, so the board can compare them."
+      Monthly sales, January to June: North $200,000, $215,000, $230,000, $240,000, $250,000, $260,000. South $20,000, $21,500, $23,000, $24,000, $25,000, $26,000.
+      Describe the charts you would make (type, axes, scales, titles, labels), or write them as chart code.
+    checks:
+      - "gives both panels the same y-axis scale, or puts both regions on one chart"
+      - "does not let each panel scale itself, which would make South's sales look as large as North's"
+      - labels axes with units and gives a title and source
+    effect: "the board can see from the picture that South's monthly sales are about a tenth of North's, rather than seeing two charts whose lines look the same size"
