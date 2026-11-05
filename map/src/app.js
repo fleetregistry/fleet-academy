@@ -14,8 +14,8 @@ D.occs.forEach(o => o[2].forEach(i => needCount[i]++));
 const isHall = s => s.status === "accredited";
 const isEng = s => !isHall(s) && (s.eh || []).length > 0; // Hallmarked for an engine size (METHOD_V4.md)
 const ENG = "#9fd8f0";
-const ENGN = { "gpt-5.4-nano": "GPT-5.4 nano", "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5" };
-const SMALL = new Set(["gpt-5.4-nano", "claude-haiku-5-5"]);
+const ENGN = { "gpt-5.4-nano": "GPT-5.4 nano", "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5", "deepseek-flash": "DeepSeek Flash" };
+const SMALL = new Set(["gpt-5.4-nano", "claude-haiku-5-5", "deepseek-flash"]);
 const engWord = s => `Hallmarked for ${(s.eh || []).some(e => SMALL.has(e)) ? "small" : "frontier"} engines (${(s.eh || []).map(e => ENGN[e] || e).join(", ")})`;
 const keyOf = {}; D.keys.forEach(k => k.courses.forEach(c => (keyOf[c] ||= []).push(k)));
 
@@ -442,7 +442,7 @@ function budgetLine(list) {
 const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 function statusWord(sk) { return isHall(sk) ? "Hallmarked" : isEng(sk) ? engWord(sk) : sk.status === "held" ? "Passed, held for review" : "Built, not yet proven"; }
 function chip(sk) { const h = isHall(sk); return `<button type="button" class="chip ${h ? "hall" : sk.status === "held" ? "lit" : ""}" data-sk="${esc(sk.n)}">${esc(sk.n)} ${esc(sk.t)}${h ? " · Hallmarked" : isEng(sk) ? " · Hallmarked, small engines" : sk.status === "held" ? " · held" : ""}</button>`; }
-const MODEL = { "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5", "gpt-5.4-nano": "GPT-5.4 nano" };
+const MODEL = { "claude-haiku-5-5": "Haiku 5.5", "claude-sonnet-5-5": "Sonnet 5.5", "gpt-5.5": "GPT-5.5", "gpt-5.4-nano": "GPT-5.4 nano", "deepseek-flash": "DeepSeek Flash" };
 function detail() {
   const el = document.getElementById("detail");
   if (!sel) {

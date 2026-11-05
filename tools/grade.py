@@ -348,7 +348,7 @@ def _score(rows: list, ungraded_as: bool) -> dict:
             "passed": passed, "verdict": verdict, "outcome_by_case": per_case}
 
 
-def report(number: str, row_files: list, accredit: bool, note: str = "", hold: str = "", confirm: str = "") -> int:
+def report(number: str, row_files: list, accredit: bool, note: str = "", hold: str = "", confirm: str = "", engine: str = "") -> int:
     d = find_course(number)
     rows, rounds = [], {}
     for f in row_files:  # each file is one round on one model
@@ -360,7 +360,10 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     # an ungraded row still counts all of its case's checks, so give every row its case's check count
     exam_cases = {c["id"]: len(c["checks"]) for c in yaml.safe_load((d / "exam" / "cases.yaml").read_text(encoding="utf-8"))["cases"]}
     rows = [{**r, "n_checks": exam_cases[r["case"]]} for r in rows]
-    if confirm:  # a confirmation run: one engine, 4 fresh rounds, for a Hallmark by engine size (METHOD_V4.md)
+    if engine:  # a first proving on an engine outside the panel (METHOD_V4.md: DeepSeek joins as an extra engine)
+        if confirm or sorted(rounds) != [engine]:
+            sys.exit(f"an extra-engine proving is on {engine} only; got {sorted(rounds)}")
+    elif confirm:  # a confirmation run: one engine, 4 fresh rounds, for a Hallmark by engine size (METHOD_V4.md)
         if sorted(rounds) != [confirm]:
             sys.exit(f"a confirmation run is on {confirm} only; got {sorted(rounds)}")
     elif sorted(rounds) != sorted(PANEL):
@@ -371,9 +374,9 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     by_model = {m: score([r for r in rows if r["model"] == m]) for m in models}
     n_pass = sum(1 for s in by_model.values() if s["passed"])
     meets_rule = n_pass >= MIN_MODELS
-    if confirm:
-        meets_rule = by_model[confirm]["passed"]
-    accredited = meets_rule and not hold and not confirm  # a reviewer can hold a pass back, with a reason; never the reverse
+    if confirm or engine:
+        meets_rule = by_model[confirm or engine]["passed"]
+    accredited = meets_rule and not hold and not confirm and not engine  # a reviewer can hold a pass back, with a reason; never the reverse
     exam = yaml.safe_load((d / "exam" / "cases.yaml").read_text(encoding="utf-8"))
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     p0 = packet(number, models[0])
@@ -390,6 +393,7 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
         "models": by_model, "passed_on": n_pass, "meets_rule": meets_rule, "accredited": accredited, "answers": answers_name,
         **({"held": hold} if hold else {}),
         **({"confirmation_for": confirm, "confirmed": bool(meets_rule and not hold)} if confirm else {}),
+        **({"extra_engine": engine} if engine else {}),
         **({"note": note} if note else {}),
     }
     (out_dir / f"{stem}.yaml").write_text(yaml.safe_dump(summary, sort_keys=False, allow_unicode=True, width=120), encoding="utf-8")
@@ -413,7 +417,7 @@ def main() -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     a = sub.add_parser("packet"); a.add_argument("course"); a.add_argument("--model", required=True); a.add_argument("--runs", type=int, default=RUNS)
     b = sub.add_parser("run"); b.add_argument("course"); b.add_argument("--model", required=True); b.add_argument("--runs", type=int, default=RUNS); b.add_argument("--out", required=True)
-    c = sub.add_parser("report"); c.add_argument("course"); c.add_argument("rows", nargs="+"); c.add_argument("--accredit", action="store_true"); c.add_argument("--note", default=""); c.add_argument("--hold", default="", help="hold a pass back as draft, with the reason"); c.add_argument("--confirm", default="", help="score a confirmation run on this one engine")
+    c = sub.add_parser("report"); c.add_argument("course"); c.add_argument("rows", nargs="+"); c.add_argument("--accredit", action="store_true"); c.add_argument("--note", default=""); c.add_argument("--hold", default="", help="hold a pass back as draft, with the reason"); c.add_argument("--confirm", default="", help="score a confirmation run on this one engine"); c.add_argument("--engine", default="", help="score a first proving on one engine outside the panel")
     args = ap.parse_args()
     if args.cmd == "packet":
         print(json.dumps(packet(args.course, args.model, args.runs)))
@@ -422,7 +426,7 @@ def main() -> int:
         Path(args.out).write_text(json.dumps(rows, indent=1, ensure_ascii=False), encoding="utf-8")
         print(f"wrote {len(rows)} graded answers to {args.out}")
     else:
-        return report(args.course, args.rows, args.accredit, args.note, args.hold, args.confirm)
+        return report(args.course, args.rows, args.accredit, args.note, args.hold, args.confirm, args.engine)
     return 0
 
 

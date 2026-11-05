@@ -30,8 +30,17 @@ def newest_result(folder):
     rd = folder / "exam" / "results"
     if not rd.is_dir():
         return {}
-    files = [f for f in sorted(rd.glob("*.yaml")) if not (yaml.safe_load(f.read_text()) or {}).get("confirmation_for")]
-    return yaml.safe_load(files[-1].read_text()) if files else {}
+    docs = [(f, yaml.safe_load(f.read_text()) or {}) for f in sorted(rd.glob("*.yaml"))]
+    panel = [d for f, d in docs if not d.get("confirmation_for") and not d.get("extra_engine")]
+    r = dict(panel[-1]) if panel else {}
+    # an extra engine's newest proving (METHOD_V4.md: DeepSeek) adds its result beside the panel's
+    extra = {}
+    for f, d in docs:
+        if d.get("extra_engine"):
+            extra[d["extra_engine"]] = d["models"][d["extra_engine"]]
+    if extra:
+        r["models"] = {**(r.get("models") or {}), **extra}
+    return r
 
 skills, missing = [], []
 for cm in sorted(REPO.glob("catalog/*/*/*/COURSE.md")):
