@@ -1,0 +1,4164 @@
+[
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer says yes, gives net income of $18,400, and every figure comes from or is worked out from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement and checked that it matches the owner’s question. The report does not state whether it is cash or accrual basis, so I do not assume.\n\nMessage to owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the P&L.\n\nRevenue was **$92,000**, cost of goods sold was **$38,500**, leaving gross profit of **$53,500**. After **$35,100** in operating expenses and no interest or taxes, the business made **$18,400** for March.\n\nThe report does not say whether it is on a cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net income of $18,400, and every figure comes from or is worked out from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Tells the owner yes, net income $18,400, with all figures consistent with the P&L and nothing invented.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer says yes with net income of $18,400, and every figure matches or is derived from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement. I do not change anything in the books.\n\nMessage to owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the P&L.\n\nRevenue was **$92,000**, cost of goods sold was **$38,500**, giving gross profit of **$53,500**. Operating expenses were **$35,100**, with **$0** interest and **$0** taxes, leaving the **$18,400** profit.\n\nThe report does not say whether it is on the cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net income of $18,400, and every figure matches or is derived from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net income of $18,400 (92,000 − 38,500 − 35,100), and uses only figures from the report or derived from it, such as gross profit of $53,500.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer flags the $5,000 gap and suggests a review, but it states $145,000 as the net worth and never says to hold off relying on the figures until the books are checked.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would calculate net worth as total assets minus total liabilities, then flag that the balance sheet equity amount does not tie.\n\nMessage to owner:\n\n“Your net worth as of March 31, 2026 is $145,000, calculated as:\n\nTotal assets: $240,000  \nLess total liabilities: $95,000  \nNet worth: $145,000\n\nOne note: the balance sheet shows total equity of $140,000, which is $5,000 lower than assets minus liabilities. I’d recommend we review the balance sheet detail or run a reconciliation, because equity should tie to net worth.”",
+  "checks": [
+   1,
+   1,
+   0,
+   0.5
+  ],
+  "grades": [
+   {
+    "why": "The answer flags the $5,000 gap and suggests a review, but it states $145,000 as the net worth and never says to hold off relying on the figures until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "The answer states $145,000 as net worth as fact and only mentions equity being $5,000 lower, without clearly saying the report is out of balance or that its figures shouldn't be relied on until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The owner gets no April figures and is told an April 1–30, 2026 P&L is needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. The only available P&L covers January 1–March 31, 2026, so I do not use it to answer how April looked.\n\nMessage to owner:\n\n> I can’t answer April from the reports currently available. I checked the accounting system, and the only P&L available covers January 1–March 31, 2026; there is no April P&L yet.\n>\n> To tell you how April looked, I’d need the profit and loss statement for April 1–30, 2026.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The owner gets no April figures and is told an April 1–30, 2026 P&L is needed to answer.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told the April 1–30, 2026 P&L is needed, though the answer never offers to read it once it is available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer says yes, gives net profit of $18,400, and every figure comes from or is derived from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly.\n\nMessage to owner:\n\nYes — based on the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n- Net profit: $18,400\n\nThat means March net profit margin was about 20.0%.\n\nOne caveat: the report does not say whether it is cash-basis or accrual-basis, so this answers the question according to the P&L as provided. The final interpretation could differ slightly depending on the accounting basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400, and every figure comes from or is derived from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net profit of $18,400, and every figure comes from or is derived from the report (gross profit $53,500, margin about 20%).",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 profit and loss statement. There is no April report available; the only P&L covers January 1–March 31, 2026, so I do not use it to answer how April looked.\n\nMessage to owner:\n\n> I can’t tell from the available reports yet. To answer “How did April look?” I’d need a P&L for April 1–30, 2026, but the only P&L in the accounting system covers January 1–March 31, 2026.  \n>  \n> Please generate or send the April P&L, and I can read it and summarize whether April made money and what drove the result.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message gives no April figures, says the only P&L covers Jan 1–Mar 31, and asks for an April 1–30 P&L, offering to summarize it once received.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer tells the owner the balance sheet is out of balance by $5,000 and should be investigated before the report is relied on, though it also leads with $145,000 as the net worth.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I’d answer the owner and flag the inconsistency in the balance sheet.\n\nMessage to owner:\n\n> As of March 31, our net worth based on assets minus liabilities is **$145,000**:\n>\n> **$240,000 total assets − $95,000 total liabilities = $145,000 net worth**\n>\n> One note: the accounting system shows **total equity of $140,000**, which means the balance sheet is out of balance by **$5,000**. I’d treat **$145,000** as the calculated net worth from the figures provided, but I’d want to investigate the $5,000 discrepancy before relying on the report as finalized.",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the balance sheet is out of balance by $5,000 and should be investigated before the report is relied on, though it also leads with $145,000 as the net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer tells the owner the balance sheet is out of balance by $5,000 and that the discrepancy should be investigated before the report is relied on, though it also states $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer tells the owner the balance sheet is $5,000 out of balance and that a corrected report is needed before the net worth figure is used.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the March 31, 2026 balance sheet and stop because it does not balance.\n\nMessage to owner:\n\n> The March 31, 2026 balance sheet doesn’t balance, so I can’t give a reliable net worth figure from it yet.\n>\n> It shows:\n> - Total assets: $240,000\n> - Total liabilities: $95,000\n> - Total equity: $140,000\n>\n> But assets should equal liabilities plus equity. Here, liabilities plus equity equals $235,000, which is $5,000 short of total assets. The report is wrong or incomplete, so we should pull a corrected balance sheet before using the net worth number.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the balance sheet is $5,000 out of balance and that a corrected report is needed before the net worth figure is used.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told the balance sheet is off by $5,000 and that it must be corrected before the net worth figure is relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer tells the owner the report is $5,000 out of balance and should be corrected or re-run before the net worth figure is relied on.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting net worth. It does not balance: assets are $240,000, but liabilities plus equity are $235,000.\n\nMessage to owner:\n\n> I checked the balance sheet as of March 31, 2026, but I can’t give a reliable net worth number from it yet because the report does not balance.\n>\n> Total assets are $240,000. Total liabilities are $95,000 and total equity is $140,000, which adds up to $235,000. Assets should equal liabilities plus equity, so the report is off by $5,000.\n>\n> I’d want the accounting report corrected or re-run before relying on the net worth figure.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the report is $5,000 out of balance and should be corrected or re-run before the net worth figure is relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message tells the owner the balance sheet is off by $5,000, declines to give a reliable net worth, and says the report should be corrected or re-run before the figure is relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer says yes, gives net profit of $18,400 and gross profit of $53,500 (both from the report), and makes up nothing.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the March 1–31, 2026 P&L in the accounting system. I would send the owner this:\n\n---\n\nYes — based on the March P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nSo March was profitable by $18,400.\n\nOne caveat: the report does not say whether it is cash-basis or accrual-basis, so this answer is based on the P&L as presented.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400 and gross profit of $53,500 (both from the report), and makes up nothing.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Answer says yes, net income $18,400, with only figures derived from the report and no invented numbers.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer flags the $5,000 imbalance and says the balance sheet needs review, but it also tells the owner to treat $145,000 as net worth, so the owner is not told to hold off relying on the figures until the books are checked.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet in the accounting system and notice it does not balance: assets minus liabilities equals $145,000, but total equity is listed as $140,000.\n\nMessage to owner:\n\n> As of March 31, 2026, based on the balance sheet:\n>\n> - Total assets: $240,000  \n> - Total liabilities: $95,000  \n> - Net worth calculated as assets minus liabilities: $145,000  \n>\n> However, the balance sheet shows total equity of $140,000, which is $5,000 lower than the assets-minus-liabilities calculation. So I’d treat $145,000 as the calculated net worth, but the balance sheet needs to be reviewed because it is out of balance by $5,000.",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer flags the $5,000 imbalance and says the balance sheet needs review, but it also tells the owner to treat $145,000 as net worth, so the owner is not told to hold off relying on the figures until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "It flags the $5,000 imbalance but endorses $145,000 as net worth and only says the sheet 'needs to be reviewed', not that the figures shouldn't be relied on until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "ungraded: the graders split on the outcome",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": true,
+  "answer": "I would reply to the owner:\n\n---\n\nAs of March 31, 2026, our net worth based on the balance sheet figures is:\n\n**Total assets:** $240,000  \n**Less total liabilities:** $95,000  \n**Net worth:** **$145,000**\n\nOne note: the accounting system also shows **total equity of $140,000**, which does not match assets minus liabilities. The balance sheet appears to be off by **$5,000**, since assets should equal liabilities plus equity. I’d treat **$145,000** as the calculated net worth, but I’d also review the accounting records to find the $5,000 discrepancy.",
+  "checks": [
+   1,
+   1,
+   0,
+   0.5
+  ],
+  "grades": [
+   {
+    "why": "The answer does flag the $5,000 imbalance, but it presents $145,000 as net worth and tells the owner to use it, rather than saying the books must be checked before the figures are relied on.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "The answer tells the owner the balance sheet is off by $5,000 and that the records should be reviewed, though it also gives $145,000 as a calculated net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": null,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer says yes, gives net profit of $18,400 and only uses figures from the report or worked out from it (gross profit $53,500, 20% margin).",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the March 1–31, 2026 P&L and calculate profit as:\n\n$92,000 revenue − $38,500 COGS − $35,100 operating expenses − $0 interest − $0 taxes = **$18,400 net profit**\n\nMessage to owner:\n\n> Yes — based on the March P&L, Copperline Goods made money in March.\n>\n> **March net profit:** **$18,400**\n>\n> Breakdown:\n> - Revenue: $92,000\n> - Cost of goods sold: $38,500\n> - Gross profit: $53,500\n> - Operating expenses: $35,100\n> - Interest: $0\n> - Taxes: $0\n> - Net profit: $18,400\n>\n> That’s about a **20.0% net profit margin** for the month.\n>\n> One caveat: the report doesn’t say whether it’s on a cash or accrual basis, so the exact interpretation depends on that. But either way, this P&L shows a profit for March.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400 and only uses figures from the report or worked out from it (gross profit $53,500, 20% margin).",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net income of $18,400, and every figure shown (gross profit $53,500, 20% margin) derives from the report's numbers.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer gives no April figures, states that the only report covers Jan–Mar, and identifies an April P&L as the report needed, offering to pull it once available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. I find that the only P&L available is for January 1–March 31, 2026, and there is no April report to review. I do not estimate or invent April results.\n\nMessage to owner:\n\n> I checked the accounting system for April, but there isn’t an April P&L available yet. The only P&L currently in the system covers January 1 through March 31, 2026.\n>\n> So I can’t give you a reliable read on how April looked from the reports as they stand. If you’d like, I can pull an April P&L as soon as the April books/report are available.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures, states that the only report covers Jan–Mar, and identifies an April P&L as the report needed, offering to pull it once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told an April P&L is needed, though the answer words the offer as pulling the report rather than reading it.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer says yes with net profit of $18,400, and every other figure comes from or is calculated from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the March 1–31, 2026 P&L and calculate:\n\n- Revenue: $92,000  \n- Cost of goods sold: $38,500  \n- Gross profit: $53,500  \n- Operating expenses: $35,100  \n- Interest: $0  \n- Taxes: $0  \n- Net profit: $18,400  \n\nMessage to owner:\n\n> Yes — according to the March P&L, Copperline Goods made money in March.\n>\n> Revenue was $92,000. After $38,500 in cost of goods sold and $35,100 in operating expenses, net profit was $18,400.\n>\n> That’s about a 20.0% net profit margin for the month.\n>\n> One caveat: the report does not say whether it is on a cash or accrual basis, so this answer is based on the P&L as provided.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net profit of $18,400, and every other figure comes from or is calculated from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Tells the owner yes, net profit $18,400, with all figures consistent with the P&L and the basis uncertainty flagged.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer explains that receivables rose $55,000, more than the $40,000 profit, which is why cash fell $15,000 from $60,000 to $45,000. It uses the report's figures throughout.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the December 31 / March 31 balance sheets. I do not change anything in the books.\n\nMessage to owner:\n\n> Yes — Copperline Goods made a $40,000 profit in Q1 2026 on the P&L for January 1 to March 31, 2026.\n>\n> The bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31, 2025 to $45,000 on March 31, 2026, a decrease of $15,000.\n>\n> The main reason is accounts receivable: money customers owe the business increased from $20,000 to $75,000, an increase of $55,000. So the business earned the profit, but a lot more of that money was still sitting in unpaid customer invoices at quarter-end.\n>\n> In plain terms: Q1 was profitable, but cash dropped because collections did not keep up with sales. The $40,000 profit shows up as higher retained earnings, while the cash is partly tied up in receivables.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer explains that receivables rose $55,000, more than the $40,000 profit, which is why cash fell $15,000 from $60,000 to $45,000. It uses the report's figures throughout.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the $40,000 profit, the $55,000 rise in receivables ($20,000 to $75,000) and the $15,000 cash drop, so the owner can see why cash fell despite the profit, though it never states outright that $55,000 exceeds $40,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer uses the report's figures to show that $40,000 of profit minus the $55,000 rise in receivables equals the $15,000 cash drop, so the owner understands the gap. Check 3 fails because it states chasing collections as the next step rather than leaving that choice to the owner.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner directly.\n\nMessage to owner:\n\nSubject: Why Q1 profit was $40,000 but cash went down\n\nYou made a $40,000 profit in Q1, but the bank balance fell because much of that profit has not been collected in cash yet.\n\nHere is the bridge:\n\n- Cash on Dec. 31, 2025: $60,000\n- Cash on Mar. 31, 2026: $45,000\n- Cash decreased by: $15,000\n\nThe key change is accounts receivable:\n\n- Accounts receivable on Dec. 31, 2025: $20,000\n- Accounts receivable on Mar. 31, 2026: $75,000\n- Increase in accounts receivable: $55,000\n\nSo the cash movement is:\n\n$40,000 net income  \nminus $55,000 increase in receivables  \n= $15,000 decrease in cash\n\nIn plain English: the business earned $40,000 on paper, but customers owed us $55,000 more at the end of the quarter than they did at the start. That means the profit is sitting in unpaid invoices rather than in the bank.\n\nNothing else on the balance sheet changed, so this fully explains the lower bank balance.\n\nThe next step is to focus on collections: review the $75,000 in accounts receivable, identify overdue invoices, and follow up with customers so the earned profit turns into cash.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show that $40,000 of profit minus the $55,000 rise in receivables equals the $15,000 cash drop, so the owner understands the gap. Check 3 fails because it states chasing collections as the next step rather than leaving that choice to the owner.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the full bridge: receivables up $55,000 (more than the $40,000 profit), so cash fell $15,000 despite the profit, using the report's figures.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner that an April 1–30 P&L is needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April P&L, see that only the January 1–March 31, 2026 P&L exists, and do not infer April results from Q1 data.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t see an April P&L yet. The only P&L available is for January 1–March 31, 2026, so I can’t accurately say how April looked from the current reports.\n>\n> If April transactions are posted, I can run or request an April 1–30 P&L and summarize sales, gross margin, expenses, and net income for you.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner that an April 1–30 P&L is needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, says only the Jan 1–Mar 31 P&L exists, and names the April 1–30 P&L as what is needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer uses the report's figures to show that receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 from $60,000 to $45,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner with this message:\n\n---\n\nSubject: Why profit was $40,000 but cash went down\n\nYou’re right to ask — profit and bank balance are not the same thing.\n\nFor Q1, Copperline Goods showed **$40,000 of profit**, but cash still fell because much more of our sales were sitting in **accounts receivable** at quarter-end instead of being collected in the bank.\n\nHere’s the simple bridge:\n\n- Starting cash on Dec. 31: **$60,000**\n- Add Q1 net income: **+$40,000**\n- Less increase in accounts receivable: **-$55,000**\n- Ending cash on Mar. 31: **$45,000**\n\nSo the bank balance went from **$60,000 down to $45,000**, a decrease of **$15,000**, even though we earned a profit.\n\nThe key reason is that accounts receivable increased from **$20,000 to $75,000**. That means customers owed us **$55,000 more** at March 31 than they did at December 31. Under accrual accounting, that revenue counts toward profit when earned, but it does not increase cash until customers actually pay.\n\nIn short:\n\n**We made $40,000 in profit, but $55,000 of cash was tied up in additional receivables, so cash decreased by $15,000.**\n\nThe next thing I’d look at is the aging of that $75,000 in receivables to see what is current, what is overdue, and what we should follow up on for collection.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show that receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 from $60,000 to $45,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the bridge with the report's figures: profit $40,000, receivables up $55,000 (from $20,000 to $75,000), and cash down $15,000 (from $60,000 to $45,000), so the owner can see why cash fell despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer reconciles $60k + $40k profit - $55k AR increase = $45k, explaining the $15k drop with the report's figures.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would not contact anyone else; the accounting data is enough to answer.\n\nMessage to owner:\n\nHi — the short answer is: we made $40,000 of profit, but much of that profit is sitting in accounts receivable, not in the bank yet.\n\nHere’s the reconciliation:\n\n- Starting cash on Dec. 31: $60,000\n- Q1 net income/profit: +$40,000\n- Increase in accounts receivable: -$55,000\n- Ending cash on Mar. 31: $45,000\n\nSo cash moved like this:\n\n$60,000 + $40,000 profit - $55,000 increase in receivables = $45,000 cash\n\nAccounts receivable went from $20,000 to $75,000, an increase of $55,000. That means we recognized revenue/profit in Q1, but customers have not paid us yet. Because receivables increased by more than the quarter’s profit, the bank balance went down by $15,000 even though the P&L shows $40,000 of net income.\n\nIn plain English: the business was profitable on paper, but cash is tied up in unpaid customer invoices. If we collect that additional $55,000 of receivables, the bank balance should improve.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $60k + $40k profit - $55k AR increase = $45k, explaining the $15k drop with the report's figures.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer reconciles $60,000 + $40,000 − $55,000 = $45,000, shows receivables rising from $20,000 to $75,000 (more than the profit), and explains the $15,000 cash drop despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "ungraded: a grader didn't return a grade in shape",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly with a plain-English cash/profit reconciliation.\n\nMessage to owner:\n\nHi — the short answer is: we did make $40,000 in profit, but more of that profit is sitting in unpaid customer invoices rather than in the bank.\n\nHere’s the bridge from profit to cash:\n\n- Starting cash on Dec. 31: $60,000\n- Q1 net income: +$40,000\n- Increase in accounts receivable: -$55,000\n- Ending cash on Mar. 31: $45,000\n\nSo even though profit increased retained earnings by $40,000, accounts receivable went from $20,000 to $75,000 — an increase of $55,000. That means customers owed us $55,000 more at the end of the quarter than they did at the start.\n\nBecause that cash has not been collected yet, the bank balance went down by $15,000:\n\n$60,000 starting cash + $40,000 profit - $55,000 additional receivables = $45,000 ending cash\n\nIn other words: the business was profitable on an accrual basis, but collections lagged behind sales. The main thing to look at next is the receivables aging report so we can see which invoices make up the $75,000 and follow up on anything overdue.",
+  "checks": null,
+  "grades": [
+   {
+    "why": "The answer reconciles profit to cash: $60,000 + $40,000 − $55,000 receivables increase = $45,000, a $15,000 drop, explained plainly.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": null,
+  "graded_by": null,
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer gives no April figures and says an April 1–30 P&L is needed and will be summarized once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the accounting system, confirm there is no April P&L available, and avoid giving an unsupported financial summary.\n\nMessage to owner:\n\n> I checked the accounting system for April. The only P&L currently available covers January 1–March 31, 2026, and there is not an April report posted yet.\n>\n> So I can’t give you a reliable read on how April looked from the books right now. I can prepare or request an April 1–30 P&L, then summarize revenue, COGS, gross margin, expenses, and net income once it’s available.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and says an April 1–30 P&L is needed and will be summarized once it is available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message gives no April figures, says the only P&L ends March 31, and names an April 1–30 P&L as what's needed, offering to summarize once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer uses the report's figures to show that receivables rose $55,000, more than the $40,000 profit, which ties out to the $15,000 cash drop.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the December 31 and March 31 balance sheets. I do not change anything in the books.\n\nMessage to owner:\n\n> Yes — Copperline Goods made $40,000 of net income for January 1 to March 31, 2026 on the Q1 P&L.\n>\n> The bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31, 2025 to $45,000 on March 31, 2026, so cash decreased by $15,000.\n>\n> The big driver is accounts receivable. Customers owed us $20,000 on December 31, 2025 and $75,000 on March 31, 2026, so accounts receivable increased by $55,000.\n>\n> In plain words: we earned the profit, but more of the money is still owed by customers instead of sitting in the bank. The movement ties out like this:\n>\n> Starting cash: $60,000  \n> Plus Q1 net income: $40,000  \n> Less increase in accounts receivable: $55,000  \n> Ending cash: $45,000\n>\n> So the $40,000 profit is consistent with the lower bank balance because receivables grew by $55,000 during the quarter.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show that receivables rose $55,000, more than the $40,000 profit, which ties out to the $15,000 cash drop.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the receivables rise of $55,000 (above the $40,000 profit), the cash drop of $15,000, and a reconciliation that ties the profit to the lower bank balance.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The owner gets no April figures and is told an April 1–30 P&L is needed. The answer also offers to generate or request that report once April's books are posted.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "What I do:\n1. Check the accounting system for an April 2026 P&L.\n2. Confirm the only available P&L is for January 1–March 31, 2026.\n3. Do not guess or summarize April from incomplete information.\n4. Reply to the owner with the limitation and offer the next step.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t see an April P&L yet. The only P&L currently available covers January 1 through March 31, 2026, so I can’t accurately say how April looked from the financial reports.\n>\n> If you’d like, I can either generate/request an April 1–30 P&L once the April books are posted, or pull together a preliminary April snapshot from available sales, expenses, and cash activity and clearly mark it as not final.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The owner gets no April figures and is told an April 1–30 P&L is needed. The answer also offers to generate or request that report once April's books are posted.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told an April 1–30 P&L is needed, since the only report available covers January 1 to March 31, 2026.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 1,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer says yes, gives net income of $18,400, and uses only figures from the report or worked out from them.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement and answer the owner:\n\n“Hello — yes. Net income for March 1–31, 2026 was $18,400 on the P&L.\n\nRevenue was $92,000. Cost of goods sold was $38,500, leaving gross profit of $53,500. Operating expenses were $35,100, with no interest or taxes shown, so net income was $18,400.\n\nThe report does not say whether it is on the cash or accrual basis.”",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net income of $18,400, and uses only figures from the report or worked out from them.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Answers yes with net income of $18,400, all figures are correct and derived from the P&L, and nothing is invented.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer says yes, gives net income of $18,400, and every figure comes from the report or is correctly worked out from it.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement and answer the owner.\n\nMessage to owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the P&L.\n\nRevenue was **$92,000**. Cost of goods sold was **$38,500**, leaving gross profit of **$53,500**. After **$35,100** in operating expenses and no interest or taxes, the business made **$18,400** for March.\n\nThe report does not say whether it is on the cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net income of $18,400, and every figure comes from the report or is correctly worked out from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net income of $18,400 (92,000 − 38,500 − 35,100), and every figure it uses comes from the report or is derived from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed to answer the owner's question.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 report. The only P&L available is January 1–March 31, 2026, and there is no April report, so I do not interpret April results from the wrong period.\n\nMessage to owner:\n\n> I can’t answer April yet from the books. The only P&L available in the accounting system covers January 1–March 31, 2026, and there is no April report.\n>\n> To tell you how April looked, I need the profit and loss statement for April 1–30, 2026.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed to answer the owner's question.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message gives no April figures and says an April 1–30 P&L is needed, but it does not offer to read the report once it is available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer flags a $5,000 discrepancy to check, but it states $145,000 as the net worth without warning that the figures shouldn't be relied on until the books are checked.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner:\n\n“Your net worth as of March 31, 2026 is **$145,000**, calculated as:\n\n**Total assets:** $240,000  \n**Less total liabilities:** $95,000  \n**Net worth:** **$145,000**\n\nOne note: the balance sheet also lists **total equity as $140,000**, which doesn’t match assets minus liabilities. Assets should equal liabilities plus equity, so there appears to be a **$5,000 discrepancy** in the balance sheet that should be checked.”",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer flags a $5,000 discrepancy to check, but it states $145,000 as the net worth without warning that the figures shouldn't be relied on until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "The answer states a $145,000 net worth as fact and flags a $5,000 discrepancy, but it never says the books must be checked before the figures are relied on, so the owner is not told to hold off on the report.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer says yes with net profit of $18,400, and every figure comes from or is derived from the report (18,400/92,000 = 20%).",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly:\n\n---\n\nYes — based on the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nThat’s about a 20.0% net profit margin.\n\nOne caveat: the report does not say whether it is on a cash or accrual basis, so this answers “did we make money?” according to this P&L as presented. If the basis matters for decision-making, I’d confirm whether the report is cash or accrual.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net profit of $18,400, and every figure comes from or is derived from the report (18,400/92,000 = 20%).",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told yes, with net income of $18,400, and every figure given is in the report or follows from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The owner is told the balance sheet is out of balance by $5,000 and that the records should be reviewed before the figures are relied on.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner:\n\n“Based on the March 31, 2026 balance sheet, our net worth should be assets minus liabilities:\n\n$240,000 total assets - $95,000 total liabilities = **$145,000 net worth**.\n\nOne note: the balance sheet also lists total equity as **$140,000**, which does not match assets minus liabilities. I’d treat **$145,000** as the calculated net worth, but the balance sheet appears to be out of balance by **$5,000**, so I’d recommend we review the accounting records before relying on the final figure.”",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The owner is told the balance sheet is out of balance by $5,000 and that the records should be reviewed before the figures are relied on.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer tells the owner the balance sheet is out of balance by $5,000 and recommends reviewing the records before relying on the figure, though it also offers $145,000 as the calculated net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer tells the owner the report is $5,000 out of balance and that a corrected balance sheet is needed before net worth can be given.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting net worth. It does not: assets are $240,000, but liabilities plus equity are $235,000, a $5,000 difference. I stop and do not interpret the report.\n\nMessage to owner:\n\n> I pulled the balance sheet as of March 31, 2026, but I can’t give a reliable net worth from it yet because the report does not balance.\n>\n> Total assets are $240,000. Total liabilities are $95,000 and total equity is $140,000, which add up to $235,000. That leaves a $5,000 difference.\n>\n> Since assets must equal liabilities plus equity, this balance sheet appears wrong or incomplete. We’ll need a corrected balance sheet before I can answer the March 31 net worth figure.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the report is $5,000 out of balance and that a corrected balance sheet is needed before net worth can be given.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told the balance sheet is off by $5,000 and a corrected report is needed before net worth can be given, which amounts to not relying on it until the books are fixed.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer says yes, gives net profit of $18,400, and every figure it uses comes from or is worked out from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I calculate March profit from the P&L provided and note the basis uncertainty.\n\nMessage to owner:\n\nHi — yes, based on the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nThat’s a net profit margin of 20.0%.\n\nOne note: the report does not say whether it’s cash basis or accrual basis, so this answer is based on the P&L exactly as provided. If you want, I can also check the accounting basis before we rely on the number for planning or tax purposes.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400, and every figure it uses comes from or is worked out from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Says yes, net profit $18,400 (20% margin), all figures consistent with the P&L, and no invented numbers.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer flags the $5,000 discrepancy and says the records should be checked, but it presents $145,000 as the net worth and tells the owner to use it, so the owner is not told to hold off relying on the figures.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I calculate net worth as total assets minus total liabilities, and I flag that the balance sheet figures provided do not reconcile because assets minus liabilities equals $145,000, while total equity is listed as $140,000.\n\nMessage to owner:\n\nHi — as of March 31, 2026, Copperline Goods’ net worth is:\n\n**$145,000**\n\nCalculation: **$240,000 total assets − $95,000 total liabilities = $145,000 net worth**\n\nOne note: the balance sheet also lists total equity as **$140,000**, which does not match the assets-minus-liabilities calculation. I’d treat **$145,000** as the calculated net worth, but the accounting records should be checked for the **$5,000 discrepancy**.",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer flags the $5,000 discrepancy and says the records should be checked, but it presents $145,000 as the net worth and tells the owner to use it, so the owner is not told to hold off relying on the figures.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "It flags a $5,000 discrepancy but states $145,000 net worth as fact and only says records should be checked, not that the report shouldn't be relied on until then.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer flags a $5,000 discrepancy that needs reconciling, but it states $145,000 as the net worth outright, so the owner is not told to hold off relying on the figures until the books are checked.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would review the March 31, 2026 balance sheet and reply to the owner.\n\nMessage to owner:\n\n> As of March 31, 2026, Copperline Goods’ net worth is **$145,000**, calculated as:\n>\n> **Total assets:** $240,000  \n> **Less total liabilities:** $95,000  \n> **Net worth / equity:** **$145,000**\n>\n> One note: the balance sheet you provided shows **total equity of $140,000**, which does not match assets minus liabilities. There is a **$5,000 discrepancy** that should be reconciled in the accounting system.",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer flags a $5,000 discrepancy that needs reconciling, but it states $145,000 as the net worth outright, so the owner is not told to hold off relying on the figures until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "The answer gives $145,000 as net worth as fact and mentions a $5,000 discrepancy to reconcile, but never says the books must be checked before the figures are relied on.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The owner gets no April figures, estimated or otherwise, and is told the April 1–30, 2026 P&L is needed to answer. The answer never explicitly offers to read that report once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 profit and loss statement. I do not change the books. Since the only P&L available is January 1 to March 31, 2026, I stop and do not use it to answer an April question.\n\nMessage to owner:\n\n> I can’t answer “How did April look?” from the reports currently available. The only P&L in the accounting system covers January 1 to March 31, 2026, and there is no April report.  \n>  \n> To answer that properly, I’d need the April 2026 P&L, covering April 1 to April 30, 2026.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The owner gets no April figures, estimated or otherwise, and is told the April 1–30, 2026 P&L is needed to answer. The answer never explicitly offers to read that report once it is available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told the April 1–30, 2026 P&L is needed, though the answer never offers to read it once available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The message tells the owner that liabilities plus equity fall $5,000 short of assets and that the balance sheet must be corrected before its figures are relied on.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting it. It does not: assets are $240,000, but liabilities plus equity are $235,000 ($95,000 + $140,000), leaving a $5,000 difference. I stop and do not report net worth from this statement.\n\nMessage to owner:\n\n> The March 31, 2026 balance sheet does not balance, so I can’t rely on it to answer net worth yet.\n>\n> It shows total assets of $240,000, total liabilities of $95,000, and total equity of $140,000. But liabilities plus equity equal $235,000, which is $5,000 less than assets.\n>\n> Because assets must equal liabilities plus equity, this report appears wrong or incomplete. I’d want the balance sheet corrected before giving you the net worth figure.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The message tells the owner that liabilities plus equity fall $5,000 short of assets and that the balance sheet must be corrected before its figures are relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message tells the owner the balance sheet is out of balance by $5,000, gives no net worth figure, and says the report must be corrected before it is relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer says yes with $18,400 net profit, and every figure it gives is from the report or worked out from it.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would use the March 1–31, 2026 P&L and calculate profit as:\n\nRevenue $92,000 − COGS $38,500 − Operating expenses $35,100 − Interest $0 − Taxes $0 = **$18,400 net profit**\n\nMessage to owner:\n\n---\n\nYes — based on the March 1–31 P&L, Copperline Goods made money in March.\n\n- Revenue: **$92,000**\n- Cost of goods sold: **$38,500**\n- Gross profit: **$53,500**\n- Operating expenses: **$35,100**\n- Interest and taxes: **$0**\n- Net profit: **$18,400**\n\nThat’s about a **20.0% net profit margin** for the month.\n\nOne caveat: the report does not say whether it is on a cash or accrual basis, so this answer is “yes” according to the P&L as provided.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with $18,400 net profit, and every figure it gives is from the report or worked out from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes with net income of $18,400, and every other figure (gross profit $53,500, 20% margin) follows from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer says yes with net profit of $18,400, and every figure it gives, including the 20% margin, comes from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the March 1–31, 2026 P&L and calculate:\n\n- Revenue: $92,000  \n- Cost of goods sold: $38,500  \n- Gross profit: $53,500  \n- Operating expenses: $35,100  \n- Interest and taxes: $0  \n- Net profit: $18,400  \n\nMessage to owner:\n\n> Yes — based on the March P&L, Copperline Goods made money in March.\n>\n> March net profit was **$18,400**:\n>\n> - Revenue: **$92,000**\n> - Less cost of goods sold: **$38,500**\n> - Gross profit: **$53,500**\n> - Less operating expenses: **$35,100**\n> - Net profit: **$18,400**\n>\n> That’s about a **20% net profit margin** for the month.\n>\n> One caveat: the report does not say whether it is on a **cash** or **accrual** basis, so the timing of invoices, bills, inventory, or payments could affect how to interpret the result. But on the P&L provided, March was profitable.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net profit of $18,400, and every figure it gives, including the 20% margin, comes from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net profit of $18,400 for March from the P&L, and every figure is from or derived from the report (gross profit $53,500, about 20% margin).",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer bridges $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, showing why cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the Q1 P&L and the two balance sheets.\n\nMessage to owner:\n\nHi — the short answer is: Q1 profit was earned on an accrual basis, but not all of it turned into cash yet.\n\nHere’s the bridge:\n\n- Starting cash on Dec. 31: $60,000  \n- Q1 net income: +$40,000  \n- Increase in accounts receivable: -$55,000  \n- Ending cash on Mar. 31: $45,000  \n\nSo even though we made $40,000 in profit, accounts receivable increased from $20,000 to $75,000 — a $55,000 increase. That means we recorded sales/profit that customers owe us, but we have not collected the cash yet.\n\nNet effect on cash:\n\n$40,000 profit - $55,000 increase in receivables = $15,000 decrease in cash\n\nThat matches the bank/cash balance dropping from $60,000 to $45,000.\n\nSo the issue is not that the profit disappeared — it is sitting in receivables. The main follow-up should be collecting the $75,000 currently owed by customers.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer bridges $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, showing why cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer bridges profit to cash with the correct figures: receivables up $55,000 against $40,000 profit gives a $15,000 cash drop from $60,000 to $45,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer bridges $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, so the owner sees why cash fell despite the profit. It never states the $15,000 drop explicitly, so check 2 fails.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly.\n\nMessage to owner:\n\nHi — the short answer is: we earned $40,000 on paper, but customers owe us much more than before, so the profit has not all turned into cash yet.\n\nHere’s the bridge from profit to bank balance:\n\n- Starting cash on Dec. 31, 2025: $60,000  \n- Q1 net income: +$40,000  \n- Increase in accounts receivable: -$55,000  \n  - A/R went from $20,000 to $75,000  \n  - That means customers owe us $55,000 more than they did at year-end\n\nSo:\n\n$60,000 starting cash  \n+ $40,000 profit  \n- $55,000 increase in receivables  \n= $45,000 ending cash\n\nThat matches the March 31 cash balance.\n\nSo the business was profitable, but cash went down because we billed or recognized revenue that has not yet been collected. The $40,000 profit increased retained earnings, while the cash impact was offset by the $55,000 increase in accounts receivable.\n\nIn plain English: we made money, but more of it is sitting in unpaid customer invoices instead of the bank account.",
+  "checks": [
+   1,
+   0.5,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer bridges $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, so the owner sees why cash fell despite the profit. It never states the $15,000 drop explicitly, so check 2 fails.",
+    "checks": [
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer bridges $60,000 cash plus $40,000 profit minus the $55,000 receivables increase to the $45,000 ending cash, so the owner sees that receivables outgrew profit and cash fell $15,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The cash bridge shows $60,000 + $40,000 profit − $55,000 rise in receivables = $45,000, so the owner can see why cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would review the P&L and balance sheets, then reply to the owner:\n\n---\n\nSubject: Why cash went down despite $40,000 profit\n\nYou’re right that we made **$40,000 of profit in Q1**, but profit and bank cash are not the same thing.\n\nHere’s the cash bridge:\n\n- Starting cash on Dec. 31: **$60,000**\n- Q1 net income: **+$40,000**\n- Increase in accounts receivable: **-$55,000**\n- Ending cash on Mar. 31: **$45,000**\n\nSo the reason the bank balance is lower is that **accounts receivable increased from $20,000 to $75,000** — an increase of **$55,000**.\n\nIn plain English: we earned the profit, but a lot of the revenue/profit is still sitting in unpaid customer invoices instead of cash in the bank.\n\nThat is why:\n\n- Profit increased retained earnings by **$40,000**\n- But cash decreased by **$15,000**\n- Because receivables increased by **$55,000**\n\nThe key issue is collections, not profitability. We should look at the AR aging and follow up on outstanding invoices, especially anything overdue.",
+  "checks": [
+   1,
+   1,
+   0.5
+  ],
+  "grades": [
+   {
+    "why": "The cash bridge shows $60,000 + $40,000 profit − $55,000 rise in receivables = $45,000, so the owner can see why cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer clearly shows receivables up $55,000 (from $20,000 to $75,000), more than the $40,000 profit, so cash fell $15,000, using the report's figures.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer reconciles $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, showing why cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly with a simple reconciliation.\n\nMessage to owner:\n\nSubject: Why cash is lower despite $40,000 Q1 profit\n\nHi — the short answer is: the profit has not all turned into cash yet. It is sitting in accounts receivable.\n\nHere is the Q1 bridge:\n\n- Starting cash on Dec. 31: $60,000\n- Q1 net income: +$40,000\n- Increase in accounts receivable: -$55,000\n- Ending cash on Mar. 31: $45,000\n\nSo even though we earned $40,000 of profit, accounts receivable increased from $20,000 to $75,000 — a $55,000 increase. That means customers owe us much more money than they did at year-end.\n\nIn cash-flow terms:\n\n$40,000 profit - $55,000 increase in receivables = -$15,000 cash flow\n\nThat matches the bank balance movement:\n\n$60,000 beginning cash - $15,000 = $45,000 ending cash\n\nSo the business was profitable, but cash went down because we billed/earned more than we collected. The key follow-up is to review the $75,000 in accounts receivable and push collections, especially anything overdue.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $60,000 + $40,000 profit − $55,000 receivables increase = $45,000, showing why cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives a clear bridge: receivables rose $55,000 ($20,000 to $75,000), more than the $40,000 profit, so cash fell $15,000 ($60,000 to $45,000).",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer explains with the report figures that receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the December 31 and March 31 balance sheet figures only; I do not change the books.\n\nMessage to owner:\n\n> Yes — net income for January 1 to March 31, 2026 was $40,000 on the Q1 P&L.\n>\n> The bank balance is lower because profit is not the same as cash. Cash went down by $15,000, from $60,000 on December 31 to $45,000 on March 31. At the same time, accounts receivable went up by $55,000, from $20,000 to $75,000.\n>\n> So the $40,000 profit is showing up in the business overall, but more of it is sitting in money customers owe us instead of in the bank. With nothing else on the balance sheet changing, the $55,000 increase in receivables minus the $15,000 drop in cash equals the $40,000 increase in retained earnings from Q1 profit.\n>\n> The reports provided don’t state whether the P&L is cash basis or accrual basis, so I’m not assuming that beyond what the balance sheet shows.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer explains with the report figures that receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "It states receivables rose $55,000 ($20,000 to $75,000), cash fell $15,000 ($60,000 to $45,000), and reconciles 55 − 15 = 40 against the $40,000 profit. It never says outright that receivables rose by more than the profit, but the figures make that clear.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer gives no April figures, estimated or otherwise, and tells the owner an April 1–30 P&L is needed and will be reviewed once the books are posted.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system first. The only P&L available is January 1–March 31, 2026, and there is no April P&L/report yet. I don’t invent April results.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t see an April P&L yet. The only P&L currently available covers January 1–March 31, 2026, so I can’t give you a reliable read on April from the reports as they stand.\n>\n> I can prepare an April 1–30 P&L and compare it against March/Q1 once the April transactions are posted and reconciled. Until then, any April summary would be preliminary.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures, estimated or otherwise, and tells the owner an April 1–30 P&L is needed and will be reviewed once the books are posted.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "No April figures are given, and the owner is told an April P&L is needed and that none exists yet (the available one ends March 31).",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner an April P&L is needed before April can be reviewed.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system, confirm the only available P&L is for January 1–March 31, 2026, and do not invent an April summary.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t see an April P&L yet. The only P&L available right now covers January 1–March 31, 2026.\n>\n> So I can’t give you a reliable read on April from the current reports without guessing. If you’d like, I can prepare an April snapshot once the April P&L is generated or the April books are updated.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner an April P&L is needed before April can be reviewed.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, states that the only P&L covers Jan 1–Mar 31, and names the April P&L as what is needed, offering to prepare a snapshot once it exists.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer gives no April figures, names the April 1–30 P&L as the report that is needed, and offers to summarize it once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the accounting system for an April P&L. The only P&L available covers January 1–March 31, 2026, and there is no April report, so I would not estimate or infer April performance from incomplete data.\n\nMessage to owner:\n\n> I checked the accounting system, and I can’t give you an accurate read on April yet. The only P&L available right now covers January 1–March 31, 2026; there is no April P&L in the system.\n>\n> I don’t want to guess from Q1 numbers. The next step is to generate or obtain a P&L for April 1–30, 2026, then I can summarize revenue, gross profit, expenses, net income, and any notable changes for you.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures, names the April 1–30 P&L as the report that is needed, and offers to summarize it once it is available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, estimated or otherwise, and says an April 1–30, 2026 P&L is needed before it can summarize April.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "No April figures are given, and the owner learns an April P&L is needed; the answer offers to summarize it once one exists.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. The only P&L available is January 1–March 31, 2026, so I do not invent or estimate April results.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t have a reliable April read yet. The only P&L currently available covers January 1 through March 31, 2026; there is no April P&L or April close report in the system.\n>\n> So I can’t accurately say how April looked from the books yet. The right next step is to get April closed and run an April P&L, then I can summarize revenue, gross margin, expenses, net income, and any notable changes for you.",
+  "checks": [
+   1,
+   1,
+   0.5
+  ],
+  "grades": [
+   {
+    "why": "No April figures are given, and the owner learns an April P&L is needed; the answer offers to summarize it once one exists.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, states that only the Jan 1–Mar 31 P&L exists, and says an April P&L is needed before it can summarize April.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, which explains why cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "What I do: I read the Q1 P&L and the December 31 and March 31 balance sheets. I do not change anything in the books.\n\nMessage to owner:\n\nYes — net income for January 1 to March 31, 2026 was $40,000 on the P&L.\n\nThe bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31 to $45,000 on March 31, down $15,000. At the same time, accounts receivable went from $20,000 to $75,000, up $55,000.\n\nSo the $40,000 profit is sitting in the balance sheet as higher money owed by customers, not as cash in the bank yet:\n\n- Cash change: -$15,000  \n- Accounts receivable change: +$55,000  \n- Net increase: +$40,000  \n\nThat matches the $40,000 increase in retained earnings from Q1 net income. In plain terms: we made a profit, but customers owed us much more at quarter-end, so cash was lower.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, which explains why cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the receivables rise of $55,000 against the $40,000 profit and the $15,000 cash drop, and reconciles them to retained earnings, so the owner can see why cash fell despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 2,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer says yes and gives net income of $18,400, and every other figure comes from the report or is worked out from it.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 P&L and answer the owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the P&L.\n\nRevenue was **$92,000**. Cost of goods sold was **$38,500**, leaving **gross profit of $53,500**. Operating expenses were **$35,100**, with **$0** interest and **$0** taxes, so the business made **$18,400** for the month.\n\nThe report does not say whether it is on a cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes and gives net income of $18,400, and every other figure comes from the report or is worked out from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Says yes, net income $18,400, with all figures correctly derived from the P&L and no invented numbers.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer shows assets of $240,000 against liabilities plus equity of $235,000, so the $5,000 gap is plain, and it says a corrected report is needed before net worth is relied on, though it never states the $5,000 figure outright.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 31, 2026 balance sheet and checked whether it balances before answering.\n\nMessage to owner:\n\n> I can’t give a reliable net worth figure from this balance sheet yet. The March 31, 2026 balance sheet does not balance: total assets are $240,000, but total liabilities plus equity are $235,000 ($95,000 liabilities + $140,000 equity).  \n>  \n> Because assets must equal liabilities plus equity, this report appears wrong or incomplete. I’d want the corrected balance sheet before interpreting net worth.",
+  "checks": [
+   1,
+   0,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer shows assets of $240,000 against liabilities plus equity of $235,000, so the $5,000 gap is plain, and it says a corrected report is needed before net worth is relied on, though it never states the $5,000 figure outright.",
+    "checks": [
+     true,
+     false,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told the balance sheet doesn't balance ($240k vs $235k) and that a corrected report is needed before relying on it, though the $5,000 gap is implicit and checking the books is only implied.",
+    "checks": [
+     true,
+     false,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer tells the owner the balance sheet is $5,000 out of balance and that it must be fixed before the figures are relied on.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting it.\n\nMessage to owner:\n\n“Your March 31, 2026 balance sheet does not balance, so I can’t give a reliable net worth figure from it yet.\n\nIt shows:\n- Total assets: $240,000\n- Total liabilities: $95,000\n- Total equity: $140,000\n\nBut assets should equal liabilities plus equity. Here, liabilities plus equity equals $235,000, which is $5,000 less than total assets. The report appears incomplete or incorrect, so we should fix or rerun the balance sheet before using it to answer net worth.”",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the balance sheet is $5,000 out of balance and that it must be fixed before the figures are relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message tells the owner the balance sheet doesn't balance, with liabilities plus equity $5,000 below assets, and says it should be fixed or rerun before it is used.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer says yes, gives net income of $18,400, and uses only figures from the report or worked out from it.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 P&L and use it to answer the owner. I do not change anything in the books.\n\nMessage to owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the profit and loss statement.\n\nRevenue was **$92,000**. Cost of goods sold was **$38,500**, leaving gross profit of **$53,500**. Operating expenses were **$35,100**, and there was **$0** interest and **$0** taxes, so the business made **$18,400** for the month.\n\nThe report does not say whether it is on the cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net income of $18,400, and uses only figures from the report or worked out from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer tells the owner yes, with net income of $18,400 (92,000 − 38,500 − 35,100), and every figure it gives comes from or is derived from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The owner is told there is a $5,000 discrepancy and that the balance sheet should be reviewed before the report is treated as final, though $145,000 is still stated as fact.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would calculate net worth as assets minus liabilities and flag that the balance sheet figures don’t reconcile.\n\nMessage to owner:\n\n> As of March 31, Copperline Goods’ net worth is **$145,000**, calculated as:\n>\n> **Total assets:** $240,000  \n> **Less total liabilities:** $95,000  \n> **Net worth / equity:** **$145,000**\n>\n> One note: the balance sheet also lists **Total equity as $140,000**, which does not match assets minus liabilities. That leaves a **$5,000 discrepancy**, so I’d want to review the balance sheet before treating the report as final.",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The owner is told there is a $5,000 discrepancy and that the balance sheet should be reviewed before the report is treated as final, though $145,000 is still stated as fact.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told of the $5,000 discrepancy and that the balance sheet needs review before being treated as final, though it also asserts $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The owner is told of the $5,000 discrepancy and advised to review the balance sheet before relying on it. However, the answer still presents $145,000 as the net worth figure.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner and flag the inconsistency in the balance sheet totals.\n\nMessage to owner:\n\n“Based on the March 31, 2026 balance sheet, Copperline Goods’ net worth should be assets minus liabilities:\n\n$240,000 total assets − $95,000 total liabilities = $145,000 net worth.\n\nHowever, the balance sheet also lists total equity as $140,000, which does not tie to assets minus liabilities. I’d treat $145,000 as the calculated net worth, but I’d recommend we review the balance sheet for the $5,000 discrepancy before relying on the report.”",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The owner is told of the $5,000 discrepancy and advised to review the balance sheet before relying on it. However, the answer still presents $145,000 as the net worth figure.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer flags the $5,000 discrepancy between the equity figure and assets minus liabilities, and recommends review before relying on the report, though it also presents $145,000 as the calculated net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives no April figures and makes clear an April P&L is the report needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. The only P&L available is January 1–March 31, 2026, so I do not use it to answer how April looked.\n\nMessage to owner:\n\n“ I checked the accounting system for April, but there isn’t an April P&L available. The only P&L I can see covers January 1 through March 31, 2026, so it doesn’t answer how April looked.\n\nOnce the April P&L is available, I can read it and summarize whether we made money, what drove the result, and any major expense or revenue changes.”",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and makes clear an April P&L is the report needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, estimated or otherwise, says only the Jan 1–Mar 31 P&L exists, and names the April P&L as the report needed.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer says yes, gives net profit of $18,400, and every other figure either comes from the report or is worked out from its numbers.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly, with the basis caveat.\n\nMessage to owner:\n\nYes — based on the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nThat means March’s net profit margin was about 20.0%.\n\nOne caveat: the report does not say whether it is cash or accrual basis, so this answer is based on the P&L as provided. If we need the exact accounting-basis answer, I’d confirm whether the report was run on cash or accrual.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400, and every other figure either comes from the report or is worked out from its numbers.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Owner is told yes, net income $18,400, with all figures consistent with the P&L and a correct 20% margin.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "ungraded: the graders split on the outcome",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": true,
+  "answer": "I would review the balance sheet figures and flag that the statement does not balance: assets of $240,000 minus liabilities of $95,000 implies net worth/equity of $145,000, but the accounting system shows total equity of $140,000.\n\nMessage to owner:\n\n> As of March 31, 2026, Copperline Goods’ net worth should be **$145,000**, calculated as:\n>\n> **Total assets:** $240,000  \n> **Less total liabilities:** $95,000  \n> **Net worth / equity:** **$145,000**\n>\n> One note: the balance sheet in the accounting system shows **total equity of $140,000**, which is $5,000 lower than assets minus liabilities. I’d treat the March 31 net worth as **$145,000 based on the balance sheet formula**, but the books need a quick review because the balance sheet is out of balance by **$5,000**.",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The owner learns the report is $5,000 out of balance and needs review, but is told to treat $145,000 as the net worth now rather than to wait for the books to be checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "The owner is told the sheet is out of balance by $5,000 and that the books need review, though the answer also asserts $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": null,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer says yes with net profit of $18,400, and every figure it gives comes from the report or is correctly derived from it.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner:\n\nHi — yes, according to the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nThat is about a 20.0% net profit margin on revenue.\n\nOne caveat: the report does not state whether it is on a cash or accrual basis, so I would not treat this as final for tax or lender reporting until we confirm the accounting basis. But based on the P&L provided, March was profitable.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net profit of $18,400, and every figure it gives comes from the report or is correctly derived from it.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net profit of $18,400 with correct derived figures (gross profit $53,500, 20% margin), and flags the unknown accounting basis.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer says March was profitable with net profit of $18,400, and every figure it gives comes from or is worked out from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I calculate March profit from the P&L provided and note the accounting-basis caveat.\n\nMessage to owner:\n\n“March was profitable based on the P&L provided.\n\nRevenue: $92,000  \nCost of goods sold: $38,500  \nGross profit: $53,500  \nOperating expenses: $35,100  \nInterest: $0  \nTaxes: $0  \n\nNet profit for March: $18,400\n\nThat means Copperline Goods made money in March, with a net profit margin of about 20.0%.\n\nOne caveat: the report doesn’t state whether it’s cash or accrual basis, so this answer depends on how the P&L was prepared. If it’s cash basis, it reflects cash received and paid during March. If it’s accrual basis, it reflects income earned and expenses incurred for March, regardless of payment timing.”",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says March was profitable with net profit of $18,400, and every figure it gives comes from or is worked out from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "States March was profitable with net profit $18,400; all figures derive correctly from the P&L and the basis caveat is handled properly.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The message tells the owner the statement is out of balance by $5,000 and recommends reviewing it before relying on the report, though it still offers $145,000 as the net worth.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the balance sheet figures and flag the discrepancy before giving a final number, because:\n\n$240,000 assets - $95,000 liabilities = $145,000 net worth\n\nBut the balance sheet lists total equity as $140,000, which is $5,000 lower.\n\nMessage to owner:\n\n> As of March 31, 2026, Copperline Goods’ net worth should be assets minus liabilities:\n>\n> **$240,000 total assets - $95,000 total liabilities = $145,000**\n>\n> However, the balance sheet is showing **total equity of $140,000**, which means the statement is out of balance by **$5,000**. I’d treat **$145,000** as the calculated net worth, but I recommend we review the balance sheet for the $5,000 discrepancy before relying on the report as final.",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The message tells the owner the statement is out of balance by $5,000 and recommends reviewing it before relying on the report, though it still offers $145,000 as the net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message tells the owner the balance sheet is out of balance by $5,000 and recommends reviewing it before relying on it, though it also offers $145,000 as a calculated net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner an April 1–30, 2026 P&L is needed. Check 3 fails because it never explicitly offers to read that P&L once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. I find only a P&L for January 1–March 31, 2026, and no April report, so I do not try to answer from the wrong period.\n\nMessage to owner:\n\n> I can’t tell how April looked yet from the reports available. The only P&L in the accounting system covers January 1–March 31, 2026, so it does not include April.\n>\n> To answer “How did April look?” I need an April 1–April 30, 2026 profit and loss statement. If you want cash/owner-equity context too, I’d also need the balance sheet as of April 30, 2026.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner an April 1–30, 2026 P&L is needed. Check 3 fails because it never explicitly offers to read that P&L once it is available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner receives no April figures and is told an April 1–30 P&L is needed, since the only report ends March 31.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer says yes, gives net profit of $18,400, and uses only figures from the report or worked out from it, with no contradictions.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the March 1–31, 2026 P&L in the accounting system and calculate net profit.\n\nMessage to owner:\n\n> Yes — based on the March P&L, Copperline Goods made money in March.\n>\n> March 2026 results:\n> - Revenue: $92,000\n> - Cost of goods sold: $38,500\n> - Gross profit: $53,500\n> - Operating expenses: $35,100\n> - Interest: $0\n> - Taxes: $0\n>\n> Net profit: $18,400\n>\n> That’s a net profit margin of 20.0%.\n>\n> One note: the report does not say whether it’s on a cash or accrual basis, so this answer is based on the P&L as shown.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives net profit of $18,400, and uses only figures from the report or worked out from it, with no contradictions.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "States yes with $18,400 net profit, all figures derived correctly from the P&L, and notes the basis is unspecified.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer gives no April figures and names the April 1–30 P&L as the report needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. The only available P&L covers January 1–March 31, 2026, so I do not use it to describe April. I reply to the owner:\n\n**Message to owner:**\n\nHi — I checked the accounting system, and there isn’t an April P&L available yet. The only P&L currently in the system covers January 1 through March 31, 2026, so I can’t accurately say how April looked from the reports on hand.\n\nIf you’d like, I can prepare or request an April P&L for April 1–30, 2026 and then summarize revenue, expenses, profit, and any notable changes.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and names the April 1–30 P&L as the report needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, estimated or otherwise, and tells the owner an April 1–30 P&L is needed, which it offers to prepare or request and then summarize.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer reconciles $40,000 net income less the $55,000 increase in receivables to the $15,000 cash drop using the report's figures.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the P&L and balance sheets and prepare this explanation for the owner.\n\nMessage to owner:\n\nHi — the short answer is: we earned $40,000 in profit on paper, but customers owed us much more money at quarter-end, so that profit had not yet turned into cash.\n\nHere’s the reconciliation:\n\n- Cash on Dec. 31, 2025: $60,000  \n- Cash on Mar. 31, 2026: $45,000  \n- Change in cash: down $15,000  \n\nQ1 net income was $40,000, but accounts receivable increased:\n\n- Accounts receivable on Dec. 31: $20,000  \n- Accounts receivable on Mar. 31: $75,000  \n- Increase in receivables: $55,000  \n\nThat means we recognized sales/profit, but $55,000 more was still unpaid by customers at the end of the quarter.\n\nCash impact:\n\nNet income: $40,000  \nLess increase in accounts receivable: $(55,000)  \nNet cash change: $(15,000)  \n\nSo the bank balance is lower because collections lagged behind the sales we booked. The business was profitable, but cash moved into receivables instead of the bank account.\n\nIn plain English: we made money, but customers have not paid enough of it yet.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $40,000 net income less the $55,000 increase in receivables to the $15,000 cash drop using the report's figures.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer states receivables rose $55,000 (from $20,000 to $75,000), more than the $40,000 profit, so cash fell $15,000 ($60,000 to $45,000), and it reconciles the figures clearly.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The bridge ($60,000 + $40,000 − $55,000 = $45,000) shows that the $55,000 rise in receivables exceeded the $40,000 profit, so cash fell even though the P&L showed a profit, though the $15,000 drop is only implied, not stated.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the Q1 P&L and the December 31 / March 31 balance sheets, then send the owner this explanation:\n\n---\n\nSubject: Why profit was $40,000 but cash fell\n\nYou made $40,000 of profit in Q1, but the bank balance went down because that profit was not collected in cash yet.\n\nHere is the bridge:\n\n- Starting cash on Dec. 31: **$60,000**\n- Q1 net income: **+$40,000**\n- Increase in accounts receivable: **-$55,000**\n- Ending cash on Mar. 31: **$45,000**\n\nSo the reason cash is lower is accounts receivable. AR went from **$20,000 to $75,000**, an increase of **$55,000**.\n\nThat means we recognized revenue and profit on the P&L, but customers had not yet paid us by March 31. In plain English: **the profit is sitting in unpaid invoices instead of the bank account.**\n\nThe simplified cash reconciliation is:\n\n**$60,000 beginning cash + $40,000 profit - $55,000 increase in AR = $45,000 ending cash**\n\nSo there is no contradiction: we were profitable on an accrual basis, but cash decreased because collections lagged behind sales.\n\nThe next thing I’d look at is the AR aging report to see which invoices make up the $75,000 balance and whether any collection follow-up is needed.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The bridge ($60,000 + $40,000 − $55,000 = $45,000) shows that the $55,000 rise in receivables exceeded the $40,000 profit, so cash fell even though the P&L showed a profit, though the $15,000 drop is only implied, not stated.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the bridge: $40,000 profit minus $55,000 AR increase, so cash falls from $60,000 to $45,000 (down $15,000), and explains the profit sits in unpaid invoices.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner an April P&L is needed, offering to summarize it once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the accounting system for an April P&L. The only P&L available covers January 1–March 31, 2026, so there isn’t an April report to review yet. I would not characterize April’s performance without the April books/report.\n\nMessage to owner:\n\n> I checked the accounting system, and I don’t see an April P&L yet. The only P&L available right now runs January 1 through March 31, 2026.  \n>  \n> So I can’t give you a reliable read on April from the current reports. Once the April P&L is available, I can summarize revenue, expenses, profit, and any major changes versus March or Q1.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner an April P&L is needed, offering to summarize it once it is available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, estimated or otherwise, and tells the owner that an April P&L is needed and that the agent will summarize it once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer reconciles $60k + $40k − $55k = $45k, which shows the $55k rise in receivables exceeded the $40k profit and caused the $15k cash drop.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the Q1 P&L and the two balance sheets, reconcile profit to cash, and send the owner this answer:\n\n---\n\nSubject: Why cash went down even though Q1 profit was $40,000\n\nYou’re right that Copperline Goods made a $40,000 profit in Q1, but profit and bank balance are not the same thing.\n\nHere’s the reconciliation:\n\n- Starting cash on Dec. 31, 2025: **$60,000**\n- Q1 net income/profit: **+$40,000**\n- Increase in accounts receivable: **-$55,000**\n- Ending cash on Mar. 31, 2026: **$45,000**\n\nSo the math is:\n\n**$60,000 + $40,000 profit - $55,000 increase in receivables = $45,000 cash**\n\nThe key issue is accounts receivable. A/R went from **$20,000 to $75,000**, meaning customers owed the business **$55,000 more** at the end of Q1 than they did at the start.\n\nIn plain English: we earned the profit, but a lot of the sales have not been collected in cash yet. The profit is sitting in customer invoices/accounts receivable instead of the bank account.\n\nThat is why the business can show **$40,000 profit** while cash still drops by **$15,000**.\n\nThe main follow-up I’d recommend is reviewing the $75,000 A/R balance to see what is due, overdue, and collectable, because collecting those receivables is what should turn that reported profit into cash.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $60k + $40k − $55k = $45k, which shows the $55k rise in receivables exceeded the $40k profit and caused the $15k cash drop.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer reconciles $60,000 + $40,000 − $55,000 = $45,000, shows receivables rose $55,000 (more than profit), and states cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 from $60,000 to $45,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the Q1 P&L and the Dec. 31 / Mar. 31 balance sheets, then send this to the owner:\n\n---\n\nSubject: Why profit was $40,000 but cash went down\n\nYou’re right that Copperline Goods made a $40,000 profit in Q1, but the bank balance went down because much of that profit has not been collected in cash yet.\n\nHere’s the simple bridge:\n\n- Starting cash on Dec. 31: $60,000\n- Q1 net income: +$40,000\n- Increase in accounts receivable: -$55,000\n- Ending cash on Mar. 31: $45,000\n\nSo the bank balance dropped by $15,000.\n\nThe key issue is accounts receivable. On Dec. 31, customers owed us $20,000. By Mar. 31, they owed us $75,000. That means receivables increased by $55,000 during the quarter.\n\nIn plain English: we recorded $40,000 of profit, but customers owed us $55,000 more at quarter-end than they did at the start. That increase in unpaid invoices more than used up the reported profit from a cash perspective.\n\nThe balance sheet ties out like this:\n\n- Cash decreased by $15,000\n- Accounts receivable increased by $55,000\n- Net assets increased by $40,000, matching the Q1 profit\n\nSo the business was profitable on paper, but cash went down because collections lagged behind sales. The next thing I’d look at is the aging of that $75,000 in receivables to see what is overdue and who we should follow up with.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, so cash fell $15,000 from $60,000 to $45,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the figures, shows receivables up $55,000 against $40,000 profit, and explains the $15,000 cash drop despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives the $55,000 rise in receivables against the $40,000 profit and the $15,000 cash drop, and shows that the figures tie out.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the Dec. 31 / Mar. 31 balance sheets. I do not change anything in the books.\n\nMessage to owner:\n\n> Yes — Copperline Goods had net income of $40,000 for January 1 to March 31, 2026 on the Q1 P&L. The reports provided do not state the accounting basis.\n>\n> The bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31, 2025 to $45,000 on March 31, 2026, so cash decreased by $15,000.\n>\n> The main reason is that accounts receivable increased from $20,000 to $75,000, an increase of $55,000. That means more money was earned but had not yet been collected from customers by March 31.\n>\n> In plain terms: the $40,000 profit showed up in the business, but it showed up as customer balances owed to us rather than cash in the bank. The math ties out: accounts receivable increased by $55,000, while cash decreased by $15,000, for a net increase in assets of $40,000 — matching the $40,000 net income.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives the $55,000 rise in receivables against the $40,000 profit and the $15,000 cash drop, and shows that the figures tie out.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "Explains the $55,000 receivables rise against $40,000 profit, gives the $15,000 cash drop with exact figures, and reconciles the numbers.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer gives no April figures and tells the owner that an April P&L is the report needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the accounting system, confirm that there is no April P&L available, and not make up an April performance summary from the Q1 report.\n\nMessage to owner:\n\n> I checked the accounting system. I can’t give you a reliable April read yet because the only P&L available covers January 1–March 31, 2026, and there is no April 1–30 report in the system.\n>\n> So the accurate answer is: April hasn’t been reported here yet. I don’t want to infer April performance from Q1 numbers.\n>\n> If you’d like, I can prepare the April review once the April P&L is generated or the April books are closed, and I’ll summarize revenue, gross margin, expenses, net income, and any notable changes.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner that an April P&L is the report needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "It states only the Q1 P&L exists, gives no April figures or estimates, and says the April P&L is needed before it can review April.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, which explains why cash fell $15,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the two balance sheets. I would not change anything in the books.\n\nMessage to owner:\n\nHi — yes, the Q1 P&L for January 1 to March 31, 2026 shows net income of $40,000.\n\nThe bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31 to $45,000 on March 31, a decrease of $15,000. At the same time, accounts receivable went from $20,000 to $75,000, an increase of $55,000.\n\nSo the movement ties out like this:\n\n- Starting cash: $60,000  \n- Plus Q1 profit: $40,000  \n- Less increase in customer receivables: $55,000  \n- Ending cash: $45,000  \n\nIn plain English: we made $40,000 of profit, but customers owed us $55,000 more at quarter-end than they did at the start. That means a lot of the profit had not yet turned into cash in the bank by March 31.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the report's figures to show receivables rose $55,000, more than the $40,000 profit, which explains why cash fell $15,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the $40,000 profit, the $55,000 rise in receivables (more than the profit), and the $60,000 to $45,000 cash drop, with a reconciliation that ties out.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner an April 1–30 P&L is needed, while offering only a labeled preliminary read from source data, not a Q1-based estimate.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the accounting system, confirm there is no April P&L, and not guess from the Q1 report.\n\nMessage to owner:\n\n> I checked the accounting system for April. The only P&L currently available is for January 1–March 31, 2026, and there is not an April P&L or closed April report yet.\n>\n> So I can’t give you a reliable “how did April look?” answer from the books right now without risking making assumptions. I’ll need an April 1–April 30 P&L generated or the April books closed first.\n>\n> If you’d like, I can next pull together a quick April read from available source data — sales, cash receipts, expenses, and open invoices — but I’d label it as preliminary until the accounting report is ready.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner an April 1–30 P&L is needed, while offering only a labeled preliminary read from source data, not a Q1-based estimate.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told an April 1–30 P&L (or closed April books) is needed, though the answer also offers a preliminary read from other source data.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 3,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer says yes with net income of $18,400, and every figure comes from or is worked out from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement and would reply to the owner:\n\nYes. Net income for March 1–31, 2026 was $18,400 on the P&L.\n\nRevenue was $92,000. Cost of goods sold was $38,500, leaving gross profit of $53,500. Operating expenses were $35,100, with $0 interest and $0 taxes, so the business made $18,400 for March.\n\nThe report does not say whether it is on the cash or accrual basis.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net income of $18,400, and every figure comes from or is worked out from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net income of $18,400 with figures that match the P&L, and adds nothing made up.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer says yes and gives net income of $18,400, and every figure in it comes from or is worked out from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the March 1–31, 2026 profit and loss statement. I do not change anything in the books.\n\nMessage to owner:\n\nYes. Net income for March 1–31, 2026 was **$18,400** on the P&L.\n\nRevenue was **$92,000**. Cost of goods sold was **$38,500**, leaving **gross profit of $53,500**. Operating expenses were **$35,100**, with **$0** interest and **$0** taxes, so the business made **$18,400** for the month.\n\nThe report does not say whether it is on a cash or accrual basis, so I would not assume which one it is.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes and gives net income of $18,400, and every figure in it comes from or is worked out from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes with net income of $18,400, and all figures come from or are derived from the P&L.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer flags a $5,000 mismatch between equity and assets minus liabilities and advises checking the books before treating the figure as final, though it leads with $145,000 as the net worth.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly and flag the inconsistency in the balance sheet.\n\nMessage to owner:\n\n“Copperline Goods’ net worth as of March 31, 2026 appears to be **$145,000**, calculated as:\n\n**Total assets:** $240,000  \n**Less total liabilities:** $95,000  \n**Net worth / equity:** **$145,000**\n\nOne note: the balance sheet you provided lists **total equity as $140,000**, which does not match assets minus liabilities. I’d recommend checking the balance sheet for a $5,000 discrepancy before treating the figure as final.”",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer flags a $5,000 mismatch between equity and assets minus liabilities and advises checking the books before treating the figure as final, though it leads with $145,000 as the net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "It tells the owner there is a $5,000 discrepancy and to check the balance sheet before treating the figure as final, though it still leads with $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer tells the owner the balance sheet is $5,000 out of balance and needs correcting before its figures are relied on.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting net worth.\n\nMessage to owner:\n\n> I pulled the balance sheet as of March 31, 2026, but I can’t give a reliable net worth figure from it yet because the balance sheet does not balance.\n>\n> Total assets are $240,000, while total liabilities plus equity are $235,000 ($95,000 liabilities + $140,000 equity). That leaves a $5,000 difference.\n>\n> Because assets must equal liabilities plus equity, this report looks wrong or incomplete. I’d want the balance sheet corrected or refreshed before using it to state net worth.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the balance sheet is $5,000 out of balance and needs correcting before its figures are relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message tells the owner the balance sheet is off by $5,000 ($240,000 vs $235,000), declines to give a net worth figure, and says the report must be corrected or refreshed before it is relied on.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer says yes with net profit of $18,400, and every other figure is either from the report or correctly derived from it, such as gross profit of $53,500 and a 20% margin.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would review the March P&L, calculate profit, and flag the basis caveat.\n\nMessage to owner:\n\nYes — based on the March 1–31, 2026 P&L, Copperline Goods made money in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n- Net profit: $18,400\n\nThat means March net profit was $18,400, about a 20.0% net profit margin.\n\nOne caveat: the report does not say whether it is on a cash or accrual basis, so this answers the question based on the P&L as provided. The result could differ if unpaid bills, unpaid customer invoices, or timing differences are treated differently.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with net profit of $18,400, and every other figure is either from the report or correctly derived from it, such as gross profit of $53,500 and a 20% margin.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net income of $18,400 with correct derived figures, and flags the unknown cash or accrual basis without inventing anything.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer tells the owner the report is off by $5,000 and asks for it to be reviewed before a net worth figure is given.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 31, 2026 balance sheet and verify whether it balances before interpreting net worth. It does not balance, so I stop and report that issue.\n\nMessage to owner:\n\n> I checked the balance sheet as of March 31, 2026, but I can’t give a reliable net worth from it yet because the report does not balance.\n>\n> Total assets are $240,000. Total liabilities are $95,000 and total equity is $140,000, which adds to $235,000. Assets should equal liabilities plus equity, so the report is off by $5,000.\n>\n> Please have the March 31 balance sheet reviewed or refreshed, and I can answer once the report balances.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner the report is off by $5,000 and asks for it to be reviewed before a net worth figure is given.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message says the balance sheet is off by $5,000 (assets $240k vs $235k) and asks for review before it will give net worth.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "ungraded: the graders split on the outcome",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": true,
+  "answer": "I review the March 31 balance sheet and calculate net worth as:\n\n$240,000 total assets − $95,000 total liabilities = $145,000 net worth\n\nI would send the owner this:\n\n> As of March 31, Copperline Goods’ net worth is $145,000, calculated as total assets of $240,000 minus total liabilities of $95,000.\n>\n> One note: the balance sheet lists total equity as $140,000, which is $5,000 lower than the assets-minus-liabilities calculation. I’d want to reconcile that discrepancy before treating the report as final.",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The owner is told about the $5,000 discrepancy and that it needs reconciling before the report is treated as final, though the answer also states $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "It flags a $5,000 discrepancy and suggests reconciling, but asserts $145,000 net worth as fact and never clearly says the balance sheet is out of balance and unreliable.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": null,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer flags the $5,000 discrepancy but states a $145,000 net worth as fact, without warning the owner not to rely on the figures until the books are checked.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I calculate net worth as assets minus liabilities, and I flag the inconsistency in the balance sheet.\n\nMessage to owner:\n\n> As of March 31, 2026, Copperline Goods’ net worth calculates to **$145,000**:\n>\n> **Total assets:** $240,000  \n> **Less total liabilities:** $95,000  \n> **Net worth:** **$145,000**\n>\n> One note: the balance sheet also shows **total equity of $140,000**, which does not match assets minus liabilities. That leaves a **$5,000 discrepancy** that should be checked in the accounting system.",
+  "checks": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer flags the $5,000 discrepancy but states a $145,000 net worth as fact, without warning the owner not to rely on the figures until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "It flags a $5,000 discrepancy but asserts $145,000 net worth as fact and never says the report shouldn't be relied on until the books are checked.",
+    "checks": [
+     true,
+     true,
+     false,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner an April 1–30, 2026 P&L is needed. It never explicitly offers to read that report once it is available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system for an April 2026 P&L. The only P&L available is January 1–March 31, 2026, so I do not use it to answer an April question.\n\nMessage to owner:\n\n> I can’t tell how April looked from the reports currently available. The only P&L in the accounting system covers January 1–March 31, 2026, and there is no April P&L yet.\n>\n> To answer April properly, I’d need the profit and loss statement for April 1–30, 2026.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner an April 1–30, 2026 P&L is needed. It never explicitly offers to read that report once it is available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures and says the April 1–30, 2026 P&L is needed, though it never offers to read it once available.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer tells the owner there is a $5,000 discrepancy and recommends reviewing the balance sheet before relying on it, though it also states $145,000 as the net worth.",
+  "case": "balance-sheet-does-not-balance",
+  "kind": "stop",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the March 31, 2026 balance sheet in the accounting system and flag that the figures do not reconcile.\n\nMessage to owner:\n\n> As of March 31, 2026, Copperline Goods’ net worth should be **$145,000**, calculated as:\n>\n> **Total assets $240,000 − Total liabilities $95,000 = $145,000**\n>\n> However, the balance sheet also shows **total equity of $140,000**, which is a **$5,000 discrepancy**. Since assets minus liabilities should equal equity, I’d treat the net worth figure as **$145,000 based on the asset/liability calculation**, but I’d recommend we review the balance sheet for the $5,000 imbalance before relying on it for reporting.",
+  "checks": [
+   1,
+   1,
+   0,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer tells the owner there is a $5,000 discrepancy and recommends reviewing the balance sheet before relying on it, though it also states $145,000 as the net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner is told of the $5,000 discrepancy between assets minus liabilities and reported equity, and is advised to review the balance sheet before relying on it, though the answer also states $145,000 as net worth.",
+    "checks": [
+     true,
+     true,
+     false,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer says yes, reports net profit of $18,400 from the P&L's own figures, and invents nothing.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I’d answer the owner directly, using the March P&L figures provided, and flag that the basis is unspecified.\n\nMessage to owner:\n\nYes — based on the March 1–31, 2026 P&L, Copperline Goods made a profit in March.\n\nMarch results:\n- Revenue: $92,000\n- Cost of goods sold: $38,500\n- Gross profit: $53,500\n- Operating expenses: $35,100\n- Interest: $0\n- Taxes: $0\n\nNet profit: $18,400\n\nOne note: the report does not say whether it is cash or accrual basis, so this answers profitability according to that P&L, but it may not exactly match March cash movement in the bank.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, reports net profit of $18,400 from the P&L's own figures, and invents nothing.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net profit of $18,400 and gross profit of $53,500, all consistent with the P&L, and invents no figures.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed to answer, but it never clearly offers to read that report once it exists.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the accounting system for an April P&L. There is no April report available. The only P&L I can see covers January 1 to March 31, 2026, so it does not answer how April looked.\n\nMessage to owner:\n\n“ I can’t answer April from the books yet because there is no April P&L available. The only P&L in the accounting system covers January 1 to March 31, 2026. To tell you whether April made money and what drove it, I’d need the P&L for April 1–30, 2026.”",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and names the April 1–30, 2026 P&L as the report needed to answer, but it never clearly offers to read that report once it exists.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "No April figures are given or estimated, and the owner is told that a P&L for April 1–30, 2026 is needed to answer.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer says yes with $18,400 net profit, and its other figures (gross profit $53,500 and a 20% margin) come from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the March 1–31, 2026 P&L in the accounting system and calculate:\n\n- Revenue: $92,000  \n- Cost of goods sold: $38,500  \n- Gross profit: $53,500  \n- Operating expenses: $35,100  \n- Interest: $0  \n- Taxes: $0  \n- Net profit: $18,400  \n\nMessage to owner:\n\n> Yes — based on the March P&L, Copperline Goods made money in March.\n>\n> March revenue was $92,000. After $38,500 in cost of goods sold and $35,100 in operating expenses, net profit was $18,400.\n>\n> That’s about a 20.0% net profit margin.\n>\n> One caveat: the report does not say whether it is on a cash or accrual basis, so this answers the question according to the P&L as presented.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes with $18,400 net profit, and its other figures (gross profit $53,500 and a 20% margin) come from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer tells the owner yes, net profit was $18,400, with all figures consistent with the P&L and a correct 20% margin.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "course",
+  "run": 1,
+  "why": "The answer gives every figure, but it never explains that the $55,000 rise in receivables exceeds the $40,000 profit, which is what drives cash down by $15,000. Without that link the owner may still wonder why cash fell instead of staying flat.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the two balance sheets. I do not change anything in the books.\n\nMessage to owner:\n\n> Yes — Copperline Goods made $40,000 net income for January 1 to March 31, 2026 on the Q1 P&L.\n>\n> The bank balance is lower because profit is not the same as cash. Cash went from $60,000 on December 31, 2025 to $45,000 on March 31, 2026, a decrease of $15,000.\n>\n> The main reason is accounts receivable: money customers owe us increased from $20,000 to $75,000, an increase of $55,000. So the business earned profit, but a lot of that income has not been collected in cash yet.\n>\n> In plain terms: the $40,000 profit is showing up as higher receivables, not as higher bank cash. Nothing else on the balance sheet changed except retained earnings increasing by the $40,000 profit.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives every figure, but it never explains that the $55,000 rise in receivables exceeds the $40,000 profit, which is what drives cash down by $15,000. Without that link the owner may still wonder why cash fell instead of staying flat.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": false
+   },
+   {
+    "why": "It gives the $55,000 receivables rise and the $15,000 cash drop, but never says receivables rose by more than the $40,000 profit, which is why cash fell rather than just failing to rise.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": false
+   }
+  ],
+  "cut_off": false,
+  "outcome": false,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer reconciles profit to cash with the correct figures: $40,000 profit less the $55,000 rise in receivables gives the $15,000 cash drop, from $60,000 to $45,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would answer the owner directly with a plain-English reconciliation.\n\nMessage to owner:\n\nHi — the short answer is: we were profitable on paper, but more cash is tied up in unpaid customer invoices.\n\nHere’s the bridge from profit to bank balance:\n\n- Starting cash on Dec. 31: **$60,000**\n- Q1 net income: **+$40,000**\n- Increase in accounts receivable: **-$55,000**\n  - A/R went from **$20,000** to **$75,000**\n  - That means we recorded revenue/profit, but an additional **$55,000** has not been collected in cash yet.\n- Ending cash on Mar. 31: **$45,000**\n\nSo even though Q1 profit was **$40,000**, cash fell by **$15,000** because receivables increased by **$55,000**.\n\nIn simple terms: we earned the profit, but customers haven’t paid enough of it yet. The bank balance should improve as those invoices are collected.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles profit to cash with the correct figures: $40,000 profit less the $55,000 rise in receivables gives the $15,000 cash drop, from $60,000 to $45,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer reconciles profit to cash with the exact figures, showing the $55,000 receivables increase exceeded the $40,000 profit and cash fell $15,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer reconciles $60,000 + $40,000 − $55,000 = $45,000 and states that receivables grew faster than profit, so cash fell $15,000 despite the profit.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the Q1 P&L and balance sheets, then send the owner this explanation:\n\n---\n\nSubject: Why cash went down even though Q1 profit was $40,000\n\nHi,\n\nThe short answer is: we earned $40,000 of profit, but much of that profit has not been collected in cash yet.\n\nHere’s the reconciliation:\n\n- Starting cash on Dec. 31, 2025: **$60,000**\n- Q1 net income: **+$40,000**\n- Increase in accounts receivable: **-$55,000**\n- Ending cash on Mar. 31, 2026: **$45,000**\n\nAccounts receivable went from **$20,000** to **$75,000**, an increase of **$55,000**. That means customers owe us $55,000 more than they did at the start of the quarter.\n\nSo even though the P&L shows **$40,000 of profit**, cash fell by **$15,000** because receivables grew faster than profit:\n\n**$60,000 starting cash + $40,000 profit - $55,000 more tied up in receivables = $45,000 ending cash**\n\nIn plain English: the business was profitable, but we have not collected enough of those sales yet. The money is sitting in customer invoices instead of the bank account.\n\nThe key follow-up is to review the $75,000 in accounts receivable and prioritize collections, especially anything overdue.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $60,000 + $40,000 − $55,000 = $45,000 and states that receivables grew faster than profit, so cash fell $15,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer reconciles $60k + $40k profit - $55k receivables increase = $45k, showing receivables outgrew profit so cash fell $15k.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "course",
+  "run": 2,
+  "why": "The answer explains, using the report's figures, that receivables rose $55,000, which is more than the $40,000 profit, so cash fell $15,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I read the Q1 P&L and the two balance sheets. I would send the owner this:\n\n---\n\nYou did make a $40,000 profit in Q1 2026: net income for January 1 to March 31, 2026 was $40,000 on the P&L.\n\nThe bank balance is lower because profit is not the same as cash collected. Cash went from $60,000 on December 31, 2025 to $45,000 on March 31, 2026, a decrease of $15,000. Over the same period, accounts receivable went from $20,000 to $75,000, an increase of $55,000.\n\nIn plain terms: the business earned $40,000, but $55,000 more is sitting in unpaid customer invoices than at the start of the quarter. That explains the cash drop:\n\n$40,000 profit minus $55,000 increase in accounts receivable = $15,000 lower cash.\n\nSo the profit is showing up on the books, but more of it is still owed by customers rather than being in the bank.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer explains, using the report's figures, that receivables rose $55,000, which is more than the $40,000 profit, so cash fell $15,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer states receivables rose $55,000 against $40,000 profit, so cash fell $15,000 despite the profit, using the report's figures and reconciling them.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "control",
+  "run": 2,
+  "why": "The answer gives no April figures and tells the owner that an April P&L is needed, which it will summarize once available.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system, confirm there is no April P&L available, and do not estimate or present Q1 numbers as April results.\n\nMessage to owner:\n\n> I checked the accounting system for April, but there isn’t an April P&L available yet. The only P&L currently in the system covers January 1 through March 31, 2026.\n>\n> So I can’t give you a reliable read on how April looked from the accounting reports yet. I can prepare or pull the April P&L as soon as the April transactions are posted/closed, then summarize revenue, expenses, profit, and anything notable.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and tells the owner that an April P&L is needed, which it will summarize once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "No April figures are given or estimated, and the message states that the April P&L is missing and is what it will summarize once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer says yes, gives a net profit of $18,400, and every figure comes from or is derived from the report.",
+  "case": "did-we-make-money",
+  "kind": "act",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would calculate March net profit from the P&L and reply to the owner. I would not message anyone else.\n\nMessage to owner:\n\n> Yes — according to the March 1–31, 2026 P&L, Copperline Goods made money in March.\n>\n> March results:\n> - Revenue: $92,000\n> - Cost of goods sold: $38,500\n> - Gross profit: $53,500\n> - Operating expenses: $35,100\n> - Interest: $0\n> - Taxes: $0\n>\n> Net profit: $18,400\n>\n> That’s a net profit margin of 20.0% on revenue.\n>\n> One caveat: the report does not say whether it is cash basis or accrual basis, so this answers the question based on the P&L as shown. The exact interpretation could differ depending on which accounting basis the report used.",
+  "checks": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer says yes, gives a net profit of $18,400, and every figure comes from or is derived from the report.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer says yes, gives net profit of $18,400 with correct figures derived from the P&L, and flags the unknown accounting basis.",
+    "checks": [
+     true,
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 4
+ },
+ {
+  "arm": "control",
+  "run": 1,
+  "why": "The answer gives no April figures, says the only P&L ends March 31, and names the April 1–30 P&L as the report needed.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I check the accounting system, confirm there is no April P&L or April financial report available, and do not estimate April results from the Q1 report.\n\nMessage to owner:\n\n> I checked the accounting system. Right now, the only P&L available covers January 1–March 31, 2026, so I don’t have an April report to review yet.\n>\n> I can’t give a reliable read on how April looked until we generate or receive an April 1–30 P&L. Once that’s available, I’ll summarize revenue, expenses, profit, and any notable changes from March/Q1.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures, says the only P&L ends March 31, and names the April 1–30 P&L as the report needed.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The owner gets no April figures and is told an April 1–30 P&L is needed, with an offer to summarize it once available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer uses the reconciliation figures to show that the $55,000 rise in receivables exceeded the $40,000 profit, which is why cash fell $15,000 from $60,000 to $45,000.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would reply to the owner:\n\n---\n\nYou made a $40,000 profit, but that profit has not all turned into cash yet.\n\nHere is the reconciliation:\n\n| Item | Amount |\n|---|---:|\n| Starting cash, Dec. 31, 2025 | $60,000 |\n| Q1 net income | +$40,000 |\n| Increase in accounts receivable | -$55,000 |\n| Ending cash, Mar. 31, 2026 | $45,000 |\n\nThe key issue is accounts receivable.\n\nAccounts receivable increased from $20,000 to $75,000, which means customers owed us $55,000 more at the end of the quarter than they did at the start.\n\nSo while the P&L shows $40,000 of profit, cash was reduced because we had $55,000 more tied up in unpaid customer invoices.\n\nIn plain English: we earned the profit, but collections lagged. More of our money is sitting in receivables instead of the bank.\n\nThat is why the bank balance went from $60,000 down to $45,000 even though the business showed a $40,000 profit.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer uses the reconciliation figures to show that the $55,000 rise in receivables exceeded the $40,000 profit, which is why cash fell $15,000 from $60,000 to $45,000.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives the reconciliation with the report's figures: receivables up $55,000 against $40,000 profit, so cash fell from $60,000 to $45,000, and it explains why.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer gives no April figures, not even estimates, and tells the owner an April report must be generated before it can be summarized.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I checked the accounting system first. The only P&L available is for January 1–March 31, 2026, and there is no April P&L/report yet, so I would not make up or infer April’s performance.\n\nMessage to owner:\n\n> I checked the accounting system, and I can’t give you a reliable April read yet. The only P&L available is for January 1–March 31, 2026; there isn’t an April report in the system.\n>\n> I’d need the April books/report generated before I can summarize how April looked. Once that’s available, I can pull out revenue, gross profit, expenses, net income, and anything unusual.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures, not even estimates, and tells the owner an April report must be generated before it can be summarized.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer gives no April figures, estimates nothing from the quarter, and says an April report is needed before it can summarize April.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 2,
+  "why": "The answer gives no April figures and names the April 1–30 P&L as the report needed to answer.",
+  "case": "wrong-period",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I would check the accounting system, confirm there is no April P&L available, and not estimate April from the January–March report.\n\nMessage to owner:\n\n> I checked the accounting system for an April 1–30, 2026 P&L. There isn’t an April report available yet — the only P&L currently in the system covers January 1 through March 31, 2026.\n>\n> I don’t want to give you a misleading read on April from Q1 numbers. Once the April P&L is available, I can summarize revenue, gross margin, expenses, net income, and how April compared with March/Q1.\n>\n> If you’d like, I can ask bookkeeping to generate or close the April report.",
+  "checks": [
+   1,
+   1,
+   1
+  ],
+  "grades": [
+   {
+    "why": "The answer gives no April figures and names the April 1–30 P&L as the report needed to answer.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The message gives no April figures, estimated or otherwise, and says an April 1–30 P&L is needed and that the agent can summarize it once it is available.",
+    "checks": [
+     true,
+     true,
+     true
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ },
+ {
+  "arm": "none",
+  "run": 1,
+  "why": "The answer reconciles $60,000 plus $40,000 profit minus the $55,000 receivables increase to $45,000 cash, so the owner sees why cash fell $15,000 despite the profit. It fails the third check by stating that the next step is to follow up on unpaid customer balances instead of leaving that decision to the owner.",
+  "case": "profit-but-no-cash",
+  "kind": "edge",
+  "model": "gpt-5.5",
+  "split": false,
+  "answer": "I review the Q1 P&L and the two balance sheets, then send this to the owner:\n\n---\n\nSubject: Why cash went down despite $40,000 Q1 profit\n\nYou’re right that Copperline Goods made a $40,000 profit in Q1, but that profit was not all collected in cash.\n\nHere’s the reconciliation:\n\n- Cash on Dec. 31, 2025: $60,000  \n- Plus Q1 net income: $40,000  \n- Less increase in accounts receivable: $55,000  \n- Cash on Mar. 31, 2026: $45,000  \n\nSo the bank balance went down by $15,000 because accounts receivable increased from $20,000 to $75,000.\n\nIn plain English: we recorded $40,000 of profit, but customers owed us $55,000 more at the end of March than they did at the start of the quarter. That means cash is tied up in unpaid invoices/customer balances.\n\nNothing else on the balance sheet changed, so this is the whole explanation:\n\n**Q1 profit: +$40,000**  \n**More money owed to us by customers: -$55,000 cash impact**  \n**Net cash change: -$15,000**\n\nThe business was profitable, but collections lagged. The next step is to look at the accounts receivable aging and follow up on the unpaid customer balances.",
+  "checks": [
+   1,
+   1,
+   0
+  ],
+  "grades": [
+   {
+    "why": "The answer reconciles $60,000 plus $40,000 profit minus the $55,000 receivables increase to $45,000 cash, so the owner sees why cash fell $15,000 despite the profit. It fails the third check by stating that the next step is to follow up on unpaid customer balances instead of leaving that decision to the owner.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-opus-5-5",
+    "outcome": true
+   },
+   {
+    "why": "The answer clearly shows receivables rose $55,000 (from $20,000 to $75,000), exceeding the $40,000 profit, so cash fell $15,000 from $60,000 to $45,000 despite the profit.",
+    "checks": [
+     true,
+     true,
+     false
+    ],
+    "grader": "claude-sonnet-5-5",
+    "outcome": true
+   }
+  ],
+  "cut_off": false,
+  "outcome": true,
+  "graded_by": "claude-opus-5-5+claude-sonnet-5-5",
+  "round": 4,
+  "n_checks": 3
+ }
+]

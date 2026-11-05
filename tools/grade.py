@@ -383,6 +383,9 @@ def report(number: str, row_files: list, accredit: bool, note: str = "", hold: s
     out_dir = d / "exam" / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
     stem = today if not (out_dir / f"{today}.yaml").exists() else dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H%M")
+    k = 1
+    while (out_dir / f"{stem}.yaml").exists():  # two reports in the same minute: never overwrite, and keep the order
+        stem = stem[:15] + f"{k:02d}"; k += 1
     answers_name = f"{stem}-answers.json"  # an earlier results file is never overwritten: a later one sorts after it
     summary = {
         "course": number, "version": exam.get("version", 1), "date": today, "method": METHOD,

@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Operator, Watcher]
 holland: Realistic
 faculty: [Fleet Academy]
+engine_hallmarks: [claude-haiku-5-5]
 ---
 
 # ROB 550: Clear to Move: State, People, Limits and the Stop

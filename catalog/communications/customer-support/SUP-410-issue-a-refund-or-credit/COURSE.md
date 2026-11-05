@@ -12,6 +12,7 @@ guard: [SUP 450]
 kinds_of_work: [Treasurer, Correspondent]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # SUP 410: Issue a Refund or Credit

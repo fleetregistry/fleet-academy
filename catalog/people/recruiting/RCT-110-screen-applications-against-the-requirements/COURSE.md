@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Analyst]
 holland: Enterprising
 faculty: [Fleet Academy]
+engine_hallmarks: [deepseek-flash, gpt-5.5]
 ---
 
 # RCT 110: Screen Applications Against the Written Requirements

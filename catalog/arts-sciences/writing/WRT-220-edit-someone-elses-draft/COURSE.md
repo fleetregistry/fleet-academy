@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Maker, Publisher]
 holland: Artistic
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # WRT 220: Edit Someone Else's Draft

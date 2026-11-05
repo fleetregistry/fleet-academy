@@ -12,6 +12,7 @@ guard: [FAC 550]
 kinds_of_work: [Operator]
 holland: Realistic
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # FAC 510: Adjust Building Climate

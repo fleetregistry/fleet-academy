@@ -12,6 +12,7 @@ guard: [CMD 650]
 kinds_of_work: [Conductor, Operator]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # CMD 670: Hand a Job to a New Agent Mid-Stream

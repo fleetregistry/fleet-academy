@@ -12,6 +12,7 @@ guard: [INV 350]
 kinds_of_work: [Steward]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # INV 310: Reconcile a Count

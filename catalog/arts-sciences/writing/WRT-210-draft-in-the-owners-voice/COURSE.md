@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Maker, Correspondent]
 holland: Artistic
 faculty: [Fleet Academy]
+engine_hallmarks: [claude-haiku-5-5]
 ---
 
 # WRT 210: Draft in the Owner's Voice

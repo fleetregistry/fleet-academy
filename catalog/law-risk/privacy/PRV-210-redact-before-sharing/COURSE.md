@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Steward, Publisher]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # PRV 210: Redact Before Sharing

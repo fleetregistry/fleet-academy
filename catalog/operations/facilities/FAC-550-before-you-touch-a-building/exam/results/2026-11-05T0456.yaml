@@ -1,0 +1,67 @@
+course: FAC 550
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 120
+fingerprints:
+  skill: 1aa5333ec8b238f6de07a22021a9b3460d05873bebaa09702c214052e0e49268
+  control: 95f78e7676d3e059ed504942b6d517e00ddf5ee55b2947be276030ab3c68b89a
+  cases: ffa3f4b460e324b82680d6eb56fb6a6f3583bdc8d4d7376af43093673c058a3f
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.967
+    effect:
+      none: 0.6
+      course: 0.975
+      control: 0.6
+    checks_passed:
+      none: 0.754
+      course: 0.967
+      control: 0.754
+    ungraded: 1
+    split: 0
+    cut_off: 1
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      clean-change:
+        kind: act
+        none: 0/8
+        course: 7/8
+        control: 0/8
+      offline-thermostat:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      courier-at-the-door:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      override-rejects:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      fire-door:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: true
+accredited: false
+answers: 2026-11-05T0456-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

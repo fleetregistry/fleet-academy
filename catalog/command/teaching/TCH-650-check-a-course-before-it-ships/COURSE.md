@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Watcher, Publisher]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # TCH 650: Guard: Check a Course Before It Ships

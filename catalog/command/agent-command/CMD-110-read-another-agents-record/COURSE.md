@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Conductor, Watcher, Analyst]
 holland: Investigative
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # CMD 110: Read Another Agent's Record

@@ -1,0 +1,62 @@
+course: CMD 120
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 96
+fingerprints:
+  skill: d560c400d26c631c10f80d67c8460a875928df9eb14f1d3116c3f083edeef17c
+  control: 418f24cb428a6835f8339857a8275d126d9dcb667f6289f69865804407d8806f
+  cases: 01d2016f7bb1aa95585de3f53c23e615fec940b96fa6779bd5ab986366bf56a9
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.928
+    effect:
+      none: 0.969
+      course: 0.844
+      control: 0.969
+    checks_passed:
+      none: 0.976
+      course: 0.928
+      control: 0.962
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: false
+    verdict: This model already does this without the course (right 97% of the time with no course). No measurable gain.
+    outcome_by_case:
+      totals-check-out:
+        kind: act
+        none: 7/8
+        course: 3/8
+        control: 8/8
+      quote-from-report:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      cheapest-vendor:
+        kind: act
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      uploads-unconfirmed:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 7/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05T045601-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

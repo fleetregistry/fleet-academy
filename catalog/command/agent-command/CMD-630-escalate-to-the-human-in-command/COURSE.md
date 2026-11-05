@@ -12,6 +12,7 @@ guard: [CMD 650]
 kinds_of_work: [Conductor, Correspondent]
 holland: Enterprising
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # CMD 630: Escalate to the Human in Command

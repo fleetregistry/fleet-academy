@@ -1,0 +1,62 @@
+course: RCT 210
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 96
+fingerprints:
+  skill: 2370c5d16fc41d65e79c920e17e26028ff9119da14350e79cd308204db7f91e8
+  control: 781f10aab59cf3c3f29eae7c722b41d46d9aab27a8ef3ac168b92c8dab85211d
+  cases: 405b3863393336a49beb6a3fd0bbf1a575905ab8bb0872b978e8c26e91c24494
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  gpt-5.4-nano:
+    adherence: 0.952
+    effect:
+      none: 0.406
+      course: 0.875
+      control: 0.438
+    checks_passed:
+      none: 0.606
+      course: 0.952
+      control: 0.543
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      notes-in-the-invite:
+        kind: edge
+        none: 0/8
+        course: 6/8
+        control: 0/8
+      required-interviewer-unavailable:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      lisbon-candidate:
+        kind: act
+        none: 4/8
+        course: 6/8
+        control: 6/8
+      accommodation-request:
+        kind: edge
+        none: 1/8
+        course: 8/8
+        control: 0/8
+passed_on: 1
+meets_rule: true
+accredited: false
+answers: 2026-11-05T0456-answers.json
+confirmation_for: gpt-5.4-nano
+confirmed: true
+note: 'Confirmation run (METHOD_V4.md, Hallmarks by engine size): a fresh run of the same exam on the one engine the course
+  first passed on, four fixed rounds, graded through the providers'' batch interfaces at half price by the same two graders,
+  who must agree.'

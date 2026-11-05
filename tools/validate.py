@@ -221,10 +221,12 @@ def main() -> int:
                 if eng not in grade.ENGINE_SIZE:
                     err(where, f"engine_hallmarks: {eng} isn't a panel model")
                     continue
-                prov = loaded[results[-1]] if results else {}
-                if not results or not ((prov.get("models") or {}).get(eng) or {}).get("passed") or not current(prov):
+                # an extra engine (METHOD_V4.md: DeepSeek) is judged on its own newest proving, not the panel's
+                pr = [f for f in every if loaded[f].get("extra_engine") == eng] or results
+                prov = loaded[pr[-1]] if pr else {}
+                if not pr or not ((prov.get("models") or {}).get(eng) or {}).get("passed") or not current(prov):
                     err(where, f"engine_hallmarks: the newest proving doesn't show a current pass on {eng}")
-                conf = [loaded[f] for f in every if loaded[f].get("confirmation_for") == eng and (not results or f.name > results[-1].name)]
+                conf = [loaded[f] for f in every if loaded[f].get("confirmation_for") == eng and (not pr or f.name > pr[-1].name)]
                 if not conf or not conf[-1].get("confirmed") or not current(conf[-1]):
                     err(where, f"engine_hallmarks: no current confirmation run on {eng} after the newest proving")
             if fm.get("status") == "accredited":

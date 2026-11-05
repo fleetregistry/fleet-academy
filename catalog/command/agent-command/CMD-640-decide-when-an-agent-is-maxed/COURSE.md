@@ -12,6 +12,7 @@ guard: [CMD 650]
 kinds_of_work: [Conductor, Analyst]
 holland: Enterprising
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # CMD 640: Decide When an Agent Is Maxed

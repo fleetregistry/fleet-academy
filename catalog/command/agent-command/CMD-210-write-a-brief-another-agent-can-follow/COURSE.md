@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Conductor, Correspondent]
 holland: Enterprising
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # CMD 210: Write a Brief Another Agent Can Follow

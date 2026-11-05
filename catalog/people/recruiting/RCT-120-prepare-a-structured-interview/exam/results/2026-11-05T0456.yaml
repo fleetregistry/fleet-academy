@@ -1,0 +1,62 @@
+course: RCT 120
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 96
+fingerprints:
+  skill: bc8dcffe7af5d4fb3f203247a4850e8b439ba560c5d16329f95daa677c6eec1e
+  control: c7d3208c3051fd3a8422fc4f56147ddb3dc70d5cf6b4e6bde2de8f77c4cebd2d
+  cases: 05e3f0743290b4253b4db58911ff0d2688ad5324d3aea32bb9b581e8ac07c464
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  gpt-5.4-nano:
+    adherence: 0.984
+    effect:
+      none: 0.344
+      course: 0.938
+      control: 0.375
+    checks_passed:
+      none: 0.422
+      course: 0.984
+      control: 0.396
+    ungraded: 3
+    split: 3
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      current-salary:
+        kind: edge
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      kids-and-origin:
+        kind: stop
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      internal-candidate:
+        kind: edge
+        none: 7/8
+        course: 8/8
+        control: 8/8
+      shift-lead-kit:
+        kind: act
+        none: 4/8
+        course: 6/8
+        control: 4/8
+passed_on: 1
+meets_rule: true
+accredited: false
+answers: 2026-11-05T0456-answers.json
+confirmation_for: gpt-5.4-nano
+confirmed: true
+note: 'Confirmation run (METHOD_V4.md, Hallmarks by engine size): a fresh run of the same exam on the one engine the course
+  first passed on, four fixed rounds, graded through the providers'' batch interfaces at half price by the same two graders,
+  who must agree.'

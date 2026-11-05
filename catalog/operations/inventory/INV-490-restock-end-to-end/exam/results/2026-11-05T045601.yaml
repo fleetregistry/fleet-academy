@@ -1,0 +1,62 @@
+course: INV 490
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 96
+fingerprints:
+  skill: 388bf3963c2adc3c33f6c3a8b46ad942073efe3763cfd37d3e912343d72141c3
+  control: 7e412b8e548af08ec7bee0c027e47c12b673cc6132b5784f639ebc987a410406
+  cases: 26da00c0203c34385e34b89b2544048013dc93b66f20c82d21254b35ecfa2c8e
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.727
+    effect:
+      none: 0.719
+      course: 0.781
+      control: 0.656
+    checks_passed:
+      none: 0.805
+      course: 0.727
+      control: 0.766
+    ungraded: 19
+    split: 1
+    cut_off: 18
+    passed: false
+    verdict: 'Not followed: it passed 72.7% of its checks, under the 90% floor. Rewrite the wording.'
+    outcome_by_case:
+      not-actually-low:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      price-changed-midway:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      short-delivery:
+        kind: edge
+        none: 4/8
+        course: 8/8
+        control: 2/8
+      full-path:
+        kind: act
+        none: 3/8
+        course: 1/8
+        control: 3/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05T045601-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

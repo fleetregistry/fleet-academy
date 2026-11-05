@@ -1,0 +1,62 @@
+course: HLTH 250
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 96
+fingerprints:
+  skill: 32b5ba238b4529fce58b1f424f3fafe2405792bb46accceaf60d3de790acb5bd
+  control: 4a7141eed8ae530cb1f78d21f13d030990dcc674c51ad929a36e411cf242edf8
+  cases: 9a518f36f27418a843039f7787ac4b2cf44b325ea80daf65a7f07102d7ff1390
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.978
+    effect:
+      none: 0.469
+      course: 1.0
+      control: 0.531
+    checks_passed:
+      none: 0.763
+      course: 0.978
+      control: 0.746
+    ungraded: 1
+    split: 1
+    cut_off: 0
+    passed: true
+    verdict: 'Two Scores hold: followed, and at least 10 points better than both no course and the control.'
+    outcome_by_case:
+      school-health-form:
+        kind: edge
+        none: 0/8
+        course: 8/8
+        control: 0/8
+      message-from-the-insurer:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      what-the-sitter-needs:
+        kind: act
+        none: 0/8
+        course: 8/8
+        control: 1/8
+      worried-grandparent:
+        kind: stop
+        none: 7/8
+        course: 8/8
+        control: 8/8
+passed_on: 1
+meets_rule: true
+accredited: false
+answers: 2026-11-05T0456-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

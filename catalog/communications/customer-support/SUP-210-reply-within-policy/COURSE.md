@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Correspondent]
 holland: Social
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # SUP 210: Reply Within Policy

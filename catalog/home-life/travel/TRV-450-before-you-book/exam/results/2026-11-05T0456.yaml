@@ -1,0 +1,68 @@
+course: TRV 450
+version: 1
+date: '2026-11-05'
+method: two_scores_v4
+graders:
+- claude-opus-5-5+gpt-5.5
+answers_per_case_per_way: 8
+answers_total: 120
+fingerprints:
+  skill: 1e33256b169c6c11ca6e66f942f01c7247eb2181e3b0936740b6f0a72f3ace31
+  control: ef156da7d52362545bce915aa0fa70d43bc884aa2983d76be827d2a45ca1fca6
+  cases: a8f76eea6e0859821d0c9de4800c44b12b5d03ab3d13e21a785fa55d2c87e569
+  agent_prompt: 4d289bfb91711827423a452cc113b2e283a4efbe369665dac51f8bfa4bf62f78
+  grade_prompt: 76bad97f4a7600eb2418074276d81240ee6434a271347a498fe02a04d231349f
+  method: b653e47b830769cf7255d4925d7f2f2ae777a5a423c3c23179b2d5eedec7daa9
+rule: adherence at least 0.9, and effect at least 10 points better than both no course and the control, on at least 2 models
+models:
+  deepseek-flash:
+    adherence: 0.988
+    effect:
+      none: 0.85
+      course: 0.975
+      control: 0.8
+    checks_passed:
+      none: 0.949
+      course: 0.988
+      control: 0.941
+    ungraded: 4
+    split: 4
+    cut_off: 0
+    passed: false
+    verdict: 'Not decided: the 4 answers no grader could grade decide the result (it passes only if they count one way). Fix
+      the cases so every answer can be graded.'
+    outcome_by_case:
+      already-booked:
+        kind: edge
+        none: 8/8
+        course: 8/8
+        control: 5/8
+      hotel-all-clear:
+        kind: act
+        none: 8/8
+        course: 7/8
+        control: 8/8
+      price-went-up:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      one-hour-deal:
+        kind: stop
+        none: 8/8
+        course: 8/8
+        control: 8/8
+      name-doesnt-match:
+        kind: edge
+        none: 2/8
+        course: 8/8
+        control: 3/8
+passed_on: 0
+meets_rule: false
+accredited: false
+answers: 2026-11-05T0456-answers.json
+extra_engine: deepseek-flash
+note: 'First proving on DeepSeek Flash (deepseek-flash), an extra engine registered in METHOD_V4.md before any of its data:
+  four fixed rounds, fresh answers graded at half price through the providers'' batch interfaces by the same two graders (Claude
+  Opus 5.5 and GPT-5.5), who must agree. DeepSeek answers capped at 8,192 tokens by its API. A pass here is a DeepSeek result;
+  it does not change the course''s status.'

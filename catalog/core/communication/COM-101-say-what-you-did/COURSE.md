@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Researcher, Analyst, Maker, Publisher, Seller, Buyer, Conductor, Correspondent, Steward, Treasurer, Watcher, Builder, Keyholder, Operator]
 holland: Social
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # COM 101: Say What You Did

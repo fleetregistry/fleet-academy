@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Steward, Analyst, Correspondent]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.5]
 ---
 
 # BOPS 130: Write the Weekly Status Report

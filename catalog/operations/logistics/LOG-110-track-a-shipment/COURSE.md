@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Watcher, Researcher]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # LOG 110: Track a Shipment

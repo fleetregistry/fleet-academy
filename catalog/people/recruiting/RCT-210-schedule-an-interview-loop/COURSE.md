@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Conductor, Correspondent]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # RCT 210: Schedule an Interview Loop

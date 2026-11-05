@@ -12,6 +12,7 @@ guard: [INV 450, INV 350]
 kinds_of_work: [Buyer, Steward, Conductor]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [claude-haiku-5-5]
 ---
 
 # INV 490: Restock End to End

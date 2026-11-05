@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Analyst, Researcher, Conductor]
 holland: Investigative
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # TCH 110: Read a Course's Results Honestly

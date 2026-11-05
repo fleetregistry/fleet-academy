@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Publisher, Watcher]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # SOC 350: Before You Edit or Delete a Public Post

@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Analyst, Steward]
 holland: Conventional
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # INV 110: Read the Stock Picture

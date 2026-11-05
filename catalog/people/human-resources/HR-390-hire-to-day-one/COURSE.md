@@ -12,6 +12,7 @@ guard: [HR 350]
 kinds_of_work: [Conductor, Steward]
 holland: Social
 faculty: [Fleet Academy]
+engine_hallmarks: [claude-sonnet-5-5]
 ---
 
 # HR 390: Hire to Day One

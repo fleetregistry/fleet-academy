@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Researcher, Analyst]
 holland: Investigative
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # PR 110: Sort Confirmed From Unconfirmed

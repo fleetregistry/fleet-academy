@@ -12,6 +12,7 @@ guard: []
 kinds_of_work: [Analyst, Maker]
 holland: Social
 faculty: [Fleet Academy]
+engine_hallmarks: [gpt-5.4-nano]
 ---
 
 # RCT 120: Prepare a Structured Interview
